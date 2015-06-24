@@ -58,6 +58,18 @@
 		F4CB16E81B369B140078419A /* WWFilterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB16E61B369B140078419A /* WWFilterVC.m */; };
 		F4CB16E91B369B140078419A /* WWFilterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB16E71B369B140078419A /* WWFilterVC.xib */; };
 		F4CB16FA1B39E7ED0078419A /* GothamRoundedBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4CB16F91B39E7ED0078419A /* GothamRoundedBook.ttf */; };
+		F4CB17171B3B2ACF0078419A /* WWLeadsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB170C1B3B2ACF0078419A /* WWLeadsListVC.m */; };
+		F4CB17181B3B2ACF0078419A /* WWLeadsListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB170D1B3B2ACF0078419A /* WWLeadsListVC.xib */; };
+		F4CB17191B3B2ACF0078419A /* WWCreateBidVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB170F1B3B2ACF0078419A /* WWCreateBidVC.m */; };
+		F4CB171A1B3B2ACF0078419A /* WWCreateBidVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17101B3B2ACF0078419A /* WWCreateBidVC.xib */; };
+		F4CB171B1B3B2ACF0078419A /* WWInquiryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB17121B3B2ACF0078419A /* WWInquiryDetailVC.m */; };
+		F4CB171C1B3B2ACF0078419A /* WWInquiryDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17131B3B2ACF0078419A /* WWInquiryDetailVC.xib */; };
+		F4CB171D1B3B2ACF0078419A /* WWInquiryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB17151B3B2ACF0078419A /* WWInquiryCell.m */; };
+		F4CB171E1B3B2ACF0078419A /* WWInquiryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17161B3B2ACF0078419A /* WWInquiryCell.xib */; };
+		F4CB17231B3B2F840078419A /* WWHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB17211B3B2F840078419A /* WWHistoryCell.m */; };
+		F4CB17241B3B2F840078419A /* WWHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17221B3B2F840078419A /* WWHistoryCell.xib */; };
+		F4CB17281B3B35310078419A /* WWFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB17261B3B35310078419A /* WWFooterCell.m */; };
+		F4CB17291B3B35310078419A /* WWFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17271B3B35310078419A /* WWFooterCell.xib */; };
 		F4CD4E6D1B30A2BF0081FE0B /* cal_seldate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4CD4E6B1B30A2BF0081FE0B /* cal_seldate@2x.png */; };
 		F4CD4E6E1B30A2BF0081FE0B /* cal_seldate@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4CD4E6C1B30A2BF0081FE0B /* cal_seldate@3x.png */; };
 		F4CE09FC1B32794800B0840E /* WWMessageList.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CE09F71B32794800B0840E /* WWMessageList.m */; };
@@ -170,6 +182,24 @@
 		F4CB16E61B369B140078419A /* WWFilterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWFilterVC.m; sourceTree = "<group>"; };
 		F4CB16E71B369B140078419A /* WWFilterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWFilterVC.xib; sourceTree = "<group>"; };
 		F4CB16F91B39E7ED0078419A /* GothamRoundedBook.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamRoundedBook.ttf; sourceTree = "<group>"; };
+		F4CB170B1B3B2ACF0078419A /* WWLeadsListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWLeadsListVC.h; sourceTree = "<group>"; };
+		F4CB170C1B3B2ACF0078419A /* WWLeadsListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWLeadsListVC.m; sourceTree = "<group>"; };
+		F4CB170D1B3B2ACF0078419A /* WWLeadsListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWLeadsListVC.xib; sourceTree = "<group>"; };
+		F4CB170E1B3B2ACF0078419A /* WWCreateBidVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCreateBidVC.h; sourceTree = "<group>"; };
+		F4CB170F1B3B2ACF0078419A /* WWCreateBidVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCreateBidVC.m; sourceTree = "<group>"; };
+		F4CB17101B3B2ACF0078419A /* WWCreateBidVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCreateBidVC.xib; sourceTree = "<group>"; };
+		F4CB17111B3B2ACF0078419A /* WWInquiryDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWInquiryDetailVC.h; sourceTree = "<group>"; };
+		F4CB17121B3B2ACF0078419A /* WWInquiryDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWInquiryDetailVC.m; sourceTree = "<group>"; };
+		F4CB17131B3B2ACF0078419A /* WWInquiryDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWInquiryDetailVC.xib; sourceTree = "<group>"; };
+		F4CB17141B3B2ACF0078419A /* WWInquiryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWInquiryCell.h; sourceTree = "<group>"; };
+		F4CB17151B3B2ACF0078419A /* WWInquiryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWInquiryCell.m; sourceTree = "<group>"; };
+		F4CB17161B3B2ACF0078419A /* WWInquiryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWInquiryCell.xib; sourceTree = "<group>"; };
+		F4CB17201B3B2F840078419A /* WWHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWHistoryCell.h; sourceTree = "<group>"; };
+		F4CB17211B3B2F840078419A /* WWHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWHistoryCell.m; sourceTree = "<group>"; };
+		F4CB17221B3B2F840078419A /* WWHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWHistoryCell.xib; sourceTree = "<group>"; };
+		F4CB17251B3B35310078419A /* WWFooterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWFooterCell.h; sourceTree = "<group>"; };
+		F4CB17261B3B35310078419A /* WWFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWFooterCell.m; sourceTree = "<group>"; };
+		F4CB17271B3B35310078419A /* WWFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWFooterCell.xib; sourceTree = "<group>"; };
 		F4CD4E6B1B30A2BF0081FE0B /* cal_seldate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cal_seldate@2x.png"; sourceTree = "<group>"; };
 		F4CD4E6C1B30A2BF0081FE0B /* cal_seldate@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cal_seldate@3x.png"; sourceTree = "<group>"; };
 		F4CE09F61B32794800B0840E /* WWMessageList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWMessageList.h; sourceTree = "<group>"; };
@@ -371,6 +401,7 @@
 		F47047B81B027FAB00FEFEFF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F4CB170A1B3B2ABA0078419A /* Leads */,
 				F4CB16E41B35EAB20078419A /* Dashboard */,
 				F4D08A8E1B221A2000AF8E36 /* Message */,
 				F4D08A3C1B20CB1700AF8E36 /* Calendar */,
@@ -449,6 +480,31 @@
 				F4609B641B0BBA8100BCCCB8 /* WWDashboardVC.xib */,
 			);
 			name = Dashboard;
+			sourceTree = "<group>";
+		};
+		F4CB170A1B3B2ABA0078419A /* Leads */ = {
+			isa = PBXGroup;
+			children = (
+				F4CB170B1B3B2ACF0078419A /* WWLeadsListVC.h */,
+				F4CB170C1B3B2ACF0078419A /* WWLeadsListVC.m */,
+				F4CB170D1B3B2ACF0078419A /* WWLeadsListVC.xib */,
+				F4CB170E1B3B2ACF0078419A /* WWCreateBidVC.h */,
+				F4CB170F1B3B2ACF0078419A /* WWCreateBidVC.m */,
+				F4CB17101B3B2ACF0078419A /* WWCreateBidVC.xib */,
+				F4CB17111B3B2ACF0078419A /* WWInquiryDetailVC.h */,
+				F4CB17121B3B2ACF0078419A /* WWInquiryDetailVC.m */,
+				F4CB17131B3B2ACF0078419A /* WWInquiryDetailVC.xib */,
+				F4CB17141B3B2ACF0078419A /* WWInquiryCell.h */,
+				F4CB17151B3B2ACF0078419A /* WWInquiryCell.m */,
+				F4CB17161B3B2ACF0078419A /* WWInquiryCell.xib */,
+				F4CB17201B3B2F840078419A /* WWHistoryCell.h */,
+				F4CB17211B3B2F840078419A /* WWHistoryCell.m */,
+				F4CB17221B3B2F840078419A /* WWHistoryCell.xib */,
+				F4CB17251B3B35310078419A /* WWFooterCell.h */,
+				F4CB17261B3B35310078419A /* WWFooterCell.m */,
+				F4CB17271B3B35310078419A /* WWFooterCell.xib */,
+			);
+			name = Leads;
 			sourceTree = "<group>";
 		};
 		F4CFD7D31B1B027500D53E56 /* ForgotPassword */ = {
@@ -635,14 +691,20 @@
 				F470474F1B011AE700FEFEFF /* LaunchScreen.xib in Resources */,
 				F4CE09FD1B32794800B0840E /* WWMessageList.xib in Resources */,
 				F4CE09FF1B32794800B0840E /* WWPrivateMessage.xib in Resources */,
+				F4CB17241B3B2F840078419A /* WWHistoryCell.xib in Resources */,
+				F4CB17181B3B2ACF0078419A /* WWLeadsListVC.xib in Resources */,
 				F4C4EA7B1B2CD81E00D2CD7F /* WWBookingDetails.xib in Resources */,
 				F4CD4E6E1B30A2BF0081FE0B /* cal_seldate@3x.png in Resources */,
 				F4C4EA811B2CD9A000D2CD7F /* WWBookingHeaderCell.xib in Resources */,
 				F4609B731B0BC4B800BCCCB8 /* WWRegistrationVC.xib in Resources */,
 				F4D08A781B20D3BF00AF8E36 /* slicingbg.png in Resources */,
 				F4CB16E91B369B140078419A /* WWFilterVC.xib in Resources */,
+				F4CB171A1B3B2ACF0078419A /* WWCreateBidVC.xib in Resources */,
 				F4D08A8D1B20D72800AF8E36 /* WWCalendarView.xib in Resources */,
+				F4CB171C1B3B2ACF0078419A /* WWInquiryDetailVC.xib in Resources */,
+				F4CB171E1B3B2ACF0078419A /* WWInquiryCell.xib in Resources */,
 				F4C5A1D71B2765010078036A /* MessageListCell.xib in Resources */,
+				F4CB17291B3B35310078419A /* WWFooterCell.xib in Resources */,
 				F470474C1B011AE700FEFEFF /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -662,13 +724,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4C4EA801B2CD9A000D2CD7F /* WWBookingHeaderCell.m in Sources */,
+				F4CB171D1B3B2ACF0078419A /* WWInquiryCell.m in Sources */,
 				F47047441B011AE700FEFEFF /* WeddingWise.xcdatamodeld in Sources */,
 				F4D08A701B20CDB300AF8E36 /* NSDate+DSLCalendarView.m in Sources */,
 				F4C4EA7A1B2CD81E00D2CD7F /* WWBookingDetails.m in Sources */,
 				F47047B41B01273100FEFEFF /* myKnotCell.m in Sources */,
 				F4CE09FE1B32794800B0840E /* WWPrivateMessage.m in Sources */,
 				F4C7D85E1B0D031500D69912 /* UITextField+ADTextField.m in Sources */,
+				F4CB17281B3B35310078419A /* WWFooterCell.m in Sources */,
 				F4D08A691B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.m in Sources */,
+				F4CB17191B3B2ACF0078419A /* WWCreateBidVC.m in Sources */,
 				F47047411B011AE700FEFEFF /* AppDelegate.m in Sources */,
 				F4C4EA8A1B2CDB6200D2CD7F /* WWBookingFooterCell.m in Sources */,
 				F47047821B0123F600FEFEFF /* RDVTabBarItem.m in Sources */,
@@ -687,10 +752,13 @@
 				F4C5A1D61B2765010078036A /* MessageListCell.m in Sources */,
 				F4609B721B0BC4B800BCCCB8 /* WWRegistrationVC.m in Sources */,
 				F4609B771B0BC4D500BCCCB8 /* WWLoginVC.m in Sources */,
+				F4CB171B1B3B2ACF0078419A /* WWInquiryDetailVC.m in Sources */,
 				F470473E1B011AE700FEFEFF /* main.m in Sources */,
+				F4CB17171B3B2ACF0078419A /* WWLeadsListVC.m in Sources */,
 				F4D08A681B20CDB300AF8E36 /* DSLCalendarView.m in Sources */,
 				F4C4EA851B2CDB2C00D2CD7F /* WWBookingMiddleCell.m in Sources */,
 				F4D08A6E1B20CDB300AF8E36 /* DSLCalendarDayCalloutView.m in Sources */,
+				F4CB17231B3B2F840078419A /* WWHistoryCell.m in Sources */,
 				F47047831B0123F600FEFEFF /* RDVTabBar.m in Sources */,
 				F4D08A6D1B20CDB300AF8E36 /* DSLCalendarRange.m in Sources */,
 			);

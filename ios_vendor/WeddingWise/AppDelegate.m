@@ -16,7 +16,8 @@
 #import "WWMessageList.h"
 #import "WWCalendarView.h"
 #import "WWBookingDetails.h"
-
+#import "WWInquiryDetailVC.h"
+#import "WWLeadsListVC.h"
 void uncaughtExceptionHandler(NSException*);
 
 @interface AppDelegate ()
@@ -96,11 +97,11 @@ static AppDelegate * _sharedInstance;
     UINavigationController *secondNavigationController = [[UINavigationController alloc]
                                                           initWithRootViewController:secondViewController];
     
-    UIViewController *thirdViewController = [[WWBookingDetails alloc] init];
+    UIViewController *thirdViewController = [[WWLeadsListVC alloc] init];
     UINavigationController *thirdNavigationController = [[UINavigationController alloc]
                                                          initWithRootViewController:thirdViewController];
     
-    UIViewController *fourthViewController = [[WWBookingDetails alloc] init];
+    UIViewController *fourthViewController = [[WWLeadsListVC alloc] init];
     UINavigationController *fourthNavigationController = [[UINavigationController alloc]
                                                           initWithRootViewController:fourthViewController];
     
@@ -113,8 +114,8 @@ static AppDelegate * _sharedInstance;
 }
 
 - (void)customizeTabBarForController:(UITabBarController *)tabBarController {
-    NSArray *tabBarItemImages = @[@"cal", @"message", @"book",@"menu"];
-    NSArray *tabBarSelectedItemImages = @[@"calSelected", @"message_icon", @"bookSelected",@"menu_icon"];
+    NSArray *tabBarItemImages = @[@"calend", @"message", @"led",@"menu"];
+    NSArray *tabBarSelectedItemImages = @[@"calend", @"message_icon", @"led",@"menu_icon"];
     
     NSInteger index = 0;
     for (UITabBarItem *item in [[tabBarController tabBar] items]) {

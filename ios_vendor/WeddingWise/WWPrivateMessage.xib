@@ -17,11 +17,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="73l-Ju-D3O">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="60" width="320" height="502"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="320" id="SeB-1t-h1r"/>
-                        <constraint firstAttribute="height" constant="568" id="mbi-6J-fsu"/>
+                        <constraint firstAttribute="height" constant="502" id="GaX-S2-bN3"/>
+                        <constraint firstAttribute="width" constant="320" id="QiK-nX-Reh"/>
                     </constraints>
                     <color key="sectionIndexBackgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
@@ -29,16 +29,44 @@
                         <outlet property="delegate" destination="-1" id="d60-5j-fI9"/>
                     </connections>
                 </tableView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="header_divder" translatesAutoresizingMaskIntoConstraints="NO" id="6aB-g0-qU5">
+                    <rect key="frame" x="0.0" y="60" width="320" height="8"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rishi Weds Anu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRj-Oe-3fh">
+                    <rect key="frame" x="42" y="15" width="149" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vna-gs-E1T">
+                    <rect key="frame" x="8" y="8" width="42" height="33"/>
+                    <state key="normal" image="back@arrow">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="9Ys-3V-1q0"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="02-Jul-2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPh-k0-ifg">
+                    <rect key="frame" x="114" y="38" width="93" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="1" green="0.1321103616" blue="0.13034342630000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="73l-Ju-D3O" secondAttribute="trailing" id="AzO-cG-60h"/>
-                <constraint firstItem="73l-Ju-D3O" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="i4g-l6-pRx"/>
-                <constraint firstAttribute="bottom" secondItem="73l-Ju-D3O" secondAttribute="bottom" id="iwp-pw-LgA"/>
-                <constraint firstItem="73l-Ju-D3O" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="udZ-jD-RwP"/>
+                <constraint firstItem="73l-Ju-D3O" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="36l-uh-Z4X"/>
+                <constraint firstItem="73l-Ju-D3O" firstAttribute="top" secondItem="Vna-gs-E1T" secondAttribute="bottom" constant="19" id="3at-Xy-YaL"/>
+                <constraint firstAttribute="bottom" secondItem="73l-Ju-D3O" secondAttribute="bottom" constant="6" id="D8W-PJ-dFT"/>
+                <constraint firstAttribute="trailing" secondItem="73l-Ju-D3O" secondAttribute="trailing" id="Whk-D0-htH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="282" y="314"/>
         </view>
     </objects>
+    <resources>
+        <image name="back@arrow" width="14" height="14"/>
+        <image name="header_divder" width="326" height="6"/>
+    </resources>
 </document>

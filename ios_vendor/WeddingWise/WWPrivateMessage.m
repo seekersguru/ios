@@ -25,14 +25,14 @@
 - (void)viewDidLoad {
     
     [self.navigationItem setHidesBackButton:YES];
-    
-    UIButton *backButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 100.0f, 30.0f)];
-    [backButton setImage:[UIImage imageNamed:@"back@arrow"] forState:UIControlStateNormal];
-    [backButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [backButton setTitle:@"User Name" forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(popBack) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    self.navigationItem.leftBarButtonItem = backButtonItem;
+    [self.navigationController.navigationBar setHidden:YES];
+//    UIButton *backButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 150.0f, 30.0f)];
+//    [backButton setImage:[UIImage imageNamed:@"back@arrow"] forState:UIControlStateNormal];
+//    [backButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+//    [backButton setTitle:@"User Name" forState:UIControlStateNormal];
+//    [backButton addTarget:self action:@selector(popBack) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+//    self.navigationItem.leftBarButtonItem = backButtonItem;
     
     [_tblMessage registerNib:[UINib nibWithNibName:@"SenderMsgCell" bundle:nil] forCellReuseIdentifier:@"SenderMsgCell"];
     [_tblMessage registerNib:[UINib nibWithNibName:@"ReceiverMsgCell" bundle:nil] forCellReuseIdentifier:@"ReceiverMsgCell"];
@@ -47,8 +47,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+-(IBAction)backButtonPressed:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 -(void)viewWillAppear:(BOOL)animated{
-    [self.navigationController.navigationBar setHidden:NO];
+   // [self.navigationController.navigationBar setHidden:NO];
 }
 -(void)popBack{
     [self.navigationController popViewControllerAnimated:YES];
@@ -57,44 +60,44 @@
 {
     chatArray = [[NSMutableArray alloc] init];
     
-    [chatArray addObject:@{@"message" : @"Time or slot, some unique identifier",
+    [chatArray addObject:@{@"message" : @"Looking for decent ambience ",
                            @"read_status" : @(YES),
-                           @"sender" : @(NO),
-                           @"date" : [NSDate date]}];
-    
-    [chatArray addObject:@{@"message" : @"Time or slot service",
-                           @"read_status" : @(NO),
                            @"sender" : @(YES),
                            @"date" : [NSDate date]}];
     
-    [chatArray addObject:@{@"message" : @"Time or slot",
+    [chatArray addObject:@{@"message" : @"We have good one",
                            @"read_status" : @(NO),
                            @"sender" : @(NO),
                            @"date" : [NSDate date]}];
     
-    [chatArray addObject:@{@"message" : @"Service, Privacy Policy, Guest Policy",
+    [chatArray addObject:@{@"message" : @"Can you send us some images and plans",
                            @"read_status" : @(NO),
                            @"sender" : @(YES),
                            @"date" : [NSDate date]}];
     
-    [chatArray addObject:@{@"message" : @"Service, Policy",
-                           @"read_status" : @(NO),
-                           @"sender" : @(YES),
-                           @"date" : [NSDate date]}];
-    
-    [chatArray addObject:@{@"message" : @"Service, Policy, Guest",
-                           @"read_status" : @(NO),
-                           @"sender" : @(YES),
-                           @"date" : [NSDate date]}];
-    
-    [chatArray addObject:@{@"message" : @"Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt",
+    [chatArray addObject:@{@"message" : @"Yes sure",
                            @"read_status" : @(NO),
                            @"sender" : @(NO),
                            @"date" : [NSDate date]}];
     
-    [chatArray addObject:@{@"message" : @"Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    [chatArray addObject:@{@"message" : @"We require rooms for stay",
                            @"read_status" : @(NO),
                            @"sender" : @(YES),
+                           @"date" : [NSDate date]}];
+    
+    [chatArray addObject:@{@"message" : @"Around 25 guests will stay",
+                           @"read_status" : @(NO),
+                           @"sender" : @(NO),
+                           @"date" : [NSDate date]}];
+    
+    [chatArray addObject:@{@"message" : @"A.C rooms, Parking etc, ",
+                           @"read_status" : @(NO),
+                           @"sender" : @(YES),
+                           @"date" : [NSDate date]}];
+    
+    [chatArray addObject:@{@"message" : @"It will be great if we can have these services ",
+                           @"read_status" : @(NO),
+                           @"sender" : @(NO),
                            @"date" : [NSDate date]}];
 }
 #pragma mark - Tableview delegate/datasource
