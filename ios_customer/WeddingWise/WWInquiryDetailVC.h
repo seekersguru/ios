@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface WWInquiryDetailVC : UIViewController
-
+{
+    IBOutlet UITableView *tblInquery;
+}
 @end

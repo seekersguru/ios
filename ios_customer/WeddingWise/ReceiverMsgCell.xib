@@ -29,14 +29,26 @@
                             <constraint firstAttribute="height" constant="29" id="VKr-kR-7y3"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:55" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wX1-z8-Nhe">
+                        <rect key="frame" x="270" y="40" width="42" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="42" id="H66-PW-BSz"/>
+                            <constraint firstAttribute="height" constant="21" id="ea0-Pq-K3Q"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="1" green="0.1321103616" blue="0.13034342630000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="TWd-is-KDR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="Acg-ys-uQU"/>
+                    <constraint firstItem="wX1-z8-Nhe" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="MaB-sh-h4f"/>
                     <constraint firstItem="TWd-is-KDR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="XAU-jH-KZf"/>
+                    <constraint firstItem="wX1-z8-Nhe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="32" id="ke3-ul-BHe"/>
                     <constraint firstItem="ZZf-SB-y6Q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="m1k-Lg-TKF"/>
                     <constraint firstItem="ZZf-SB-y6Q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="14" id="xsh-ow-wYO"/>
                 </constraints>
