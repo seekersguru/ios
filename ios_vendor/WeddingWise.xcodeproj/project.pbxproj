@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		369EBE071B3AA18000485419 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369EBE061B3AA18000485419 /* FBSDKCoreKit.framework */; };
-		369EBE0A1B3AA1B200485419 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369EBE081B3AA1B200485419 /* GoogleOpenSource.framework */; };
-		369EBE0B1B3AA1B200485419 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369EBE091B3AA1B200485419 /* GooglePlus.framework */; };
 		F4609B651B0BBA8100BCCCB8 /* WWDashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */; };
 		F4609B661B0BBA8100BCCCB8 /* WWDashboardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4609B641B0BBA8100BCCCB8 /* WWDashboardVC.xib */; };
 		F4609B721B0BC4B800BCCCB8 /* WWRegistrationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4609B701B0BC4B800BCCCB8 /* WWRegistrationVC.m */; };
@@ -99,9 +96,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		369EBE061B3AA18000485419 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		369EBE081B3AA1B200485419 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../google-plus-ios-sdk-1.5.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
-		369EBE091B3AA1B200485419 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../google-plus-ios-sdk-1.5.1/GooglePlus.framework"; sourceTree = "<group>"; };
 		F4609B621B0BBA8100BCCCB8 /* WWDashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDashboardVC.h; sourceTree = "<group>"; };
 		F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWDashboardVC.m; sourceTree = "<group>"; };
 		F4609B641B0BBA8100BCCCB8 /* WWDashboardVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWDashboardVC.xib; sourceTree = "<group>"; };
@@ -222,14 +216,11 @@
 			files = (
 				F4BCBA961B1F8AA800082A73 /* GoogleOpenSource.framework in Frameworks */,
 				F4BCBA971B1F8AA800082A73 /* GooglePlus.framework in Frameworks */,
-				369EBE0A1B3AA1B200485419 /* GoogleOpenSource.framework in Frameworks */,
 				F4CFD7E51B1B6C4800D53E56 /* FBSDKCoreKit.framework in Frameworks */,
 				F4CFD7E61B1B6C4800D53E56 /* FBSDKLoginKit.framework in Frameworks */,
-				369EBE0B1B3AA1B200485419 /* GooglePlus.framework in Frameworks */,
 				F4CFD7E71B1B6C4800D53E56 /* FBSDKMessengerShareKit.framework in Frameworks */,
 				F4CFD7E81B1B6C4800D53E56 /* FBSDKShareKit.framework in Frameworks */,
 				F4BC31BE1B179BC400BF5BB2 /* UIKit.framework in Frameworks */,
-				369EBE071B3AA18000485419 /* FBSDKCoreKit.framework in Frameworks */,
 				F4BC31BC1B179BBC00BF5BB2 /* SystemConfiguration.framework in Frameworks */,
 				F4BC31BA1B179BA500BF5BB2 /* Security.framework in Frameworks */,
 				F4BC31B81B179B9E00BF5BB2 /* MediaPlayer.framework in Frameworks */,
@@ -395,9 +386,6 @@
 		F4BC31A41B1794CA00BF5BB2 /* FrameWorks */ = {
 			isa = PBXGroup;
 			children = (
-				369EBE081B3AA1B200485419 /* GoogleOpenSource.framework */,
-				369EBE091B3AA1B200485419 /* GooglePlus.framework */,
-				369EBE061B3AA18000485419 /* FBSDKCoreKit.framework */,
 				F4BCBA941B1F8AA800082A73 /* GoogleOpenSource.framework */,
 				F4BCBA951B1F8AA800082A73 /* GooglePlus.framework */,
 				F4CFD7E11B1B6C4800D53E56 /* FBSDKCoreKit.framework */,
@@ -826,8 +814,6 @@
 					"$(PROJECT_DIR)/WeddingWise",
 					/Users/Home/Documents/FacebookSdk,
 					"/Users/Home/Desktop/Projects/R&D/google-plus-ios-sdk-1.7.1",
-					/Users/nisants/Documents/FacebookSDK,
-					"/Users/nisants/Desktop/ios/google-plus-ios-sdk-1.5.1",
 				);
 				GCC_PREFIX_HEADER = WeddingWise/WeddingWise.pch;
 				INFOPLIST_FILE = WeddingWise/Info.plist;
@@ -849,8 +835,6 @@
 					"$(PROJECT_DIR)/WeddingWise",
 					/Users/Home/Documents/FacebookSdk,
 					"/Users/Home/Desktop/Projects/R&D/google-plus-ios-sdk-1.7.1",
-					/Users/nisants/Documents/FacebookSDK,
-					"/Users/nisants/Desktop/ios/google-plus-ios-sdk-1.5.1",
 				);
 				GCC_PREFIX_HEADER = WeddingWise/WeddingWise.pch;
 				INFOPLIST_FILE = WeddingWise/Info.plist;
