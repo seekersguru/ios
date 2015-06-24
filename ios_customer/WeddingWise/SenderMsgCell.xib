@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6724" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SenderMsgCell" rowHeight="70" id="KGk-i7-Jjw" customClass="SenderMsgCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="receiver" translatesAutoresizingMaskIntoConstraints="NO" id="4OS-aj-jYl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="69" id="OeO-ae-byr"/>
+                            <constraint firstAttribute="width" constant="320" id="rSM-WP-EcL"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NK-yV-tUG">
+                        <rect key="frame" x="8" y="19" width="275" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="275" id="Uqf-j1-jto"/>
+                            <constraint firstAttribute="height" constant="21" id="uFi-pW-FvK"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="4OS-aj-jYl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="6lI-zS-u1X"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="4OS-aj-jYl" secondAttribute="trailing" constant="-8" id="PHq-d4-6PW"/>
+                    <constraint firstItem="2NK-yV-tUG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="11" id="TYq-9D-Tv4"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="2NK-yV-tUG" secondAttribute="trailing" constant="29" id="t5B-JX-upb"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="chatMsgTxt" destination="2NK-yV-tUG" id="3sD-x9-1im"/>
+            </connections>
+            <point key="canvasLocation" x="-22" y="129"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="receiver" width="159" height="40"/>
+    </resources>
+</document>
