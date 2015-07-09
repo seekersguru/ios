@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7315CFF1DDF95E3B98748ADA /* libPods-WeddingWise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0381FBBBEBC9947D010CFF78 /* libPods-WeddingWise.a */; };
 		F4609B651B0BBA8100BCCCB8 /* WWDashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */; };
 		F4609B661B0BBA8100BCCCB8 /* WWDashboardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4609B641B0BBA8100BCCCB8 /* WWDashboardVC.xib */; };
 		F4609B721B0BC4B800BCCCB8 /* WWRegistrationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4609B701B0BC4B800BCCCB8 /* WWRegistrationVC.m */; };
@@ -70,6 +71,8 @@
 		F4CB17241B3B2F840078419A /* WWHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17221B3B2F840078419A /* WWHistoryCell.xib */; };
 		F4CB17281B3B35310078419A /* WWFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB17261B3B35310078419A /* WWFooterCell.m */; };
 		F4CB17291B3B35310078419A /* WWFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17271B3B35310078419A /* WWFooterCell.xib */; };
+		F4CCA54D1B47B0B500F33FDA /* WWWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CCA54C1B47B0B500F33FDA /* WWWebService.m */; };
+		F4CCA5511B47F56600F33FDA /* WWUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CCA5501B47F56600F33FDA /* WWUserData.m */; };
 		F4CD4E6D1B30A2BF0081FE0B /* cal_seldate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4CD4E6B1B30A2BF0081FE0B /* cal_seldate@2x.png */; };
 		F4CD4E6E1B30A2BF0081FE0B /* cal_seldate@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4CD4E6C1B30A2BF0081FE0B /* cal_seldate@3x.png */; };
 		F4CE09FC1B32794800B0840E /* WWMessageList.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CE09F71B32794800B0840E /* WWMessageList.m */; };
@@ -108,6 +111,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0381FBBBEBC9947D010CFF78 /* libPods-WeddingWise.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeddingWise.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		26AF5F1A291DFA0D35AB382C /* Pods-WeddingWise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingWise.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingWise/Pods-WeddingWise.release.xcconfig"; sourceTree = "<group>"; };
+		D2DCC82CCECF86CC682CBC0B /* Pods-WeddingWise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingWise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingWise/Pods-WeddingWise.debug.xcconfig"; sourceTree = "<group>"; };
 		F4609B621B0BBA8100BCCCB8 /* WWDashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDashboardVC.h; sourceTree = "<group>"; };
 		F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWDashboardVC.m; sourceTree = "<group>"; };
 		F4609B641B0BBA8100BCCCB8 /* WWDashboardVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWDashboardVC.xib; sourceTree = "<group>"; };
@@ -200,6 +206,10 @@
 		F4CB17251B3B35310078419A /* WWFooterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWFooterCell.h; sourceTree = "<group>"; };
 		F4CB17261B3B35310078419A /* WWFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWFooterCell.m; sourceTree = "<group>"; };
 		F4CB17271B3B35310078419A /* WWFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWFooterCell.xib; sourceTree = "<group>"; };
+		F4CCA54B1B47B0AF00F33FDA /* WWWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWebService.h; sourceTree = "<group>"; };
+		F4CCA54C1B47B0B500F33FDA /* WWWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWebService.m; sourceTree = "<group>"; };
+		F4CCA54F1B47F56600F33FDA /* WWUserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWUserData.h; sourceTree = "<group>"; };
+		F4CCA5501B47F56600F33FDA /* WWUserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWUserData.m; sourceTree = "<group>"; };
 		F4CD4E6B1B30A2BF0081FE0B /* cal_seldate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cal_seldate@2x.png"; sourceTree = "<group>"; };
 		F4CD4E6C1B30A2BF0081FE0B /* cal_seldate@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cal_seldate@3x.png"; sourceTree = "<group>"; };
 		F4CE09F61B32794800B0840E /* WWMessageList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWMessageList.h; sourceTree = "<group>"; };
@@ -261,6 +271,7 @@
 				F4BC31AE1B179B6F00BF5BB2 /* Foundation.framework in Frameworks */,
 				F4BC31AC1B179B6600BF5BB2 /* AssetsLibrary.framework in Frameworks */,
 				F4BC31AA1B179B5C00BF5BB2 /* AddressBook.framework in Frameworks */,
+				7315CFF1DDF95E3B98748ADA /* libPods-WeddingWise.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +285,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3ACE5BEBD8B97A60546BB8DD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D2DCC82CCECF86CC682CBC0B /* Pods-WeddingWise.debug.xcconfig */,
+				26AF5F1A291DFA0D35AB382C /* Pods-WeddingWise.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7CA3CE21B343152D616D8F80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0381FBBBEBC9947D010CFF78 /* libPods-WeddingWise.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F4609B601B0BBA4D00BCCCB8 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +329,8 @@
 				F470473A1B011AE700FEFEFF /* WeddingWise */,
 				F47047571B011AE700FEFEFF /* WeddingWiseTests */,
 				F47047391B011AE700FEFEFF /* Products */,
+				3ACE5BEBD8B97A60546BB8DD /* Pods */,
+				7CA3CE21B343152D616D8F80 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -316,6 +346,8 @@
 		F470473A1B011AE700FEFEFF /* WeddingWise */ = {
 			isa = PBXGroup;
 			children = (
+				F4CCA54E1B47F4BB00F33FDA /* Models */,
+				F4CCA54A1B47B09A00F33FDA /* WebService */,
 				F4BC31A41B1794CA00BF5BB2 /* FrameWorks */,
 				F47047B81B027FAB00FEFEFF /* Controllers */,
 				F47047B61B01274000FEFEFF /* View */,
@@ -507,6 +539,24 @@
 			name = Leads;
 			sourceTree = "<group>";
 		};
+		F4CCA54A1B47B09A00F33FDA /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				F4CCA54B1B47B0AF00F33FDA /* WWWebService.h */,
+				F4CCA54C1B47B0B500F33FDA /* WWWebService.m */,
+			);
+			name = WebService;
+			sourceTree = "<group>";
+		};
+		F4CCA54E1B47F4BB00F33FDA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F4CCA54F1B47F56600F33FDA /* WWUserData.h */,
+				F4CCA5501B47F56600F33FDA /* WWUserData.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		F4CFD7D31B1B027500D53E56 /* ForgotPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -600,9 +650,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F470475E1B011AE700FEFEFF /* Build configuration list for PBXNativeTarget "WeddingWise" */;
 			buildPhases = (
+				03D33161C4E30349A2897CE4 /* Check Pods Manifest.lock */,
 				F47047341B011AE700FEFEFF /* Sources */,
 				F47047351B011AE700FEFEFF /* Frameworks */,
 				F47047361B011AE700FEFEFF /* Resources */,
+				03CF545DFE776D89281F4DBF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -718,6 +770,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		03CF545DFE776D89281F4DBF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeddingWise/Pods-WeddingWise-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		03D33161C4E30349A2897CE4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F47047341B011AE700FEFEFF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -729,6 +814,7 @@
 				F4D08A701B20CDB300AF8E36 /* NSDate+DSLCalendarView.m in Sources */,
 				F4C4EA7A1B2CD81E00D2CD7F /* WWBookingDetails.m in Sources */,
 				F47047B41B01273100FEFEFF /* myKnotCell.m in Sources */,
+				F4CCA5511B47F56600F33FDA /* WWUserData.m in Sources */,
 				F4CE09FE1B32794800B0840E /* WWPrivateMessage.m in Sources */,
 				F4C7D85E1B0D031500D69912 /* UITextField+ADTextField.m in Sources */,
 				F4CB17281B3B35310078419A /* WWFooterCell.m in Sources */,
@@ -752,6 +838,7 @@
 				F4C5A1D61B2765010078036A /* MessageListCell.m in Sources */,
 				F4609B721B0BC4B800BCCCB8 /* WWRegistrationVC.m in Sources */,
 				F4609B771B0BC4D500BCCCB8 /* WWLoginVC.m in Sources */,
+				F4CCA54D1B47B0B500F33FDA /* WWWebService.m in Sources */,
 				F4CB171B1B3B2ACF0078419A /* WWInquiryDetailVC.m in Sources */,
 				F470473E1B011AE700FEFEFF /* main.m in Sources */,
 				F4CB17171B3B2ACF0078419A /* WWLeadsListVC.m in Sources */,
@@ -874,8 +961,10 @@
 		};
 		F470475F1B011AE700FEFEFF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2DCC82CCECF86CC682CBC0B /* Pods-WeddingWise.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Dharam Mehta (95NA7968E3)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -887,15 +976,23 @@
 				INFOPLIST_FILE = WeddingWise/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"Pods-WeddingWise-AFNetworking\"",
+					"-l\"Pods-WeddingWise-MBProgressHUD\"",
+					"-l\"Pods-WeddingWise-SCNetworkReachability\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8e80fcab-690f-4a7a-ab4f-145e013be6dd";
 			};
 			name = Debug;
 		};
 		F47047601B011AE700FEFEFF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26AF5F1A291DFA0D35AB382C /* Pods-WeddingWise.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Dharam Mehta (95NA7968E3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dharam Mehta (95NA7968E3)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -908,8 +1005,14 @@
 				INFOPLIST_FILE = WeddingWise/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"Pods-WeddingWise-AFNetworking\"",
+					"-l\"Pods-WeddingWise-MBProgressHUD\"",
+					"-l\"Pods-WeddingWise-SCNetworkReachability\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8e80fcab-690f-4a7a-ab4f-145e013be6dd";
 			};
 			name = Release;
 		};
@@ -928,6 +1031,7 @@
 				INFOPLIST_FILE = WeddingWiseTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8e80fcab-690f-4a7a-ab4f-145e013be6dd";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeddingWise.app/WeddingWise";
 			};
 			name = Debug;
@@ -943,6 +1047,7 @@
 				INFOPLIST_FILE = WeddingWiseTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8e80fcab-690f-4a7a-ab4f-145e013be6dd";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeddingWise.app/WeddingWise";
 			};
 			name = Release;

@@ -7,7 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WWPrivateMessage">
             <connections>
+                <outlet property="lblVendorName" destination="SCF-wJ-Pez" id="JiM-tN-CFM"/>
                 <outlet property="tblMessage" destination="73l-Ju-D3O" id="GAl-oA-4b3"/>
+                <outlet property="toolbar" destination="8t3-dH-9rl" id="DDj-nW-ZWG"/>
+                <outlet property="txtMessage" destination="FwX-o7-U7w" id="vIQ-zr-gGf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,22 +19,29 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="73l-Ju-D3O">
-                    <rect key="frame" x="0.0" y="74" width="320" height="491"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header_divder" id="ErF-Qa-g6g">
+                    <rect key="frame" x="0.0" y="72" width="320" height="8"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="22" id="73l-Ju-D3O">
+                    <rect key="frame" x="0.0" y="79" width="320" height="436"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="sectionIndexBackgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="LM8-qw-906"/>
                         <outlet property="delegate" destination="-1" id="d60-5j-fI9"/>
                     </connections>
                 </tableView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7E602A39-D826-433B-B2D0-8F0E4C55F07E" id="FSW-S2-2rg">
-                    <rect key="frame" x="0.0" y="66" width="320" height="8"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02-Dec-2014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DgT-nx-McN">
+                    <rect key="frame" x="110" y="44" width="101" height="23"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                </imageView>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="1" green="0.1321103616" blue="0.13034342630000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ace Banquet hall" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SCF-wJ-Pez">
-                    <rect key="frame" x="48" y="15" width="149" height="21"/>
+                    <rect key="frame" x="48" y="15" width="264" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,272 +50,55 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Sjx-bu-eiZ">
                     <rect key="frame" x="8" y="12" width="42" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="5A4AB6D2-0579-43CB-8B8D-A54474022AC4">
+                    <state key="normal" image="back@arrow">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="iSx-k1-KQk"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02-Dec-2014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DgT-nx-McN">
-                    <rect key="frame" x="110" y="44" width="101" height="21"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" red="1" green="0.1321103616" blue="0.13034342630000001" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" id="8t3-dH-9rl">
+                    <rect key="frame" x="0.0" y="523" width="320" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message_send" id="ioP-Xt-0KZ">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mHc-BT-Lle">
+                            <rect key="frame" x="268" y="0.0" width="52" height="42"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <state key="normal" image="send_message">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="chatButtonClick:" destination="-1" eventType="touchUpInside" id="YSY-E7-Rcg"/>
+                            </connections>
+                        </button>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type a message" id="FwX-o7-U7w">
+                            <rect key="frame" x="0.0" y="4" width="265" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="DZe-lr-WyQ"/>
+                            </connections>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="282" y="314"/>
+            <point key="canvasLocation" x="59" y="326"/>
         </view>
     </objects>
     <resources>
-        <image name="5A4AB6D2-0579-43CB-8B8D-A54474022AC4" width="14" height="14">
-            <mutableData key="keyedArchiveRepresentation">
-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
-AAOIcm9STwAAACQAAAOiZWxHUgAAACIAAAPGcHRQTwAAACYAAAPobmxOTAAAACgAAAQOZXNFUwAAACYA
-AAPodGhUSAAAACQAAAQ2dHJUUgAAACIAAARaZmlGSQAAACgAAAR8cGxQTAAAACwAAASkcnVSVQAAACIA
-AATQYXJFRwAAACYAAATyZW5VUwAAACYAAAUYZGFESwAAAC4AAAU+AFYBYQBlAG8AYgBlAGMAbgD9ACAA
-UgBHAEIAIABwAHIAbwBmAGkAbABHAGUAbgBlAHIAaQENAGsAaQAgAFIARwBCACAAcAByAG8AZgBpAGwA
-UABlAHIAZgBpAGwAIABSAEcAQgAgAGcAZQBuAOgAcgBpAGMAUABlAHIAZgBpAGwAIABSAEcAQgAgAEcA
-ZQBuAOkAcgBpAGMAbwQXBDAEMwQwBDsETAQ9BDgEOQAgBD8EQAQ+BEQEMAQ5BDsAIABSAEcAQgBQAHIA
-bwBmAGkAbAAgAGcA6QBuAOkAcgBpAHEAdQBlACAAUgBWAEKQGnUoACAAUgBHAEIAIIJyX2ljz4/wAFAA
-cgBvAGYAaQBsAG8AIABSAEcAQgAgAGcAZQBuAGUAcgBpAGMAbwBHAGUAbgBlAHIAaQBzAGsAIABSAEcA
-QgAtAHAAcgBvAGYAaQBsx3y8GAAgAFIARwBCACDVBLhc0wzHfABPAGIAZQBjAG4A/QAgAFIARwBCACAA
-cAByAG8AZgBpAGwF5AXoBdUF5AXZBdwAIABSAEcAQgAgBdsF3AXcBdkAQQBsAGwAZwBlAG0AZQBpAG4A
-ZQBzACAAUgBHAEIALQBQAHIAbwBmAGkAbADBAGwAdABhAGwA4QBuAG8AcwAgAFIARwBCACAAcAByAG8A
-ZgBpAGxmbpAaACAAUgBHAEIAIGPPj/Blh072TgCCLAAgAFIARwBCACAw1zDtMNUwoTCkMOsAUAByAG8A
-ZgBpAGwAIABSAEcAQgAgAGcAZQBuAGUAcgBpAGMDkwO1A70DuQO6A8wAIAPAA8EDvwPGA68DuwAgAFIA
-RwBCAFAAZQByAGYAaQBsACAAUgBHAEIAIABnAGUAbgDpAHIAaQBjAG8AQQBsAGcAZQBtAGUAZQBuACAA
-UgBHAEIALQBwAHIAbwBmAGkAZQBsDkIOGw4jDkQOHw4lDkwAIABSAEcAQgAgDhcOMQ5IDicORA4bAEcA
-ZQBuAGUAbAAgAFIARwBCACAAUAByAG8AZgBpAGwAaQBZAGwAZQBpAG4AZQBuACAAUgBHAEIALQBwAHIA
-bwBmAGkAaQBsAGkAVQBuAGkAdwBlAHIAcwBhAGwAbgB5ACAAcAByAG8AZgBpAGwAIABSAEcAQgQeBDEE
-SQQ4BDkAIAQ/BEAEPgREBDgEOwRMACAAUgBHAEIGRQZEBkEAIAYqBjkGMQZKBkEAIABSAEcAQgAgBicG
-RAY5BicGRQBHAGUAbgBlAHIAaQBjACAAUgBHAEIAIABQAHIAbwBmAGkAbABlAEcAZQBuAGUAcgBlAGwA
-IABSAEcAQgAtAGIAZQBzAGsAcgBpAHYAZQBsAHMAZXRleHQAAAAAQ29weXJpZ2h0IDIwMDcgQXBwbGUg
-SW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC4AWFlaIAAAAAAAAPNSAAEAAAABFs9YWVogAAAAAAAAdE0A
-AD3uAAAD0FhZWiAAAAAAAABadQAArHMAABc0WFlaIAAAAAAAACgaAAAVnwAAuDZjdXJ2AAAAAAAAAAEB
-zQAAc2YzMgAAAAAAAQxCAAAF3v//8yYAAAeSAAD9kf//+6L///2jAAAD3AAAwGzSJSYnKFokY2xhc3Nu
-YW1lWCRjbGFzc2VzXxAQTlNCaXRtYXBJbWFnZVJlcKMpKitfEBBOU0JpdG1hcEltYWdlUmVwWk5TSW1h
-Z2VSZXBYTlNPYmplY3TSJSYtLldOU0FycmF5oi0r0iUmMDFeTlNNdXRhYmxlQXJyYXmjMC0r0zM0CjU2
-N1dOU1doaXRlXE5TQ29sb3JTcGFjZUQwIDAAEAOADNIlJjk6V05TQ29sb3KiOSvSJSY8PVdOU0ltYWdl
-ojwrXxAPTlNLZXllZEFyY2hpdmVy0UBBVHJvb3SAAQAIABEAGgAjAC0AMgA3AEYATABXAF4AZQByAHkA
-gQCDAIUAigCMAI4AlwCcAKcAqQCrAK0AsgC1ALcAuQC7AL0AwgDZANsA3QxfDGQMbwx4DIsMjwyiDK0M
-tgy7DMMMxgzLDNoM3gzlDO0M+gz/DQENAw0IDRANEw0YDSANIw01DTgNPQAAAAAAAAIBAAAAAAAAAEIA
-AAAAAAAAAAAAAAAAAA0/A
-</mutableData>
-        </image>
-        <image name="7E602A39-D826-433B-B2D0-8F0E4C55F07E" width="326" height="6">
-            <mutableData key="keyedArchiveRepresentation">
-YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
-GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
-c1dOU0NvbG9ygAKADRIgwAAAgAOAC1h7MzI2LCA2fdIVChYYWk5TLm9iamVjdHOhF4AEgArSFQoaHaIb
-HIAFgAaACRAA0iAKISJfEBROU1RJRkZSZXByZXNlbnRhdGlvboAHgAhPESb+TU0AKgAAHphBQUFB////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////QkJCSAAAAAAAAAACAAAAAEBAQED5+fn6+fn5+vn5+fr4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4+/j4+Pv4+Pj7+Pj4
-+/j4+Ps9PT1bAAAAEAAAAAkAAAACBwcHDBsbGzIZGRlNGBgYYxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcX
-axcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXaxcXF2sXFxdrFxcXawYGBlEAAAAyAAAA
-FAAAAAQAAAADAAAAEAAAAC8AAABIAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAA
-UQAAAFEAAABRAAAAUQAAAFEAAABRAAAAUQAAAFEAAABRAAAASgAAADIAAAAUAAAABAAAAAIAAAAJAAAA
-FwAAACMAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAAJwAAACcAAAAnAAAA
-JwAAACcAAAAnAAAAJwAAACcAAAAjAAAAFwAAAAkAAAACAAAAAAAAAAIAAAAEAAAABwAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAA
-CAAAAAcAAAAEAAAAAgAAAAAADgEAAAMAAAABAUYAAAEBAAMAAAABAAYAAAECAAMAAAAEAAAfRgEDAAMA
-AAABAAEAAAEGAAMAAAABAAIAAAERAAQAAAABAAAACAESAAMAAAABAAEAAAEVAAMAAAABAAQAAAEWAAMA
-AAABAAYAAAEXAAQAAAABAAAekAEcAAMAAAABAAEAAAFSAAMAAAABAAEAAAFTAAMAAAAEAAAfTodzAAcA
-AAeoAAAfVgAAAAAACAAIAAgACAABAAEAAQABAAAHqGFwcGwCIAAAbW50clJHQiBYWVogB9kAAgAZAAsA
-GgALYWNzcEFQUEwAAAAAYXBwbAAAAAAAAAAAAAAAAAAAAAAAAPbWAAEAAAAA0y1hcHBsAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALZGVzYwAAAQgAAABvZHNjbQAAAXgA
-AAVsY3BydAAABuQAAAA4d3RwdAAABxwAAAAUclhZWgAABzAAAAAUZ1hZWgAAB0QAAAAUYlhZWgAAB1gA
-AAAUclRSQwAAB2wAAAAOY2hhZAAAB3wAAAAsYlRSQwAAB2wAAAAOZ1RSQwAAB2wAAAAOZGVzYwAAAAAA
-AAAUR2VuZXJpYyBSR0IgUHJvZmlsZQAAAAAAAAAAAAAAFEdlbmVyaWMgUkdCIFByb2ZpbGUAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG1sdWMAAAAAAAAAHgAAAAxz
-a1NLAAAAKAAAAXhockhSAAAAKAAAAaBjYUVTAAAAJAAAAchwdEJSAAAAJgAAAex1a1VBAAAAKgAAAhJm
-ckZVAAAAKAAAAjx6aFRXAAAAFgAAAmRpdElUAAAAKAAAAnpuYk5PAAAAJgAAAqJrb0tSAAAAFgAAAshj
-c0NaAAAAIgAAAt5oZUlMAAAAHgAAAwBkZURFAAAALAAAAx5odUhVAAAAKAAAA0pzdlNFAAAAJgAAAqJ6
-aENOAAAAFgAAA3JqYUpQAAAAGgAAA4hyb1JPAAAAJAAAA6JlbEdSAAAAIgAAA8ZwdFBPAAAAJgAAA+hu
-bE5MAAAAKAAABA5lc0VTAAAAJgAAA+h0aFRIAAAAJAAABDZ0clRSAAAAIgAABFpmaUZJAAAAKAAABHxw
-bFBMAAAALAAABKRydVJVAAAAIgAABNBhckVHAAAAJgAABPJlblVTAAAAJgAABRhkYURLAAAALgAABT4A
-VgFhAGUAbwBiAGUAYwBuAP0AIABSAEcAQgAgAHAAcgBvAGYAaQBsAEcAZQBuAGUAcgBpAQ0AawBpACAA
-UgBHAEIAIABwAHIAbwBmAGkAbABQAGUAcgBmAGkAbAAgAFIARwBCACAAZwBlAG4A6AByAGkAYwBQAGUA
-cgBmAGkAbAAgAFIARwBCACAARwBlAG4A6QByAGkAYwBvBBcEMAQzBDAEOwRMBD0EOAQ5ACAEPwRABD4E
-RAQwBDkEOwAgAFIARwBCAFAAcgBvAGYAaQBsACAAZwDpAG4A6QByAGkAcQB1AGUAIABSAFYAQpAadSgA
-IABSAEcAQgAggnJfaWPPj/AAUAByAG8AZgBpAGwAbwAgAFIARwBCACAAZwBlAG4AZQByAGkAYwBvAEcA
-ZQBuAGUAcgBpAHMAawAgAFIARwBCAC0AcAByAG8AZgBpAGzHfLwYACAAUgBHAEIAINUEuFzTDMd8AE8A
-YgBlAGMAbgD9ACAAUgBHAEIAIABwAHIAbwBmAGkAbAXkBegF1QXkBdkF3AAgAFIARwBCACAF2wXcBdwF
-2QBBAGwAbABnAGUAbQBlAGkAbgBlAHMAIABSAEcAQgAtAFAAcgBvAGYAaQBsAMEAbAB0AGEAbADhAG4A
-bwBzACAAUgBHAEIAIABwAHIAbwBmAGkAbGZukBoAIABSAEcAQgAgY8+P8GWHTvZOAIIsACAAUgBHAEIA
-IDDXMO0w1TChMKQw6wBQAHIAbwBmAGkAbAAgAFIARwBCACAAZwBlAG4AZQByAGkAYwOTA7UDvQO5A7oD
-zAAgA8ADwQO/A8YDrwO7ACAAUgBHAEIAUABlAHIAZgBpAGwAIABSAEcAQgAgAGcAZQBuAOkAcgBpAGMA
-bwBBAGwAZwBlAG0AZQBlAG4AIABSAEcAQgAtAHAAcgBvAGYAaQBlAGwOQg4bDiMORA4fDiUOTAAgAFIA
-RwBCACAOFw4xDkgOJw5EDhsARwBlAG4AZQBsACAAUgBHAEIAIABQAHIAbwBmAGkAbABpAFkAbABlAGkA
-bgBlAG4AIABSAEcAQgAtAHAAcgBvAGYAaQBpAGwAaQBVAG4AaQB3AGUAcgBzAGEAbABuAHkAIABwAHIA
-bwBmAGkAbAAgAFIARwBCBB4EMQRJBDgEOQAgBD8EQAQ+BEQEOAQ7BEwAIABSAEcAQgZFBkQGQQAgBioG
-OQYxBkoGQQAgAFIARwBCACAGJwZEBjkGJwZFAEcAZQBuAGUAcgBpAGMAIABSAEcAQgAgAFAAcgBvAGYA
-aQBsAGUARwBlAG4AZQByAGUAbAAgAFIARwBCAC0AYgBlAHMAawByAGkAdgBlAGwAcwBldGV4dAAAAABD
-b3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLgBYWVogAAAAAAAA81IA
-AQAAAAEWz1hZWiAAAAAAAAB0TQAAPe4AAAPQWFlaIAAAAAAAAFp1AACscwAAFzRYWVogAAAAAAAAKBoA
-ABWfAAC4NmN1cnYAAAAAAAAAAQHNAABzZjMyAAAAAAABDEIAAAXe///zJgAAB5IAAP2R///7ov///aMA
-AAPcAADAbNIlJicoWiRjbGFzc25hbWVYJGNsYXNzZXNfEBBOU0JpdG1hcEltYWdlUmVwoykqK18QEE5T
-Qml0bWFwSW1hZ2VSZXBaTlNJbWFnZVJlcFhOU09iamVjdNIlJi0uV05TQXJyYXmiLSvSJSYwMV5OU011
-dGFibGVBcnJheaMwLSvTMzQKNTY3V05TV2hpdGVcTlNDb2xvclNwYWNlRDAgMAAQA4AM0iUmOTpXTlND
-b2xvcqI5K9IlJjw9V05TSW1hZ2WiPCtfEA9OU0tleWVkQXJjaGl2ZXLRQEFUcm9vdIABAAgAEQAaACMA
-LQAyADcARgBMAFcAXgBlAHIAeQCBAIMAhQCKAIwAjgCXAJwApwCpAKsArQCyALUAtwC5ALsAvQDCANkA
-2wDdJ98n5CfvJ/goCygPKCIoLSg2KDsoQyhGKEsoWiheKGUobSh6KH8ogSiDKIgokCiTKJgooCijKLUo
-uCi9AAAAAAAAAgEAAAAAAAAAQgAAAAAAAAAAAAAAAAAAKL8
-</mutableData>
-        </image>
+        <image name="back@arrow" width="14" height="14"/>
+        <image name="header_divder" width="326" height="6"/>
+        <image name="message_send" width="301" height="45"/>
+        <image name="send_message" width="21" height="21"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

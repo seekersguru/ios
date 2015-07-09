@@ -14,7 +14,7 @@
 #import "WWForgotPassword.h"
 #import "AppDelegate.h"
 
-@interface WWLoginVC ()
+@interface WWLoginVC ()<MBProgressHUDDelegate>
 
 @end
 //Client secret= r4c6Lvxfq99AGauizFsS-Ffw
@@ -56,10 +56,38 @@
 -(IBAction)btnSignInPressed:(id)sender{
     if([self checkValidations]){
         //Call web service
-        [[AppDelegate sharedAppDelegate]setupViewControllers:self.navigationController];
+        MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:HUD];
+        // Regiser for HUD callbacks so we can remove it from the window at the right time
+        HUD.delegate = self;
+        
+        // Show the HUD while the provided method executes in a new thread
+        [HUD showWhileExecuting:@selector(callLoginWebService) onTarget:self withObject:nil animated:YES];
     }
 }
-
+- (void)callLoginWebService {
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 _txtEmailAddress.text,@"email",
+                                 _txtPassword.text,@"password",
+                                 @"customer_login",@"action",
+                                 nil];
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         //[HUD removeFromSuperview];
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             //Login successfully
+             [[AppDelegate sharedAppDelegate]setupViewControllers:self.navigationController];
+         }
+         
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
+}
 -(BOOL)checkValidations{
     if (_txtEmailAddress.text && _txtEmailAddress.text.length == 0)
     {

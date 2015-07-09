@@ -12,7 +12,9 @@
 #import "WWCreateBidVC.h"
 
 @interface WWMessageList ()
-
+{
+    NSMutableArray *arrMessageData;
+}
 @end
 
 @implementation WWMessageList
@@ -20,10 +22,19 @@
 - (void)viewDidLoad {
     
     [self.navigationController.navigationBar setHidden:YES];
+    
+    messageTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     [messageTable registerNib:[UINib nibWithNibName:@"MessageListCell" bundle:nil] forCellReuseIdentifier:@"MessageListCell"];
     bidBtn.selected = YES;
     [messageTable setFrame:CGRectMake(messageTable.frame.origin.x, btnCreateBid.frame.origin.y + btnCreateBid.frame.size.height+10, messageTable.frame.size.width, self.view.frame.size.height-175)];
     
+    arrMessageData=[[NSMutableArray alloc]init];
+    
+    
+    [bidBtn.titleLabel setFont:[UIFont fontWithName:AppFont size:17.0f]];
+    [bookBtn.titleLabel setFont:[UIFont fontWithName:AppFont size:17.0f]];
+    [messageBtn.titleLabel setFont:[UIFont fontWithName:AppFont size:17.0f]];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
@@ -87,6 +98,7 @@
     bidBtn.selected = NO;
     bookBtn.selected = NO;
     
+    [self callCustomerMessageAPI];
     
     [self moveImage:selectorImage duration:0.2
               curve:UIViewAnimationCurveLinear x:messageBtn.frame.origin.x y:0.0];
@@ -96,12 +108,37 @@
     }
     
 }
-
+-(void)callCustomerMessageAPI{
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"customer@test.com:kdr9UCeqzG783-MMiFBw9axN-BY",@"identifier",
+                                 @"1",@"page_no",
+                                 @"customer_vendor_message_list",@"action",
+                                 @"c2v",@"from_to",
+                                 nil];
+    
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             NSArray *arrData=[responseDics valueForKey:@"json"];
+             for (NSDictionary *arrMessages in arrData) {
+                 [arrMessageData addObject:arrMessages];
+             }
+             [messageTable reloadData];
+         }
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
+}
 #pragma mark - Tableview delegate/datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return arrMessageData.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -121,6 +158,15 @@
         MessageListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageListCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        NSDictionary *messageData=[arrMessageData objectAtIndex:indexPath.row];
+        cell.usernameLbl.text=[messageData valueForKey:@"receiver_name"];
+        cell.descLbl.text=[messageData valueForKey:@"message"];
+        cell.timeLbl.text= [messageData valueForKey:@"msg_time"];
+        
+        cell.usernameLbl.font = [UIFont fontWithName:AppFont size:14.0];
+        cell.descLbl.font = [UIFont fontWithName:AppFont size:12.0];
+        cell.timeLbl.font = [UIFont fontWithName:AppFont size:12.0];
+        
         return cell;
     }
     
@@ -131,7 +177,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WWPrivateMessage *messageVc = [[WWPrivateMessage alloc] initWithNibName:@"WWPrivateMessage" bundle:nil];
-    
+    NSDictionary *messageData=[arrMessageData objectAtIndex:indexPath.row];
+    messageVc.messageData =messageData;
     [self.navigationController pushViewController:messageVc animated:YES];
 }
 - (void)didReceiveMemoryWarning {

@@ -11,7 +11,8 @@
 #import "WWRegistrationVC.h"
 #import "FacebookManager.h"
 #import <GoogleOpenSource/GoogleOpenSource.h>
-
+#import <GooglePlus/GooglePlus.h>
+ 
 @interface WWDashboardVC ()
 
 @end
@@ -19,14 +20,101 @@
 
 @implementation WWDashboardVC
 
-#import <GooglePlus/GooglePlus.h>
+
 - (void)viewDidLoad {
     
-    //lblPolicy.font = [UIFont fontWithName:AppFont size:14];
+    [[WWCommon getSharedObject]setCustomFont:14.0 withLabel:lblPolicy withText:lblPolicy.text];
+    [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_btnLogin withText:_btnLogin.titleLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_btnSignUp withText:_btnSignUp.titleLabel.text];
     
     [self.navigationController.navigationBar setHidden:YES];
+    
+    
     [super viewDidLoad];
+    
+    
     // Do any additional setup after loading the view from its nib.
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [self performSelector:@selector(callBackGroundImageWebService) withObject:nil afterDelay:0.1];
+//    [self callBackGroundImageWebService];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(getDataService:)
+                                                 name:@"getDataformFb" object:nil];
+}
+
+-(void)callBackGroundImageWebService{
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"ios",@"mode",
+                                 @"2x",@"image_type",
+                                 @"customer_bg_image_login_registration",@"action",
+                                 nil];
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             NSArray *arr=[[responseDics valueForKey:@"json"] valueForKey:@"data"];
+             
+             
+             NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",[arr objectAtIndex:0]]];
+             NSURLRequest *request = [NSURLRequest requestWithURL:url];
+             UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
+            
+             [_bgImage setImageWithURLRequest:request
+                                   placeholderImage:placeholderImage
+                                            success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                _bgImage.image = image;
+                                                //[weakCell setNeedsLayout];
+                                                
+                                            } failure:nil];
+             
+             
+            // _bgImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",[arr objectAtIndex:0]]]]];
+         }
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
+}
+
+-(void)getDataService:(NSNotification*) notification{
+    
+    NSLog(@"Notifications: %@", notification);
+    NSDictionary *dict = [[notification object] mutableCopy];
+    
+    [self FBAuthentication:dict];
+}
+-(void)FBAuthentication:(NSDictionary*)fbResponse{
+    
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 [fbResponse valueForKey:@"email"],@"email",
+                                 @"vendor_registration_login_fb_gm",@"action",
+                                 nil];
+    
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         NSString *result=[responseDics valueForKey:@"result"];
+         if([result isEqualToString:@"error"]){
+             //Send to reegistration
+             WWRegistrationVC *registrationVC=[[WWRegistrationVC alloc]initWithNibName:@"WWRegistrationVC" bundle:nil];
+             registrationVC.fbResponse= fbResponse;
+             registrationVC.bgImage.image= _bgImage.image;
+             
+             [self.navigationController pushViewController:registrationVC animated:YES];
+        }
+         else if ([result isEqualToString:@"success"]){
+             //Login successfully
+             [[AppDelegate sharedAppDelegate]setupViewControllers:self.navigationController];
+         }
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
 }
 -(void)refreshInterfaceBasedOnSignIn {
     if ([[GPPSignIn sharedInstance] authentication]) {
@@ -107,10 +195,12 @@
 }
 -(IBAction)btnLoginPressed:(id)sender{
     WWLoginVC *loginVC=[[WWLoginVC alloc]initWithNibName:@"WWLoginVC" bundle:nil];
+    loginVC.image= _bgImage.image;
     [self.navigationController pushViewController:loginVC animated:YES];
 }
 -(IBAction)btnRegistrationPressed:(id)sender{
     WWRegistrationVC *registrationVC=[[WWRegistrationVC alloc]initWithNibName:@"WWRegistrationVC" bundle:nil];
+    registrationVC.image= _bgImage.image;
     [self.navigationController pushViewController:registrationVC animated:YES];
 }
 -(IBAction)btnShowMorePressed:(id)sender{
@@ -118,6 +208,9 @@
 }
 -(IBAction)btnFBLoginPressed:(id)sender{
     [[FacebookManager sharedManager]facebookLogin];
+    
+    
+    
 }
 -(IBAction)btnGooglePressed:(id)sender{
 

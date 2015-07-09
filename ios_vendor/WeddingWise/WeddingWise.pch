@@ -14,20 +14,39 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import "WWCommon.h"
 #import "UITextField+ADTextField.h"
 
-#endif
+#import "WWCommon.h"
+
+#import "AFHTTPSessionManager.h"
+#import "SCNetworkReachability.h"
+#import "WWWebService.h"
+
+#import "MBProgressHUD.h"
+#import "AFNetworkReachabilityManager.h"
+#import "AppDelegate.h"
 
 #endif
 
-#define kWebServiceUrl                  @"http://www.gymvite.co.uk/webservices/app_data.php"
-#define kAppName                        @"MVelani"
+#endif
+
+#define kWebServiceUrl                  @"http://wedwise.work/api/"
 #define kNoNetwork                      @"No network available"
 #define kNotifacationReachability       @"NotifacationReachability"
 #define AppFont                         @"GothamRounded-Book"
 
-#define kGPClientID                     @"341522735800-tkngmd3u56mq7shvea9pmibng12qdmhj.apps.googleusercontent.com"
+
+#define kAppName                        @"Wed Wise Wise"
+#define kEnterEmail                     @"Please enter email address."
+#define kEnterPassword                  @"Please enter password."
+#define kEnterBrideName                 @"Please enter bride name."
+#define kGroomName                      @"Please enter groom name."
+#define kContactNumber                  @"Please enter contact number."
+#define kValidEmail                     @"Please enter valid email."
+
+//#define kGPClientID                     @"341522735800-tkngmd3u56mq7shvea9pmibng12qdmhj.apps.googleusercontent.com"
+#define kGPClientID                     @"341522735800-3iv6atl8b4bkij038o2p19aa585qdm2m.apps.googleusercontent.com"
+
 //#define kGTLAuthScopePlusLogin          @"https://www.googleapis.com/auth/plus.login"
 
 #ifdef DEBUG

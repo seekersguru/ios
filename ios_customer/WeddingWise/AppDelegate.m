@@ -40,16 +40,19 @@ static AppDelegate * _sharedInstance;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     for (NSString* family in [UIFont familyNames])
     {
-        NSLog(@"%@", family);
+        //NSLog(@"%@", family);
         
         for (NSString* name in [UIFont fontNamesForFamilyName: family])
         {
-            NSLog(@"  %@", name);
+          //  NSLog(@"  %@", name);
         }
     }
    // return YES;
     // Override point for customization after application launch.
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    
+    //Start network reachability monitoring:
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
@@ -58,8 +61,9 @@ static AppDelegate * _sharedInstance;
 #else
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 #endif
-    
-    WWDashboardVC *dashboard=[[WWDashboardVC alloc]initWithNibName:@"WWDashboardVC" bundle:nil];
+    //WWDashboardVC~ipad
+    //WWDashboardVC *dashboard=[[WWDashboardVC alloc]initWithNibName:@"WWDashboardVC" bundle:nil];
+    WWDashboardVC *dashboard=[[WWDashboardVC alloc]init];
     _navigation=[[UINavigationController alloc]initWithRootViewController:dashboard];
     
     [self.window setRootViewController:_navigation];
@@ -74,12 +78,12 @@ static AppDelegate * _sharedInstance;
 
 - (BOOL)application: (UIApplication *)application openURL: (NSURL *)url sourceApplication: (NSString *)sourceApplication annotation: (id)annotation
 {
-    return [GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation];
+    //return [GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation];
     
-    //return [[FBSDKApplicationDelegate sharedInstance] application:application
-    //                                                      openURL:url
-      //                                          sourceApplication:sourceApplication
-        //                                               annotation:annotation];
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
 }
 - (void)setupViewControllers:(UINavigationController*)navigationView{
     

@@ -16,6 +16,8 @@
 		60D0866C1B31388700BCD2BE /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D086691B31388700BCD2BE /* GooglePlus.framework */; };
 		60D086711B31447C00BCD2BE /* WWCreateBidVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D0866F1B31447C00BCD2BE /* WWCreateBidVC.m */; };
 		60D086721B31447C00BCD2BE /* WWCreateBidVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60D086701B31447C00BCD2BE /* WWCreateBidVC.xib */; };
+		DAC41D564FCD8A8345D36778 /* libPods-WeddingWise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F35EDC96DE2AB293288A448C /* libPods-WeddingWise.a */; };
+		F45332CE1B4B03DE00C09482 /* GothamRoundedBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F45332CD1B4B03DE00C09482 /* GothamRoundedBook.ttf */; };
 		F4609B651B0BBA8100BCCCB8 /* WWDashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */; };
 		F4609B661B0BBA8100BCCCB8 /* WWDashboardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4609B641B0BBA8100BCCCB8 /* WWDashboardVC.xib */; };
 		F4609B721B0BC4B800BCCCB8 /* WWRegistrationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4609B701B0BC4B800BCCCB8 /* WWRegistrationVC.m */; };
@@ -46,6 +48,12 @@
 		F4BC31BA1B179BA500BF5BB2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BC31B91B179BA500BF5BB2 /* Security.framework */; };
 		F4BC31BC1B179BBC00BF5BB2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BC31BB1B179BBC00BF5BB2 /* SystemConfiguration.framework */; };
 		F4BC31BE1B179BC400BF5BB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BC31BD1B179BC400BF5BB2 /* UIKit.framework */; };
+		F4C2B1571B4C534F000639BC /* WWVendorDetailData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C2B1561B4C534F000639BC /* WWVendorDetailData.m */; };
+		F4C2B1601B4D70FF000639BC /* WWCategoryListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C2B15E1B4D70FF000639BC /* WWCategoryListCell.m */; };
+		F4C2B1611B4D70FF000639BC /* WWCategoryListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C2B15F1B4D70FF000639BC /* WWCategoryListCell.xib */; };
+		F4C2B1651B4D7348000639BC /* WWCategoryCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C2B1631B4D7348000639BC /* WWCategoryCommonCell.m */; };
+		F4C2B1661B4D7348000639BC /* WWCategoryCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C2B1641B4D7348000639BC /* WWCategoryCommonCell.xib */; };
+		F4C2B1691B4D7A29000639BC /* WWCommonData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C2B1681B4D7A29000639BC /* WWCommonData.m */; };
 		F4C680AC1B2475BE00C6ED57 /* slicingfooter.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C680AB1B2475BE00C6ED57 /* slicingfooter.png */; };
 		F4C7D85B1B0CFED400D69912 /* WWCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C7D85A1B0CFED400D69912 /* WWCommon.m */; };
 		F4C7D85E1B0D031500D69912 /* UITextField+ADTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C7D85D1B0D031500D69912 /* UITextField+ADTextField.m */; };
@@ -54,8 +62,6 @@
 		F4CB16ED1B373EEC0078419A /* WWCategoryPackageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB16EB1B373EEC0078419A /* WWCategoryPackageCell.m */; };
 		F4CB16EE1B373EEC0078419A /* WWCategoryPackageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB16EC1B373EEC0078419A /* WWCategoryPackageCell.xib */; };
 		F4CB16F21B3770420078419A /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB16F11B3770420078419A /* YTPlayerView.m */; };
-		F4CB16F41B377D6C0078419A /* movingImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4CB16F31B377D6C0078419A /* movingImage.jpg */; };
-		F4CB16F61B377F360078419A /* Panorama2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4CB16F51B377F360078419A /* Panorama2.jpg */; };
 		F4CB16F81B3898CA0078419A /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = F4CB16F71B3898CA0078419A /* YTPlayerView-iframe-player.html */; };
 		F4CB16FE1B3B1DDB0078419A /* WWLeadsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB16FC1B3B1DDB0078419A /* WWLeadsListVC.m */; };
 		F4CB16FF1B3B1DDB0078419A /* WWLeadsListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB16FD1B3B1DDB0078419A /* WWLeadsListVC.xib */; };
@@ -63,6 +69,7 @@
 		F4CB17041B3B24A30078419A /* WWInquiryDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17021B3B24A30078419A /* WWInquiryDetailVC.xib */; };
 		F4CB17081B3B25750078419A /* WWInquiryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB17061B3B25750078419A /* WWInquiryCell.m */; };
 		F4CB17091B3B25750078419A /* WWInquiryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17071B3B25750078419A /* WWInquiryCell.xib */; };
+		F4CCA5531B48593800F33FDA /* gotham-book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4CCA5521B48593800F33FDA /* gotham-book.ttf */; };
 		F4CD4E2A1B3082310081FE0B /* WWCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD4E281B3082310081FE0B /* WWCategoryCell.m */; };
 		F4CD4E2B1B3082310081FE0B /* WWCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CD4E291B3082310081FE0B /* WWCategoryCell.xib */; };
 		F4CD4E2F1B3082F20081FE0B /* WWCategoryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD4E2D1B3082F20081FE0B /* WWCategoryDetailVC.m */; };
@@ -93,6 +100,12 @@
 		F4CFD7D71B1B02C500D53E56 /* WWForgotPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD7D51B1B02C500D53E56 /* WWForgotPassword.m */; };
 		F4CFD7D81B1B02C500D53E56 /* WWForgotPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CFD7D61B1B02C500D53E56 /* WWForgotPassword.xib */; };
 		F4CFD7EB1B1B6F8A00D53E56 /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD7EA1B1B6F8A00D53E56 /* FacebookManager.m */; };
+		F4CFFA261B45A9430065D5D6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4CFFA251B45A9430065D5D6 /* CFNetwork.framework */; };
+		F4CFFA291B45AF4E0065D5D6 /* WWWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CFFA281B45AF4E0065D5D6 /* WWWebService.m */; };
+		F4CFFA2B1B45B1470065D5D6 /* WWRegistrationVC~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CFFA2A1B45B1470065D5D6 /* WWRegistrationVC~ipad.xib */; };
+		F4CFFA2D1B45B1580065D5D6 /* WWDashboardVC~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CFFA2C1B45B1580065D5D6 /* WWDashboardVC~ipad.xib */; };
+		F4CFFA2F1B45B15D0065D5D6 /* WWLoginVC~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CFFA2E1B45B15D0065D5D6 /* WWLoginVC~ipad.xib */; };
+		F4CFFA311B45B1850065D5D6 /* WWForgotPassword~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CFFA301B45B1850065D5D6 /* WWForgotPassword~ipad.xib */; };
 		F4D08A681B20CDB300AF8E36 /* DSLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D08A591B20CDB300AF8E36 /* DSLCalendarView.m */; };
 		F4D08A691B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D08A5B1B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.m */; };
 		F4D08A6A1B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D08A5C1B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.xib */; };
@@ -126,6 +139,10 @@
 		60D0866E1B31447C00BCD2BE /* WWCreateBidVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCreateBidVC.h; sourceTree = "<group>"; };
 		60D0866F1B31447C00BCD2BE /* WWCreateBidVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCreateBidVC.m; sourceTree = "<group>"; };
 		60D086701B31447C00BCD2BE /* WWCreateBidVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCreateBidVC.xib; sourceTree = "<group>"; };
+		B7F75524AF798B2E38C82249 /* Pods-WeddingWise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingWise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingWise/Pods-WeddingWise.debug.xcconfig"; sourceTree = "<group>"; };
+		BCA744BDD1EACD68F038680E /* Pods-WeddingWise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingWise.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingWise/Pods-WeddingWise.release.xcconfig"; sourceTree = "<group>"; };
+		F35EDC96DE2AB293288A448C /* libPods-WeddingWise.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeddingWise.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F45332CD1B4B03DE00C09482 /* GothamRoundedBook.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamRoundedBook.ttf; sourceTree = "<group>"; };
 		F4609B621B0BBA8100BCCCB8 /* WWDashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDashboardVC.h; sourceTree = "<group>"; };
 		F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWDashboardVC.m; sourceTree = "<group>"; };
 		F4609B641B0BBA8100BCCCB8 /* WWDashboardVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWDashboardVC.xib; sourceTree = "<group>"; };
@@ -172,6 +189,16 @@
 		F4BCBA941B1F8AA800082A73 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../R&D/google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
 		F4BCBA951B1F8AA800082A73 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../R&D/google-plus-ios-sdk-1.7.1/GooglePlus.framework"; sourceTree = "<group>"; };
 		F4BCBA9A1B1F961800082A73 /* WeddingWise.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeddingWise.pch; sourceTree = "<group>"; };
+		F4C2B1551B4C534F000639BC /* WWVendorDetailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWVendorDetailData.h; sourceTree = "<group>"; };
+		F4C2B1561B4C534F000639BC /* WWVendorDetailData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWVendorDetailData.m; sourceTree = "<group>"; };
+		F4C2B15D1B4D70FF000639BC /* WWCategoryListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCategoryListCell.h; sourceTree = "<group>"; };
+		F4C2B15E1B4D70FF000639BC /* WWCategoryListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCategoryListCell.m; sourceTree = "<group>"; };
+		F4C2B15F1B4D70FF000639BC /* WWCategoryListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCategoryListCell.xib; sourceTree = "<group>"; };
+		F4C2B1621B4D7348000639BC /* WWCategoryCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCategoryCommonCell.h; sourceTree = "<group>"; };
+		F4C2B1631B4D7348000639BC /* WWCategoryCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCategoryCommonCell.m; sourceTree = "<group>"; };
+		F4C2B1641B4D7348000639BC /* WWCategoryCommonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCategoryCommonCell.xib; sourceTree = "<group>"; };
+		F4C2B1671B4D7A29000639BC /* WWCommonData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCommonData.h; sourceTree = "<group>"; };
+		F4C2B1681B4D7A29000639BC /* WWCommonData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCommonData.m; sourceTree = "<group>"; };
 		F4C680AB1B2475BE00C6ED57 /* slicingfooter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slicingfooter.png; sourceTree = "<group>"; };
 		F4C7D8591B0CFED400D69912 /* WWCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCommon.h; sourceTree = "<group>"; };
 		F4C7D85A1B0CFED400D69912 /* WWCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCommon.m; sourceTree = "<group>"; };
@@ -185,8 +212,6 @@
 		F4CB16EC1B373EEC0078419A /* WWCategoryPackageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCategoryPackageCell.xib; sourceTree = "<group>"; };
 		F4CB16F01B3770420078419A /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
 		F4CB16F11B3770420078419A /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
-		F4CB16F31B377D6C0078419A /* movingImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = movingImage.jpg; sourceTree = "<group>"; };
-		F4CB16F51B377F360078419A /* Panorama2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Panorama2.jpg; sourceTree = "<group>"; };
 		F4CB16F71B3898CA0078419A /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
 		F4CB16FB1B3B1DDB0078419A /* WWLeadsListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWLeadsListVC.h; sourceTree = "<group>"; };
 		F4CB16FC1B3B1DDB0078419A /* WWLeadsListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWLeadsListVC.m; sourceTree = "<group>"; };
@@ -197,6 +222,7 @@
 		F4CB17051B3B25750078419A /* WWInquiryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWInquiryCell.h; sourceTree = "<group>"; };
 		F4CB17061B3B25750078419A /* WWInquiryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWInquiryCell.m; sourceTree = "<group>"; };
 		F4CB17071B3B25750078419A /* WWInquiryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWInquiryCell.xib; sourceTree = "<group>"; };
+		F4CCA5521B48593800F33FDA /* gotham-book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "gotham-book.ttf"; sourceTree = "<group>"; };
 		F4CD4E271B3082310081FE0B /* WWCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCategoryCell.h; sourceTree = "<group>"; };
 		F4CD4E281B3082310081FE0B /* WWCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCategoryCell.m; sourceTree = "<group>"; };
 		F4CD4E291B3082310081FE0B /* WWCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCategoryCell.xib; sourceTree = "<group>"; };
@@ -246,6 +272,13 @@
 		F4CFD7E41B1B6C4800D53E56 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../Documents/FacebookSdk/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		F4CFD7E91B1B6F8A00D53E56 /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookManager.h; sourceTree = "<group>"; };
 		F4CFD7EA1B1B6F8A00D53E56 /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookManager.m; sourceTree = "<group>"; };
+		F4CFFA251B45A9430065D5D6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		F4CFFA271B45AF4E0065D5D6 /* WWWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWebService.h; sourceTree = "<group>"; };
+		F4CFFA281B45AF4E0065D5D6 /* WWWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWebService.m; sourceTree = "<group>"; };
+		F4CFFA2A1B45B1470065D5D6 /* WWRegistrationVC~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "WWRegistrationVC~ipad.xib"; sourceTree = "<group>"; };
+		F4CFFA2C1B45B1580065D5D6 /* WWDashboardVC~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "WWDashboardVC~ipad.xib"; sourceTree = "<group>"; };
+		F4CFFA2E1B45B15D0065D5D6 /* WWLoginVC~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "WWLoginVC~ipad.xib"; sourceTree = "<group>"; };
+		F4CFFA301B45B1850065D5D6 /* WWForgotPassword~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "WWForgotPassword~ipad.xib"; sourceTree = "<group>"; };
 		F4D08A581B20CDB300AF8E36 /* DSLCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLCalendarView.h; sourceTree = "<group>"; };
 		F4D08A591B20CDB300AF8E36 /* DSLCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLCalendarView.m; sourceTree = "<group>"; };
 		F4D08A5A1B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLCalendarMonthSelectorView.h; sourceTree = "<group>"; };
@@ -270,6 +303,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4CFFA261B45A9430065D5D6 /* CFNetwork.framework in Frameworks */,
 				60D0866A1B31388700BCD2BE /* GoogleOpenSource.framework in Frameworks */,
 				60D0866B1B31388700BCD2BE /* GooglePlus.bundle in Frameworks */,
 				60D0866C1B31388700BCD2BE /* GooglePlus.framework in Frameworks */,
@@ -289,6 +323,7 @@
 				F4BC31AE1B179B6F00BF5BB2 /* Foundation.framework in Frameworks */,
 				F4BC31AC1B179B6600BF5BB2 /* AssetsLibrary.framework in Frameworks */,
 				F4BC31AA1B179B5C00BF5BB2 /* AddressBook.framework in Frameworks */,
+				DAC41D564FCD8A8345D36778 /* libPods-WeddingWise.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +337,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12B9A8D4CCA5E1AE07D80490 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4CFFA251B45A9430065D5D6 /* CFNetwork.framework */,
+				F35EDC96DE2AB293288A448C /* libPods-WeddingWise.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		60D0866D1B31445400BCD2BE /* Bid */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,15 +365,26 @@
 			name = Bid;
 			sourceTree = "<group>";
 		};
+		68941B3620E7F47B41F4CE16 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B7F75524AF798B2E38C82249 /* Pods-WeddingWise.debug.xcconfig */,
+				BCA744BDD1EACD68F038680E /* Pods-WeddingWise.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F4609B601B0BBA4D00BCCCB8 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				F4609B621B0BBA8100BCCCB8 /* WWDashboardVC.h */,
 				F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */,
 				F4609B641B0BBA8100BCCCB8 /* WWDashboardVC.xib */,
+				F4CFFA2C1B45B1580065D5D6 /* WWDashboardVC~ipad.xib */,
 				F4609B741B0BC4D500BCCCB8 /* WWLoginVC.h */,
 				F4609B751B0BC4D500BCCCB8 /* WWLoginVC.m */,
 				F4609B761B0BC4D500BCCCB8 /* WWLoginVC.xib */,
+				F4CFFA2E1B45B15D0065D5D6 /* WWLoginVC~ipad.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -340,6 +395,7 @@
 				F4609B6F1B0BC4B800BCCCB8 /* WWRegistrationVC.h */,
 				F4609B701B0BC4B800BCCCB8 /* WWRegistrationVC.m */,
 				F4609B711B0BC4B800BCCCB8 /* WWRegistrationVC.xib */,
+				F4CFFA2A1B45B1470065D5D6 /* WWRegistrationVC~ipad.xib */,
 			);
 			name = Registration;
 			sourceTree = "<group>";
@@ -357,6 +413,8 @@
 				F470473A1B011AE700FEFEFF /* WeddingWise */,
 				F47047571B011AE700FEFEFF /* WeddingWiseTests */,
 				F47047391B011AE700FEFEFF /* Products */,
+				68941B3620E7F47B41F4CE16 /* Pods */,
+				12B9A8D4CCA5E1AE07D80490 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -372,6 +430,8 @@
 		F470473A1B011AE700FEFEFF /* WeddingWise */ = {
 			isa = PBXGroup;
 			children = (
+				F4CFFA321B45BAF20065D5D6 /* Facebook */,
+				F4CFFA211B4325900065D5D6 /* WebService */,
 				F4BC31A41B1794CA00BF5BB2 /* FrameWorks */,
 				F47047B81B027FAB00FEFEFF /* Controllers */,
 				F47047B61B01274000FEFEFF /* View */,
@@ -388,6 +448,8 @@
 		F470473B1B011AE700FEFEFF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F4CCA5521B48593800F33FDA /* gotham-book.ttf */,
+				F45332CD1B4B03DE00C09482 /* GothamRoundedBook.ttf */,
 				F470473C1B011AE700FEFEFF /* Info.plist */,
 				F470473D1B011AE700FEFEFF /* main.m */,
 				F4BCBA9A1B1F961800082A73 /* WeddingWise.pch */,
@@ -422,11 +484,19 @@
 				F4CD4E4B1B3084D30081FE0B /* WWDetailScreen.h */,
 				F4CD4E4C1B3084D30081FE0B /* WWDetailScreen.m */,
 				F4CD4E4D1B3084D30081FE0B /* WWDetailScreen.xib */,
-				F4CB16F31B377D6C0078419A /* movingImage.jpg */,
-				F4CB16F51B377F360078419A /* Panorama2.jpg */,
 				F4CD4E2C1B3082F20081FE0B /* WWCategoryDetailVC.h */,
 				F4CD4E2D1B3082F20081FE0B /* WWCategoryDetailVC.m */,
 				F4CD4E2E1B3082F20081FE0B /* WWCategoryDetailVC.xib */,
+				F4C2B1551B4C534F000639BC /* WWVendorDetailData.h */,
+				F4C2B1561B4C534F000639BC /* WWVendorDetailData.m */,
+				F4C2B15D1B4D70FF000639BC /* WWCategoryListCell.h */,
+				F4C2B15E1B4D70FF000639BC /* WWCategoryListCell.m */,
+				F4C2B15F1B4D70FF000639BC /* WWCategoryListCell.xib */,
+				F4C2B1621B4D7348000639BC /* WWCategoryCommonCell.h */,
+				F4C2B1631B4D7348000639BC /* WWCategoryCommonCell.m */,
+				F4C2B1641B4D7348000639BC /* WWCategoryCommonCell.xib */,
+				F4C2B1671B4D7A29000639BC /* WWCommonData.h */,
+				F4C2B1681B4D7A29000639BC /* WWCommonData.m */,
 			);
 			name = MyKnot;
 			sourceTree = "<group>";
@@ -583,13 +653,30 @@
 		F4CFD7D31B1B027500D53E56 /* ForgotPassword */ = {
 			isa = PBXGroup;
 			children = (
-				F4CFD7E91B1B6F8A00D53E56 /* FacebookManager.h */,
-				F4CFD7EA1B1B6F8A00D53E56 /* FacebookManager.m */,
 				F4CFD7D41B1B02C500D53E56 /* WWForgotPassword.h */,
 				F4CFD7D51B1B02C500D53E56 /* WWForgotPassword.m */,
 				F4CFD7D61B1B02C500D53E56 /* WWForgotPassword.xib */,
+				F4CFFA301B45B1850065D5D6 /* WWForgotPassword~ipad.xib */,
 			);
 			name = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		F4CFFA211B4325900065D5D6 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				F4CFFA271B45AF4E0065D5D6 /* WWWebService.h */,
+				F4CFFA281B45AF4E0065D5D6 /* WWWebService.m */,
+			);
+			name = WebService;
+			sourceTree = "<group>";
+		};
+		F4CFFA321B45BAF20065D5D6 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				F4CFD7E91B1B6F8A00D53E56 /* FacebookManager.h */,
+				F4CFD7EA1B1B6F8A00D53E56 /* FacebookManager.m */,
+			);
+			name = Facebook;
 			sourceTree = "<group>";
 		};
 		F4D08A3C1B20CB1700AF8E36 /* Calendar */ = {
@@ -662,9 +749,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F470475E1B011AE700FEFEFF /* Build configuration list for PBXNativeTarget "WeddingWise" */;
 			buildPhases = (
+				7304F4016CB409EB7CB868C2 /* Check Pods Manifest.lock */,
 				F47047341B011AE700FEFEFF /* Sources */,
 				F47047351B011AE700FEFEFF /* Frameworks */,
 				F47047361B011AE700FEFEFF /* Resources */,
+				8ADDB0A4566759B0ABD55A23 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -738,31 +827,37 @@
 			files = (
 				F4CD4E4F1B3084D30081FE0B /* WWDetailScreen.xib in Resources */,
 				F4CD4E661B309D990081FE0B /* MessageListCell.xib in Resources */,
-				F4CB16F61B377F360078419A /* Panorama2.jpg in Resources */,
 				F4CB17041B3B24A30078419A /* WWInquiryDetailVC.xib in Resources */,
+				F4CFFA2B1B45B1470065D5D6 /* WWRegistrationVC~ipad.xib in Resources */,
+				F4CCA5531B48593800F33FDA /* gotham-book.ttf in Resources */,
 				F4CD4E681B309D990081FE0B /* SenderMsgCell.xib in Resources */,
 				F4609B781B0BC4D500BCCCB8 /* WWLoginVC.xib in Resources */,
 				F4D08A6A1B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.xib in Resources */,
 				F4C680AC1B2475BE00C6ED57 /* slicingfooter.png in Resources */,
 				F4CB16A91B35AB310078419A /* WWScheduleVC.xib in Resources */,
-				F4CB16F41B377D6C0078419A /* movingImage.jpg in Resources */,
 				F4609B661B0BBA8100BCCCB8 /* WWDashboardVC.xib in Resources */,
 				60D086721B31447C00BCD2BE /* WWCreateBidVC.xib in Resources */,
 				F4CFD7D81B1B02C500D53E56 /* WWForgotPassword.xib in Resources */,
 				F4CB17091B3B25750078419A /* WWInquiryCell.xib in Resources */,
+				F4C2B1661B4D7348000639BC /* WWCategoryCommonCell.xib in Resources */,
 				F47047B51B01273100FEFEFF /* myKnotCell.xib in Resources */,
 				F4CD4E301B3082F20081FE0B /* WWCategoryDetailVC.xib in Resources */,
 				F4CB16FF1B3B1DDB0078419A /* WWLeadsListVC.xib in Resources */,
 				F4CB16EE1B373EEC0078419A /* WWCategoryPackageCell.xib in Resources */,
 				F4CD4E481B30830F0081FE0B /* WWCategoryMapCell.xib in Resources */,
+				F45332CE1B4B03DE00C09482 /* GothamRoundedBook.ttf in Resources */,
 				F4CD4E591B309D020081FE0B /* WWMessageList.xib in Resources */,
 				F4CB16F81B3898CA0078419A /* YTPlayerView-iframe-player.html in Resources */,
+				F4CFFA311B45B1850065D5D6 /* WWForgotPassword~ipad.xib in Resources */,
 				F4CD4E5B1B309D020081FE0B /* WWPrivateMessage.xib in Resources */,
 				F4D08A6F1B20CDB300AF8E36 /* DSLCalendarDayCalloutView.xib in Resources */,
 				F470474F1B011AE700FEFEFF /* LaunchScreen.xib in Resources */,
 				F47047651B011DDC00FEFEFF /* MyKnotList.xib in Resources */,
+				F4CFFA2D1B45B1580065D5D6 /* WWDashboardVC~ipad.xib in Resources */,
+				F4CFFA2F1B45B15D0065D5D6 /* WWLoginVC~ipad.xib in Resources */,
 				F4CD4E6A1B309D990081FE0B /* ReceiverMsgCell.xib in Resources */,
 				F4609B731B0BC4B800BCCCB8 /* WWRegistrationVC.xib in Resources */,
+				F4C2B1611B4D70FF000639BC /* WWCategoryListCell.xib in Resources */,
 				F4D08A781B20D3BF00AF8E36 /* slicingbg.png in Resources */,
 				F4CD4E2B1B3082310081FE0B /* WWCategoryCell.xib in Resources */,
 				F4CD4E4A1B30830F0081FE0B /* WWCategoryListingCell.xib in Resources */,
@@ -782,6 +877,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7304F4016CB409EB7CB868C2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8ADDB0A4566759B0ABD55A23 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeddingWise/Pods-WeddingWise-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F47047341B011AE700FEFEFF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -792,10 +920,13 @@
 				F47047441B011AE700FEFEFF /* WeddingWise.xcdatamodeld in Sources */,
 				F4D08A701B20CDB300AF8E36 /* NSDate+DSLCalendarView.m in Sources */,
 				F4CD4E4E1B3084D30081FE0B /* WWDetailScreen.m in Sources */,
+				F4CFFA291B45AF4E0065D5D6 /* WWWebService.m in Sources */,
 				F4CB16F21B3770420078419A /* YTPlayerView.m in Sources */,
+				F4C2B1691B4D7A29000639BC /* WWCommonData.m in Sources */,
 				F4CB16FE1B3B1DDB0078419A /* WWLeadsListVC.m in Sources */,
 				F4CB17031B3B24A30078419A /* WWInquiryDetailVC.m in Sources */,
 				F47047B41B01273100FEFEFF /* myKnotCell.m in Sources */,
+				F4C2B1651B4D7348000639BC /* WWCategoryCommonCell.m in Sources */,
 				F4C7D85E1B0D031500D69912 /* UITextField+ADTextField.m in Sources */,
 				F4D08A691B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.m in Sources */,
 				F4CD4E671B309D990081FE0B /* SenderMsgCell.m in Sources */,
@@ -818,9 +949,11 @@
 				F4CD4E471B30830F0081FE0B /* WWCategoryMapCell.m in Sources */,
 				F4CD4E431B30830F0081FE0B /* WWCategoryImageCell.m in Sources */,
 				F4CD4E581B309D020081FE0B /* WWMessageList.m in Sources */,
+				F4C2B1571B4C534F000639BC /* WWVendorDetailData.m in Sources */,
 				F4CD4E5A1B309D020081FE0B /* WWPrivateMessage.m in Sources */,
 				F4C7D85B1B0CFED400D69912 /* WWCommon.m in Sources */,
 				F4609B721B0BC4B800BCCCB8 /* WWRegistrationVC.m in Sources */,
+				F4C2B1601B4D70FF000639BC /* WWCategoryListCell.m in Sources */,
 				F4609B771B0BC4D500BCCCB8 /* WWLoginVC.m in Sources */,
 				F470473E1B011AE700FEFEFF /* main.m in Sources */,
 				F4D08A681B20CDB300AF8E36 /* DSLCalendarView.m in Sources */,
@@ -900,7 +1033,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "881984e2-6dfa-450b-9770-09ef48749899";
+				PROVISIONING_PROFILE = "8e80fcab-690f-4a7a-ab4f-145e013be6dd";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -936,7 +1069,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "881984e2-6dfa-450b-9770-09ef48749899";
+				PROVISIONING_PROFILE = "8e80fcab-690f-4a7a-ab4f-145e013be6dd";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -944,8 +1077,10 @@
 		};
 		F470475F1B011AE700FEFEFF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7F75524AF798B2E38C82249 /* Pods-WeddingWise.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Dharam Mehta (95NA7968E3)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -959,16 +1094,23 @@
 				INFOPLIST_FILE = WeddingWise/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"Pods-WeddingWise-AFNetworking\"",
+					"-l\"Pods-WeddingWise-MBProgressHUD\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "881984e2-6dfa-450b-9770-09ef48749899";
+				PROVISIONING_PROFILE = "8e80fcab-690f-4a7a-ab4f-145e013be6dd";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		F47047601B011AE700FEFEFF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCA744BDD1EACD68F038680E /* Pods-WeddingWise.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Dharam Mehta (95NA7968E3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dharam Mehta (95NA7968E3)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -983,9 +1125,14 @@
 				INFOPLIST_FILE = WeddingWise/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"Pods-WeddingWise-AFNetworking\"",
+					"-l\"Pods-WeddingWise-MBProgressHUD\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "881984e2-6dfa-450b-9770-09ef48749899";
+				PROVISIONING_PROFILE = "8e80fcab-690f-4a7a-ab4f-145e013be6dd";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1004,7 +1151,7 @@
 				INFOPLIST_FILE = WeddingWiseTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "881984e2-6dfa-450b-9770-09ef48749899";
+				PROVISIONING_PROFILE = "8e80fcab-690f-4a7a-ab4f-145e013be6dd";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeddingWise.app/WeddingWise";
 			};
 			name = Debug;
@@ -1020,7 +1167,7 @@
 				INFOPLIST_FILE = WeddingWiseTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "881984e2-6dfa-450b-9770-09ef48749899";
+				PROVISIONING_PROFILE = "8e80fcab-690f-4a7a-ab4f-145e013be6dd";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeddingWise.app/WeddingWise";
 			};
 			name = Release;

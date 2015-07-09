@@ -33,10 +33,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="03:55" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEe-bY-MhZ">
-                        <rect key="frame" x="149" y="41" width="134" height="21"/>
+                        <rect key="frame" x="240" y="42" width="43" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="134" id="BQV-0j-NKT"/>
-                            <constraint firstAttribute="height" constant="21" id="TqA-He-XwT"/>
+                            <constraint firstAttribute="height" constant="21" id="OLq-do-utj"/>
+                            <constraint firstAttribute="width" constant="43" id="nQv-8a-SZd"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="1" green="0.1321103616" blue="0.13034342630000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -45,19 +45,21 @@
                 </subviews>
                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="sEe-bY-MhZ" secondAttribute="trailing" constant="29" id="2Af-lB-9p4"/>
                     <constraint firstItem="4OS-aj-jYl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="6lI-zS-u1X"/>
+                    <constraint firstItem="sEe-bY-MhZ" firstAttribute="top" secondItem="2NK-yV-tUG" secondAttribute="bottom" constant="1" id="7GL-fu-9Mx"/>
                     <constraint firstAttribute="trailingMargin" secondItem="4OS-aj-jYl" secondAttribute="trailing" constant="-8" id="PHq-d4-6PW"/>
                     <constraint firstItem="2NK-yV-tUG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="11" id="TYq-9D-Tv4"/>
-                    <constraint firstItem="sEe-bY-MhZ" firstAttribute="top" secondItem="2NK-yV-tUG" secondAttribute="bottom" id="TxS-7t-Zop"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="sEe-bY-MhZ" secondAttribute="bottom" constant="-1" id="jnr-1T-sbX"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="sEe-bY-MhZ" secondAttribute="trailing" constant="29" id="lug-Kj-z4p"/>
                     <constraint firstAttribute="trailingMargin" secondItem="2NK-yV-tUG" secondAttribute="trailing" constant="29" id="t5B-JX-upb"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="chatMsgTxt" destination="2NK-yV-tUG" id="3sD-x9-1im"/>
+                <outlet property="dateTimeLbl" destination="sEe-bY-MhZ" id="xiZ-Uc-wOW"/>
             </connections>
-            <point key="canvasLocation" x="-22" y="128"/>
+            <point key="canvasLocation" x="-22" y="127"/>
         </tableViewCell>
     </objects>
     <resources>

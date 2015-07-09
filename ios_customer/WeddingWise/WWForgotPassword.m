@@ -15,10 +15,47 @@
 @implementation WWForgotPassword
 
 - (void)viewDidLoad {
+    _bgImage.image= _image;
     [super viewDidLoad];
 }
 -(IBAction)btnSignInPressed:(id)sender{
 
+    if([self checkValidations]){
+        //Call web service
+        NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                     _txtEmailAddress.text,@"email",
+                                     @"forgot_password",@"action",
+                                     nil];
+        
+        [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+         {
+             if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+                 [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+             }
+             else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+                 [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+             }
+         }
+                                                 failure:^(NSString *response)
+         {
+             DLog(@"%@",response);
+         }];
+    }
+    
+}
+-(BOOL)checkValidations{
+    if (_txtEmailAddress.text && _txtEmailAddress.text.length == 0)
+    {
+        [[WWCommon getSharedObject]createAlertView:kAppName :kEnterEmail :nil :000 ];
+        return NO;
+    }
+    if(_txtEmailAddress.text.length>0){
+        if(![[WWCommon getSharedObject] validEmail:_txtEmailAddress.text]){
+            [[WWCommon getSharedObject]createAlertView:kAppName :kValidEmail :nil :000 ];
+            return NO;
+        }
+    }
+    return YES;
 }
 -(IBAction)btnBackPressed:(id)sender{
     [self dismissKeyboard];

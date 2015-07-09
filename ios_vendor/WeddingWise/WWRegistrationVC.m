@@ -9,8 +9,11 @@
 #import "WWRegistrationVC.h"
 
 
-@interface WWRegistrationVC ()
-
+@interface WWRegistrationVC ()<MBProgressHUDDelegate>
+{
+    NSArray *_pickerData;
+    
+}
 @property (nonatomic) BOOL isViewPositionOffset;
 
 @end
@@ -19,7 +22,7 @@
 
 - (void)viewDidLoad {
     
-    [self setTextFieldPlacehoder];
+   // [self setTextFieldPlacehoder];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
@@ -28,32 +31,125 @@
     
     [self.navigationController.navigationBar setHidden:YES];
     
+    _pickerData=[[NSArray alloc]initWithObjects:
+                 @"Banquets",
+                 @"Caterers",
+                 @"Decoraters",
+                 @"Photographers",
+                 nil];
+    
+    [_pickerView setFrame:CGRectMake(0, 700, _pickerView.frame.size.width, _pickerView.frame.size.height)];
+    [_imgPickerBG setFrame:CGRectMake(0, 700, _imgPickerBG.frame.size.width, _imgPickerBG.frame.size.height)];
+    [_toolBar setFrame:CGRectMake(0, 700, _toolBar.frame.size.width, _toolBar.frame.size.height)];
+    
+    if(_fbResponse){
+        [self fillFaceBookData];
+    }
     
     [super viewDidLoad];
+}
+
+-(void)fillFaceBookData{
+    [_txtEmailAddress setEnabled:NO];
+    _txtEmailAddress.text= [_fbResponse valueForKey:@"email"];
+}
+
+#pragma mark: IBAction & utility methods:
+-(IBAction)showPicker:(id)sender{
+    [self showPickerView];
+}
+-(void)showPickerView{
+    [self.view endEditing:YES];
+    [self.view addSubview:_pickerView];
+    
+    [_pickerView setFrame:CGRectMake(0, _pickerView.frame.origin.y, _pickerView.frame.size.width, _pickerView.frame.size.height)];
+    [_imgPickerBG setFrame:CGRectMake(0, _pickerView.frame.origin.y, _imgPickerBG.frame.size.width, _imgPickerBG.frame.size.height)];
+    [_toolBar setFrame:CGRectMake(_toolBar.frame.origin.x, _pickerView.frame.origin.y-40, _toolBar.frame.size.width, _toolBar.frame.size.height)];
+    
+    [UIView animateWithDuration:0.3 animations:
+     ^(void){
+         [_pickerView setFrame:CGRectMake(0, self.view.frame.size.height - _pickerView.frame.size.height, _pickerView.frame.size.width, _pickerView.frame.size.height)];
+         
+         [_imgPickerBG setFrame:CGRectMake(0, self.view.frame.size.height - _imgPickerBG.frame.size.height, _imgPickerBG.frame.size.width, _imgPickerBG.frame.size.height)];
+         
+         [_toolBar setFrame:CGRectMake(0, _pickerView.frame.origin.y-40, _toolBar.frame.size.width, _toolBar.frame.size.height)];
+     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+}
+-(IBAction)btnDonePressed:(id)sender{
+    [_btnVendorType setTitle:[_pickerData[[_pickerView selectedRowInComponent:0]] uppercaseString] forState:UIControlStateNormal];
+    //[_btnVendorType.titleLabel setTextColor:[UIColor blackColor]];
+    [_btnVendorType setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [self hidePickerView];
+}
+-(void)hidePickerView{
+    [UIView animateWithDuration:0.3 animations:
+     ^(void){
+         [_pickerView setFrame:CGRectMake(0, 700, _pickerView.frame.size.width, _pickerView.frame.size.height)];
+         [_imgPickerBG setFrame:CGRectMake(0, 700, _imgPickerBG.frame.size.width, _imgPickerBG.frame.size.height)];
+         [_toolBar setFrame:CGRectMake(0, 700, _toolBar.frame.size.width, _toolBar.frame.size.height)];
+     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+}
+-(void)dismissKeyboard {
+    [_txtEmailAddress resignFirstResponder];
+    [_txtPassword resignFirstResponder];
+    [_txtName resignFirstResponder];
+    [_txtAddress resignFirstResponder];
+    [_txtContactNumber resignFirstResponder];
+    [self hidePickerView];
 }
 -(void)setTextFieldPlacehoder{
     [_txtEmailAddress setTextFieldPlaceholder:@"Email Address" withcolor:[UIColor darkGrayColor] withPadding:_txtEmailAddress];
     [_txtPassword setTextFieldPlaceholder:@"Password" withcolor:[UIColor darkGrayColor] withPadding:_txtPassword];
-    [_txtGroomName setTextFieldPlaceholder:@"Groom Name" withcolor:[UIColor darkGrayColor] withPadding:_txtGroomName];
-    [_txtBrideName setTextFieldPlaceholder:@"Bride Name" withcolor:[UIColor darkGrayColor] withPadding:_txtBrideName];
-    [_txtAreaName setTextFieldPlaceholder:@"Area where to looking marry" withcolor:[UIColor darkGrayColor] withPadding:_txtAreaName];
-    [_txtContactNumber setTextFieldPlaceholder:@"Contact Number" withcolor:[UIColor darkGrayColor] withPadding:_txtAreaName];
-}
-
-#pragma mark: IBAction & utility methods:
--(void)dismissKeyboard {
-    [_txtEmailAddress resignFirstResponder];
-    [_txtPassword resignFirstResponder];
-    [_txtGroomName resignFirstResponder];
-    [_txtBrideName resignFirstResponder];
-    [_txtAreaName resignFirstResponder];
-    [_txtContactNumber resignFirstResponder];
+    [_txtName setTextFieldPlaceholder:@"Name" withcolor:[UIColor darkGrayColor] withPadding:_txtName];
+    [_txtContactNumber setTextFieldPlaceholder:@"Contact Number" withcolor:[UIColor darkGrayColor] withPadding:_txtContactNumber];
+    [_txtAddress setTextFieldPlaceholder:@"Address" withcolor:[UIColor darkGrayColor] withPadding:_txtAddress];
 }
 -(IBAction)btnSignUpPressed:(id)sender{
     [self dismissKeyboard];
     if([self checkValidations]){
         //Call web service
+        MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:HUD];
+        
+        // Regiser for HUD callbacks so we can remove it from the window at the right time
+        HUD.delegate = self;
+        
+        // Show the HUD while the provided method executes in a new thread
+        [HUD showWhileExecuting:@selector(callRegistrationAPI) onTarget:self withObject:nil animated:YES];
     }
+}
+-(void)callRegistrationAPI{
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 _txtEmailAddress.text,@"email",
+                                 _txtPassword.text,@"password",
+                                 _txtName.text,@"name",
+                                 _txtAddress.text,@"bride_name",
+                                 _btnVendorType.titleLabel.text,@"vendor_type",
+                                 _txtContactNumber.text,@"contact_number",
+                                 @"customer_registration",@"action",
+                                 nil];
+    
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             //Login successfully
+             [[AppDelegate sharedAppDelegate]setupViewControllers:self.navigationController];
+         }
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
 }
 -(IBAction)btnBackPressed:(id)sender{
     [self dismissKeyboard];
@@ -66,29 +162,35 @@
 -(BOOL)checkValidations{
     if (_txtEmailAddress.text && _txtEmailAddress.text.length == 0)
     {
-        [[WWCommon getSharedObject]createAlertView:@"Wedding Wise" :@"Please enter email address." :nil :000 ];
+        [[WWCommon getSharedObject]createAlertView:kAppName :@"Please enter email address." :nil :000 ];
         return NO;
     }
     if (_txtPassword.text && _txtPassword.text.length == 0)
     {
-        [[WWCommon getSharedObject]createAlertView:@"Wedding Wise" :@"Please enter password." :nil :000 ];
+        [[WWCommon getSharedObject]createAlertView:kAppName :@"Please enter password." :nil :000 ];
         return NO;
     }
-    if (_txtBrideName.text && _txtBrideName.text.length == 0)
+    if (_btnVendorType.titleLabel.text && _btnVendorType.titleLabel.text.length == 0)
     {
-        [[WWCommon getSharedObject]createAlertView:@"Wedding Wise" :@"Please enter first name." :nil :000 ];
+        [[WWCommon getSharedObject]createAlertView:kAppName :@"Please select vendor type." :nil :000 ];
         return NO;
     }
-    if (_txtGroomName.text && _txtGroomName.text.length == 0)
+    if (_txtName.text && _txtName.text.length == 0)
     {
-        [[WWCommon getSharedObject]createAlertView:@"Wedding Wise" :@"Please enter last name." :nil :000 ];
+        [[WWCommon getSharedObject]createAlertView:kAppName :@"Please enter name." :nil :000 ];
         return NO;
     }
     if (_txtContactNumber.text && _txtContactNumber.text.length == 0)
     {
-        [[WWCommon getSharedObject]createAlertView:@"Wedding Wise" :@"Please enter contact number." :nil :000 ];
+        [[WWCommon getSharedObject]createAlertView:kAppName :@"Please enter contact number." :nil :000 ];
         return NO;
     }
+    if (_txtAddress.text && _txtAddress.text.length == 0)
+    {
+        [[WWCommon getSharedObject]createAlertView:kAppName :@"Please enter address." :nil :000 ];
+        return NO;
+    }
+    
     if(_txtEmailAddress.text.length>0){
         if(![[WWCommon getSharedObject] validEmail:_txtEmailAddress.text]){
             
@@ -108,17 +210,14 @@
         if (textField == self.txtPassword){
             targetYPosition = _txtEmailAddress.frame.origin.y;
         }
-        else if (textField== _txtBrideName){
-            targetYPosition = _txtPassword.frame.origin.y;
-        }
-        else if(textField== _txtGroomName){
-            targetYPosition = _txtBrideName.frame.origin.y;
-        }
-        else if(textField== _txtAreaName){
-            targetYPosition = _txtGroomName.frame.origin.y;
+        else if (textField== _txtName){
+            targetYPosition = _btnVendorType.frame.origin.y;
         }
         else if(textField== _txtContactNumber){
-            targetYPosition = _txtGroomName.frame.origin.y;
+            targetYPosition = _btnVendorType.frame.origin.y;
+        }
+        else if(textField== _txtAddress){
+            targetYPosition = _btnVendorType.frame.origin.y;
         }
         int diffY = textField.frame.origin.y - targetYPosition;
         [UIView animateWithDuration:0.2 animations:^{
@@ -142,20 +241,41 @@
         [_txtPassword becomeFirstResponder];
     }
     else if(textField==_txtPassword){
-        [_txtBrideName becomeFirstResponder];
+        [_txtName becomeFirstResponder];
     }
-    else if(textField==_txtBrideName){
-        [_txtGroomName becomeFirstResponder];
-    }
-    else if(textField==_txtGroomName){
-        [_txtAreaName becomeFirstResponder];
-    }
-    else if(textField==_txtAreaName){
+    else if(textField==_txtName){
         [_txtContactNumber becomeFirstResponder];
     }
     else if(textField==_txtContactNumber){
-        [_txtContactNumber resignFirstResponder];
+        [_txtAddress becomeFirstResponder];
+    }
+    else if(textField==_txtAddress){
+        [_txtAddress resignFirstResponder];
     }
     return YES;
 }
+#pragma mark UIPicker view delegate & datasource methods:
+// The number of columns of data
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+// The number of rows of data
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return _pickerData.count;
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return _pickerData[row];
+}
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
+{ NSAttributedString *attString ;
+    
+    attString = [[NSAttributedString alloc] initWithString:_pickerData[row] attributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+    return attString;
+    
+}
+
 @end

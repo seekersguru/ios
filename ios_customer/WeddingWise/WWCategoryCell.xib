@@ -15,8 +15,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="slide_1" translatesAutoresizingMaskIntoConstraints="NO" id="Zoq-8k-RVm">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zoq-8k-RVm">
                         <rect key="frame" x="0.0" y="1" width="320" height="130"/>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="320" id="Lc8-ob-zoa"/>
                         </constraints>
@@ -143,7 +144,7 @@
                         </constraints>
                     </imageView>
                 </subviews>
-                <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="J1M-NG-cWl" firstAttribute="top" secondItem="6B9-uj-PUw" secondAttribute="bottom" constant="3" id="22b-WW-qQu"/>
                     <constraint firstItem="w6y-5a-bIa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="4mU-hN-AJc"/>
@@ -177,11 +178,15 @@
                     <constraint firstItem="JVK-w4-Kvp" firstAttribute="leading" secondItem="hX1-Lu-k1b" secondAttribute="trailing" constant="16" id="zFq-8B-udq"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="imgCategory" destination="Zoq-8k-RVm" id="Xy7-4y-AMa"/>
+                <outlet property="lblCapacity" destination="6B9-uj-PUw" id="v9y-9L-wzu"/>
+                <outlet property="lblName" destination="w6y-5a-bIa" id="QBg-Xl-Bn3"/>
+                <outlet property="lblStartingPrice" destination="J1M-NG-cWl" id="q7a-5A-bAV"/>
+                <outlet property="lblVeg" destination="Frb-BB-nYf" id="VhA-DA-JwU"/>
             </connections>
-            <point key="canvasLocation" x="238" y="287.5"/>
+            <point key="canvasLocation" x="115" y="273.5"/>
         </tableViewCell>
     </objects>
     <resources>
@@ -191,7 +196,6 @@
         <image name="icon-4" width="36" height="36"/>
         <image name="icon11" width="36" height="36"/>
         <image name="icon22" width="36" height="36"/>
-        <image name="slide_1" width="320" height="171"/>
         <image name="sstar" width="8" height="7"/>
         <image name="star" width="8" height="7"/>
     </resources>

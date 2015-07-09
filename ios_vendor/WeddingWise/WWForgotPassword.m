@@ -37,6 +37,22 @@
 
 -(IBAction)btnSignInPressed:(id)sender{
     [_txtEmailAddress resignFirstResponder];
+    if([self checkValidations]){
+        //Call web service
+        NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                     _txtEmailAddress.text,@"email",
+                                     @"forgot_password",@"action",
+                                     nil];
+        
+        [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+         {
+             
+         }
+                                                 failure:^(NSString *response)
+         {
+             DLog(@"%@",response);
+         }];
+    }
 }
 
 -(IBAction)btnBackPressed:(id)sender{
@@ -48,7 +64,20 @@
     [_txtEmailAddress resignFirstResponder];
     return YES;
 }
-
+-(BOOL)checkValidations{
+    if (_txtEmailAddress.text && _txtEmailAddress.text.length == 0)
+    {
+        [[WWCommon getSharedObject]createAlertView:kAppName :kEnterEmail :nil :000 ];
+        return NO;
+    }
+    if(_txtEmailAddress.text.length>0){
+        if(![[WWCommon getSharedObject] validEmail:_txtEmailAddress.text]){
+            [[WWCommon getSharedObject]createAlertView:kAppName :kValidEmail :nil :000 ];
+            return NO;
+        }
+    }
+    return YES;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

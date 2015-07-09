@@ -23,5 +23,7 @@
 @property(nonatomic, weak)IBOutlet UIButton *btnLogin;
 
 
+@property(nonatomic, weak)IBOutlet UIImageView *bgImage;
+
 -(IBAction)googleSignIn:(id)sender;
 @end

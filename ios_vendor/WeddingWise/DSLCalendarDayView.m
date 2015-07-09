@@ -110,6 +110,11 @@
     if (self.selectionState == DSLCalendarDayViewNotSelected) {
         if (self.isInCurrentMonth) {
             [[UIColor colorWithRed:252.0/255.0 green:252.0/255.0 blue:252.0/255.0 alpha:1.0] setFill];
+            if([_labelText isEqualToString:@"15"]){
+                [[UIColor lightGrayColor] setFill];
+                                
+            }
+            
         }
         else {
             [[UIColor whiteColor] setFill];
@@ -170,6 +175,8 @@
 - (void)drawDayNumber {
     if (self.selectionState == DSLCalendarDayViewNotSelected) {
         [[UIColor colorWithWhite:66.0/255.0 alpha:1.0] set];
+        
+        
     }
     else {
         [[UIColor whiteColor] set];
@@ -182,6 +189,9 @@
     
     CGRect textRect = CGRectMake(ceilf(CGRectGetMidX(self.bounds) - (textSize.width / 2.0)), ceilf(CGRectGetMidY(self.bounds) - (textSize.height / 2.0)), textSize.width, textSize.height);
     [_labelText drawInRect:textRect withFont:textFont];
+    
+    
+    
 }
 
 @end

@@ -39,6 +39,7 @@
                      if (!error) {
                          NSLog(@"fetched user:%@", user);
                          //FBSDKAccessToken *tokenStr=result.token;
+                         [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"getDataformFb" object:user]];
                      }
                  }];
             }

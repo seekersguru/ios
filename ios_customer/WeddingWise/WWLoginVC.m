@@ -15,29 +15,23 @@
 #import "WWForgotPassword.h"
 #import "AppDelegate.h"
 
-@interface WWLoginVC ()
+@interface WWLoginVC ()<MBProgressHUDDelegate>
 
 @end
-//Client secret= r4c6Lvxfq99AGauizFsS-Ffw
-//Bundle id: com.weddingwise.app
-
-
-
 @implementation WWLoginVC
-
 
 #pragma mark View life cycle methods:
 - (void)viewDidLoad {
     //[self setTextFieldPlacehoder];
-   
-   // [self.navigationController.navigationBar setHidden:YES];
     
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
+    
+    _bgImage.image= _image;
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
@@ -52,7 +46,40 @@
     [_txtPassword setTextFieldPlaceholder:@"Password" withcolor:[UIColor whiteColor] withPadding:_txtPassword];
 }
 -(IBAction)btnSignInPressed:(id)sender{
-    [[AppDelegate sharedAppDelegate]setupViewControllers:self.navigationController];
+  [self dismissKeyboard];
+  if([self checkValidations]){
+      MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+      [self.view addSubview:HUD];
+      
+      // Regiser for HUD callbacks so we can remove it from the window at the right time
+      HUD.delegate = self;
+      
+      // Show the HUD while the provided method executes in a new thread
+      [HUD showWhileExecuting:@selector(callLoginWebService) onTarget:self withObject:nil animated:YES];
+      
+  }
+    
+}
+- (void)callLoginWebService {
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 _txtEmailAddress.text,@"email",
+                                 _txtPassword.text,@"password",
+                                 @"customer_login",@"action",
+                                 nil];
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             //Login successfully
+             [[AppDelegate sharedAppDelegate]setupViewControllers:self.navigationController];
+         }
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
 }
 -(IBAction)btnBackPressed:(id)sender{
     [self dismissKeyboard];
@@ -61,13 +88,13 @@
 -(BOOL)checkValidations{
     if (_txtEmailAddress.text && _txtEmailAddress.text.length == 0)
     {
-        [[WWCommon getSharedObject]createAlertView:@"Wedding Wise" :@"Please enter email address" :nil :000 ];
-        return YES;
+        [[WWCommon getSharedObject]createAlertView:kAppName :kEnterEmail :nil :000 ];
+        return NO;
     }
     if (_txtPassword.text && _txtPassword.text.length == 0)
     {
-        [[WWCommon getSharedObject]createAlertView:@"Wedding Wise" :@"Please enter password" :nil :000 ];
-        return YES;
+        [[WWCommon getSharedObject]createAlertView:kAppName :kEnterPassword :nil :000 ];
+        return NO;
     }
     return YES;
 }
@@ -94,6 +121,7 @@
 }
 -(IBAction)btnForgotPasswordPressed:(id)sender{
     WWForgotPassword *forgotPasowrd=[[WWForgotPassword alloc]initWithNibName:@"WWForgotPassword" bundle:nil];
+    forgotPasowrd.image= _bgImage.image;
     [self.navigationController pushViewController:forgotPasowrd animated:YES];
 }
 - (void)didReceiveMemoryWarning {

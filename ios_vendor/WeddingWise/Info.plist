@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.weddingwise.app</string>
+	<string>com.wedwise.vendor</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -24,24 +24,26 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.weddingwise.app</string>
+			<string>com.wedwise.vendor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.weddingwise.app</string>
-				<string>fb355714147951970</string>
+				<string>com.wedwise.vendor</string>
+				<string>fb1445209479121669</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>355714147951970</string>
+	<string>1445209479121669</string>
 	<key>FacebookDisplayName</key>
-	<string>WeddingWise</string>
+	<string>WedWise</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>GothamRoundedBook.ttf</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -54,9 +56,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>GothamRoundedBook.ttf</string>
-	</array>
 </dict>
 </plist>

@@ -12,11 +12,21 @@
 
 @property(nonatomic, weak)IBOutlet UITextField *txtEmailAddress;
 @property(nonatomic, weak)IBOutlet UITextField *txtPassword;
-@property(nonatomic, weak)IBOutlet UITextField *txtGroomName;
-@property(nonatomic, weak)IBOutlet UITextField *txtBrideName;
-@property(nonatomic, weak)IBOutlet UITextField *txtAreaName;
+@property(nonatomic, weak)IBOutlet UITextField *txtName;
+@property(nonatomic, weak)IBOutlet UITextField *txtAddress;
 @property(nonatomic, weak)IBOutlet UITextField *txtContactNumber;
+@property(nonatomic, weak)IBOutlet UIButton *btnVendorType;
+
+@property (nonatomic, weak) IBOutlet UIImageView *imgPickerBG;
+@property(nonatomic, strong)IBOutlet UIToolbar *toolBar;
+@property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
+
+@property(nonatomic, strong)NSDictionary *fbResponse;
+
+@property(nonatomic, weak)IBOutlet UIImageView *bgImage;
+@property(nonatomic, strong)UIImage *image;
 
 -(IBAction)btnSignUpPressed:(id)sender;
 -(IBAction)btnBackPressed:(id)sender;
+-(IBAction)btnDonePressed:(id)sender;
 @end

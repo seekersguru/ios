@@ -116,7 +116,7 @@
             <connections>
                 <outlet property="btnReadMore" destination="4K4-pC-9vJ" id="atW-T7-kr7"/>
             </connections>
-            <point key="canvasLocation" x="301" y="271"/>
+            <point key="canvasLocation" x="134" y="262"/>
         </tableViewCell>
     </objects>
     <resources>

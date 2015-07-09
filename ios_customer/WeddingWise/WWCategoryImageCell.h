@@ -19,7 +19,7 @@
 {
     id <ImageCellDelegate> _delegate;
 }
-
+@property(nonatomic, weak)IBOutlet UIImageView *categoryImage;
 @property(nonatomic, weak)IBOutlet UIButton *btnVideoLink;
 @property(nonatomic, weak)IBOutlet UIButton *btnImage;
 

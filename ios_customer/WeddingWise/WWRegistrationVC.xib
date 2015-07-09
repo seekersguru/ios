@@ -7,8 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WWRegistrationVC">
             <connections>
-                <outlet property="txtAreaName" destination="UW5-5d-V5f" id="foM-he-A2x"/>
+                <outlet property="bgImage" destination="pUG-tm-8mR" id="AgM-tE-6cC"/>
                 <outlet property="txtBrideName" destination="P9k-8R-79i" id="YPQ-f4-QKm"/>
+                <outlet property="txtContactNo" destination="UW5-5d-V5f" id="PSK-we-5WL"/>
                 <outlet property="txtEmailAddress" destination="JCf-m2-qad" id="xh9-PT-RNh"/>
                 <outlet property="txtGroomName" destination="rns-A8-Ccb" id="7Rf-c4-vxB"/>
                 <outlet property="txtPassword" destination="exh-6F-QET" id="XO0-aW-7cQ"/>
@@ -73,7 +74,7 @@
                     <rect key="frame" x="31" y="249" width="259" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="nXS-Dm-UbU"/>
                     </connections>
@@ -86,7 +87,7 @@
                     <rect key="frame" x="31" y="297" width="259" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="cKz-xx-yd3"/>
                     </connections>
@@ -95,7 +96,7 @@
                     <rect key="frame" x="31" y="335" width="259" height="2"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Area where to looking marry" minimumFontSize="17" id="UW5-5d-V5f">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contact number" minimumFontSize="17" id="UW5-5d-V5f">
                     <rect key="frame" x="31" y="345" width="259" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>

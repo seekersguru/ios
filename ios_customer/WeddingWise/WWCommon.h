@@ -13,4 +13,5 @@
 
 - (void) createAlertView:(NSString *)title :(NSString *)message :(id)delegate :(NSInteger)tagVAlue;
 -(BOOL) validEmail:(NSString*) email;
+-(void)setCustomFont:(CGFloat)font withLabel:(id)sender withText:(NSString*)text;
 @end

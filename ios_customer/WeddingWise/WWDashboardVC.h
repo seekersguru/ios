@@ -18,10 +18,12 @@
     IBOutlet UILabel *lblPolicy;
 }
 
+
 @property (retain, nonatomic) IBOutlet GPPSignInButton *signInButton;
 @property(nonatomic, weak)IBOutlet UIButton *btnSignUp;
 @property(nonatomic, weak)IBOutlet UIButton *btnLogin;
 
+@property(nonatomic, weak)IBOutlet UIImageView *bgImage;
 
 -(IBAction)googleSignIn:(id)sender;
 @end

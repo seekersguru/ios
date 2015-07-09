@@ -20,12 +20,6 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="have availability on 15 march" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGD-R4-gSx">
-                        <rect key="frame" x="8" y="50" width="304" height="16"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="attechment" translatesAutoresizingMaskIntoConstraints="NO" id="cHW-Gi-PsK">
                         <rect key="frame" x="150" y="11" width="17" height="15"/>
                         <constraints>
@@ -55,24 +49,19 @@
                     <constraint firstItem="cHW-Gi-PsK" firstAttribute="leading" secondItem="DRq-Be-dqS" secondAttribute="trailing" constant="8" id="B8U-BK-wGM"/>
                     <constraint firstItem="DRq-Be-dqS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="JUY-W2-Z9z"/>
                     <constraint firstAttribute="trailing" secondItem="egi-Yx-pAc" secondAttribute="trailing" constant="8" id="X12-mo-Nyx"/>
-                    <constraint firstItem="hGD-R4-gSx" firstAttribute="top" secondItem="egi-Yx-pAc" secondAttribute="bottom" constant="2" id="XPP-Sp-aeR"/>
                     <constraint firstItem="DRq-Be-dqS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="isE-rt-a6J"/>
-                    <constraint firstItem="hGD-R4-gSx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="lbj-mM-3Kh"/>
                     <constraint firstAttribute="trailing" secondItem="D23-is-qnB" secondAttribute="trailing" constant="8" id="wZS-bf-Mtq"/>
-                    <constraint firstAttribute="trailing" secondItem="hGD-R4-gSx" secondAttribute="trailing" constant="8" id="wdx-AW-LlV"/>
                     <constraint firstItem="cHW-Gi-PsK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="x8G-Z3-h4b"/>
-                    <constraint firstAttribute="bottom" secondItem="hGD-R4-gSx" secondAttribute="bottom" constant="4" id="yCz-vC-eME"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="attachmentImage" destination="cHW-Gi-PsK" id="nSB-sd-aeo"/>
                 <outlet property="descLbl" destination="egi-Yx-pAc" id="4uK-Y5-4Y9"/>
-                <outlet property="subDescLbl" destination="hGD-R4-gSx" id="ioD-75-gv8"/>
                 <outlet property="timeLbl" destination="D23-is-qnB" id="rH3-a7-PeE"/>
                 <outlet property="usernameLbl" destination="DRq-Be-dqS" id="vnw-KS-IcB"/>
             </connections>
-            <point key="canvasLocation" x="453" y="190.5"/>
+            <point key="canvasLocation" x="279" y="172.5"/>
         </tableViewCell>
     </objects>
     <resources>

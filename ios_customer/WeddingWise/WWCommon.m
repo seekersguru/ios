@@ -62,4 +62,21 @@ static  WWCommon *sharedObj = nil;
     else // no '@' or '.' present
         return NO;
 }
+-(void)setCustomFont:(CGFloat)fontNew withLabel:(id)sender withText:(NSString*)text{
+    if([sender isKindOfClass:[UIButton class]]){
+        UIButton *btnType=(UIButton*)sender;
+        [btnType.titleLabel setFont:[UIFont fontWithName:AppFont size:fontNew]];
+        [btnType setTitle:text forState:UIControlStateNormal];
+    }
+    else if ([sender isKindOfClass:[UILabel class]]){
+        UILabel *lblType= (UILabel*)sender;
+        lblType.font = [UIFont fontWithName:AppFont size:fontNew];
+        [lblType setText:text];
+    }
+    else if ([sender isKindOfClass:[UITextField class]]){
+        UITextField *txtType= (UITextField*)sender;
+        txtType.font = [UIFont fontWithName:AppFont size:fontNew];
+        
+    }
+}
 @end

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Pods-WeddingWise-AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-WeddingWise-MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-WeddingWise-SCNetworkReachability.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-WeddingWise.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>0EFDE20A6D30D340B2BBC7A6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>998488EFFA5CEBCF98F792FC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E2B6F0850BB5B61F91BDAB96</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EAFBCF7164CDD06ABBCF7958</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

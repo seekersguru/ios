@@ -13,6 +13,7 @@
 @interface WWCategoryDetailVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property(nonatomic, weak)IBOutlet UITableView *tblCategoryDetail;
+@property(nonatomic, weak)IBOutlet UITableView *tblReadMore;
 
 @property(nonatomic, weak)IBOutlet UIView *packageView;
 @property(nonatomic, weak)IBOutlet UIView *mapView;
@@ -22,6 +23,8 @@
 @property(nonatomic, weak)IBOutlet YTPlayerView *playerView;
 
 @property(nonatomic, weak)IBOutlet UIImageView *ratateImage;
+
+@property(nonatomic, strong)NSString *vendorEmail;
 
 @property(nonatomic, weak)IBOutlet MKMapView *map;
 -(IBAction)backButtonPressed:(id)sender;

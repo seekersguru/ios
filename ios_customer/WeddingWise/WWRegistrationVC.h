@@ -14,8 +14,12 @@
 @property(nonatomic, weak)IBOutlet UITextField *txtPassword;
 @property(nonatomic, weak)IBOutlet UITextField *txtGroomName;
 @property(nonatomic, weak)IBOutlet UITextField *txtBrideName;
-@property(nonatomic, weak)IBOutlet UITextField *txtAreaName;
+@property(nonatomic, weak)IBOutlet UITextField *txtContactNo;
 
+@property(nonatomic, weak)IBOutlet UIImageView *bgImage;
+@property(nonatomic, strong)UIImage *image;
+
+@property(nonatomic, strong)NSDictionary *fbResponse;
 -(IBAction)btnSignUpPressed:(id)sender;
 -(IBAction)btnBackPressed:(id)sender;
 

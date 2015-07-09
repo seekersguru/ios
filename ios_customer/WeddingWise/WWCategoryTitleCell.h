@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface WWCategoryTitleCell : UITableViewCell
+@property(nonatomic, weak)IBOutlet UILabel *name;
+@property(nonatomic, weak)IBOutlet UILabel *contactNumber;
+@property(nonatomic, weak)IBOutlet UILabel *address;
 
 @end

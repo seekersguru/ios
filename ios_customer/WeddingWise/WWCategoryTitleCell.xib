@@ -38,6 +38,11 @@
                 </subviews>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="address" destination="L87-Vn-F2M" id="Jvz-GR-PzY"/>
+                <outlet property="contactNumber" destination="HYR-6r-6pV" id="73w-Ip-Fw1"/>
+                <outlet property="name" destination="NQY-gO-hdd" id="UL2-gQ-6Ek"/>
+            </connections>
             <point key="canvasLocation" x="282" y="210"/>
         </tableViewCell>
     </objects>

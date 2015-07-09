@@ -10,8 +10,10 @@
 #import "WWCategoryCell.h"
 #import "WWCategoryDetailVC.h"
 
-@interface WWDetailScreen ()
-
+@interface WWDetailScreen ()<MBProgressHUDDelegate>
+{
+    NSMutableArray *arrVendorData;
+}
 @end
 
 @implementation WWDetailScreen
@@ -19,9 +21,48 @@
 - (void)viewDidLoad {
     [self.navigationController.navigationBar setHidden:YES];
     
+    arrVendorData=[[NSMutableArray alloc]init];
+    
+    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    
+    // Regiser for HUD callbacks so we can remove it from the window at the right time
+    HUD.delegate = self;
+    
+    // Show the HUD while the provided method executes in a new thread
+    [HUD showWhileExecuting:@selector(callWebService) onTarget:self withObject:nil animated:YES];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+-(void)callWebService{
+    
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"ios",@"mode",
+                                 @"2x",@"image_type",
+                                 _vendorType,@"vendor_type",
+                                 @"1",@"page_no",
+                                 @"2x",@"search_string",
+                                 @"customer_vendor_list_and_search",@"action",
+                                 nil];
+    
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             NSArray *arrData=[[responseDics valueForKey:@"json"] valueForKey:@"vendor_list"];
+             for (NSDictionary *dicVendor in arrData) {
+                 [arrVendorData addObject:dicVendor];
+             }
+             [_tblCategory reloadData];
+         }
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
 }
 #pragma mark - Table view
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -32,23 +73,29 @@
         cell = [topLevelObjects objectAtIndex:0];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    switch (indexPath.row) {
-        case 0:
-            [cell.imgCategory setImage:[UIImage imageNamed:@"slide_1"]];
-            break;
-        case 1:
-            [cell.imgCategory setImage:[UIImage imageNamed:@"slide_2"]];
-            break;
-        case 2:
-            [cell.imgCategory setImage:[UIImage imageNamed:@"slide_3"]];
-            break;
-        case 3:
-            [cell.imgCategory setImage:[UIImage imageNamed:@"slide_4"]];
-            break;
-            
-        default:
-            break;
-    }
+    NSDictionary *dicVendorData=[arrVendorData objectAtIndex:indexPath.row];
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",[dicVendorData valueForKey:@"image"]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
+    
+    __weak WWCategoryCell *weakCell = cell;
+    
+    [cell.imgCategory setImageWithURLRequest:request
+                          placeholderImage:placeholderImage
+                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                       weakCell.imgCategory.image = image;
+                                       [weakCell setNeedsLayout];
+                                       
+                                   } failure:nil];
+    
+//    cell.imgCategory.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",[dicVendorData valueForKey:@"image"]]]]];
+    
+    cell.lblName.text=[dicVendorData valueForKey:@"name"];
+    cell.lblStartingPrice.text=[NSString stringWithFormat:@"Starting Price:%@",[dicVendorData valueForKey:@"starting_price"]];
+    cell.lblCapacity.text=[[[dicVendorData valueForKey:@"others_two"] objectAtIndex:0] objectAtIndex:1];
+    cell.lblVeg.text=[[dicVendorData valueForKey:@"others_one"] objectAtIndex:2];
+    
     self.tblCategory.separatorStyle = UITableViewCellSeparatorStyleNone;
     return cell;
 }
@@ -56,13 +103,14 @@
     return 185.0f;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return arrVendorData.count;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     WWCategoryDetailVC *detailScreen=[[WWCategoryDetailVC alloc]initWithNibName:@"WWCategoryDetailVC" bundle:nil];
+    detailScreen.vendorEmail=[[arrVendorData objectAtIndex:indexPath.row] valueForKey:@"vendor_email"];
     [self.navigationController pushViewController:detailScreen animated:YES];
 }
 -(IBAction)backButtonPressed:(id)sender{

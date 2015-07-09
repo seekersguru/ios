@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WWDashboardVC">
             <connections>
+                <outlet property="bgImage" destination="mTq-5P-mfR" id="NBT-ER-7aD"/>
                 <outlet property="btnLogin" destination="WgN-Av-kOa" id="Pr4-qN-mhw"/>
                 <outlet property="btnSignUp" destination="6AX-jk-L3x" id="4qE-M8-Ydo"/>
                 <outlet property="lblPolicy" destination="JEs-4Z-5WC" id="FeI-Rh-bjR"/>
@@ -83,7 +84,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-780" y="97"/>
+            <point key="canvasLocation" x="-729" y="31"/>
         </view>
     </objects>
     <resources>

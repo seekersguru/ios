@@ -13,6 +13,9 @@
 @property(nonatomic, weak)IBOutlet UITextField *txtEmailAddress;
 @property(nonatomic, weak)IBOutlet UITextField *txtPassword;
 
+@property(nonatomic, weak)IBOutlet UIImageView *bgImage;
+@property(nonatomic, strong)UIImage *image;
+
 -(IBAction)btnSignInPressed:(id)sender;
 -(IBAction)btnBackPressed:(id)sender;
 @end

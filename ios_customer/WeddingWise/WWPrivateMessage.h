@@ -11,5 +11,9 @@
 @interface WWPrivateMessage : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic, weak)IBOutlet UITableView *tblMessage;
+@property (weak, nonatomic) IBOutlet UIView *toolbar;
+@property (weak, nonatomic) IBOutlet UITextView *txtMessage;
+@property(weak, nonatomic)IBOutlet UILabel *lblVendorName;
 
+@property(nonatomic, strong)NSDictionary *messageData;
 @end

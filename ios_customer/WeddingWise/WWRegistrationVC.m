@@ -10,7 +10,7 @@
 #import "WWCommon.h"
 #import "UITextField+ADTextField.h"
 
-@interface WWRegistrationVC ()
+@interface WWRegistrationVC ()<MBProgressHUDDelegate>
 
 @property (nonatomic) BOOL isViewPositionOffset;
 
@@ -25,15 +25,24 @@
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
+    _bgImage.image= _image;
+    
+    if(_fbResponse){
+        [self fillFaceBookData];
+    }
+    
     [super viewDidLoad];
 }
-
+-(void)fillFaceBookData{
+    [_txtEmailAddress setEnabled:NO];
+    _txtEmailAddress.text= [_fbResponse valueForKey:@"email"];
+}
 -(void)setTextFieldPlacehoder{
     [_txtEmailAddress setTextFieldPlaceholder:@"Email Address" withcolor:[UIColor grayColor] withPadding:_txtEmailAddress];
     [_txtPassword setTextFieldPlaceholder:@"Password" withcolor:[UIColor grayColor] withPadding:_txtPassword];
     [_txtGroomName setTextFieldPlaceholder:@"Groom Name" withcolor:[UIColor grayColor] withPadding:_txtGroomName];
     [_txtBrideName setTextFieldPlaceholder:@"Bride Name" withcolor:[UIColor grayColor] withPadding:_txtBrideName];
-    [_txtAreaName setTextFieldPlaceholder:@"Area where to looking marrt" withcolor:[UIColor grayColor] withPadding:_txtAreaName];
+    [_txtContactNo setTextFieldPlaceholder:@"Contact number" withcolor:[UIColor grayColor] withPadding:_txtContactNo];
 }
 
 #pragma mark: IBAction & utility methods:
@@ -42,14 +51,48 @@
     [_txtPassword resignFirstResponder];
     [_txtGroomName resignFirstResponder];
     [_txtBrideName resignFirstResponder];
-    [_txtAreaName resignFirstResponder];
+    [_txtContactNo resignFirstResponder];
 }
 -(IBAction)btnSignUpPressed:(id)sender{
     [self dismissKeyboard];
     if([self checkValidations]){
         //Call web service
+        MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:HUD];
+        
+        // Regiser for HUD callbacks so we can remove it from the window at the right time
+        HUD.delegate = self;
+        
+        // Show the HUD while the provided method executes in a new thread
+        [HUD showWhileExecuting:@selector(callRegistrationAPI) onTarget:self withObject:nil animated:YES];
     }
 }
+-(void)callRegistrationAPI{
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 _txtEmailAddress.text,@"email",
+                                 _txtPassword.text,@"password",
+                                 _txtGroomName.text,@"groom_name",
+                                 _txtBrideName.text,@"bride_name",
+                                 _txtContactNo.text,@"contact_number",
+                                 @"customer_registration",@"action",
+                                 nil];
+    
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             //Login successfully
+             [[AppDelegate sharedAppDelegate]setupViewControllers:self.navigationController];
+         }
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
+}
+
 -(IBAction)btnBackPressed:(id)sender{
     [self dismissKeyboard];
     [self.navigationController popViewControllerAnimated:YES];
@@ -61,28 +104,32 @@
 -(BOOL)checkValidations{
     if (_txtEmailAddress.text && _txtEmailAddress.text.length == 0)
     {
-        [[WWCommon getSharedObject]createAlertView:@"Wedding Wise" :@"Please enter email address" :nil :000 ];
+        [[WWCommon getSharedObject]createAlertView:kAppName :kEnterEmail :nil :000 ];
         return NO;
     }
     if (_txtPassword.text && _txtPassword.text.length == 0)
     {
-        [[WWCommon getSharedObject]createAlertView:@"Wedding Wise" :@"Please enter password" :nil :000 ];
+        [[WWCommon getSharedObject]createAlertView:kAppName :kEnterPassword :nil :000 ];
         return NO;
     }
     if (_txtBrideName.text && _txtBrideName.text.length == 0)
     {
-        [[WWCommon getSharedObject]createAlertView:@"Wedding Wise" :@"Please enter first name" :nil :000 ];
+        [[WWCommon getSharedObject]createAlertView:kAppName :kEnterBrideName :nil :000 ];
         return NO;
     }
     if (_txtGroomName.text && _txtGroomName.text.length == 0)
     {
-        [[WWCommon getSharedObject]createAlertView:@"Wedding Wise" :@"Please enter last name" :nil :000 ];
+        [[WWCommon getSharedObject]createAlertView:kAppName :kGroomName :nil :000 ];
         return NO;
     }
-    
+    if (_txtContactNo.text && _txtContactNo.text.length == 0)
+    {
+        [[WWCommon getSharedObject]createAlertView:kAppName :kEnterPassword :nil :000 ];
+        return NO;
+    }
     if(_txtEmailAddress.text.length>0){
         if(![[WWCommon getSharedObject] validEmail:_txtEmailAddress.text]){
-            
+            [[WWCommon getSharedObject]createAlertView:kAppName :kValidEmail :nil :000 ];
             return NO;
         }
     }
@@ -105,7 +152,7 @@
         else if(textField== _txtGroomName){
             targetYPosition = _txtBrideName.frame.origin.y;
         }
-        else if(textField== _txtAreaName){
+        else if(textField== _txtContactNo){
             targetYPosition = _txtGroomName.frame.origin.y;
         }
         int diffY = textField.frame.origin.y - targetYPosition;
@@ -136,10 +183,10 @@
         [_txtGroomName becomeFirstResponder];
     }
     else if(textField==_txtGroomName){
-        [_txtAreaName becomeFirstResponder];
+        [_txtContactNo becomeFirstResponder];
     }
-    else if(textField==_txtAreaName){
-        [_txtAreaName resignFirstResponder];
+    else if(textField==_txtContactNo){
+        [_txtContactNo resignFirstResponder];
     }
     return YES;
 }

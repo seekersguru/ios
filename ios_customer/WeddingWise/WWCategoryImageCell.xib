@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="screen2" id="f1F-DS-VZ3">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="f1F-DS-VZ3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="133"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -58,6 +58,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="btnVideoLink" destination="aSu-6b-P0p" id="UFb-lT-EDA"/>
+                <outlet property="categoryImage" destination="f1F-DS-VZ3" id="Zyr-NA-CkR"/>
             </connections>
             <point key="canvasLocation" x="188" y="207.5"/>
         </tableViewCell>
@@ -65,7 +66,6 @@
     <resources>
         <image name="bt_red" width="72" height="22"/>
         <image name="fav_icon_3" width="23" height="20"/>
-        <image name="screen2" width="320" height="159"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

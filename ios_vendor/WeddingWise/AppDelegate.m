@@ -39,6 +39,8 @@ static AppDelegate * _sharedInstance;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    //Start network reachability monitoring:
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     for (NSString* family in [UIFont familyNames])
     {
@@ -80,13 +82,13 @@ static AppDelegate * _sharedInstance;
 - (BOOL)application: (UIApplication *)application openURL: (NSURL *)url sourceApplication: (NSString *)sourceApplication annotation: (id)annotation
 {
     
-    if(_isFaceBookLogin){
+    //if(_isFaceBookLogin){
         return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                               openURL:url
                                                     sourceApplication:sourceApplication
                                                            annotation:annotation];
-    }
-    return [GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation];
+//    }
+//    return [GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation];
 }
 - (void)setupViewControllers:(UINavigationController*)navigationView {
     UIViewController *firstViewController = [[WWCalendarView alloc] init];
