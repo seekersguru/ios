@@ -69,7 +69,7 @@
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  _txtEmailAddress.text,@"email",
                                  _txtPassword.text,@"password",
-                                 @"customer_login",@"action",
+                                 @"vendor_login",@"action",
                                  nil];
     [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
      {

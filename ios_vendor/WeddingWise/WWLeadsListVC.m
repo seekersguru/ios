@@ -11,7 +11,9 @@
 #import "WWCreateBidVC.h"
 
 @interface WWLeadsListVC ()
-
+{
+    NSMutableArray *arrBidData;
+}
 @end
 
 @implementation WWLeadsListVC
@@ -19,7 +21,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController.navigationBar setHidden:YES];
+    arrBidData=[[NSMutableArray alloc]init];
+    
+    [self callBidDetailAPI];
+    
+    
     // Do any additional setup after loading the view from its nib.
+}
+-(void)callBidDetailAPI{
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"vendor@test.com:-1Jwmiucd0MuY9VftiQ_u7XXquw",@"identifier",
+                                 @"1",@"page_no",
+                                 @"v2c",@"from_to",
+                                 @"bid",@"msg_type",
+                                 @"customer_vendor_message_list",@"action",
+                                 nil];
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         //[HUD removeFromSuperview];
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             NSArray *arrJson=[responseDics valueForKey:@"json"];
+             for (NSDictionary *bidData in arrJson) {
+                 
+                 clientName.text= [bidData valueForKey:@"receiver_name"];
+                 eventDate.text= [bidData valueForKey:@"event_date"];
+                 lbl1.text= [NSString stringWithFormat:@"%@ %@",[bidData valueForKey:@"line1"],[bidData valueForKey:@"line2"] ];
+                 
+                 
+                 [arrBidData addObject:bidData];
+             }
+             
+         }
+         
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
 }
 -(IBAction)bidBtnClicked:(id)sender
 {
