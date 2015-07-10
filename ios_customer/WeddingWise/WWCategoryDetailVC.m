@@ -179,19 +179,7 @@
                 
                 if(arrVendorDetailData.count>0){
                     WWVendorDetailData *basicInfo= [arrVendorDetailData objectAtIndex:0];
-                    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",[basicInfo.heroImages objectAtIndex:0]]];
-                    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-                    UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
-                    
-                    __weak WWCategoryImageCell *weakCell = cell;
-                    
-                    [cell.categoryImage setImageWithURLRequest:request
-                                              placeholderImage:placeholderImage
-                                                       success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                                           weakCell.categoryImage.image = image;
-                                                           [weakCell setNeedsLayout];
-                                                           
-                                                       } failure:nil];
+                    [cell showImagesFromArray:basicInfo.heroImages];
                 }
                 
                 return cell;

@@ -370,6 +370,10 @@
                                  _txtMessage.text, @"message",
                                  @"c2v",@"from_to",
                                  @"customer_vendor_message_create",@"action",
+                                 @"ios",@"mode",
+                                 @"123123",@"device_id",
+                                 @"'message push'",@"push_data",
+                                 @"message", @"msg_type",
                                  nil];
     
     [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)

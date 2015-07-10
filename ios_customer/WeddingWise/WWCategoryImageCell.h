@@ -19,11 +19,12 @@
 {
     id <ImageCellDelegate> _delegate;
 }
-@property(nonatomic, weak)IBOutlet UIImageView *categoryImage;
+@property (weak, nonatomic) IBOutlet UIScrollView *categoryImageScrollView;
 @property(nonatomic, weak)IBOutlet UIButton *btnVideoLink;
 @property(nonatomic, weak)IBOutlet UIButton *btnImage;
+@property (nonatomic,strong) id delegate;
 
 -(IBAction)showVideoPlayerView:(id)sender;
-@property (nonatomic,strong) id delegate;
+- (void)showImagesFromArray:(NSArray *)imageLinks;
 
 @end
