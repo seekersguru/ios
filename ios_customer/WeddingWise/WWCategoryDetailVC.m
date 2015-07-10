@@ -19,6 +19,9 @@
 #import "WWCategoryListCell.h"
 #import "WWCategoryCommonCell.h"
 
+#import "WWCreateBidVC.h"
+#import "WWMessageList.h"
+
 #define DEGREES_IN_RADIANS(x) (M_PI * x / 180.0)
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
 
@@ -38,6 +41,7 @@
     [self setUpCustomView];
     [self callWebService];
 }
+
 -(void)callWebService{
     
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
@@ -53,8 +57,17 @@
              [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
-             WWVendorDetailData *basicInfo=[[WWVendorDetailData alloc]setVendorBasicInfo:[[[responseDics valueForKey:@"json"] valueForKey:@"data"] valueForKey:@"info"]];
+             //setting bid info for this vendor, to use on add bid page
+             WWVendorBidData *bidInfo = [WWVendorBidData sharedInstance];
+             [bidInfo setVendorBidInfo:responseDics[@"json"][@"data"][@"bid"]];
              
+             //setting booking info for this vendor, to use on add booking page
+             WWVendorBookingData *bookingInfo = [WWVendorBookingData sharedInstance];
+             [bookingInfo setVendorBookingInfo:responseDics[@"json"][@"data"][@"book"]];
+             
+             WWVendorDetailData *basicInfo = [WWVendorDetailData sharedInstance];
+             [basicInfo setVendorBasicInfo:[[[responseDics valueForKey:@"json"] valueForKey:@"data"] valueForKey:@"info"]];
+             [basicInfo setVendorEmail:_vendorEmail];   //setting vendor email for post bid
              [arrVendorDetailData addObject:basicInfo];
              
              NSArray *arrSections= [[[responseDics valueForKey:@"json"] valueForKey:@"data"] valueForKey:@"sections"];

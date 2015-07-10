@@ -62,6 +62,12 @@
 
 -(IBAction)createBidPressed:(id)sender{
     WWCreateBidVC *createBid=[[WWCreateBidVC alloc]initWithNibName:@"WWCreateBidVC" bundle:nil];
+    if ([(UIButton *)sender tag] == 1) {
+        createBid.requestType = @"bid";
+    }
+    else{
+        createBid.requestType = @"book";
+    }
     [self.navigationController pushViewController:createBid animated:YES];
 }
 
@@ -69,6 +75,7 @@
 {
     btnCreateBid.hidden= NO;
     [btnCreateBid setTitle:@"Create a new Bid" forState:UIControlStateNormal];
+    [btnCreateBid setTag:1];    //if 1 then pass bid in requestType in WWCreateBidVC
     bidBtn.selected = YES;
     bookBtn.selected = NO;
     messageBtn.selected = NO;
@@ -81,6 +88,7 @@
 {
     btnCreateBid.hidden= NO;
     [btnCreateBid setTitle:@"Create a new Booking" forState:UIControlStateNormal];
+    [btnCreateBid setTag:2];     //if 1 then pass bid in requestType in WWCreateBidVC
     bidBtn.selected = NO;
     bookBtn.selected = YES;
     messageBtn.selected = NO;

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface WWVendorDetailData : NSObject
+@property(nonatomic, strong)NSString *vendorEmail;
 @property(nonatomic, strong)NSString *topName;
 @property(nonatomic, strong)NSString *name;
 @property(nonatomic, strong)NSString *top_address;
@@ -17,11 +18,30 @@
 @property(nonatomic, strong)NSArray *heroImages;
 @property(nonatomic, strong)NSArray *videoLinks;
 @property(nonatomic, strong)NSArray *panormaImages;
-
-
--(instancetype)setVendorBasicInfo:(NSDictionary*)basicInfo;
++ (instancetype)sharedInstance;
+-(void)setVendorBasicInfo:(NSDictionary*)basicInfo;
 @end
 
+@interface WWVendorBidData : NSObject
+@property(nonatomic, strong) NSArray *time_slot;
+@property(nonatomic, strong) NSDictionary *package;
+@property(nonatomic, strong) NSDictionary *quoted;
+@property(nonatomic, strong) NSNumber *maxItemPerPlate;
+@property(nonatomic, strong) NSNumber *minItemPerPlate;
+@property(nonatomic, strong) NSNumber *maxPerson;
+@property(nonatomic, strong) NSNumber *minPerson;
+@property(nonatomic, strong) NSDictionary *bidDictionary;
++ (instancetype)sharedInstance;
+-(void)setVendorBidInfo:(NSDictionary*)bidInfo;
+@end
+
+@interface WWVendorBookingData : NSObject
+@property(nonatomic, strong) NSArray *time_slot;
+@property(nonatomic, strong) NSDictionary *package;
+@property(nonatomic, strong) NSDictionary *bookDictionary;
++ (instancetype)sharedInstance;
+-(void)setVendorBookingInfo:(NSDictionary*)bookingInfo;
+@end
 
 @interface WWVendorDescription : NSObject
 @property(nonatomic, strong)NSString* heading;

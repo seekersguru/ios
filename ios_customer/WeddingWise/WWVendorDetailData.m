@@ -9,7 +9,19 @@
 #import "WWVendorDetailData.h"
 
 @implementation WWVendorDetailData
--(instancetype)setVendorBasicInfo:(NSDictionary*)basicInfo{
+
++ (instancetype)sharedInstance
+{
+    static WWVendorDetailData *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[WWVendorDetailData alloc] init];
+        // Do any other initialisation stuff here
+    });
+    return sharedInstance;
+}
+
+-(void)setVendorBasicInfo:(NSDictionary*)basicInfo{
     
     [self setTopName:[basicInfo valueForKey:@"top_name"]];
     [self setName:[basicInfo valueForKey:@"name"]];
@@ -19,7 +31,57 @@
     [self setHeroImages:[basicInfo valueForKey:@"hero_imgs"]];
     [self setVideoLinks:[basicInfo valueForKey:@"video_links"]];
     [self setPanormaImages:[basicInfo valueForKey:@"360_imgs"]];
-    return self;
+}
+@end
+
+@implementation WWVendorBidData
+
++ (instancetype)sharedInstance{
+    static WWVendorBidData *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[WWVendorBidData alloc] init];
+        // Do any other initialisation stuff here
+    });
+    return sharedInstance;
+}
+
+- (void)setVendorBidInfo:(NSDictionary *)bidInfo{
+    NSMutableArray *timeSlotArray = [NSMutableArray new];
+    for (NSArray *obj in bidInfo[@"time_slot"][@"value"]) {
+        [timeSlotArray addObject:[obj firstObject]];
+    }
+    [self setTime_slot:timeSlotArray];
+    [self setPackage:bidInfo[@"package"]];
+    [self setQuoted:bidInfo[@"quoted"]];
+    [self setMaxItemPerPlate:[NSNumber numberWithInteger:[bidInfo[@"bid_options"][@"item"][@"max"] integerValue]]];
+    [self setMinItemPerPlate:[NSNumber numberWithInteger:[bidInfo[@"bid_options"][@"item"][@"min"] integerValue]]];
+    [self setMaxPerson:[NSNumber numberWithInteger:[bidInfo[@"bid_options"][@"quantity"][@"max"] integerValue]]];
+    [self setMinPerson:[NSNumber numberWithInteger:[bidInfo[@"bid_options"][@"quantity"][@"min"][@"value"] integerValue]]];
+    [self setBidDictionary:bidInfo];
+}
+@end
+
+@implementation WWVendorBookingData
+
++ (instancetype)sharedInstance{
+    static WWVendorBookingData *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[WWVendorBookingData alloc] init];
+        // Do any other initialisation stuff here
+    });
+    return sharedInstance;
+}
+
+- (void)setVendorBookingInfo:(NSDictionary *)bookingInfo{
+    NSMutableArray *timeSlotArray = [NSMutableArray new];
+    for (NSArray *obj in bookingInfo[@"time_slot"][@"value"]) {
+        [timeSlotArray addObject:[obj firstObject]];
+    }
+    [self setTime_slot:timeSlotArray];
+    [self setPackage:bookingInfo[@"package"]];
+    [self setBookDictionary:bookingInfo];
 }
 @end
 
