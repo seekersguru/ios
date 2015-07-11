@@ -122,6 +122,7 @@
                                  @"1",@"page_no",
                                  @"customer_vendor_message_list",@"action",
                                  @"c2v",@"from_to",
+                                 @"message",@"msg_type",
                                  nil];
     
     [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
