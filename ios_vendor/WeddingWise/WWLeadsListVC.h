@@ -13,6 +13,12 @@
     IBOutlet UIButton *bidBtn;
     IBOutlet UIButton *bookBtn;
     IBOutlet UIImageView *selectorImage;
+    
+    IBOutlet UILabel *clientName;
+    IBOutlet UILabel *eventDate;
+    IBOutlet UILabel *inqDate;
+    IBOutlet UILabel *lbl1;
+    IBOutlet UILabel *lbl2;
 }
 
 @end
