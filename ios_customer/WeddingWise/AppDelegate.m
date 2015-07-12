@@ -17,6 +17,7 @@
 #import "WWMessageList.h"
 #import "WWCreateBidVC.h"
 #import "WWScheduleVC.h"
+#import "WWLeadsListVC.h"
 
 void uncaughtExceptionHandler(NSException*);
 
@@ -95,7 +96,7 @@ static AppDelegate * _sharedInstance;
     UINavigationController *secondNavigationController = [[UINavigationController alloc]
                                                     initWithRootViewController:secondViewController];
     
-    UIViewController *thirdViewController = [[WWCreateBidVC alloc] init];
+    UIViewController *thirdViewController = [[WWLeadsListVC alloc] init];
     UINavigationController *thirdNavigationController = [[UINavigationController alloc]
                                                    initWithRootViewController:thirdViewController];
     

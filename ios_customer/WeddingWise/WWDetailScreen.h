@@ -10,8 +10,9 @@
 
 @interface WWDetailScreen : UIViewController
 @property(nonatomic, weak)IBOutlet UITableView *tblCategory;
-
 @property(nonatomic, strong)NSString *vendorType;
+
+
 
 -(IBAction)backButtonPressed:(id)sender;
 @end

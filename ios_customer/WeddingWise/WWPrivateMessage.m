@@ -66,6 +66,7 @@
                                  @"1",@"page_no",
                                  @"c2v",@"from_to",
                                  @"customer_vendor_message_detail",@"action",
+                                 @"message",@"msg_type",
                                  nil];
     
     [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
@@ -102,13 +103,12 @@
 -(void)viewWillAppear:(BOOL)animated{
     //[self.navigationController.navigationBar setHidden:NO];
 }
+-(IBAction)refreshButtonPressed:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 -(IBAction)backButtonPressed:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }
--(void)popBack{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 #pragma mark Tableview delegate/datasource
 
 

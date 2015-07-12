@@ -27,10 +27,10 @@
     
     [messageTable registerNib:[UINib nibWithNibName:@"MessageListCell" bundle:nil] forCellReuseIdentifier:@"MessageListCell"];
     bidBtn.selected = YES;
-    [messageTable setFrame:CGRectMake(messageTable.frame.origin.x, btnCreateBid.frame.origin.y + btnCreateBid.frame.size.height+10, messageTable.frame.size.width, self.view.frame.size.height-175)];
     
     arrMessageData=[[NSMutableArray alloc]init];
     
+    [self callCustomerMessageAPI];
     
     [bidBtn.titleLabel setFont:[UIFont fontWithName:AppFont size:17.0f]];
     [bookBtn.titleLabel setFont:[UIFont fontWithName:AppFont size:17.0f]];
@@ -106,7 +106,7 @@
     bidBtn.selected = NO;
     bookBtn.selected = NO;
     
-    [self callCustomerMessageAPI];
+   
     
     [self moveImage:selectorImage duration:0.2
               curve:UIViewAnimationCurveLinear x:messageBtn.frame.origin.x y:0.0];

@@ -76,6 +76,7 @@
 {
     bidBtn.selected = NO;
     bookBtn.selected = YES;
+    
     // Move the image
     [self moveImage:selectorImage duration:0.2
               curve:UIViewAnimationCurveLinear x:bookBtn.frame.origin.x y:0.0];

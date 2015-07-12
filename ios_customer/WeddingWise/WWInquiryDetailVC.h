@@ -12,4 +12,5 @@
 {
     IBOutlet UITableView *tblInquery;
 }
+@property(nonatomic, strong)NSDictionary *messageData;
 @end

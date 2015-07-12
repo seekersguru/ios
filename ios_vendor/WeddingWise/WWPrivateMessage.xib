@@ -53,6 +53,15 @@
                     <color key="textColor" red="1" green="0.1321103616" blue="0.13034342630000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Qe-70-8bi">
+                    <rect key="frame" x="266" y="15" width="36" height="36"/>
+                    <state key="normal" image="Srefresh">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="refreshButtonPressed:" destination="-1" eventType="touchUpInside" id="4VM-Z0-3Qu"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -66,6 +75,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Srefresh" width="36" height="36"/>
         <image name="backarrow" width="14" height="14"/>
         <image name="header_divder" width="326" height="6"/>
     </resources>

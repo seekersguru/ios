@@ -26,19 +26,10 @@
     
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationController.navigationBar setHidden:YES];
-//    UIButton *backButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 150.0f, 30.0f)];
-//    [backButton setImage:[UIImage imageNamed:@"back@arrow"] forState:UIControlStateNormal];
-//    [backButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-//    [backButton setTitle:@"User Name" forState:UIControlStateNormal];
-//    [backButton addTarget:self action:@selector(popBack) forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-//    self.navigationItem.leftBarButtonItem = backButtonItem;
     
     [_tblMessage registerNib:[UINib nibWithNibName:@"SenderMsgCell" bundle:nil] forCellReuseIdentifier:@"SenderMsgCell"];
     [_tblMessage registerNib:[UINib nibWithNibName:@"ReceiverMsgCell" bundle:nil] forCellReuseIdentifier:@"ReceiverMsgCell"];
     
-   // self.automaticallyAdjustsScrollViewInsets = NO;
-    //self.edgesForExtendedLayout = UIRectEdgeNone;
     offscreenCells = [NSMutableDictionary dictionary];
     
     [self fetchChatArray];
@@ -46,6 +37,9 @@
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+-(IBAction)refreshButtonPressed:(id)sender{
+
 }
 -(IBAction)backButtonPressed:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];

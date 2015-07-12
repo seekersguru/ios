@@ -116,6 +116,8 @@
 		F4D08A6F1B20CDB300AF8E36 /* DSLCalendarDayCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D08A651B20CDB300AF8E36 /* DSLCalendarDayCalloutView.xib */; };
 		F4D08A701B20CDB300AF8E36 /* NSDate+DSLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D08A671B20CDB300AF8E36 /* NSDate+DSLCalendarView.m */; };
 		F4D08A781B20D3BF00AF8E36 /* slicingbg.png in Resources */ = {isa = PBXBuildFile; fileRef = F4D08A771B20D3BF00AF8E36 /* slicingbg.png */; };
+		F4D931231B51A22C0097B51C /* WWBidListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D931211B51A22C0097B51C /* WWBidListCell.m */; };
+		F4D931241B51A22C0097B51C /* WWBidListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D931221B51A22C0097B51C /* WWBidListCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -296,6 +298,9 @@
 		F4D08A661B20CDB300AF8E36 /* NSDate+DSLCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DSLCalendarView.h"; sourceTree = "<group>"; };
 		F4D08A671B20CDB300AF8E36 /* NSDate+DSLCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DSLCalendarView.m"; sourceTree = "<group>"; };
 		F4D08A771B20D3BF00AF8E36 /* slicingbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slicingbg.png; sourceTree = "<group>"; };
+		F4D931201B51A22C0097B51C /* WWBidListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWBidListCell.h; sourceTree = "<group>"; };
+		F4D931211B51A22C0097B51C /* WWBidListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWBidListCell.m; sourceTree = "<group>"; };
+		F4D931221B51A22C0097B51C /* WWBidListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWBidListCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,6 +366,9 @@
 				F4CB17051B3B25750078419A /* WWInquiryCell.h */,
 				F4CB17061B3B25750078419A /* WWInquiryCell.m */,
 				F4CB17071B3B25750078419A /* WWInquiryCell.xib */,
+				F4D931201B51A22C0097B51C /* WWBidListCell.h */,
+				F4D931211B51A22C0097B51C /* WWBidListCell.m */,
+				F4D931221B51A22C0097B51C /* WWBidListCell.xib */,
 			);
 			name = Bid;
 			sourceTree = "<group>";
@@ -840,6 +848,7 @@
 				F4CFD7D81B1B02C500D53E56 /* WWForgotPassword.xib in Resources */,
 				F4CB17091B3B25750078419A /* WWInquiryCell.xib in Resources */,
 				F4C2B1661B4D7348000639BC /* WWCategoryCommonCell.xib in Resources */,
+				F4D931241B51A22C0097B51C /* WWBidListCell.xib in Resources */,
 				F47047B51B01273100FEFEFF /* myKnotCell.xib in Resources */,
 				F4CD4E301B3082F20081FE0B /* WWCategoryDetailVC.xib in Resources */,
 				F4CB16FF1B3B1DDB0078419A /* WWLeadsListVC.xib in Resources */,
@@ -918,6 +927,7 @@
 				F4CB16ED1B373EEC0078419A /* WWCategoryPackageCell.m in Sources */,
 				F4CB16A81B35AB310078419A /* WWScheduleVC.m in Sources */,
 				F47047441B011AE700FEFEFF /* WeddingWise.xcdatamodeld in Sources */,
+				F4D931231B51A22C0097B51C /* WWBidListCell.m in Sources */,
 				F4D08A701B20CDB300AF8E36 /* NSDate+DSLCalendarView.m in Sources */,
 				F4CD4E4E1B3084D30081FE0B /* WWDetailScreen.m in Sources */,
 				F4CFFA291B45AF4E0065D5D6 /* WWWebService.m in Sources */,

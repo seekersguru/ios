@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WWLeadsListVC : UIViewController
-
+@interface WWLeadsListVC : UIViewController<UITableViewDataSource, UITableViewDelegate>
+{
+    IBOutlet UIButton *bidBtn;
+    IBOutlet UIButton *bookBtn;
+    IBOutlet UIImageView *selectorImage;
+}
+@property(nonatomic, weak)IBOutlet UITableView *tblBidView;
 @end

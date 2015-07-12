@@ -16,8 +16,12 @@
 @implementation WWInquiryDetailVC
 
 - (void)viewDidLoad {
+    [self callBidDetailAPI];
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+   
+}
+-(IBAction)backButtonPressed:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark - Table view
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -31,6 +35,37 @@
     
     return cell;
 }
+-(void)callBidDetailAPI{
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"customer@test.com:kdr9UCeqzG783-MMiFBw9axN-BY",@"identifier",
+                                 [_messageData valueForKey:@"receiver_email"],@"receiver_email",
+                                 @"1",@"page_no",
+                                 @"v2c",@"from_to",
+                                 @"customer_vendor_message_detail",@"action",
+                                 [_messageData valueForKey:@"msg_type"],@"msg_type",
+                                 nil];
+    
+    
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             NSArray *arrJson=[responseDics valueForKey:@"json"];
+             for (NSDictionary *bidData in arrJson) {
+                
+             }
+             
+         }
+         
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 175.0f;
 }

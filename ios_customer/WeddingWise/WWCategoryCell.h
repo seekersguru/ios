@@ -16,32 +16,9 @@
 @property(nonatomic, weak)IBOutlet UILabel *lblCapacity;
 @property(nonatomic, weak)IBOutlet UILabel *lblStartingPrice;
 
-/*
- {
- icons =                 (
- );
- id = "vendor_id";
- image = "/media/apps/ios/2x/category/caterers.jpg";
- "in_favourites" = 3;
- name = "Name of the vendor";
- "others_one" =                 (
- Alcohol,
- "Jain Only",
- "Veg Only"
- );
- "others_two" =                 (
- (
- Capacity,
- "200 - 500 peoples"
- )
- );
- "starting_price" = 500;
- "starting_rice_labe" = Person;
- "years_in_business" = "2 years";
- },
- 
- */
-
-
-
+@property(nonatomic, weak)IBOutlet UIImageView *img1;
+@property(nonatomic, weak)IBOutlet UIImageView *img2;
+@property(nonatomic, weak)IBOutlet UIImageView *img3;
+@property(nonatomic, weak)IBOutlet UIImageView *img4;
+@property(nonatomic, weak)IBOutlet UIImageView *img5;
 @end

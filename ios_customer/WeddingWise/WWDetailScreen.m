@@ -89,10 +89,54 @@
                                        
                                    } failure:nil];
     
+    NSArray *icons=[dicVendorData valueForKey:@"icons"];
+    if(icons.count>0){
+        for (int i=0; i< icons.count; i++) {
+            NSString *iconURL= [icons objectAtIndex:i];
+            NSLog(@"iconURL :%@",[NSString stringWithFormat:@"http://wedwise.work%@",iconURL]);
+            
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",iconURL]];
+            NSURLRequest *request = [NSURLRequest requestWithURL:url];
+            UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
+            
+            __weak WWCategoryCell *weakCell = cell;
+            
+            [cell.imgCategory setImageWithURLRequest:request
+                                    placeholderImage:placeholderImage
+                                             success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                 switch (i) {
+                                                     case 0:
+                                                         weakCell.img1.image = image;
+                                                         break;
+                                                     case 1:
+                                                         weakCell.img2.image = image;
+                                                         break;
+                                                     case 2:
+                                                         weakCell.img3.image = image;
+                                                         break;
+                                                     case 3:
+                                                         weakCell.img4.image = image;
+                                                         break;
+                                                     case 4:
+                                                         weakCell.img5.image = image;
+                                                         break;
+                                                         
+                                                     default:
+                                                         break;
+                                                 }
+                                                 
+                                                 [weakCell setNeedsLayout];
+                                                 
+                                             } failure:nil];
+        }
+    }
+    
+    
+    
 //    cell.imgCategory.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",[dicVendorData valueForKey:@"image"]]]]];
     
     cell.lblName.text=[dicVendorData valueForKey:@"name"];
-    cell.lblStartingPrice.text=[NSString stringWithFormat:@"Starting Price:%@",[dicVendorData valueForKey:@"starting_price"]];
+    cell.lblStartingPrice.text=[NSString stringWithFormat:@"%@/-",[dicVendorData valueForKey:@"starting_price"]];
     cell.lblCapacity.text=[[[dicVendorData valueForKey:@"others_two"] objectAtIndex:0] objectAtIndex:1];
     cell.lblVeg.text=[[dicVendorData valueForKey:@"others_one"] objectAtIndex:2];
     
