@@ -10,6 +10,7 @@
 
 @interface WWScheduleVC : UIViewController
 @property (weak, nonatomic) IBOutlet UIDatePicker *timePicker;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UILabel *scheduleTimeLabel;
 
 - (IBAction)scheduleVisitAction:(id)sender;
