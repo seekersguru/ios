@@ -1,0 +1,13 @@
+.DS_Store
+**/.DS_Store
+**/build/
+**/xcuserdata/
+**/*.xccheckout
+ios_customer/WeddingWise.xcodeproj/project.pbxproj
+
+*.pbxproj
+*.framework
+
+*.pbxproj
+
+ios_vendor/WeddingWise.xcodeproj/project.pbxproj
