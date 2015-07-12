@@ -38,5 +38,4 @@
 - (id)initWithFrame:(CGRect)frame;
 
 - (void)configureForDay:(NSDateComponents*)day;
-
 @end

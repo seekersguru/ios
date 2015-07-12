@@ -44,6 +44,7 @@
     __strong NSDate *_dayAsDate;
     __strong NSDateComponents *_day;
     __strong NSString *_labelText;
+    __strong NSString *_eventText;
 }
 
 
@@ -54,6 +55,20 @@
     if (self != nil) {
         self.backgroundColor = [UIColor whiteColor];
         _positionInWeek = DSLCalendarDayViewMidWeek;
+        
+        CGRect frame = self.bounds;
+        frame.origin.x = frame.size.width-15;
+        frame.size.width = 15;
+        frame.size.height = 15;
+        _eventCountLabel = [[UILabel alloc] initWithFrame:frame];
+        [_eventCountLabel setTextColor:[UIColor whiteColor]];
+        [_eventCountLabel setBackgroundColor:[UIColor redColor]];
+        [_eventCountLabel setTextAlignment:NSTextAlignmentRight];
+        [_eventCountLabel setFont:[UIFont systemFontOfSize:12.0]];
+        [self addSubview:_eventCountLabel];
+        [self bringSubviewToFront:_eventCountLabel];
+        
+        _eventCountLabel.hidden = YES;
     }
     
     return self;
@@ -72,6 +87,7 @@
     _dayAsDate = [day date];
     _day = nil;
     _labelText = [NSString stringWithFormat:@"%ld", (long)day.day];
+    _eventText = [NSString stringWithFormat:@"%ld", (long)day.day];
 }
 
 - (NSDateComponents*)day {
@@ -107,6 +123,7 @@
 #pragma mark Drawing
 
 - (void)drawBackground {
+
     if (self.selectionState == DSLCalendarDayViewNotSelected) {
         if (self.isInCurrentMonth) {
             [[UIColor colorWithRed:252.0/255.0 green:252.0/255.0 blue:252.0/255.0 alpha:1.0] setFill];
@@ -127,19 +144,13 @@
                 break;
                 
             case DSLCalendarDayViewStartOfSelection:
-                [[[UIImage imageNamed:@"DSLCalendarDaySelection"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] drawInRect:self.bounds];
-                break;
-                
             case DSLCalendarDayViewEndOfSelection:
-                [[[UIImage imageNamed:@"DSLCalendarDaySelection"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] drawInRect:self.bounds];
-                break;
-                
             case DSLCalendarDayViewWithinSelection:
-                [[[UIImage imageNamed:@"DSLCalendarDaySelection"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] drawInRect:self.bounds];
-                break;
-                
-            case DSLCalendarDayViewWholeSelection://cal_seldate
-                [[[UIImage imageNamed:@"DSLCalendarDaySelection"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] drawInRect:self.bounds];
+            case DSLCalendarDayViewWholeSelection:
+            {
+                [[UIColor colorWithRed:240/255.0 green:103/255.0 blue:90/255.0 alpha:1.0] setFill];
+                UIRectFill(self.bounds);
+            }
                 break;
         }
     }
@@ -192,6 +203,11 @@
     
     
     
+}
+
+- (void)showEventCount:(NSString *)count{
+    _eventCountLabel.hidden = NO;
+    [_eventCountLabel setText:count];
 }
 
 @end
