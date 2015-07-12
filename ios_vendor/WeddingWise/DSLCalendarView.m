@@ -43,6 +43,7 @@
 @property (nonatomic, strong) DSLCalendarDayCalloutView *dayCalloutView;
 @property (nonatomic, copy) NSDateComponents *draggingFixedDay;
 @property (nonatomic, copy) NSDateComponents *draggingStartDay;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, assign) BOOL draggedOffStartDay;
 
 @property (nonatomic, strong) NSMutableDictionary *monthViews;
@@ -84,8 +85,14 @@
 
     return self;
 }
-
+- (void)showCalender{
+    [self positionViewsForMonth:_visibleMonth fromMonth:_visibleMonth animated:NO];
+}
 - (void)commonInit {
+    
+    _dateFormatter = [[NSDateFormatter alloc] init];
+    [_dateFormatter setDateFormat:@"dd"];
+    
     _dayViewHeight = 44;
     
     _visibleMonth = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSCalendarCalendarUnit fromDate:[NSDate date]];
@@ -116,7 +123,7 @@
     self.monthViews = [[NSMutableDictionary alloc] init];
 
     [self updateMonthLabelMonth:_visibleMonth];
-    [self positionViewsForMonth:_visibleMonth fromMonth:_visibleMonth animated:NO];
+    
 }
 
 
@@ -204,7 +211,7 @@
     NSString *monthViewKey = [self monthViewKeyForMonth:month];
     DSLCalendarMonthView *monthView = [self.monthViews objectForKey:monthViewKey];
     if (monthView == nil) {
-        monthView = [[[[self class] monthViewClass] alloc] initWithMonth:month width:self.bounds.size.width dayViewClass:[[self class] dayViewClass] dayViewHeight:_dayViewHeight];
+        monthView = [[[[self class] monthViewClass] alloc] initWithMonth:month width:self.bounds.size.width dayViewClass:[[self class] dayViewClass] dayViewHeight:_dayViewHeight showEvent:_showEventsOnCalloutView withEventDict:_eventsDictionary];
         [self.monthViews setObject:monthView forKey:monthViewKey];
         [self.monthContainerViewContentView addSubview:monthView];
 
