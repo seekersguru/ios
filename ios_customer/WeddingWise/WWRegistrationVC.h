@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface WWRegistrationVC : UIViewController
-
+{
+    IBOutlet UILabel *lblPolicy;
+}
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UIImageView *imgDatePicker;
 @property(nonatomic, weak)IBOutlet UITextField *txtEmailAddress;
 @property(nonatomic, weak)IBOutlet UITextField *txtPassword;
 @property(nonatomic, weak)IBOutlet UITextField *txtGroomName;
@@ -22,5 +26,5 @@
 @property(nonatomic, strong)NSDictionary *fbResponse;
 -(IBAction)btnSignUpPressed:(id)sender;
 -(IBAction)btnBackPressed:(id)sender;
-
+-(IBAction)btnTentativeDatePressed:(id)sender;
 @end

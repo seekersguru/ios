@@ -10,7 +10,9 @@
 
 
 @interface WWLoginVC : UIViewController<UITextFieldDelegate>
-
+{
+    IBOutlet UILabel *lblPolicy;
+}
 @property(nonatomic, weak)IBOutlet UITextField *txtEmailAddress;
 @property(nonatomic, weak)IBOutlet UITextField *txtPassword;
 

@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface WWForgotPassword : UIViewController
-
+{
+    IBOutlet UILabel *lblPolicy;
+}
 @property(nonatomic, weak)IBOutlet UITextField *txtEmailAddress;
 @property(nonatomic, weak)IBOutlet UITextField *txtPassword;
 

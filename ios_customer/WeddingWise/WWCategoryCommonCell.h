@@ -11,7 +11,7 @@
 @interface WWCategoryCommonCell : UITableViewCell
 @property(nonatomic, weak)IBOutlet UILabel *key;
 @property(nonatomic, weak)IBOutlet UILabel *value;
-
+@property(nonatomic, weak)IBOutlet UIImageView *imgCheck;
 
 -(void)setCommonData:(NSDictionary*)dicData withIndexPath:(NSIndexPath*)index;
 

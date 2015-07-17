@@ -21,13 +21,15 @@
 
 #import "WWCreateBidVC.h"
 #import "WWMessageList.h"
+#import "WWCategoryFooterCell.h"
 
 #define DEGREES_IN_RADIANS(x) (M_PI * x / 180.0)
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
 
-@interface WWCategoryDetailVC ()<PackageDelegate,FacilityDelegate,DescriptionDelegate, MapCellDelegate,ImageCellDelegate>
+@interface WWCategoryDetailVC ()<PackageDelegate,FacilityDelegate,DescriptionDelegate, MapCellDelegate,ImageCellDelegate, FooterCellDelegate>
 {
     NSMutableArray *arrVendorDetailData;
+    NSArray *arrReadMoreData;
 }
 @end
 
@@ -37,7 +39,7 @@
     
     [super viewDidLoad];
     arrVendorDetailData=[[NSMutableArray alloc]init];
-    
+    arrReadMoreData= [[NSArray alloc]init];
     [self setUpCustomView];
     [self callWebService];
 }
@@ -60,10 +62,13 @@
              //setting bid info for this vendor, to use on add bid page
              WWVendorBidData *bidInfo = [WWVendorBidData sharedInstance];
              [bidInfo setVendorBidInfo:responseDics[@"json"][@"data"][@"bid"]];
+             //[arrVendorDetailData addObject:bidInfo];
              
              //setting booking info for this vendor, to use on add booking page
              WWVendorBookingData *bookingInfo = [WWVendorBookingData sharedInstance];
              [bookingInfo setVendorBookingInfo:responseDics[@"json"][@"data"][@"book"]];
+             
+             //[arrVendorDetailData addObject:bookingInfo];
              
              WWVendorDetailData *basicInfo = [WWVendorDetailData sharedInstance];
              [basicInfo setVendorBasicInfo:[[[responseDics valueForKey:@"json"] valueForKey:@"data"] valueForKey:@"info"]];
@@ -148,9 +153,7 @@
             NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
             cell = [topLevelObjects objectAtIndex:0];
         }
-        
-        WWVendorDescription *descData=[arrVendorDetailData objectAtIndex:1];
-        NSDictionary *dicData=[[[[descData.descReadMoreData objectAtIndex:0] objectAtIndex:0] objectAtIndex:0] objectAtIndex:indexPath.row];
+        NSDictionary *dicData=[arrReadMoreData objectAtIndex:indexPath.row];
         [cell setCommonData:dicData withIndexPath:indexPath];
         return cell;
     }
@@ -168,12 +171,11 @@
                 self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
                 
                 if(arrVendorDetailData.count>0){
-                    WWVendorDetailData *basicInfo= [arrVendorDetailData objectAtIndex:indexPath.row];
-                    cell.name.text= [NSString stringWithFormat:@"test %@",basicInfo.name];
-                    cell.contactNumber.text= [NSString stringWithFormat:@"test %@",basicInfo.contact];
-                    cell.address.text= [NSString stringWithFormat:@"test %@",basicInfo.top_address];
+                    WWVendorDetailData *basicInfo= [arrVendorDetailData objectAtIndex:0];
+                    cell.name.text= [NSString stringWithFormat:@"%@",basicInfo.name];
+                    cell.contactNumber.text= [NSString stringWithFormat:@"%@",basicInfo.contact];
+                    cell.address.text= [NSString stringWithFormat:@"%@",basicInfo.top_address];
                 }
-                
                 return cell;
             }
                 
@@ -197,51 +199,77 @@
                 
                 return cell;
             }
-                
                 break;
             default:
             {
                 if(arrVendorDetailData.count>0){
-                    id object= [arrVendorDetailData objectAtIndex:indexPath.row-1];
-                    if([object isKindOfClass:[WWVendorDescription class]]){
-                        static NSString *CellIdentifier = @"WWCategoryListCell";
-                        WWCategoryListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                        if (cell == nil) {
-                            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
-                            cell = [topLevelObjects objectAtIndex:0];
+                    @try {
+                        NSLog(@"indexPath :%lu array count :%lu", indexPath.row, arrVendorDetailData.count);
+                        if (indexPath.row==arrVendorDetailData.count+1) {
+                            static NSString *CellIdentifier = @"WWCategoryFooterCell";
+                            WWCategoryFooterCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                            if (cell == nil) {
+                                NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+                                cell = [topLevelObjects objectAtIndex:0];
+                            }
+                            cell.delegate= self;
+                            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+                            self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
+                            return cell;
                         }
-                        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-                        self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
-                        cell.delegate= self;
-                        WWVendorDescription *descData=[arrVendorDetailData objectAtIndex:1];
-                        [cell getDescriptionData:descData.arrDescriptionData];
-                        //cell.lblHeading.text= descData.heading;
-                        return cell;
-                    }
-                    else if ([object isKindOfClass:[WWVendorMap class]]){
-                        static NSString *CellIdentifier = @"WWCategoryMapCell";
-                        WWCategoryMapCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                        if (cell == nil) {
-                            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
-                            cell = [topLevelObjects objectAtIndex:0];
+                        else{
+                            id object= [arrVendorDetailData objectAtIndex:indexPath.row-1];
+                            if([object isKindOfClass:[WWVendorDescription class]]){
+                                static NSString *CellIdentifier = @"WWCategoryListCell";
+                                WWCategoryListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                                if (cell == nil) {
+                                    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+                                    cell = [topLevelObjects objectAtIndex:0];
+                                }
+                                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+                                self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
+                                cell.delegate= self;
+                                cell.btnReadMore.tag=indexPath.row;
+                                
+                                WWVendorDescription *descData=(WWVendorDescription*)object;
+                                [cell getDescriptionData:descData.arrDescriptionData];
+                                cell.lblHeading.text= descData.heading;
+                                cell.lblHeading.font = [UIFont fontWithName:AppFont size:12.0];
+                                return cell;
+                            }
+                            else if ([object isKindOfClass:[WWVendorMap class]]){
+                                static NSString *CellIdentifier = @"WWCategoryMapCell";
+                                WWCategoryMapCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                                if (cell == nil) {
+                                    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+                                    cell = [topLevelObjects objectAtIndex:0];
+                                }
+                                cell.delegate= self;
+                                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+                                self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
+                                return cell;
+                            }
+                            else if ([object isKindOfClass:[WWVendorPackage class]]){
+                                static NSString *CellIdentifier = @"WWCategoryPackageCell";
+                                WWCategoryPackageCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                                if (cell == nil) {
+                                    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+                                    cell = [topLevelObjects objectAtIndex:0];
+                                }
+                                cell.delegate= self;
+                                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+                                self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
+                                return cell;
+                            }
                         }
-                        cell.delegate= self;
-                        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-                        self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
-                        return cell;
                     }
-                    else if ([object isKindOfClass:[WWVendorPackage class]]){
-                        static NSString *CellIdentifier = @"WWCategoryPackageCell";
-                        WWCategoryPackageCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                        if (cell == nil) {
-                            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
-                            cell = [topLevelObjects objectAtIndex:0];
-                        }
-                        cell.delegate= self;
-                        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-                        self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
-                        return cell;
+                    @catch (NSException *exception) {
+                        NSLog(@"Exception :%@", exception);
                     }
+                    @finally {
+                        
+                    }
+                    
                 }
             }
                 break;
@@ -263,19 +291,26 @@
             case 1:
                 return 180;
                 break;
-            case 2:
-                return 224;
-                break;
-            case 3:
-                return 130;
-                break;
-            case 4:
-                return 232;
-                break;
-            case 5:
-                return 185;
-                break;
             default:
+            {
+                if (indexPath.row==14) {
+                    return 50;
+                }
+                else
+                    return 224;
+//                id object= [arrVendorDetailData objectAtIndex:indexPath.row-1];
+//                
+//                if([object isKindOfClass:[WWVendorDescription class]]){
+//                    return 224;
+//                    
+//                }
+//                else if ([object isKindOfClass:[WWVendorMap class]]){
+//                    return 130;
+//                }
+//                else if ([object isKindOfClass:[WWVendorPackage class]]){
+//                    return 185;
+//                }
+            }
                 break;
         }
     }
@@ -284,25 +319,34 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(tableView== _tblReadMore){
-        return 8;
+        return arrReadMoreData.count;
     }
     else{
-        return arrVendorDetailData.count +1;
+        return arrVendorDetailData.count+2;
     }
     
 }
 
 
 #pragma mark: Cell Delegate methods:
--(void)showCategryReadMoreView{
+-(void)showCategryReadMoreView:(id)sender{
     [UIView animateWithDuration:0.3
                           delay:0.0
                         options: UIViewAnimationOptionCurveEaseIn
                      animations:^{
-                         _descriptionView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-                         _tblReadMore.delegate= self;
-                         _tblReadMore.dataSource= self;
-                         [_tblReadMore reloadData];
+                         UIButton *readMore=sender;
+                         WWVendorDescription *descData=[arrVendorDetailData objectAtIndex:readMore.tag-1];
+                         arrReadMoreData= nil;
+                         if (descData.descReadMoreData != (id)[NSNull null] && descData.descReadMoreData.count>0) {
+                             arrReadMoreData=descData.descReadMoreData;
+                             _descriptionView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-100);
+                             _tblReadMore.delegate= self;
+                             _tblReadMore.dataSource= self;
+                             [_tblReadMore reloadData];
+                         }
+                         else{
+                             [[WWCommon getSharedObject]createAlertView:kAppName :@"No data avalilable" :nil :000 ];
+                         }
                      }
                      completion:^(BOOL finished){
                      }];
@@ -371,6 +415,14 @@
 
 - (IBAction)stopVideo:(id)sender {
     [self.playerView stopVideo];
+}
+-(void)bidButtonClicked{
+    WWCreateBidVC *createBid=[[WWCreateBidVC alloc]initWithNibName:@"WWCreateBidVC" bundle:nil];
+    [self.navigationController pushViewController:createBid animated:YES];
+}
+-(void)bookButtonClicked{
+    WWCreateBidVC *createBid=[[WWCreateBidVC alloc]initWithNibName:@"WWCreateBidVC" bundle:nil];
+    [self.navigationController pushViewController:createBid animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

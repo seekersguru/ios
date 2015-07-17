@@ -87,13 +87,36 @@
 
 @implementation WWVendorDescription
 -(WWVendorDescription*)setVendorDescrition:(NSDictionary*)descriptionInfo{
-
-    [self setArrDescriptionData:[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"key_values"]];
-    [self setDescReadMoreData:[[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] valueForKey:@"key_values"]];
     
-    NSArray *strHeading=[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"heading"];
-    [self setHeading:[strHeading objectAtIndex:0]];
-    
+    @try {
+        
+        [self setArrDescriptionData:[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"key_values"] objectAtIndex:0]];
+        
+        if([[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] objectAtIndex:0]!= [NSNull null]){
+            [self setDescReadMoreData:[[[[[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] valueForKey:@"key_values"] objectAtIndex:0] objectAtIndex:0] objectAtIndex:0]];
+            NSLog(@"_descReadMoreData :%@", _descReadMoreData);
+        }
+        else{
+            NSLog(@"Value is null");
+        }
+        
+        //NSArray *strHeading=[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"heading"];
+         NSArray *strHeading=[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"heading"];
+        if([strHeading objectAtIndex:0] !=[NSNull null]){
+            
+            NSLog(@"strHeading ®: %@",[[strHeading objectAtIndex:0] objectAtIndex:0]);
+            [self setHeading:[[strHeading objectAtIndex:0] objectAtIndex:0]];
+        }
+        else{
+            [self setHeading:@"N/A"];
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Exception :%@", exception);
+    }
+    @finally {
+        
+    }
     return self;
 }
 @end
@@ -117,10 +140,14 @@
 -(WWVendorPackage*)setVendorPackage:(NSDictionary*)packageInfo{
     
     [self setArrPackageData:[[packageInfo valueForKey:@"data_display"] valueForKey:@"key_values"]];
+    
     [self setPackageReadMoreData:[[[[packageInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] valueForKey:@"key_values"]];
     
-    NSArray *strHeading=[[[packageInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"heading"];
+    //NSArray *strHeading=[[[packageInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"heading"];
+    NSArray *strHeading=[[packageInfo valueForKey:@"data_display"] valueForKey:@"heading"];
+    
     [self setHeading:[strHeading objectAtIndex:0]];
+    
     
     return self;
 }

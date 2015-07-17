@@ -43,7 +43,10 @@
 #define kContactNumber                  @"Please enter contact number."
 #define kValidEmail                     @"Please enter valid email."
 
-#define kGPClientID                     @"341522735800-tkngmd3u56mq7shvea9pmibng12qdmhj.apps.googleusercontent.com"
+#define kGPClientID                     @"616308211638-9gl77th0hu2kjfp39h4tfhtq1lpnh20l.apps.googleusercontent.com"
+//341522735800-tkngmd3u56mq7shvea9pmibng12qdmhj.apps.googleusercontent.com
+
+
 //#define kGTLAuthScopePlusLogin          @"https://www.googleapis.com/auth/plus.login"
 
 #ifdef DEBUG

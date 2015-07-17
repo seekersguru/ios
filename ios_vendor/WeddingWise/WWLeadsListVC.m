@@ -65,7 +65,7 @@
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
                                  @"1",@"page_no",
-                                 @"c2v",@"from_to",
+                                 @"v2c",@"from_to",
                                  type,@"msg_type",
                                  @"customer_vendor_message_list",@"action",
                                  nil];

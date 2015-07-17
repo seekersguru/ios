@@ -76,6 +76,7 @@
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
              NSArray *arrData=[responseDics valueForKey:@"json"];
+             [chatArray removeAllObjects];
              for (NSDictionary *arrMessages in arrData) {
                  [chatArray addObject:arrMessages];
              }
@@ -104,7 +105,7 @@
     //[self.navigationController.navigationBar setHidden:NO];
 }
 -(IBAction)refreshButtonPressed:(id)sender{
-    [self.navigationController popViewControllerAnimated:YES];
+   [self callPrivateChatAPI];
 }
 -(IBAction)backButtonPressed:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];

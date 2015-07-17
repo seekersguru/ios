@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WWLoginVC">
             <connections>
                 <outlet property="bgImage" destination="asX-NE-ZoJ" id="j1W-m5-6fV"/>
+                <outlet property="lblPolicy" destination="cUn-rY-qm0" id="C99-Ld-kto"/>
                 <outlet property="txtEmailAddress" destination="G5M-Oc-Eqx" id="uTQ-zq-Jya"/>
                 <outlet property="txtPassword" destination="MDq-yR-cWt" id="bl4-jz-tH7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -76,13 +77,13 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="footer_bg" id="c8g-a7-Cve">
-                    <rect key="frame" x="0.0" y="486" width="320" height="79"/>
+                    <rect key="frame" x="0.0" y="531" width="320" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By signing up, I agree to Terms of Services, Privacy Policies, guest Refund Policies, and Host Guarantee terms." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cUn-rY-qm0">
-                    <rect key="frame" x="33" y="490" width="265" height="71"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By signing up I agree to terms and policies of wedwise." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cUn-rY-qm0">
+                    <rect key="frame" x="10" y="533" width="302" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>

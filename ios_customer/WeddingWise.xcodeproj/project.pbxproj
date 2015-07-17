@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60C763081B53D19900387B54 /* WWLeadsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 60C762F91B53D19900387B54 /* WWLeadsListVC.m */; };
+		60C763091B53D19900387B54 /* WWLeadsListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60C762FA1B53D19900387B54 /* WWLeadsListVC.xib */; };
+		60C7630A1B53D19900387B54 /* WWCreateBidVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 60C762FC1B53D19900387B54 /* WWCreateBidVC.m */; };
+		60C7630B1B53D19900387B54 /* WWCreateBidVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60C762FD1B53D19900387B54 /* WWCreateBidVC.xib */; };
+		60C7630C1B53D19900387B54 /* WWInquiryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 60C762FF1B53D19900387B54 /* WWInquiryDetailVC.m */; };
+		60C7630D1B53D19900387B54 /* WWInquiryDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60C763001B53D19900387B54 /* WWInquiryDetailVC.xib */; };
+		60C7630E1B53D19900387B54 /* WWInquiryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 60C763021B53D19900387B54 /* WWInquiryCell.m */; };
+		60C7630F1B53D19900387B54 /* WWInquiryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60C763031B53D19900387B54 /* WWInquiryCell.xib */; };
+		60C763101B53D19900387B54 /* WWBidListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 60C763051B53D19900387B54 /* WWBidListCell.m */; };
+		60C763111B53D19900387B54 /* WWBidListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60C763061B53D19900387B54 /* WWBidListCell.xib */; };
+		60C763141B53D20900387B54 /* WWVendorDetailData.m in Sources */ = {isa = PBXBuildFile; fileRef = 60C763131B53D20900387B54 /* WWVendorDetailData.m */; };
 		60D086631B31385E00BCD2BE /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D0865F1B31385E00BCD2BE /* FBSDKCoreKit.framework */; };
 		60D086641B31385E00BCD2BE /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D086601B31385E00BCD2BE /* FBSDKLoginKit.framework */; };
 		60D086651B31385E00BCD2BE /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D086611B31385E00BCD2BE /* FBSDKMessengerShareKit.framework */; };
@@ -14,8 +25,6 @@
 		60D0866A1B31388700BCD2BE /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D086671B31388700BCD2BE /* GoogleOpenSource.framework */; };
 		60D0866B1B31388700BCD2BE /* GooglePlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D086681B31388700BCD2BE /* GooglePlus.bundle */; };
 		60D0866C1B31388700BCD2BE /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D086691B31388700BCD2BE /* GooglePlus.framework */; };
-		60D086711B31447C00BCD2BE /* WWCreateBidVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D0866F1B31447C00BCD2BE /* WWCreateBidVC.m */; };
-		60D086721B31447C00BCD2BE /* WWCreateBidVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60D086701B31447C00BCD2BE /* WWCreateBidVC.xib */; };
 		DAC41D564FCD8A8345D36778 /* libPods-WeddingWise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F35EDC96DE2AB293288A448C /* libPods-WeddingWise.a */; };
 		F45332CE1B4B03DE00C09482 /* GothamRoundedBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F45332CD1B4B03DE00C09482 /* GothamRoundedBook.ttf */; };
 		F4609B651B0BBA8100BCCCB8 /* WWDashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */; };
@@ -48,7 +57,6 @@
 		F4BC31BA1B179BA500BF5BB2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BC31B91B179BA500BF5BB2 /* Security.framework */; };
 		F4BC31BC1B179BBC00BF5BB2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BC31BB1B179BBC00BF5BB2 /* SystemConfiguration.framework */; };
 		F4BC31BE1B179BC400BF5BB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BC31BD1B179BC400BF5BB2 /* UIKit.framework */; };
-		F4C2B1571B4C534F000639BC /* WWVendorDetailData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C2B1561B4C534F000639BC /* WWVendorDetailData.m */; };
 		F4C2B1601B4D70FF000639BC /* WWCategoryListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C2B15E1B4D70FF000639BC /* WWCategoryListCell.m */; };
 		F4C2B1611B4D70FF000639BC /* WWCategoryListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C2B15F1B4D70FF000639BC /* WWCategoryListCell.xib */; };
 		F4C2B1651B4D7348000639BC /* WWCategoryCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C2B1631B4D7348000639BC /* WWCategoryCommonCell.m */; };
@@ -63,13 +71,9 @@
 		F4CB16EE1B373EEC0078419A /* WWCategoryPackageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB16EC1B373EEC0078419A /* WWCategoryPackageCell.xib */; };
 		F4CB16F21B3770420078419A /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB16F11B3770420078419A /* YTPlayerView.m */; };
 		F4CB16F81B3898CA0078419A /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = F4CB16F71B3898CA0078419A /* YTPlayerView-iframe-player.html */; };
-		F4CB16FE1B3B1DDB0078419A /* WWLeadsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB16FC1B3B1DDB0078419A /* WWLeadsListVC.m */; };
-		F4CB16FF1B3B1DDB0078419A /* WWLeadsListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB16FD1B3B1DDB0078419A /* WWLeadsListVC.xib */; };
-		F4CB17031B3B24A30078419A /* WWInquiryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB17011B3B24A30078419A /* WWInquiryDetailVC.m */; };
-		F4CB17041B3B24A30078419A /* WWInquiryDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17021B3B24A30078419A /* WWInquiryDetailVC.xib */; };
-		F4CB17081B3B25750078419A /* WWInquiryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB17061B3B25750078419A /* WWInquiryCell.m */; };
-		F4CB17091B3B25750078419A /* WWInquiryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17071B3B25750078419A /* WWInquiryCell.xib */; };
 		F4CBDB2B1B52FD15000DB347 /* WWLoginUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB2A1B52FD15000DB347 /* WWLoginUserData.m */; };
+		F4CBDB4E1B544998000DB347 /* WWCategoryFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB4C1B544998000DB347 /* WWCategoryFooterCell.m */; };
+		F4CBDB4F1B544998000DB347 /* WWCategoryFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB4D1B544998000DB347 /* WWCategoryFooterCell.xib */; };
 		F4CCA5531B48593800F33FDA /* gotham-book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4CCA5521B48593800F33FDA /* gotham-book.ttf */; };
 		F4CD4E2A1B3082310081FE0B /* WWCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD4E281B3082310081FE0B /* WWCategoryCell.m */; };
 		F4CD4E2B1B3082310081FE0B /* WWCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CD4E291B3082310081FE0B /* WWCategoryCell.xib */; };
@@ -117,8 +121,6 @@
 		F4D08A6F1B20CDB300AF8E36 /* DSLCalendarDayCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D08A651B20CDB300AF8E36 /* DSLCalendarDayCalloutView.xib */; };
 		F4D08A701B20CDB300AF8E36 /* NSDate+DSLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D08A671B20CDB300AF8E36 /* NSDate+DSLCalendarView.m */; };
 		F4D08A781B20D3BF00AF8E36 /* slicingbg.png in Resources */ = {isa = PBXBuildFile; fileRef = F4D08A771B20D3BF00AF8E36 /* slicingbg.png */; };
-		F4D931231B51A22C0097B51C /* WWBidListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D931211B51A22C0097B51C /* WWBidListCell.m */; };
-		F4D931241B51A22C0097B51C /* WWBidListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D931221B51A22C0097B51C /* WWBidListCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +134,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		60C762F81B53D19900387B54 /* WWLeadsListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWLeadsListVC.h; sourceTree = "<group>"; };
+		60C762F91B53D19900387B54 /* WWLeadsListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWLeadsListVC.m; sourceTree = "<group>"; };
+		60C762FA1B53D19900387B54 /* WWLeadsListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWLeadsListVC.xib; sourceTree = "<group>"; };
+		60C762FB1B53D19900387B54 /* WWCreateBidVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCreateBidVC.h; sourceTree = "<group>"; };
+		60C762FC1B53D19900387B54 /* WWCreateBidVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCreateBidVC.m; sourceTree = "<group>"; };
+		60C762FD1B53D19900387B54 /* WWCreateBidVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCreateBidVC.xib; sourceTree = "<group>"; };
+		60C762FE1B53D19900387B54 /* WWInquiryDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWInquiryDetailVC.h; sourceTree = "<group>"; };
+		60C762FF1B53D19900387B54 /* WWInquiryDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWInquiryDetailVC.m; sourceTree = "<group>"; };
+		60C763001B53D19900387B54 /* WWInquiryDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWInquiryDetailVC.xib; sourceTree = "<group>"; };
+		60C763011B53D19900387B54 /* WWInquiryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWInquiryCell.h; sourceTree = "<group>"; };
+		60C763021B53D19900387B54 /* WWInquiryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWInquiryCell.m; sourceTree = "<group>"; };
+		60C763031B53D19900387B54 /* WWInquiryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWInquiryCell.xib; sourceTree = "<group>"; };
+		60C763041B53D19900387B54 /* WWBidListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWBidListCell.h; sourceTree = "<group>"; };
+		60C763051B53D19900387B54 /* WWBidListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWBidListCell.m; sourceTree = "<group>"; };
+		60C763061B53D19900387B54 /* WWBidListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWBidListCell.xib; sourceTree = "<group>"; };
+		60C763121B53D20900387B54 /* WWVendorDetailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWVendorDetailData.h; sourceTree = "<group>"; };
+		60C763131B53D20900387B54 /* WWVendorDetailData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWVendorDetailData.m; sourceTree = "<group>"; };
 		60D0865F1B31385E00BCD2BE /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		60D086601B31385E00BCD2BE /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		60D086611B31385E00BCD2BE /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKMessengerShareKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
@@ -139,9 +158,6 @@
 		60D086671B31388700BCD2BE /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../../../../../Downloads/google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
 		60D086681B31388700BCD2BE /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "../../../../../../Downloads/google-plus-ios-sdk-1.7.1/GooglePlus.bundle"; sourceTree = "<group>"; };
 		60D086691B31388700BCD2BE /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../../../../../Downloads/google-plus-ios-sdk-1.7.1/GooglePlus.framework"; sourceTree = "<group>"; };
-		60D0866E1B31447C00BCD2BE /* WWCreateBidVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCreateBidVC.h; sourceTree = "<group>"; };
-		60D0866F1B31447C00BCD2BE /* WWCreateBidVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCreateBidVC.m; sourceTree = "<group>"; };
-		60D086701B31447C00BCD2BE /* WWCreateBidVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCreateBidVC.xib; sourceTree = "<group>"; };
 		B7F75524AF798B2E38C82249 /* Pods-WeddingWise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingWise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingWise/Pods-WeddingWise.debug.xcconfig"; sourceTree = "<group>"; };
 		BCA744BDD1EACD68F038680E /* Pods-WeddingWise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingWise.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingWise/Pods-WeddingWise.release.xcconfig"; sourceTree = "<group>"; };
 		F35EDC96DE2AB293288A448C /* libPods-WeddingWise.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeddingWise.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,8 +208,6 @@
 		F4BCBA941B1F8AA800082A73 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../R&D/google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
 		F4BCBA951B1F8AA800082A73 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../R&D/google-plus-ios-sdk-1.7.1/GooglePlus.framework"; sourceTree = "<group>"; };
 		F4BCBA9A1B1F961800082A73 /* WeddingWise.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeddingWise.pch; sourceTree = "<group>"; };
-		F4C2B1551B4C534F000639BC /* WWVendorDetailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWVendorDetailData.h; sourceTree = "<group>"; };
-		F4C2B1561B4C534F000639BC /* WWVendorDetailData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWVendorDetailData.m; sourceTree = "<group>"; };
 		F4C2B15D1B4D70FF000639BC /* WWCategoryListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCategoryListCell.h; sourceTree = "<group>"; };
 		F4C2B15E1B4D70FF000639BC /* WWCategoryListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCategoryListCell.m; sourceTree = "<group>"; };
 		F4C2B15F1B4D70FF000639BC /* WWCategoryListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCategoryListCell.xib; sourceTree = "<group>"; };
@@ -216,17 +230,11 @@
 		F4CB16F01B3770420078419A /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
 		F4CB16F11B3770420078419A /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
 		F4CB16F71B3898CA0078419A /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
-		F4CB16FB1B3B1DDB0078419A /* WWLeadsListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWLeadsListVC.h; sourceTree = "<group>"; };
-		F4CB16FC1B3B1DDB0078419A /* WWLeadsListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWLeadsListVC.m; sourceTree = "<group>"; };
-		F4CB16FD1B3B1DDB0078419A /* WWLeadsListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWLeadsListVC.xib; sourceTree = "<group>"; };
-		F4CB17001B3B24A30078419A /* WWInquiryDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWInquiryDetailVC.h; sourceTree = "<group>"; };
-		F4CB17011B3B24A30078419A /* WWInquiryDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWInquiryDetailVC.m; sourceTree = "<group>"; };
-		F4CB17021B3B24A30078419A /* WWInquiryDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWInquiryDetailVC.xib; sourceTree = "<group>"; };
-		F4CB17051B3B25750078419A /* WWInquiryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWInquiryCell.h; sourceTree = "<group>"; };
-		F4CB17061B3B25750078419A /* WWInquiryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWInquiryCell.m; sourceTree = "<group>"; };
-		F4CB17071B3B25750078419A /* WWInquiryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWInquiryCell.xib; sourceTree = "<group>"; };
 		F4CBDB291B52FD15000DB347 /* WWLoginUserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWLoginUserData.h; sourceTree = "<group>"; };
 		F4CBDB2A1B52FD15000DB347 /* WWLoginUserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWLoginUserData.m; sourceTree = "<group>"; };
+		F4CBDB4B1B544998000DB347 /* WWCategoryFooterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCategoryFooterCell.h; sourceTree = "<group>"; };
+		F4CBDB4C1B544998000DB347 /* WWCategoryFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCategoryFooterCell.m; sourceTree = "<group>"; };
+		F4CBDB4D1B544998000DB347 /* WWCategoryFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCategoryFooterCell.xib; sourceTree = "<group>"; };
 		F4CCA5521B48593800F33FDA /* gotham-book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "gotham-book.ttf"; sourceTree = "<group>"; };
 		F4CD4E271B3082310081FE0B /* WWCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCategoryCell.h; sourceTree = "<group>"; };
 		F4CD4E281B3082310081FE0B /* WWCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCategoryCell.m; sourceTree = "<group>"; };
@@ -301,9 +309,6 @@
 		F4D08A661B20CDB300AF8E36 /* NSDate+DSLCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DSLCalendarView.h"; sourceTree = "<group>"; };
 		F4D08A671B20CDB300AF8E36 /* NSDate+DSLCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DSLCalendarView.m"; sourceTree = "<group>"; };
 		F4D08A771B20D3BF00AF8E36 /* slicingbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slicingbg.png; sourceTree = "<group>"; };
-		F4D931201B51A22C0097B51C /* WWBidListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWBidListCell.h; sourceTree = "<group>"; };
-		F4D931211B51A22C0097B51C /* WWBidListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWBidListCell.m; sourceTree = "<group>"; };
-		F4D931221B51A22C0097B51C /* WWBidListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWBidListCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,21 +362,23 @@
 		60D0866D1B31445400BCD2BE /* Bid */ = {
 			isa = PBXGroup;
 			children = (
-				F4CB16FB1B3B1DDB0078419A /* WWLeadsListVC.h */,
-				F4CB16FC1B3B1DDB0078419A /* WWLeadsListVC.m */,
-				F4CB16FD1B3B1DDB0078419A /* WWLeadsListVC.xib */,
-				60D0866E1B31447C00BCD2BE /* WWCreateBidVC.h */,
-				60D0866F1B31447C00BCD2BE /* WWCreateBidVC.m */,
-				60D086701B31447C00BCD2BE /* WWCreateBidVC.xib */,
-				F4CB17001B3B24A30078419A /* WWInquiryDetailVC.h */,
-				F4CB17011B3B24A30078419A /* WWInquiryDetailVC.m */,
-				F4CB17021B3B24A30078419A /* WWInquiryDetailVC.xib */,
-				F4CB17051B3B25750078419A /* WWInquiryCell.h */,
-				F4CB17061B3B25750078419A /* WWInquiryCell.m */,
-				F4CB17071B3B25750078419A /* WWInquiryCell.xib */,
-				F4D931201B51A22C0097B51C /* WWBidListCell.h */,
-				F4D931211B51A22C0097B51C /* WWBidListCell.m */,
-				F4D931221B51A22C0097B51C /* WWBidListCell.xib */,
+				60C763121B53D20900387B54 /* WWVendorDetailData.h */,
+				60C763131B53D20900387B54 /* WWVendorDetailData.m */,
+				60C762F81B53D19900387B54 /* WWLeadsListVC.h */,
+				60C762F91B53D19900387B54 /* WWLeadsListVC.m */,
+				60C762FA1B53D19900387B54 /* WWLeadsListVC.xib */,
+				60C762FB1B53D19900387B54 /* WWCreateBidVC.h */,
+				60C762FC1B53D19900387B54 /* WWCreateBidVC.m */,
+				60C762FD1B53D19900387B54 /* WWCreateBidVC.xib */,
+				60C762FE1B53D19900387B54 /* WWInquiryDetailVC.h */,
+				60C762FF1B53D19900387B54 /* WWInquiryDetailVC.m */,
+				60C763001B53D19900387B54 /* WWInquiryDetailVC.xib */,
+				60C763011B53D19900387B54 /* WWInquiryCell.h */,
+				60C763021B53D19900387B54 /* WWInquiryCell.m */,
+				60C763031B53D19900387B54 /* WWInquiryCell.xib */,
+				60C763041B53D19900387B54 /* WWBidListCell.h */,
+				60C763051B53D19900387B54 /* WWBidListCell.m */,
+				60C763061B53D19900387B54 /* WWBidListCell.xib */,
 			);
 			name = Bid;
 			sourceTree = "<group>";
@@ -499,14 +506,15 @@
 				F4CD4E2C1B3082F20081FE0B /* WWCategoryDetailVC.h */,
 				F4CD4E2D1B3082F20081FE0B /* WWCategoryDetailVC.m */,
 				F4CD4E2E1B3082F20081FE0B /* WWCategoryDetailVC.xib */,
-				F4C2B1551B4C534F000639BC /* WWVendorDetailData.h */,
-				F4C2B1561B4C534F000639BC /* WWVendorDetailData.m */,
 				F4C2B15D1B4D70FF000639BC /* WWCategoryListCell.h */,
 				F4C2B15E1B4D70FF000639BC /* WWCategoryListCell.m */,
 				F4C2B15F1B4D70FF000639BC /* WWCategoryListCell.xib */,
 				F4C2B1621B4D7348000639BC /* WWCategoryCommonCell.h */,
 				F4C2B1631B4D7348000639BC /* WWCategoryCommonCell.m */,
 				F4C2B1641B4D7348000639BC /* WWCategoryCommonCell.xib */,
+				F4CBDB4B1B544998000DB347 /* WWCategoryFooterCell.h */,
+				F4CBDB4C1B544998000DB347 /* WWCategoryFooterCell.m */,
+				F4CBDB4D1B544998000DB347 /* WWCategoryFooterCell.xib */,
 				F4C2B1671B4D7A29000639BC /* WWCommonData.h */,
 				F4C2B1681B4D7A29000639BC /* WWCommonData.m */,
 			);
@@ -848,28 +856,27 @@
 			files = (
 				F4CD4E4F1B3084D30081FE0B /* WWDetailScreen.xib in Resources */,
 				F4CD4E661B309D990081FE0B /* MessageListCell.xib in Resources */,
-				F4CB17041B3B24A30078419A /* WWInquiryDetailVC.xib in Resources */,
 				F4CFFA2B1B45B1470065D5D6 /* WWRegistrationVC~ipad.xib in Resources */,
 				F4CCA5531B48593800F33FDA /* gotham-book.ttf in Resources */,
 				F4CD4E681B309D990081FE0B /* SenderMsgCell.xib in Resources */,
 				F4609B781B0BC4D500BCCCB8 /* WWLoginVC.xib in Resources */,
+				F4CBDB4F1B544998000DB347 /* WWCategoryFooterCell.xib in Resources */,
 				F4D08A6A1B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.xib in Resources */,
 				F4C680AC1B2475BE00C6ED57 /* slicingfooter.png in Resources */,
 				F4CB16A91B35AB310078419A /* WWScheduleVC.xib in Resources */,
 				F4609B661B0BBA8100BCCCB8 /* WWDashboardVC.xib in Resources */,
-				60D086721B31447C00BCD2BE /* WWCreateBidVC.xib in Resources */,
 				F4CFD7D81B1B02C500D53E56 /* WWForgotPassword.xib in Resources */,
-				F4CB17091B3B25750078419A /* WWInquiryCell.xib in Resources */,
 				F4C2B1661B4D7348000639BC /* WWCategoryCommonCell.xib in Resources */,
-				F4D931241B51A22C0097B51C /* WWBidListCell.xib in Resources */,
 				F47047B51B01273100FEFEFF /* myKnotCell.xib in Resources */,
 				F4CD4E301B3082F20081FE0B /* WWCategoryDetailVC.xib in Resources */,
-				F4CB16FF1B3B1DDB0078419A /* WWLeadsListVC.xib in Resources */,
 				F4CB16EE1B373EEC0078419A /* WWCategoryPackageCell.xib in Resources */,
+				60C763111B53D19900387B54 /* WWBidListCell.xib in Resources */,
 				F4CD4E481B30830F0081FE0B /* WWCategoryMapCell.xib in Resources */,
 				F45332CE1B4B03DE00C09482 /* GothamRoundedBook.ttf in Resources */,
+				60C7630F1B53D19900387B54 /* WWInquiryCell.xib in Resources */,
 				F4CD4E591B309D020081FE0B /* WWMessageList.xib in Resources */,
 				F4CB16F81B3898CA0078419A /* YTPlayerView-iframe-player.html in Resources */,
+				60C763091B53D19900387B54 /* WWLeadsListVC.xib in Resources */,
 				F4CFFA311B45B1850065D5D6 /* WWForgotPassword~ipad.xib in Resources */,
 				F4CD4E5B1B309D020081FE0B /* WWPrivateMessage.xib in Resources */,
 				F4D08A6F1B20CDB300AF8E36 /* DSLCalendarDayCalloutView.xib in Resources */,
@@ -883,7 +890,9 @@
 				F4D08A781B20D3BF00AF8E36 /* slicingbg.png in Resources */,
 				F4CD4E2B1B3082310081FE0B /* WWCategoryCell.xib in Resources */,
 				F4CD4E4A1B30830F0081FE0B /* WWCategoryListingCell.xib in Resources */,
+				60C7630D1B53D19900387B54 /* WWInquiryDetailVC.xib in Resources */,
 				F4CD4E441B30830F0081FE0B /* WWCategoryImageCell.xib in Resources */,
+				60C7630B1B53D19900387B54 /* WWCreateBidVC.xib in Resources */,
 				F4CD4E421B30830F0081FE0B /* WWCategoryTitleCell.xib in Resources */,
 				F4CD4E461B30830F0081FE0B /* WWCategoryDescriptionCell.xib in Resources */,
 				F470474C1B011AE700FEFEFF /* Images.xcassets in Resources */,
@@ -940,40 +949,41 @@
 				F4CB16ED1B373EEC0078419A /* WWCategoryPackageCell.m in Sources */,
 				F4CB16A81B35AB310078419A /* WWScheduleVC.m in Sources */,
 				F47047441B011AE700FEFEFF /* WeddingWise.xcdatamodeld in Sources */,
-				F4D931231B51A22C0097B51C /* WWBidListCell.m in Sources */,
 				F4D08A701B20CDB300AF8E36 /* NSDate+DSLCalendarView.m in Sources */,
 				F4CD4E4E1B3084D30081FE0B /* WWDetailScreen.m in Sources */,
 				F4CFFA291B45AF4E0065D5D6 /* WWWebService.m in Sources */,
 				F4CB16F21B3770420078419A /* YTPlayerView.m in Sources */,
 				F4C2B1691B4D7A29000639BC /* WWCommonData.m in Sources */,
-				F4CB16FE1B3B1DDB0078419A /* WWLeadsListVC.m in Sources */,
-				F4CB17031B3B24A30078419A /* WWInquiryDetailVC.m in Sources */,
 				F47047B41B01273100FEFEFF /* myKnotCell.m in Sources */,
+				60C7630E1B53D19900387B54 /* WWInquiryCell.m in Sources */,
+				60C7630C1B53D19900387B54 /* WWInquiryDetailVC.m in Sources */,
 				F4C2B1651B4D7348000639BC /* WWCategoryCommonCell.m in Sources */,
 				F4C7D85E1B0D031500D69912 /* UITextField+ADTextField.m in Sources */,
 				F4D08A691B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.m in Sources */,
+				60C763081B53D19900387B54 /* WWLeadsListVC.m in Sources */,
 				F4CD4E671B309D990081FE0B /* SenderMsgCell.m in Sources */,
 				F47047411B011AE700FEFEFF /* AppDelegate.m in Sources */,
 				F47047821B0123F600FEFEFF /* RDVTabBarItem.m in Sources */,
 				F47047471B011AE700FEFEFF /* MyKnotList.m in Sources */,
 				F4D08A6C1B20CDB300AF8E36 /* DSLCalendarDayView.m in Sources */,
 				F4CD4E651B309D990081FE0B /* MessageListCell.m in Sources */,
+				60C763101B53D19900387B54 /* WWBidListCell.m in Sources */,
 				F4CBDB2B1B52FD15000DB347 /* WWLoginUserData.m in Sources */,
-				60D086711B31447C00BCD2BE /* WWCreateBidVC.m in Sources */,
 				F4CFD7D71B1B02C500D53E56 /* WWForgotPassword.m in Sources */,
 				F4CD4E491B30830F0081FE0B /* WWCategoryListingCell.m in Sources */,
 				F47047811B0123F600FEFEFF /* RDVTabBarController.m in Sources */,
 				F4CFD7EB1B1B6F8A00D53E56 /* FacebookManager.m in Sources */,
 				F4CD4E2A1B3082310081FE0B /* WWCategoryCell.m in Sources */,
+				60C763141B53D20900387B54 /* WWVendorDetailData.m in Sources */,
 				F4CD4E451B30830F0081FE0B /* WWCategoryDescriptionCell.m in Sources */,
 				F4CD4E411B30830F0081FE0B /* WWCategoryTitleCell.m in Sources */,
 				F4D08A6B1B20CDB300AF8E36 /* DSLCalendarMonthView.m in Sources */,
+				F4CBDB4E1B544998000DB347 /* WWCategoryFooterCell.m in Sources */,
 				F4609B651B0BBA8100BCCCB8 /* WWDashboardVC.m in Sources */,
 				F4CD4E691B309D990081FE0B /* ReceiverMsgCell.m in Sources */,
 				F4CD4E471B30830F0081FE0B /* WWCategoryMapCell.m in Sources */,
 				F4CD4E431B30830F0081FE0B /* WWCategoryImageCell.m in Sources */,
 				F4CD4E581B309D020081FE0B /* WWMessageList.m in Sources */,
-				F4C2B1571B4C534F000639BC /* WWVendorDetailData.m in Sources */,
 				F4CD4E5A1B309D020081FE0B /* WWPrivateMessage.m in Sources */,
 				F4C7D85B1B0CFED400D69912 /* WWCommon.m in Sources */,
 				F4609B721B0BC4B800BCCCB8 /* WWRegistrationVC.m in Sources */,
@@ -981,11 +991,11 @@
 				F4609B771B0BC4D500BCCCB8 /* WWLoginVC.m in Sources */,
 				F470473E1B011AE700FEFEFF /* main.m in Sources */,
 				F4D08A681B20CDB300AF8E36 /* DSLCalendarView.m in Sources */,
-				F4CB17081B3B25750078419A /* WWInquiryCell.m in Sources */,
 				F4D08A6E1B20CDB300AF8E36 /* DSLCalendarDayCalloutView.m in Sources */,
 				F47047831B0123F600FEFEFF /* RDVTabBar.m in Sources */,
 				F4D08A6D1B20CDB300AF8E36 /* DSLCalendarRange.m in Sources */,
 				F4CD4E2F1B3082F20081FE0B /* WWCategoryDetailVC.m in Sources */,
+				60C7630A1B53D19900387B54 /* WWCreateBidVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1057,7 +1067,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "8e80fcab-690f-4a7a-ab4f-145e013be6dd";
+				PROVISIONING_PROFILE = "72828c51-00d2-4baa-b83a-da9e5aeb9385";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1093,7 +1103,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "8e80fcab-690f-4a7a-ab4f-145e013be6dd";
+				PROVISIONING_PROFILE = "72828c51-00d2-4baa-b83a-da9e5aeb9385";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1106,6 +1116,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Dharam Mehta (95NA7968E3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dharam Mehta (95NA7968E3)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeddingWise",
@@ -1164,6 +1175,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dharam Mehta (95NA7968E3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dharam Mehta (95NA7968E3)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1184,6 +1197,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dharam Mehta (95NA7968E3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dharam Mehta (95NA7968E3)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

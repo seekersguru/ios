@@ -15,6 +15,8 @@
 @implementation WWForgotPassword
 
 - (void)viewDidLoad {
+    [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:lblPolicy withText:lblPolicy.text];
+    
     _bgImage.image= _image;
     [super viewDidLoad];
 }

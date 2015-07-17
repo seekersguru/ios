@@ -18,6 +18,8 @@
 @property(nonatomic, strong)UITabBarController *tabBarController;
 @property(nonatomic, strong)UINavigationController *navigation;
 
+@property(nonatomic, assign)BOOL isFBLogin;
+
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;

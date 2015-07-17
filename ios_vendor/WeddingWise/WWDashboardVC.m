@@ -58,7 +58,16 @@
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
              NSArray *arr=[[responseDics valueForKey:@"json"] valueForKey:@"data"];
              
-             _bgImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",[arr objectAtIndex:0]]]]];
+             
+             NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",[arr objectAtIndex:0]]];
+             NSURLRequest *request = [NSURLRequest requestWithURL:url];
+             UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
+             
+//             [_bgImage setImageWithURLRequest:request
+//                             placeholderImage:placeholderImage
+//                                      success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+//                                          _bgImage.image = image;
+//                                      } failure:nil];
          }
      }
                                              failure:^(NSString *response)
@@ -88,8 +97,8 @@
              //Send to reegistration
              WWRegistrationVC *registrationVC=[[WWRegistrationVC alloc]initWithNibName:@"WWRegistrationVC" bundle:nil];
              registrationVC.fbResponse= fbResponse;
-             registrationVC.bgImage.image= _bgImage.image;
-             
+             //registrationVC.bgImage.image= _bgImage.image;
+             registrationVC.image= _bgImage.image;
              [self.navigationController pushViewController:registrationVC animated:YES];
          }
          else if ([result isEqualToString:@"success"]){

@@ -28,14 +28,14 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.wedwise.customer</string>
-				<string>fb1445209479121669</string>
+				<string>fb1069293003099190</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>1445209479121669</string>
+	<string>1069293003099190</string>
 	<key>FacebookDisplayName</key>
 	<string>WedWise</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -51,8 +51,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

@@ -48,6 +48,9 @@
 @property(nonatomic, strong)NSString* type;
 
 @property(nonatomic, strong)NSArray *arrDescriptionData;
+@property(nonatomic, strong)NSArray *arrPackageData;
+
+
 @property(nonatomic, strong)NSArray *descReadMoreData;
 
 -(WWVendorDescription*)setVendorDescrition:(NSDictionary*)descriptionInfo;

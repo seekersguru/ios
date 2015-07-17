@@ -40,10 +40,6 @@
     [_toolBar setHidden:YES];
     [_imgPickerBG setHidden:YES];
     
-    _calendarView.showEventsOnCalloutView = YES;
-    [_calendarView setEventsDictionary:@{@"1":@"5",
-                                         @"6":@"10"}];     //1 should be 01
-    [_calendarView showCalender];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }

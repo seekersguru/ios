@@ -79,12 +79,16 @@ static AppDelegate * _sharedInstance;
 
 - (BOOL)application: (UIApplication *)application openURL: (NSURL *)url sourceApplication: (NSString *)sourceApplication annotation: (id)annotation
 {
-    //return [GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation];
-    
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                          openURL:url
-                                                sourceApplication:sourceApplication
-                                                       annotation:annotation];
+    //
+    if(_isFBLogin){
+        return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                              openURL:url
+                                                    sourceApplication:sourceApplication
+                                                           annotation:annotation];
+    }
+    else
+        return [GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation];
+        
 }
 - (void)setupViewControllers:(UINavigationController*)navigationView{
     

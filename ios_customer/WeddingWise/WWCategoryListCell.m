@@ -26,12 +26,12 @@
 -(void)getDescriptionData:(NSArray*)descData{
     
     _descData=[[NSArray alloc]init];
-    _descData= [descData objectAtIndex:0];
+    _descData= descData;//[descData objectAtIndex:0];
     [_tblList reloadData];
 
 }
 -(IBAction)readMorePressed:(id)sender{
-    [self.delegate showCategryReadMoreView];
+    [self.delegate showCategryReadMoreView:sender];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"WWCategoryCommonCell";

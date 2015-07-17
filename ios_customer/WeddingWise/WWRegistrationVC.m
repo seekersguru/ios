@@ -20,12 +20,16 @@
 
 - (void)viewDidLoad {
     //[self setTextFieldPlacehoder];
+    [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:lblPolicy withText:lblPolicy.text];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
     _bgImage.image= _image;
+    
+    [_datePicker setHidden:YES];
+     [_imgDatePicker setHidden:YES];
     
     if(_fbResponse){
         [self fillFaceBookData];
@@ -52,6 +56,8 @@
     [_txtGroomName resignFirstResponder];
     [_txtBrideName resignFirstResponder];
     [_txtContactNo resignFirstResponder];
+    [_datePicker setHidden:YES];
+    [_imgDatePicker setHidden:YES];
 }
 -(IBAction)btnSignUpPressed:(id)sender{
     [self dismissKeyboard];
@@ -66,6 +72,23 @@
         // Show the HUD while the provided method executes in a new thread
         [HUD showWhileExecuting:@selector(callRegistrationAPI) onTarget:self withObject:nil animated:YES];
     }
+}
+-(IBAction)btnTentativeDatePressed:(id)sender{
+    [_datePicker setHidden:NO];
+    [_imgDatePicker setHidden:NO];
+    
+    //Show only last 100 years dates in picker:
+    NSCalendar * gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
+    NSDate * currentDate = [NSDate date];
+    NSDateComponents * comps = [[NSDateComponents alloc] init];
+    [comps setYear: +1];
+    NSDate * maxDate = [gregorian dateByAddingComponents: comps toDate: currentDate options: 0];
+    [comps setYear: +1];
+    _datePicker.minimumDate = currentDate;
+    _datePicker.maximumDate = maxDate;
+    _datePicker.date = currentDate;
+    
+    
 }
 -(void)callRegistrationAPI{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:

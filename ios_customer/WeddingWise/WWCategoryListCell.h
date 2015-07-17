@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @protocol CategryDetailCellDelegate <NSObject>
-- (void)showCategryReadMoreView;
+-(void)showCategryReadMoreView:(id)sender;
 @required
 
 @end

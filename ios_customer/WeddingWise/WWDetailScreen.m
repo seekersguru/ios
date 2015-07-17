@@ -100,34 +100,62 @@
             UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
             
             __weak WWCategoryCell *weakCell = cell;
-            
-            [cell.imgCategory setImageWithURLRequest:request
-                                    placeholderImage:placeholderImage
-                                             success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                                 switch (i) {
-                                                     case 0:
-                                                         weakCell.img1.image = image;
-                                                         break;
-                                                     case 1:
-                                                         weakCell.img2.image = image;
-                                                         break;
-                                                     case 2:
-                                                         weakCell.img3.image = image;
-                                                         break;
-                                                     case 3:
-                                                         weakCell.img4.image = image;
-                                                         break;
-                                                     case 4:
-                                                         weakCell.img5.image = image;
-                                                         break;
-                                                         
-                                                     default:
-                                                         break;
-                                                 }
-                                                 
-                                                 [weakCell setNeedsLayout];
-                                                 
-                                             } failure:nil];
+            switch (i) {
+                case 0:
+                {
+                    [cell.img1 setImageWithURLRequest:request
+                                     placeholderImage:placeholderImage
+                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                  weakCell.img1.image = image;
+                                                  
+                                              } failure:nil];
+                    break;
+                }
+                    
+                case 1:
+                {
+                    [cell.img2 setImageWithURLRequest:request
+                                     placeholderImage:placeholderImage
+                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                  weakCell.img2.image = image;
+                                                  
+                                              } failure:nil];
+                    break;
+                }
+                case 2:
+                {
+                    [cell.img3 setImageWithURLRequest:request
+                                     placeholderImage:placeholderImage
+                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                  weakCell.img3.image = image;
+                                                  
+                                              } failure:nil];
+                    break;
+                }
+                case 3:
+                {
+                    [cell.img4 setImageWithURLRequest:request
+                                     placeholderImage:placeholderImage
+                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                  weakCell.img4.image = image;
+                                                  
+                                              } failure:nil];
+                    break;
+                }
+                case 4:
+                {
+                    [cell.img5 setImageWithURLRequest:request
+                                     placeholderImage:placeholderImage
+                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                  weakCell.img5.image = image;
+                                                  
+                                              } failure:nil];
+                    break;
+                }
+                    
+                default:
+                    break;
+            }
         }
     }
     
@@ -139,6 +167,11 @@
     cell.lblStartingPrice.text=[NSString stringWithFormat:@"%@/-",[dicVendorData valueForKey:@"starting_price"]];
     cell.lblCapacity.text=[[[dicVendorData valueForKey:@"others_two"] objectAtIndex:0] objectAtIndex:1];
     cell.lblVeg.text=[[dicVendorData valueForKey:@"others_one"] objectAtIndex:2];
+    
+    cell.lblName.font = [UIFont fontWithName:AppFont size:12.0];
+    cell.lblStartingPrice.font = [UIFont fontWithName:AppFont size:14.0];
+    cell.lblCapacity.font = [UIFont fontWithName:AppFont size:10.0];
+    cell.lblVeg.font = [UIFont fontWithName:AppFont size:10.0];
     
     self.tblCategory.separatorStyle = UITableViewCellSeparatorStyleNone;
     return cell;

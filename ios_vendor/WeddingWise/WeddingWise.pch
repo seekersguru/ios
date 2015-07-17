@@ -45,7 +45,7 @@
 #define kValidEmail                     @"Please enter valid email."
 
 //#define kGPClientID                     @"341522735800-tkngmd3u56mq7shvea9pmibng12qdmhj.apps.googleusercontent.com"
-#define kGPClientID                     @"341522735800-3iv6atl8b4bkij038o2p19aa585qdm2m.apps.googleusercontent.com"
+#define kGPClientID                     @"394478953970-pv3ni5s7p3mrq5gja829m8akm1lq17ic.apps.googleusercontent.com"
 
 //#define kGTLAuthScopePlusLogin          @"https://www.googleapis.com/auth/plus.login"
 
