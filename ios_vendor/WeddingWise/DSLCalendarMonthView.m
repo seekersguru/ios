@@ -56,7 +56,7 @@
 #pragma mark - Initialisation
 
 // Designated initialiser
-- (id)initWithMonth:(NSDateComponents*)month width:(CGFloat)width dayViewClass:(Class)dayViewClass dayViewHeight:(CGFloat)dayViewHeight showEvent:(BOOL)showEvent withEventDict:(NSDictionary *)eventDict{
+- (id)initWithMonth:(NSDateComponents*)month width:(CGFloat)width dayViewClass:(Class)dayViewClass dayViewHeight:(CGFloat)dayViewHeight {
     self = [super initWithFrame:CGRectMake(0, 0, width, dayViewHeight)];
     if (self != nil) {
         // Initialise properties
@@ -64,8 +64,7 @@
         _dayViewHeight = dayViewHeight;
         _dayViewsDictionary = [[NSMutableDictionary alloc] init];
         _dayViewClass = dayViewClass;
-        _showEventOnDate = showEvent;
-        _eventDict = eventDict;
+        
         [self createDayViews];
     }
 

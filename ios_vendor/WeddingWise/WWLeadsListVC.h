@@ -8,17 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WWLeadsListVC : UIViewController
+@interface WWLeadsListVC : UIViewController<UITableViewDataSource, UITableViewDelegate>
 {
     IBOutlet UIButton *bidBtn;
     IBOutlet UIButton *bookBtn;
     IBOutlet UIImageView *selectorImage;
-    
-    IBOutlet UILabel *clientName;
-    IBOutlet UILabel *eventDate;
-    IBOutlet UILabel *inqDate;
-    IBOutlet UILabel *lbl1;
-    IBOutlet UILabel *lbl2;
 }
-
+@property(nonatomic, weak)IBOutlet UITableView *tblBidView;
 @end

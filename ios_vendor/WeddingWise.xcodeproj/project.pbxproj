@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60C762EE1B53D01300387B54 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C762EA1B53D01300387B54 /* FBSDKCoreKit.framework */; };
+		60C762EF1B53D01300387B54 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C762EB1B53D01300387B54 /* FBSDKLoginKit.framework */; };
+		60C762F01B53D01300387B54 /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C762EC1B53D01300387B54 /* FBSDKMessengerShareKit.framework */; };
+		60C762F11B53D01300387B54 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C762ED1B53D01300387B54 /* FBSDKShareKit.framework */; };
+		60C762F41B53D06500387B54 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C762F21B53D06500387B54 /* GoogleOpenSource.framework */; };
+		60C762F51B53D06500387B54 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C762F31B53D06500387B54 /* GooglePlus.framework */; };
 		7315CFF1DDF95E3B98748ADA /* libPods-WeddingWise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0381FBBBEBC9947D010CFF78 /* libPods-WeddingWise.a */; };
 		F4609B651B0BBA8100BCCCB8 /* WWDashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */; };
 		F4609B661B0BBA8100BCCCB8 /* WWDashboardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4609B641B0BBA8100BCCCB8 /* WWDashboardVC.xib */; };
@@ -36,8 +42,6 @@
 		F4BC31BA1B179BA500BF5BB2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BC31B91B179BA500BF5BB2 /* Security.framework */; };
 		F4BC31BC1B179BBC00BF5BB2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BC31BB1B179BBC00BF5BB2 /* SystemConfiguration.framework */; };
 		F4BC31BE1B179BC400BF5BB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BC31BD1B179BC400BF5BB2 /* UIKit.framework */; };
-		F4BCBA961B1F8AA800082A73 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BCBA941B1F8AA800082A73 /* GoogleOpenSource.framework */; };
-		F4BCBA971B1F8AA800082A73 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BCBA951B1F8AA800082A73 /* GooglePlus.framework */; };
 		F4C4EA7A1B2CD81E00D2CD7F /* WWBookingDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C4EA781B2CD81E00D2CD7F /* WWBookingDetails.m */; };
 		F4C4EA7B1B2CD81E00D2CD7F /* WWBookingDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C4EA791B2CD81E00D2CD7F /* WWBookingDetails.xib */; };
 		F4C4EA801B2CD9A000D2CD7F /* WWBookingHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C4EA7E1B2CD9A000D2CD7F /* WWBookingHeaderCell.m */; };
@@ -46,12 +50,6 @@
 		F4C4EA861B2CDB2C00D2CD7F /* WWBookingMiddleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C4EA841B2CDB2C00D2CD7F /* WWBookingMiddleCell.xib */; };
 		F4C4EA8A1B2CDB6200D2CD7F /* WWBookingFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C4EA881B2CDB6200D2CD7F /* WWBookingFooterCell.m */; };
 		F4C4EA8B1B2CDB6200D2CD7F /* WWBookingFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C4EA891B2CDB6200D2CD7F /* WWBookingFooterCell.xib */; };
-		F4C5A1D61B2765010078036A /* MessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C5A1CC1B2765010078036A /* MessageListCell.m */; };
-		F4C5A1D71B2765010078036A /* MessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C5A1CD1B2765010078036A /* MessageListCell.xib */; };
-		F4C5A1D81B2765010078036A /* SenderMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C5A1CF1B2765010078036A /* SenderMsgCell.m */; };
-		F4C5A1D91B2765010078036A /* SenderMsgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C5A1D01B2765010078036A /* SenderMsgCell.xib */; };
-		F4C5A1DA1B2765010078036A /* ReceiverMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C5A1D21B2765010078036A /* ReceiverMsgCell.m */; };
-		F4C5A1DB1B2765010078036A /* ReceiverMsgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C5A1D31B2765010078036A /* ReceiverMsgCell.xib */; };
 		F4C680AC1B2475BE00C6ED57 /* slicingfooter.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C680AB1B2475BE00C6ED57 /* slicingfooter.png */; };
 		F4C7D85B1B0CFED400D69912 /* WWCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C7D85A1B0CFED400D69912 /* WWCommon.m */; };
 		F4C7D85E1B0D031500D69912 /* UITextField+ADTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C7D85D1B0D031500D69912 /* UITextField+ADTextField.m */; };
@@ -59,32 +57,33 @@
 		F4CB16E81B369B140078419A /* WWFilterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB16E61B369B140078419A /* WWFilterVC.m */; };
 		F4CB16E91B369B140078419A /* WWFilterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB16E71B369B140078419A /* WWFilterVC.xib */; };
 		F4CB16FA1B39E7ED0078419A /* GothamRoundedBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4CB16F91B39E7ED0078419A /* GothamRoundedBook.ttf */; };
-		F4CB17171B3B2ACF0078419A /* WWLeadsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB170C1B3B2ACF0078419A /* WWLeadsListVC.m */; };
-		F4CB17181B3B2ACF0078419A /* WWLeadsListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB170D1B3B2ACF0078419A /* WWLeadsListVC.xib */; };
-		F4CB17191B3B2ACF0078419A /* WWCreateBidVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB170F1B3B2ACF0078419A /* WWCreateBidVC.m */; };
-		F4CB171A1B3B2ACF0078419A /* WWCreateBidVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17101B3B2ACF0078419A /* WWCreateBidVC.xib */; };
-		F4CB171B1B3B2ACF0078419A /* WWInquiryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB17121B3B2ACF0078419A /* WWInquiryDetailVC.m */; };
-		F4CB171C1B3B2ACF0078419A /* WWInquiryDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17131B3B2ACF0078419A /* WWInquiryDetailVC.xib */; };
-		F4CB171D1B3B2ACF0078419A /* WWInquiryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB17151B3B2ACF0078419A /* WWInquiryCell.m */; };
-		F4CB171E1B3B2ACF0078419A /* WWInquiryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17161B3B2ACF0078419A /* WWInquiryCell.xib */; };
-		F4CB17231B3B2F840078419A /* WWHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB17211B3B2F840078419A /* WWHistoryCell.m */; };
-		F4CB17241B3B2F840078419A /* WWHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17221B3B2F840078419A /* WWHistoryCell.xib */; };
-		F4CB17281B3B35310078419A /* WWFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB17261B3B35310078419A /* WWFooterCell.m */; };
-		F4CB17291B3B35310078419A /* WWFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17271B3B35310078419A /* WWFooterCell.xib */; };
+		F4CBDB1E1B52F9D1000DB347 /* WWMessageList.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB101B52F9D0000DB347 /* WWMessageList.m */; };
+		F4CBDB1F1B52F9D1000DB347 /* WWMessageList.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB111B52F9D0000DB347 /* WWMessageList.xib */; };
+		F4CBDB201B52F9D1000DB347 /* WWPrivateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB131B52F9D0000DB347 /* WWPrivateMessage.m */; };
+		F4CBDB211B52F9D1000DB347 /* WWPrivateMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB141B52F9D0000DB347 /* WWPrivateMessage.xib */; };
+		F4CBDB221B52F9D1000DB347 /* MessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB161B52F9D0000DB347 /* MessageListCell.m */; };
+		F4CBDB231B52F9D1000DB347 /* MessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB171B52F9D0000DB347 /* MessageListCell.xib */; };
+		F4CBDB241B52F9D1000DB347 /* SenderMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB191B52F9D0000DB347 /* SenderMsgCell.m */; };
+		F4CBDB251B52F9D1000DB347 /* SenderMsgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB1A1B52F9D0000DB347 /* SenderMsgCell.xib */; };
+		F4CBDB261B52F9D1000DB347 /* ReceiverMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB1C1B52F9D1000DB347 /* ReceiverMsgCell.m */; };
+		F4CBDB271B52F9D1000DB347 /* ReceiverMsgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB1D1B52F9D1000DB347 /* ReceiverMsgCell.xib */; };
+		F4CBDB2E1B53060A000DB347 /* WWLoginUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB2D1B53060A000DB347 /* WWLoginUserData.m */; };
+		F4CBDB3E1B5307B6000DB347 /* WWLeadsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB301B5307B6000DB347 /* WWLeadsListVC.m */; };
+		F4CBDB3F1B5307B6000DB347 /* WWLeadsListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB311B5307B6000DB347 /* WWLeadsListVC.xib */; };
+		F4CBDB401B5307B6000DB347 /* WWCreateBidVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB331B5307B6000DB347 /* WWCreateBidVC.m */; };
+		F4CBDB411B5307B6000DB347 /* WWCreateBidVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB341B5307B6000DB347 /* WWCreateBidVC.xib */; };
+		F4CBDB421B5307B6000DB347 /* WWInquiryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB361B5307B6000DB347 /* WWInquiryDetailVC.m */; };
+		F4CBDB431B5307B6000DB347 /* WWInquiryDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB371B5307B6000DB347 /* WWInquiryDetailVC.xib */; };
+		F4CBDB441B5307B6000DB347 /* WWInquiryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB391B5307B6000DB347 /* WWInquiryCell.m */; };
+		F4CBDB451B5307B6000DB347 /* WWInquiryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB3A1B5307B6000DB347 /* WWInquiryCell.xib */; };
+		F4CBDB461B5307B6000DB347 /* WWBidListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB3C1B5307B6000DB347 /* WWBidListCell.m */; };
+		F4CBDB471B5307B6000DB347 /* WWBidListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB3D1B5307B6000DB347 /* WWBidListCell.xib */; };
+		F4CBDB4A1B530802000DB347 /* WWVendorDetailData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB491B530802000DB347 /* WWVendorDetailData.m */; };
 		F4CCA54D1B47B0B500F33FDA /* WWWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CCA54C1B47B0B500F33FDA /* WWWebService.m */; };
-		F4CCA5511B47F56600F33FDA /* WWUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CCA5501B47F56600F33FDA /* WWUserData.m */; };
 		F4CD4E6D1B30A2BF0081FE0B /* cal_seldate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4CD4E6B1B30A2BF0081FE0B /* cal_seldate@2x.png */; };
 		F4CD4E6E1B30A2BF0081FE0B /* cal_seldate@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4CD4E6C1B30A2BF0081FE0B /* cal_seldate@3x.png */; };
-		F4CE09FC1B32794800B0840E /* WWMessageList.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CE09F71B32794800B0840E /* WWMessageList.m */; };
-		F4CE09FD1B32794800B0840E /* WWMessageList.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CE09F81B32794800B0840E /* WWMessageList.xib */; };
-		F4CE09FE1B32794800B0840E /* WWPrivateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CE09FA1B32794800B0840E /* WWPrivateMessage.m */; };
-		F4CE09FF1B32794800B0840E /* WWPrivateMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CE09FB1B32794800B0840E /* WWPrivateMessage.xib */; };
 		F4CFD7D71B1B02C500D53E56 /* WWForgotPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD7D51B1B02C500D53E56 /* WWForgotPassword.m */; };
 		F4CFD7D81B1B02C500D53E56 /* WWForgotPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CFD7D61B1B02C500D53E56 /* WWForgotPassword.xib */; };
-		F4CFD7E51B1B6C4800D53E56 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4CFD7E11B1B6C4800D53E56 /* FBSDKCoreKit.framework */; };
-		F4CFD7E61B1B6C4800D53E56 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4CFD7E21B1B6C4800D53E56 /* FBSDKLoginKit.framework */; };
-		F4CFD7E71B1B6C4800D53E56 /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4CFD7E31B1B6C4800D53E56 /* FBSDKMessengerShareKit.framework */; };
-		F4CFD7E81B1B6C4800D53E56 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4CFD7E41B1B6C4800D53E56 /* FBSDKShareKit.framework */; };
 		F4CFD7EB1B1B6F8A00D53E56 /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD7EA1B1B6F8A00D53E56 /* FacebookManager.m */; };
 		F4D08A681B20CDB300AF8E36 /* DSLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D08A591B20CDB300AF8E36 /* DSLCalendarView.m */; };
 		F4D08A691B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D08A5B1B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.m */; };
@@ -113,6 +112,12 @@
 /* Begin PBXFileReference section */
 		0381FBBBEBC9947D010CFF78 /* libPods-WeddingWise.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeddingWise.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26AF5F1A291DFA0D35AB382C /* Pods-WeddingWise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingWise.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingWise/Pods-WeddingWise.release.xcconfig"; sourceTree = "<group>"; };
+		60C762EA1B53D01300387B54 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		60C762EB1B53D01300387B54 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		60C762EC1B53D01300387B54 /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKMessengerShareKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
+		60C762ED1B53D01300387B54 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		60C762F21B53D06500387B54 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = ../../../../../GoogleOpenSource.framework; sourceTree = "<group>"; };
+		60C762F31B53D06500387B54 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = ../../../../../GooglePlus.framework; sourceTree = "<group>"; };
 		D2DCC82CCECF86CC682CBC0B /* Pods-WeddingWise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingWise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingWise/Pods-WeddingWise.debug.xcconfig"; sourceTree = "<group>"; };
 		F4609B621B0BBA8100BCCCB8 /* WWDashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDashboardVC.h; sourceTree = "<group>"; };
 		F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWDashboardVC.m; sourceTree = "<group>"; };
@@ -169,15 +174,6 @@
 		F4C4EA871B2CDB6200D2CD7F /* WWBookingFooterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWBookingFooterCell.h; sourceTree = "<group>"; };
 		F4C4EA881B2CDB6200D2CD7F /* WWBookingFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWBookingFooterCell.m; sourceTree = "<group>"; };
 		F4C4EA891B2CDB6200D2CD7F /* WWBookingFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWBookingFooterCell.xib; sourceTree = "<group>"; };
-		F4C5A1CB1B2765010078036A /* MessageListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListCell.h; sourceTree = "<group>"; };
-		F4C5A1CC1B2765010078036A /* MessageListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListCell.m; sourceTree = "<group>"; };
-		F4C5A1CD1B2765010078036A /* MessageListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageListCell.xib; sourceTree = "<group>"; };
-		F4C5A1CE1B2765010078036A /* SenderMsgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenderMsgCell.h; sourceTree = "<group>"; };
-		F4C5A1CF1B2765010078036A /* SenderMsgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenderMsgCell.m; sourceTree = "<group>"; };
-		F4C5A1D01B2765010078036A /* SenderMsgCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SenderMsgCell.xib; sourceTree = "<group>"; };
-		F4C5A1D11B2765010078036A /* ReceiverMsgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverMsgCell.h; sourceTree = "<group>"; };
-		F4C5A1D21B2765010078036A /* ReceiverMsgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverMsgCell.m; sourceTree = "<group>"; };
-		F4C5A1D31B2765010078036A /* ReceiverMsgCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReceiverMsgCell.xib; sourceTree = "<group>"; };
 		F4C680AB1B2475BE00C6ED57 /* slicingfooter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slicingfooter.png; sourceTree = "<group>"; };
 		F4C7D8591B0CFED400D69912 /* WWCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCommon.h; sourceTree = "<group>"; };
 		F4C7D85A1B0CFED400D69912 /* WWCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCommon.m; sourceTree = "<group>"; };
@@ -188,36 +184,44 @@
 		F4CB16E61B369B140078419A /* WWFilterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWFilterVC.m; sourceTree = "<group>"; };
 		F4CB16E71B369B140078419A /* WWFilterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWFilterVC.xib; sourceTree = "<group>"; };
 		F4CB16F91B39E7ED0078419A /* GothamRoundedBook.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamRoundedBook.ttf; sourceTree = "<group>"; };
-		F4CB170B1B3B2ACF0078419A /* WWLeadsListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWLeadsListVC.h; sourceTree = "<group>"; };
-		F4CB170C1B3B2ACF0078419A /* WWLeadsListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWLeadsListVC.m; sourceTree = "<group>"; };
-		F4CB170D1B3B2ACF0078419A /* WWLeadsListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWLeadsListVC.xib; sourceTree = "<group>"; };
-		F4CB170E1B3B2ACF0078419A /* WWCreateBidVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCreateBidVC.h; sourceTree = "<group>"; };
-		F4CB170F1B3B2ACF0078419A /* WWCreateBidVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCreateBidVC.m; sourceTree = "<group>"; };
-		F4CB17101B3B2ACF0078419A /* WWCreateBidVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCreateBidVC.xib; sourceTree = "<group>"; };
-		F4CB17111B3B2ACF0078419A /* WWInquiryDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWInquiryDetailVC.h; sourceTree = "<group>"; };
-		F4CB17121B3B2ACF0078419A /* WWInquiryDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWInquiryDetailVC.m; sourceTree = "<group>"; };
-		F4CB17131B3B2ACF0078419A /* WWInquiryDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWInquiryDetailVC.xib; sourceTree = "<group>"; };
-		F4CB17141B3B2ACF0078419A /* WWInquiryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWInquiryCell.h; sourceTree = "<group>"; };
-		F4CB17151B3B2ACF0078419A /* WWInquiryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWInquiryCell.m; sourceTree = "<group>"; };
-		F4CB17161B3B2ACF0078419A /* WWInquiryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWInquiryCell.xib; sourceTree = "<group>"; };
-		F4CB17201B3B2F840078419A /* WWHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWHistoryCell.h; sourceTree = "<group>"; };
-		F4CB17211B3B2F840078419A /* WWHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWHistoryCell.m; sourceTree = "<group>"; };
-		F4CB17221B3B2F840078419A /* WWHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWHistoryCell.xib; sourceTree = "<group>"; };
-		F4CB17251B3B35310078419A /* WWFooterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWFooterCell.h; sourceTree = "<group>"; };
-		F4CB17261B3B35310078419A /* WWFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWFooterCell.m; sourceTree = "<group>"; };
-		F4CB17271B3B35310078419A /* WWFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWFooterCell.xib; sourceTree = "<group>"; };
+		F4CBDB0F1B52F9D0000DB347 /* WWMessageList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWMessageList.h; sourceTree = "<group>"; };
+		F4CBDB101B52F9D0000DB347 /* WWMessageList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWMessageList.m; sourceTree = "<group>"; };
+		F4CBDB111B52F9D0000DB347 /* WWMessageList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWMessageList.xib; sourceTree = "<group>"; };
+		F4CBDB121B52F9D0000DB347 /* WWPrivateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWPrivateMessage.h; sourceTree = "<group>"; };
+		F4CBDB131B52F9D0000DB347 /* WWPrivateMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWPrivateMessage.m; sourceTree = "<group>"; };
+		F4CBDB141B52F9D0000DB347 /* WWPrivateMessage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWPrivateMessage.xib; sourceTree = "<group>"; };
+		F4CBDB151B52F9D0000DB347 /* MessageListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListCell.h; sourceTree = "<group>"; };
+		F4CBDB161B52F9D0000DB347 /* MessageListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListCell.m; sourceTree = "<group>"; };
+		F4CBDB171B52F9D0000DB347 /* MessageListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageListCell.xib; sourceTree = "<group>"; };
+		F4CBDB181B52F9D0000DB347 /* SenderMsgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenderMsgCell.h; sourceTree = "<group>"; };
+		F4CBDB191B52F9D0000DB347 /* SenderMsgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenderMsgCell.m; sourceTree = "<group>"; };
+		F4CBDB1A1B52F9D0000DB347 /* SenderMsgCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SenderMsgCell.xib; sourceTree = "<group>"; };
+		F4CBDB1B1B52F9D0000DB347 /* ReceiverMsgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverMsgCell.h; sourceTree = "<group>"; };
+		F4CBDB1C1B52F9D1000DB347 /* ReceiverMsgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverMsgCell.m; sourceTree = "<group>"; };
+		F4CBDB1D1B52F9D1000DB347 /* ReceiverMsgCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReceiverMsgCell.xib; sourceTree = "<group>"; };
+		F4CBDB2C1B53060A000DB347 /* WWLoginUserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWLoginUserData.h; sourceTree = "<group>"; };
+		F4CBDB2D1B53060A000DB347 /* WWLoginUserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWLoginUserData.m; sourceTree = "<group>"; };
+		F4CBDB2F1B5307B6000DB347 /* WWLeadsListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWLeadsListVC.h; sourceTree = "<group>"; };
+		F4CBDB301B5307B6000DB347 /* WWLeadsListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWLeadsListVC.m; sourceTree = "<group>"; };
+		F4CBDB311B5307B6000DB347 /* WWLeadsListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWLeadsListVC.xib; sourceTree = "<group>"; };
+		F4CBDB321B5307B6000DB347 /* WWCreateBidVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCreateBidVC.h; sourceTree = "<group>"; };
+		F4CBDB331B5307B6000DB347 /* WWCreateBidVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCreateBidVC.m; sourceTree = "<group>"; };
+		F4CBDB341B5307B6000DB347 /* WWCreateBidVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCreateBidVC.xib; sourceTree = "<group>"; };
+		F4CBDB351B5307B6000DB347 /* WWInquiryDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWInquiryDetailVC.h; sourceTree = "<group>"; };
+		F4CBDB361B5307B6000DB347 /* WWInquiryDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWInquiryDetailVC.m; sourceTree = "<group>"; };
+		F4CBDB371B5307B6000DB347 /* WWInquiryDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWInquiryDetailVC.xib; sourceTree = "<group>"; };
+		F4CBDB381B5307B6000DB347 /* WWInquiryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWInquiryCell.h; sourceTree = "<group>"; };
+		F4CBDB391B5307B6000DB347 /* WWInquiryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWInquiryCell.m; sourceTree = "<group>"; };
+		F4CBDB3A1B5307B6000DB347 /* WWInquiryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWInquiryCell.xib; sourceTree = "<group>"; };
+		F4CBDB3B1B5307B6000DB347 /* WWBidListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWBidListCell.h; sourceTree = "<group>"; };
+		F4CBDB3C1B5307B6000DB347 /* WWBidListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWBidListCell.m; sourceTree = "<group>"; };
+		F4CBDB3D1B5307B6000DB347 /* WWBidListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWBidListCell.xib; sourceTree = "<group>"; };
+		F4CBDB481B530802000DB347 /* WWVendorDetailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWVendorDetailData.h; sourceTree = "<group>"; };
+		F4CBDB491B530802000DB347 /* WWVendorDetailData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWVendorDetailData.m; sourceTree = "<group>"; };
 		F4CCA54B1B47B0AF00F33FDA /* WWWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWebService.h; sourceTree = "<group>"; };
 		F4CCA54C1B47B0B500F33FDA /* WWWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWebService.m; sourceTree = "<group>"; };
-		F4CCA54F1B47F56600F33FDA /* WWUserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWUserData.h; sourceTree = "<group>"; };
-		F4CCA5501B47F56600F33FDA /* WWUserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWUserData.m; sourceTree = "<group>"; };
 		F4CD4E6B1B30A2BF0081FE0B /* cal_seldate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cal_seldate@2x.png"; sourceTree = "<group>"; };
 		F4CD4E6C1B30A2BF0081FE0B /* cal_seldate@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cal_seldate@3x.png"; sourceTree = "<group>"; };
-		F4CE09F61B32794800B0840E /* WWMessageList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWMessageList.h; sourceTree = "<group>"; };
-		F4CE09F71B32794800B0840E /* WWMessageList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWMessageList.m; sourceTree = "<group>"; };
-		F4CE09F81B32794800B0840E /* WWMessageList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWMessageList.xib; sourceTree = "<group>"; };
-		F4CE09F91B32794800B0840E /* WWPrivateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWPrivateMessage.h; sourceTree = "<group>"; };
-		F4CE09FA1B32794800B0840E /* WWPrivateMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWPrivateMessage.m; sourceTree = "<group>"; };
-		F4CE09FB1B32794800B0840E /* WWPrivateMessage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWPrivateMessage.xib; sourceTree = "<group>"; };
 		F4CFD7D41B1B02C500D53E56 /* WWForgotPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWForgotPassword.h; sourceTree = "<group>"; };
 		F4CFD7D51B1B02C500D53E56 /* WWForgotPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWForgotPassword.m; sourceTree = "<group>"; };
 		F4CFD7D61B1B02C500D53E56 /* WWForgotPassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWForgotPassword.xib; sourceTree = "<group>"; };
@@ -254,12 +258,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4BCBA961B1F8AA800082A73 /* GoogleOpenSource.framework in Frameworks */,
-				F4BCBA971B1F8AA800082A73 /* GooglePlus.framework in Frameworks */,
-				F4CFD7E51B1B6C4800D53E56 /* FBSDKCoreKit.framework in Frameworks */,
-				F4CFD7E61B1B6C4800D53E56 /* FBSDKLoginKit.framework in Frameworks */,
-				F4CFD7E71B1B6C4800D53E56 /* FBSDKMessengerShareKit.framework in Frameworks */,
-				F4CFD7E81B1B6C4800D53E56 /* FBSDKShareKit.framework in Frameworks */,
+				60C762F41B53D06500387B54 /* GoogleOpenSource.framework in Frameworks */,
+				60C762F51B53D06500387B54 /* GooglePlus.framework in Frameworks */,
+				60C762EE1B53D01300387B54 /* FBSDKCoreKit.framework in Frameworks */,
+				60C762EF1B53D01300387B54 /* FBSDKLoginKit.framework in Frameworks */,
+				60C762F01B53D01300387B54 /* FBSDKMessengerShareKit.framework in Frameworks */,
+				60C762F11B53D01300387B54 /* FBSDKShareKit.framework in Frameworks */,
 				F4BC31BE1B179BC400BF5BB2 /* UIKit.framework in Frameworks */,
 				F4BC31BC1B179BBC00BF5BB2 /* SystemConfiguration.framework in Frameworks */,
 				F4BC31BA1B179BA500BF5BB2 /* Security.framework in Frameworks */,
@@ -297,6 +301,12 @@
 		7CA3CE21B343152D616D8F80 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				60C762F21B53D06500387B54 /* GoogleOpenSource.framework */,
+				60C762F31B53D06500387B54 /* GooglePlus.framework */,
+				60C762EA1B53D01300387B54 /* FBSDKCoreKit.framework */,
+				60C762EB1B53D01300387B54 /* FBSDKLoginKit.framework */,
+				60C762EC1B53D01300387B54 /* FBSDKMessengerShareKit.framework */,
+				60C762ED1B53D01300387B54 /* FBSDKShareKit.framework */,
 				0381FBBBEBC9947D010CFF78 /* libPods-WeddingWise.a */,
 			);
 			name = Frameworks;
@@ -517,24 +527,23 @@
 		F4CB170A1B3B2ABA0078419A /* Leads */ = {
 			isa = PBXGroup;
 			children = (
-				F4CB170B1B3B2ACF0078419A /* WWLeadsListVC.h */,
-				F4CB170C1B3B2ACF0078419A /* WWLeadsListVC.m */,
-				F4CB170D1B3B2ACF0078419A /* WWLeadsListVC.xib */,
-				F4CB170E1B3B2ACF0078419A /* WWCreateBidVC.h */,
-				F4CB170F1B3B2ACF0078419A /* WWCreateBidVC.m */,
-				F4CB17101B3B2ACF0078419A /* WWCreateBidVC.xib */,
-				F4CB17111B3B2ACF0078419A /* WWInquiryDetailVC.h */,
-				F4CB17121B3B2ACF0078419A /* WWInquiryDetailVC.m */,
-				F4CB17131B3B2ACF0078419A /* WWInquiryDetailVC.xib */,
-				F4CB17141B3B2ACF0078419A /* WWInquiryCell.h */,
-				F4CB17151B3B2ACF0078419A /* WWInquiryCell.m */,
-				F4CB17161B3B2ACF0078419A /* WWInquiryCell.xib */,
-				F4CB17201B3B2F840078419A /* WWHistoryCell.h */,
-				F4CB17211B3B2F840078419A /* WWHistoryCell.m */,
-				F4CB17221B3B2F840078419A /* WWHistoryCell.xib */,
-				F4CB17251B3B35310078419A /* WWFooterCell.h */,
-				F4CB17261B3B35310078419A /* WWFooterCell.m */,
-				F4CB17271B3B35310078419A /* WWFooterCell.xib */,
+				F4CBDB481B530802000DB347 /* WWVendorDetailData.h */,
+				F4CBDB491B530802000DB347 /* WWVendorDetailData.m */,
+				F4CBDB2F1B5307B6000DB347 /* WWLeadsListVC.h */,
+				F4CBDB301B5307B6000DB347 /* WWLeadsListVC.m */,
+				F4CBDB311B5307B6000DB347 /* WWLeadsListVC.xib */,
+				F4CBDB321B5307B6000DB347 /* WWCreateBidVC.h */,
+				F4CBDB331B5307B6000DB347 /* WWCreateBidVC.m */,
+				F4CBDB341B5307B6000DB347 /* WWCreateBidVC.xib */,
+				F4CBDB351B5307B6000DB347 /* WWInquiryDetailVC.h */,
+				F4CBDB361B5307B6000DB347 /* WWInquiryDetailVC.m */,
+				F4CBDB371B5307B6000DB347 /* WWInquiryDetailVC.xib */,
+				F4CBDB381B5307B6000DB347 /* WWInquiryCell.h */,
+				F4CBDB391B5307B6000DB347 /* WWInquiryCell.m */,
+				F4CBDB3A1B5307B6000DB347 /* WWInquiryCell.xib */,
+				F4CBDB3B1B5307B6000DB347 /* WWBidListCell.h */,
+				F4CBDB3C1B5307B6000DB347 /* WWBidListCell.m */,
+				F4CBDB3D1B5307B6000DB347 /* WWBidListCell.xib */,
 			);
 			name = Leads;
 			sourceTree = "<group>";
@@ -551,8 +560,8 @@
 		F4CCA54E1B47F4BB00F33FDA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F4CCA54F1B47F56600F33FDA /* WWUserData.h */,
-				F4CCA5501B47F56600F33FDA /* WWUserData.m */,
+				F4CBDB2C1B53060A000DB347 /* WWLoginUserData.h */,
+				F4CBDB2D1B53060A000DB347 /* WWLoginUserData.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -624,21 +633,21 @@
 		F4D08A8E1B221A2000AF8E36 /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				F4CE09F61B32794800B0840E /* WWMessageList.h */,
-				F4CE09F71B32794800B0840E /* WWMessageList.m */,
-				F4CE09F81B32794800B0840E /* WWMessageList.xib */,
-				F4CE09F91B32794800B0840E /* WWPrivateMessage.h */,
-				F4CE09FA1B32794800B0840E /* WWPrivateMessage.m */,
-				F4CE09FB1B32794800B0840E /* WWPrivateMessage.xib */,
-				F4C5A1CB1B2765010078036A /* MessageListCell.h */,
-				F4C5A1CC1B2765010078036A /* MessageListCell.m */,
-				F4C5A1CD1B2765010078036A /* MessageListCell.xib */,
-				F4C5A1CE1B2765010078036A /* SenderMsgCell.h */,
-				F4C5A1CF1B2765010078036A /* SenderMsgCell.m */,
-				F4C5A1D01B2765010078036A /* SenderMsgCell.xib */,
-				F4C5A1D11B2765010078036A /* ReceiverMsgCell.h */,
-				F4C5A1D21B2765010078036A /* ReceiverMsgCell.m */,
-				F4C5A1D31B2765010078036A /* ReceiverMsgCell.xib */,
+				F4CBDB0F1B52F9D0000DB347 /* WWMessageList.h */,
+				F4CBDB101B52F9D0000DB347 /* WWMessageList.m */,
+				F4CBDB111B52F9D0000DB347 /* WWMessageList.xib */,
+				F4CBDB121B52F9D0000DB347 /* WWPrivateMessage.h */,
+				F4CBDB131B52F9D0000DB347 /* WWPrivateMessage.m */,
+				F4CBDB141B52F9D0000DB347 /* WWPrivateMessage.xib */,
+				F4CBDB151B52F9D0000DB347 /* MessageListCell.h */,
+				F4CBDB161B52F9D0000DB347 /* MessageListCell.m */,
+				F4CBDB171B52F9D0000DB347 /* MessageListCell.xib */,
+				F4CBDB181B52F9D0000DB347 /* SenderMsgCell.h */,
+				F4CBDB191B52F9D0000DB347 /* SenderMsgCell.m */,
+				F4CBDB1A1B52F9D0000DB347 /* SenderMsgCell.xib */,
+				F4CBDB1B1B52F9D0000DB347 /* ReceiverMsgCell.h */,
+				F4CBDB1C1B52F9D1000DB347 /* ReceiverMsgCell.m */,
+				F4CBDB1D1B52F9D1000DB347 /* ReceiverMsgCell.xib */,
 			);
 			name = Message;
 			sourceTree = "<group>";
@@ -726,9 +735,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4CBDB271B52F9D1000DB347 /* ReceiverMsgCell.xib in Resources */,
 				F4CB16FA1B39E7ED0078419A /* GothamRoundedBook.ttf in Resources */,
+				F4CBDB231B52F9D1000DB347 /* MessageListCell.xib in Resources */,
 				F4CB16E31B35E8DD0078419A /* gotham-book.ttf in Resources */,
-				F4C5A1DB1B2765010078036A /* ReceiverMsgCell.xib in Resources */,
 				F4C4EA8B1B2CDB6200D2CD7F /* WWBookingFooterCell.xib in Resources */,
 				F4609B781B0BC4D500BCCCB8 /* WWLoginVC.xib in Resources */,
 				F4CD4E6D1B30A2BF0081FE0B /* cal_seldate@2x.png in Resources */,
@@ -738,26 +748,24 @@
 				F4C4EA861B2CDB2C00D2CD7F /* WWBookingMiddleCell.xib in Resources */,
 				F4CFD7D81B1B02C500D53E56 /* WWForgotPassword.xib in Resources */,
 				F47047B51B01273100FEFEFF /* myKnotCell.xib in Resources */,
-				F4C5A1D91B2765010078036A /* SenderMsgCell.xib in Resources */,
 				F4D08A6F1B20CDB300AF8E36 /* DSLCalendarDayCalloutView.xib in Resources */,
 				F470474F1B011AE700FEFEFF /* LaunchScreen.xib in Resources */,
-				F4CE09FD1B32794800B0840E /* WWMessageList.xib in Resources */,
-				F4CE09FF1B32794800B0840E /* WWPrivateMessage.xib in Resources */,
-				F4CB17241B3B2F840078419A /* WWHistoryCell.xib in Resources */,
-				F4CB17181B3B2ACF0078419A /* WWLeadsListVC.xib in Resources */,
 				F4C4EA7B1B2CD81E00D2CD7F /* WWBookingDetails.xib in Resources */,
 				F4CD4E6E1B30A2BF0081FE0B /* cal_seldate@3x.png in Resources */,
+				F4CBDB3F1B5307B6000DB347 /* WWLeadsListVC.xib in Resources */,
 				F4C4EA811B2CD9A000D2CD7F /* WWBookingHeaderCell.xib in Resources */,
 				F4609B731B0BC4B800BCCCB8 /* WWRegistrationVC.xib in Resources */,
 				F4D08A781B20D3BF00AF8E36 /* slicingbg.png in Resources */,
 				F4CB16E91B369B140078419A /* WWFilterVC.xib in Resources */,
-				F4CB171A1B3B2ACF0078419A /* WWCreateBidVC.xib in Resources */,
+				F4CBDB471B5307B6000DB347 /* WWBidListCell.xib in Resources */,
+				F4CBDB251B52F9D1000DB347 /* SenderMsgCell.xib in Resources */,
 				F4D08A8D1B20D72800AF8E36 /* WWCalendarView.xib in Resources */,
-				F4CB171C1B3B2ACF0078419A /* WWInquiryDetailVC.xib in Resources */,
-				F4CB171E1B3B2ACF0078419A /* WWInquiryCell.xib in Resources */,
-				F4C5A1D71B2765010078036A /* MessageListCell.xib in Resources */,
-				F4CB17291B3B35310078419A /* WWFooterCell.xib in Resources */,
+				F4CBDB411B5307B6000DB347 /* WWCreateBidVC.xib in Resources */,
+				F4CBDB1F1B52F9D1000DB347 /* WWMessageList.xib in Resources */,
+				F4CBDB431B5307B6000DB347 /* WWInquiryDetailVC.xib in Resources */,
+				F4CBDB451B5307B6000DB347 /* WWInquiryCell.xib in Resources */,
 				F470474C1B011AE700FEFEFF /* Images.xcassets in Resources */,
+				F4CBDB211B52F9D1000DB347 /* WWPrivateMessage.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,46 +816,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4CBDB401B5307B6000DB347 /* WWCreateBidVC.m in Sources */,
 				F4C4EA801B2CD9A000D2CD7F /* WWBookingHeaderCell.m in Sources */,
-				F4CB171D1B3B2ACF0078419A /* WWInquiryCell.m in Sources */,
 				F47047441B011AE700FEFEFF /* WeddingWise.xcdatamodeld in Sources */,
 				F4D08A701B20CDB300AF8E36 /* NSDate+DSLCalendarView.m in Sources */,
 				F4C4EA7A1B2CD81E00D2CD7F /* WWBookingDetails.m in Sources */,
+				F4CBDB421B5307B6000DB347 /* WWInquiryDetailVC.m in Sources */,
+				F4CBDB201B52F9D1000DB347 /* WWPrivateMessage.m in Sources */,
 				F47047B41B01273100FEFEFF /* myKnotCell.m in Sources */,
-				F4CCA5511B47F56600F33FDA /* WWUserData.m in Sources */,
-				F4CE09FE1B32794800B0840E /* WWPrivateMessage.m in Sources */,
 				F4C7D85E1B0D031500D69912 /* UITextField+ADTextField.m in Sources */,
-				F4CB17281B3B35310078419A /* WWFooterCell.m in Sources */,
 				F4D08A691B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.m in Sources */,
-				F4CB17191B3B2ACF0078419A /* WWCreateBidVC.m in Sources */,
+				F4CBDB2E1B53060A000DB347 /* WWLoginUserData.m in Sources */,
 				F47047411B011AE700FEFEFF /* AppDelegate.m in Sources */,
 				F4C4EA8A1B2CDB6200D2CD7F /* WWBookingFooterCell.m in Sources */,
+				F4CBDB3E1B5307B6000DB347 /* WWLeadsListVC.m in Sources */,
 				F47047821B0123F600FEFEFF /* RDVTabBarItem.m in Sources */,
 				F4D08A6C1B20CDB300AF8E36 /* DSLCalendarDayView.m in Sources */,
-				F4C5A1DA1B2765010078036A /* ReceiverMsgCell.m in Sources */,
 				F4CFD7D71B1B02C500D53E56 /* WWForgotPassword.m in Sources */,
 				F47047811B0123F600FEFEFF /* RDVTabBarController.m in Sources */,
+				F4CBDB241B52F9D1000DB347 /* SenderMsgCell.m in Sources */,
 				F4CFD7EB1B1B6F8A00D53E56 /* FacebookManager.m in Sources */,
+				F4CBDB221B52F9D1000DB347 /* MessageListCell.m in Sources */,
 				F4D08A8C1B20D72800AF8E36 /* WWCalendarView.m in Sources */,
 				F4D08A6B1B20CDB300AF8E36 /* DSLCalendarMonthView.m in Sources */,
 				F4609B651B0BBA8100BCCCB8 /* WWDashboardVC.m in Sources */,
-				F4CE09FC1B32794800B0840E /* WWMessageList.m in Sources */,
+				F4CBDB4A1B530802000DB347 /* WWVendorDetailData.m in Sources */,
+				F4CBDB1E1B52F9D1000DB347 /* WWMessageList.m in Sources */,
 				F4CB16E81B369B140078419A /* WWFilterVC.m in Sources */,
-				F4C5A1D81B2765010078036A /* SenderMsgCell.m in Sources */,
 				F4C7D85B1B0CFED400D69912 /* WWCommon.m in Sources */,
-				F4C5A1D61B2765010078036A /* MessageListCell.m in Sources */,
 				F4609B721B0BC4B800BCCCB8 /* WWRegistrationVC.m in Sources */,
 				F4609B771B0BC4D500BCCCB8 /* WWLoginVC.m in Sources */,
 				F4CCA54D1B47B0B500F33FDA /* WWWebService.m in Sources */,
-				F4CB171B1B3B2ACF0078419A /* WWInquiryDetailVC.m in Sources */,
 				F470473E1B011AE700FEFEFF /* main.m in Sources */,
-				F4CB17171B3B2ACF0078419A /* WWLeadsListVC.m in Sources */,
+				F4CBDB261B52F9D1000DB347 /* ReceiverMsgCell.m in Sources */,
 				F4D08A681B20CDB300AF8E36 /* DSLCalendarView.m in Sources */,
 				F4C4EA851B2CDB2C00D2CD7F /* WWBookingMiddleCell.m in Sources */,
 				F4D08A6E1B20CDB300AF8E36 /* DSLCalendarDayCalloutView.m in Sources */,
-				F4CB17231B3B2F840078419A /* WWHistoryCell.m in Sources */,
 				F47047831B0123F600FEFEFF /* RDVTabBar.m in Sources */,
+				F4CBDB461B5307B6000DB347 /* WWBidListCell.m in Sources */,
 				F4D08A6D1B20CDB300AF8E36 /* DSLCalendarRange.m in Sources */,
+				F4CBDB441B5307B6000DB347 /* WWInquiryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -965,12 +973,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Dharam Mehta (95NA7968E3)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Dharam Mehta (FN8MAGHD8X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dharam Mehta (FN8MAGHD8X)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeddingWise",
 					/Users/Home/Documents/FacebookSdk,
 					"/Users/Home/Desktop/Projects/R&D/google-plus-ios-sdk-1.7.1",
+					/Users/dotsquares/Documents/FacebookSDK,
+					/Users/dotsquares/Desktop,
 				);
 				GCC_PREFIX_HEADER = WeddingWise/WeddingWise.pch;
 				INFOPLIST_FILE = WeddingWise/Info.plist;
@@ -983,7 +994,7 @@
 					"-l\"Pods-WeddingWise-SCNetworkReachability\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8e80fcab-690f-4a7a-ab4f-145e013be6dd";
+				PROVISIONING_PROFILE = "b5c866cb-ae8c-4110-80a2-a12b21d12cfc";
 			};
 			name = Debug;
 		};
@@ -993,13 +1004,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Dharam Mehta (95NA7968E3)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Dharam Mehta (FN8MAGHD8X)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dharam Mehta (95NA7968E3)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeddingWise",
 					/Users/Home/Documents/FacebookSdk,
 					"/Users/Home/Desktop/Projects/R&D/google-plus-ios-sdk-1.7.1",
+					/Users/dotsquares/Documents/FacebookSDK,
+					/Users/dotsquares/Desktop,
 				);
 				GCC_PREFIX_HEADER = WeddingWise/WeddingWise.pch;
 				INFOPLIST_FILE = WeddingWise/Info.plist;
@@ -1012,7 +1025,7 @@
 					"-l\"Pods-WeddingWise-SCNetworkReachability\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8e80fcab-690f-4a7a-ab4f-145e013be6dd";
+				PROVISIONING_PROFILE = "b5c866cb-ae8c-4110-80a2-a12b21d12cfc";
 			};
 			name = Release;
 		};
@@ -1020,6 +1033,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Dharam Mehta (FN8MAGHD8X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dharam Mehta (FN8MAGHD8X)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1031,7 +1046,7 @@
 				INFOPLIST_FILE = WeddingWiseTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8e80fcab-690f-4a7a-ab4f-145e013be6dd";
+				PROVISIONING_PROFILE = "b5c866cb-ae8c-4110-80a2-a12b21d12cfc";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeddingWise.app/WeddingWise";
 			};
 			name = Debug;
@@ -1040,6 +1055,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Dharam Mehta (FN8MAGHD8X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dharam Mehta (FN8MAGHD8X)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1047,7 +1064,7 @@
 				INFOPLIST_FILE = WeddingWiseTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8e80fcab-690f-4a7a-ab4f-145e013be6dd";
+				PROVISIONING_PROFILE = "b5c866cb-ae8c-4110-80a2-a12b21d12cfc";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeddingWise.app/WeddingWise";
 			};
 			name = Release;
