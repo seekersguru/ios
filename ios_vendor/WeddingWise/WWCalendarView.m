@@ -41,8 +41,24 @@
     [_imgPickerBG setHidden:YES];
     
     _calendarView.showEventsOnCalloutView = YES;
-    [_calendarView setEventsDictionary:@{@"1":@"5",
-                                         @"6":@"10"}];     //1 should be 01
+    
+    [_calendarView setEventsDictionary:@{@"2015":
+                                             @{@"7":
+                                                   @{@"1":@"5",
+                                                     @"5":@"7"},
+                                               @"8":
+                                                     @{@"4":@"1",
+                                                       @"12":@"2"}
+                                               },
+                                         @"2016":
+                                                 @{@"1":
+                                                       @{@"1":@"5",
+                                                          @"5":@"7"},
+                                                   @"2":
+                                                       @{@"2":@"6"}
+                                                   }
+                                         }];
+    
     [_calendarView showCalender];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -218,6 +234,18 @@
 -(IBAction)backButtonPressed:(id)sender{
     AppDelegate *appDelegate=[[UIApplication sharedApplication]delegate];
     [appDelegate.navigation popViewControllerAnimated:YES];
+}
+
+- (void)filterDateType:(id)sender{
+    
+}
+
+- (void)filterEnquiryType:(id)sender{
+    
+}
+
+- (void)filterTimeType:(id)sender{
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -109,10 +109,18 @@
                 dayView.day = day;
                 if (self.showEventOnDate) {
                     //show events in day
+                    NSString *currentYear = [NSString stringWithFormat:@"%ld",(long)day.year];
+                    NSString *currentMonth = [NSString stringWithFormat:@"%ld",(long)day.month];
                     NSString *currentDay = [NSString stringWithFormat:@"%ld",(long)day.day];
-                    if ([[_eventDict allKeys] containsObject:currentDay]) {
-                        //event exist on this day
-                        [dayView showEventCount:[_eventDict valueForKey:currentDay]];
+                    if ([[_eventDict allKeys] containsObject:currentYear]) {
+                        //this is current year
+                        if ( [[[_eventDict valueForKey:currentYear] allKeys] containsObject:currentMonth] ) {
+                            //event count exist for current month
+                            if ([[[[_eventDict valueForKey:currentYear] valueForKey:currentMonth] allKeys] containsObject:currentDay]) {
+                                //event exist on this day
+                                [dayView showEventCount:[[[_eventDict valueForKey:currentYear] valueForKey:currentMonth] valueForKey:currentDay]];
+                            }
+                        }
                     }
                 }
                 switch (column) {

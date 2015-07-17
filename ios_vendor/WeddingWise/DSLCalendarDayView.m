@@ -63,8 +63,10 @@
         _eventCountLabel = [[UILabel alloc] initWithFrame:frame];
         [_eventCountLabel setTextColor:[UIColor whiteColor]];
         [_eventCountLabel setBackgroundColor:[UIColor redColor]];
-        [_eventCountLabel setTextAlignment:NSTextAlignmentRight];
+        [_eventCountLabel setTextAlignment:NSTextAlignmentCenter];
         [_eventCountLabel setFont:[UIFont systemFontOfSize:12.0]];
+        [_eventCountLabel.layer setCornerRadius:7.5];
+        [_eventCountLabel.layer setMasksToBounds:YES];
         [self addSubview:_eventCountLabel];
         [self bringSubviewToFront:_eventCountLabel];
         
@@ -129,7 +131,6 @@
             [[UIColor colorWithRed:252.0/255.0 green:252.0/255.0 blue:252.0/255.0 alpha:1.0] setFill];
             if([_labelText isEqualToString:@"15"]){
                 [[UIColor lightGrayColor] setFill];
-                                
             }
             
         }
@@ -208,6 +209,7 @@
 - (void)showEventCount:(NSString *)count{
     _eventCountLabel.hidden = NO;
     [_eventCountLabel setText:count];
+    [self setNeedsDisplay];
 }
 
 @end
