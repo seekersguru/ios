@@ -69,6 +69,7 @@
 		F4CB17041B3B24A30078419A /* WWInquiryDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17021B3B24A30078419A /* WWInquiryDetailVC.xib */; };
 		F4CB17081B3B25750078419A /* WWInquiryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB17061B3B25750078419A /* WWInquiryCell.m */; };
 		F4CB17091B3B25750078419A /* WWInquiryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB17071B3B25750078419A /* WWInquiryCell.xib */; };
+		F4CBDB2B1B52FD15000DB347 /* WWLoginUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB2A1B52FD15000DB347 /* WWLoginUserData.m */; };
 		F4CCA5531B48593800F33FDA /* gotham-book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4CCA5521B48593800F33FDA /* gotham-book.ttf */; };
 		F4CD4E2A1B3082310081FE0B /* WWCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD4E281B3082310081FE0B /* WWCategoryCell.m */; };
 		F4CD4E2B1B3082310081FE0B /* WWCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CD4E291B3082310081FE0B /* WWCategoryCell.xib */; };
@@ -224,6 +225,8 @@
 		F4CB17051B3B25750078419A /* WWInquiryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWInquiryCell.h; sourceTree = "<group>"; };
 		F4CB17061B3B25750078419A /* WWInquiryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWInquiryCell.m; sourceTree = "<group>"; };
 		F4CB17071B3B25750078419A /* WWInquiryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWInquiryCell.xib; sourceTree = "<group>"; };
+		F4CBDB291B52FD15000DB347 /* WWLoginUserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWLoginUserData.h; sourceTree = "<group>"; };
+		F4CBDB2A1B52FD15000DB347 /* WWLoginUserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWLoginUserData.m; sourceTree = "<group>"; };
 		F4CCA5521B48593800F33FDA /* gotham-book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "gotham-book.ttf"; sourceTree = "<group>"; };
 		F4CD4E271B3082310081FE0B /* WWCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCategoryCell.h; sourceTree = "<group>"; };
 		F4CD4E281B3082310081FE0B /* WWCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCategoryCell.m; sourceTree = "<group>"; };
@@ -438,6 +441,7 @@
 		F470473A1B011AE700FEFEFF /* WeddingWise */ = {
 			isa = PBXGroup;
 			children = (
+				F4CBDB281B52FCE0000DB347 /* Model */,
 				F4CFFA321B45BAF20065D5D6 /* Facebook */,
 				F4CFFA211B4325900065D5D6 /* WebService */,
 				F4BC31A41B1794CA00BF5BB2 /* FrameWorks */,
@@ -628,6 +632,15 @@
 				F4CB16F11B3770420078419A /* YTPlayerView.m */,
 			);
 			name = YouTube;
+			sourceTree = "<group>";
+		};
+		F4CBDB281B52FCE0000DB347 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F4CBDB291B52FD15000DB347 /* WWLoginUserData.h */,
+				F4CBDB2A1B52FD15000DB347 /* WWLoginUserData.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		F4CD4E311B3083060081FE0B /* Views */ = {
@@ -945,6 +958,7 @@
 				F47047471B011AE700FEFEFF /* MyKnotList.m in Sources */,
 				F4D08A6C1B20CDB300AF8E36 /* DSLCalendarDayView.m in Sources */,
 				F4CD4E651B309D990081FE0B /* MessageListCell.m in Sources */,
+				F4CBDB2B1B52FD15000DB347 /* WWLoginUserData.m in Sources */,
 				60D086711B31447C00BCD2BE /* WWCreateBidVC.m in Sources */,
 				F4CFD7D71B1B02C500D53E56 /* WWForgotPassword.m in Sources */,
 				F4CD4E491B30830F0081FE0B /* WWCategoryListingCell.m in Sources */,

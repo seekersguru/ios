@@ -73,6 +73,9 @@
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
              //Login successfully
+             WWLoginUserData *userData=[[WWLoginUserData alloc]setUserData:[responseDics valueForKey:@"json"]];
+             [AppDelegate sharedAppDelegate].userData= userData;
+             
              [[AppDelegate sharedAppDelegate]setupViewControllers:self.navigationController];
          }
      }

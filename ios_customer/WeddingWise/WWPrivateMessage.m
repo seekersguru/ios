@@ -61,7 +61,7 @@
 }
 -(void)callPrivateChatAPI{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 @"customer@test.com:kdr9UCeqzG783-MMiFBw9axN-BY",@"identifier",
+                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
                                  [_messageData valueForKey:@"receiver_email"],@"receiver_email",
                                  @"1",@"page_no",
                                  @"c2v",@"from_to",
@@ -365,7 +365,7 @@
     
     
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 @"customer@test.com:kdr9UCeqzG783-MMiFBw9axN-BY",@"identifier",
+                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
                                  [_messageData valueForKey:@"receiver_email"],@"receiver_email",
                                  _txtMessage.text, @"message",
                                  @"c2v",@"from_to",
@@ -397,7 +397,12 @@
      }];
     
 }
-
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+    if([textView.text isEqualToString:@"Type a message"]){
+        textView.text=@"";
+    }
+    return YES;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

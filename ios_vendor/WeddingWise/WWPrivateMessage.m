@@ -27,75 +27,88 @@
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationController.navigationBar setHidden:YES];
     
+    [_lblVendorName setFont:[UIFont fontWithName:AppFont size:13.0f]];
+    _lblVendorName.text=[_messageData valueForKey:@"receiver_name"];
+    [_txtMessage setFont:[UIFont fontWithName:AppFont size:13.0f]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
+    //set notification for when a key is pressed.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector: @selector(keyPressed:)
+                                                 name: UITextViewTextDidChangeNotification
+                                               object: nil];
+
+    
     [_tblMessage registerNib:[UINib nibWithNibName:@"SenderMsgCell" bundle:nil] forCellReuseIdentifier:@"SenderMsgCell"];
     [_tblMessage registerNib:[UINib nibWithNibName:@"ReceiverMsgCell" bundle:nil] forCellReuseIdentifier:@"ReceiverMsgCell"];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     offscreenCells = [NSMutableDictionary dictionary];
     
-    [self fetchChatArray];
-    [_tblMessage reloadData];
-    
+    chatArray = [[NSMutableArray alloc] init];
+    [self callPrivateChatAPI];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
--(IBAction)refreshButtonPressed:(id)sender{
+-(void)callPrivateChatAPI{
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
+                                 [_messageData valueForKey:@"receiver_email"],@"receiver_email",
+                                 @"1",@"page_no",
+                                 @"v2c",@"from_to",
+                                 @"customer_vendor_message_detail",@"action",
+                                 @"message",@"msg_type",
+                                 nil];
+    
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             NSArray *arrData=[responseDics valueForKey:@"json"];
+             for (NSDictionary *arrMessages in arrData) {
+                 [chatArray addObject:arrMessages];
+             }
+             [_tblMessage reloadData];
+             [self performSelector:@selector(tableScroll) withObject:nil afterDelay:0.03];
 
+         }
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
+}
+-(void)tableScroll{
+    
+    if(chatArray.count>0){
+        NSIndexPath *topIndexPath = [NSIndexPath indexPathForRow:chatArray.count-1
+                                                       inSection:0];
+        [self.tblMessage scrollToRowAtIndexPath:topIndexPath
+                        atScrollPosition:UITableViewScrollPositionBottom
+                                animated:NO];
+    }
+    
+}
+-(void)viewWillAppear:(BOOL)animated{
+    //[self.navigationController.navigationBar setHidden:NO];
+}
+-(IBAction)refreshButtonPressed:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(IBAction)backButtonPressed:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }
--(void)viewWillAppear:(BOOL)animated{
-   // [self.navigationController.navigationBar setHidden:NO];
-}
--(void)popBack{
-    [self.navigationController popViewControllerAnimated:YES];
-}
--(void)fetchChatArray
-{
-    chatArray = [[NSMutableArray alloc] init];
-    
-    [chatArray addObject:@{@"message" : @"Looking for decent ambience ",
-                           @"read_status" : @(YES),
-                           @"sender" : @(YES),
-                           @"date" : [NSDate date]}];
-    
-    [chatArray addObject:@{@"message" : @"We have good one",
-                           @"read_status" : @(NO),
-                           @"sender" : @(NO),
-                           @"date" : [NSDate date]}];
-    
-    [chatArray addObject:@{@"message" : @"Can you send us some images and plans",
-                           @"read_status" : @(NO),
-                           @"sender" : @(YES),
-                           @"date" : [NSDate date]}];
-    
-    [chatArray addObject:@{@"message" : @"Yes sure",
-                           @"read_status" : @(NO),
-                           @"sender" : @(NO),
-                           @"date" : [NSDate date]}];
-    
-    [chatArray addObject:@{@"message" : @"We require rooms for stay",
-                           @"read_status" : @(NO),
-                           @"sender" : @(YES),
-                           @"date" : [NSDate date]}];
-    
-    [chatArray addObject:@{@"message" : @"Around 25 guests will stay",
-                           @"read_status" : @(NO),
-                           @"sender" : @(NO),
-                           @"date" : [NSDate date]}];
-    
-    [chatArray addObject:@{@"message" : @"A.C rooms, Parking etc, ",
-                           @"read_status" : @(NO),
-                           @"sender" : @(YES),
-                           @"date" : [NSDate date]}];
-    
-    [chatArray addObject:@{@"message" : @"It will be great if we can have these services ",
-                           @"read_status" : @(NO),
-                           @"sender" : @(NO),
-                           @"date" : [NSDate date]}];
-}
-#pragma mark - Tableview delegate/datasource
-
 #pragma mark Tableview delegate/datasource
 
 
@@ -107,122 +120,90 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return 70.0;
+    //return 70.0;
     
     
     NSDictionary *dict = [chatArray objectAtIndex:indexPath.row];
     
-    if(![dict[@"sender"] boolValue])
-    {
-        ReceiverMsgCell *cell = [offscreenCells objectForKey:@"ReceiverMsgCell"];
-        if (!cell && cell.tag!=-1)
-        {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"ReceiverMsgCell"];
-            cell.tag = -1;
-            [offscreenCells setObject:cell forKey:@"ReceiverMsgCell"];
-        }
-        
-        //cell.chatMessageLbl.text = chatObj.messageBody;
-        //cell.chatMessageLbl.preferredMaxLayoutWidth = tableView.bounds.size.width - 110.0;
-        cell.chatMsgTxt.text = dict[@"message"];
-        cell.chatMsgTxt.font = [UIFont systemFontOfSize:14.0];
-        //cell.chatMessageTxt.selectable = YES;
-        
-        
-        maxChatTextWidth = self.view.bounds.size.width - 54.0;
-        
-        CGSize sizeThatFitsTextView = [cell.chatMsgTxt sizeThatFits:CGSizeMake(maxChatTextWidth, MAXFLOAT)];
-        cell.chatMsgTxtWidthConstraint.constant = sizeThatFitsTextView.width;
-        cell.chatMsgTxtHeightConstraint.constant = sizeThatFitsTextView.height;
-        
-        [cell setNeedsLayout];
-        [cell layoutIfNeeded];
-        
-        // Get the actual height required for the cell
-        CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-        
-        // Add an extra point to the height to account for the cell separator, which is added between the bottom
-        // of the cell's contentView and the bottom of the table view cell.
-        //height += 1;
-        
-        /*if(height<55.0)
-         {
-         return 55.0;
-         }*/
-        
-        return height;
-    }
-    else
-    {
-        SenderMsgCell *cell = [offscreenCells objectForKey:@"SenderMsgCell"];
-        if (!cell && cell.tag!=-1)
-        {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"SenderMsgCell"];
-            cell.tag = -1;
-            [offscreenCells setObject:cell forKey:@"SenderMsgCell"];
-        }
-        
-        /*cell.chatMessageLbl.text = chatObj.messageBody;
-         cell.chatMessageLbl.preferredMaxLayoutWidth = tableView.bounds.size.width - 110.0;*/
-        
-        cell.chatMsgTxt.text = dict[@"message"];
-        cell.chatMsgTxt.font = [UIFont systemFontOfSize:14.0];
-        //cell.chatMessageTxt.preferredMaxLayoutWidth = tableView.bounds.size.width - 110.0;
-        //cell.chatMessageTxt.selectable = YES;
-        
-        maxChatTextWidth = self.view.bounds.size.width - 54.0;
-        
-        CGSize sizeThatFitsTextView = [cell.chatMsgTxt sizeThatFits:CGSizeMake(maxChatTextWidth, MAXFLOAT)];
-        cell.chatMsgTxtWidthConstraint.constant = sizeThatFitsTextView.width;
-        cell.chatMsgTxtHeightConstraint.constant = sizeThatFitsTextView.height;
-        
-        [cell setNeedsLayout];
-        [cell layoutIfNeeded];
-        
-        // Get the actual height required for the cell
-        CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-        
-        // Add an extra point to the height to account for the cell separator, which is added between the bottom
-        // of the cell's contentView and the bottom of the table view cell.
-        //∂height += 1;
-        
-        /*if(height<55.0)
-         {
-         return 55.0;
-         }*/
-        
-        return height;
-    }
+//    if([dict[@"from_to"] isEqualToString:@"c2v"])
+//    {
+//        ReceiverMsgCell *cell = [offscreenCells objectForKey:@"ReceiverMsgCell"];
+//        if (!cell && cell.tag!=-1)
+//        {
+//            cell = [tableView dequeueReusableCellWithIdentifier:@"ReceiverMsgCell"];
+//            cell.tag = -1;
+//            [offscreenCells setObject:cell forKey:@"ReceiverMsgCell"];
+//        }
+//    
+//        cell.chatMsgTxt.text = dict[@"message"];
+//        cell.chatMsgTxt.font = [UIFont systemFontOfSize:14.0];
+//        
+//        maxChatTextWidth = self.view.bounds.size.width - 54.0;
+//        
+//        CGSize sizeThatFitsTextView = [cell.chatMsgTxt sizeThatFits:CGSizeMake(maxChatTextWidth, MAXFLOAT)];
+//        cell.chatMsgTxtWidthConstraint.constant = sizeThatFitsTextView.width;
+//        cell.chatMsgTxtHeightConstraint.constant = sizeThatFitsTextView.height;
+//        
+//        [cell setNeedsLayout];
+//        [cell layoutIfNeeded];
+//        
+//        // Get the actual height required for the cell
+//        CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+//        return height;
+//    }
+//    else
+//    {
+//        SenderMsgCell *cell = [offscreenCells objectForKey:@"SenderMsgCell"];
+//        if (!cell && cell.tag!=-1)
+//        {
+//            cell = [tableView dequeueReusableCellWithIdentifier:@"SenderMsgCell"];
+//            cell.tag = -1;
+//            [offscreenCells setObject:cell forKey:@"SenderMsgCell"];
+//        }
+//        
+//        cell.chatMsgTxt.text = dict[@"message"];
+//        cell.chatMsgTxt.font = [UIFont systemFontOfSize:14.0];
+//        maxChatTextWidth = self.view.bounds.size.width - 54.0;
+//        
+//        CGSize sizeThatFitsTextView = [cell.chatMsgTxt sizeThatFits:CGSizeMake(maxChatTextWidth, MAXFLOAT)];
+//        cell.chatMsgTxtWidthConstraint.constant = sizeThatFitsTextView.width;
+//        cell.chatMsgTxtHeightConstraint.constant = sizeThatFitsTextView.height;
+//        
+//        [cell setNeedsLayout];
+//        [cell layoutIfNeeded];
+//        
+//        // Get the actual height required for the cell
+//        CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+//        return height;
+//    }
     
-    return 0;
+    return 70;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *dict = [chatArray objectAtIndex:indexPath.row];
     
-    if(![dict[@"sender"] boolValue])
+    if([dict[@"from_to"] isEqualToString:@"c2v"])
     {
         ReceiverMsgCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReceiverMsgCell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (cell == nil) {
+            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ReceiverMsgCell" owner:self options:nil];
+            cell = [topLevelObjects objectAtIndex:0];
+        }
         
         //cell.chatMessageLbl.text = chatObj.messageBody;
         cell.chatMsgTxt.text = dict[@"message"];
         cell.chatMsgTxt.textColor = [UIColor blackColor];
-        cell.chatMsgTxt.font = [UIFont systemFontOfSize:14.0];
+        [cell.chatMsgTxt setFont:[UIFont fontWithName:AppFont size:14.0f]];
+        
+        
+        cell.dateTimeLbl.text= dict[@"msg_time"];
+        [cell.dateTimeLbl setFont:[UIFont fontWithName:AppFont size:8.0f]];
         
         CGSize sizeThatFitsTextView = [cell.chatMsgTxt sizeThatFits:CGSizeMake(maxChatTextWidth, MAXFLOAT)];
         cell.chatMsgTxtWidthConstraint.constant = sizeThatFitsTextView.width;
         cell.chatMsgTxtHeightConstraint.constant = sizeThatFitsTextView.height;
-        
-        if([dict[@"read_status"] boolValue])
-        {
-            cell.readStatusImage.hidden = NO;
-        }
-        else
-        {
-            cell.readStatusImage.hidden = YES;
-        }
         
         [cell layoutIfNeeded];
         
@@ -230,13 +211,21 @@
     }
     else
     {
-        SenderMsgCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SenderMsgCell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        //cell.chatMessageLbl.text = chatObj.messageBody;
+        SenderMsgCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SenderMsgCell"];
+        if (cell == nil) {
+            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SenderMsgCell" owner:self options:nil];
+            cell = [topLevelObjects objectAtIndex:0];
+        }
+        //SenderMsgCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SenderMsgCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.chatMsgTxt.text = dict[@"message"];
         cell.chatMsgTxt.textColor = [UIColor blackColor];
-        cell.chatMsgTxt.font = [UIFont systemFontOfSize:14.0];
+        [cell.chatMsgTxt setFont:[UIFont fontWithName:AppFont size:14.0f]];
+        
+        cell.dateTimeLbl.text= dict[@"msg_time"];
+        [cell.dateTimeLbl setFont:[UIFont fontWithName:AppFont size:8.0f]];
+        
         
         CGSize sizeThatFitsTextView = [cell.chatMsgTxt sizeThatFits:CGSizeMake(maxChatTextWidth, MAXFLOAT)];
         cell.chatMsgTxtWidthConstraint.constant = sizeThatFitsTextView.width;
@@ -248,6 +237,171 @@
     }
     
     return nil;
+}
+
+-(void) keyboardWillShow:(NSNotification *)note{
+    // get keyboard size and loction
+    CGRect keyboardBounds;
+    [[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &keyboardBounds];
+    
+    // get the height since this is the main value that we need.
+    NSInteger kbSizeH = keyboardBounds.size.height;
+    
+    // get a rect for the table/main frame
+    CGRect tableFrame = self.tblMessage.frame;
+    tableFrame.size.height -= kbSizeH-50;
+    
+    // get a rect for the form frame
+    CGRect formFrame = self.toolbar.frame;
+    formFrame.origin.y -= kbSizeH-50;
+    
+    // animations settings
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.3f];
+    
+    // set views with new info
+    self.tblMessage.frame = tableFrame;
+    self.toolbar.frame = formFrame;
+    
+    // commit animations
+    [UIView commitAnimations];
+    
+    [self performSelector:@selector(tableScroll) withObject:nil afterDelay:0.03];
+}
+-(void) keyboardWillHide:(NSNotification *)note{
+    // get keyboard size and loction
+    
+    CGRect keyboardBounds;
+    [[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &keyboardBounds];
+    
+    // get the height since this is the main value that we need.
+    NSInteger kbSizeH = keyboardBounds.size.height;
+    
+    // get a rect for the table/main frame
+    CGRect tableFrame = _tblMessage.frame;
+    tableFrame.size.height += kbSizeH;
+    
+    // get a rect for the form frame
+    CGRect formFrame = self.toolbar.frame;
+    formFrame.origin.y += kbSizeH-50;
+    
+    // animations settings
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.3f];
+    
+    // set views with new info
+    _tblMessage.frame = tableFrame;
+    self.toolbar.frame = formFrame;
+    
+    // commit animations
+    [UIView commitAnimations];
+}
+
+-(void) keyPressed: (NSNotification*) notification{
+    // get the size of the text block so we can work our magic
+    CGSize newSize = [self.txtMessage.text
+                      sizeWithFont:[UIFont fontWithName:@"Helvetica" size:14]
+                      constrainedToSize:CGSizeMake(222,9999)
+                      lineBreakMode:UILineBreakModeWordWrap];
+    NSInteger newSizeH = newSize.height;
+    NSInteger newSizeW = newSize.width;
+    
+    // I output the new dimensions to the console
+    // so we can see what is happening
+    NSLog(@"NEW SIZE : %ld X %ld", newSizeW, newSizeH);
+    if (self.txtMessage.hasText)
+    {
+        // if the height of our new chatbox is
+        // below 90 we can set the height
+        if (newSizeH <= 90)
+        {
+            [self.txtMessage scrollRectToVisible:CGRectMake(0,0,1,1) animated:NO];
+            
+            // chatbox
+//            CGRect chatBoxFrame = self.txtMessage.frame;
+//            NSInteger chatBoxH = chatBoxFrame.size.height;
+//            NSInteger chatBoxW = chatBoxFrame.size.width;
+//            NSLog(@"CHAT BOX SIZE : %ld X %ld", chatBoxW, chatBoxH);
+//            chatBoxFrame.size.height = newSizeH + 12;
+//            self.txtMessage.frame = chatBoxFrame;
+            
+            // form view
+//            CGRect formFrame = self.toolbar.frame;
+//            NSInteger viewFormH = formFrame.size.height;
+//            NSLog(@"FORM VIEW HEIGHT : %ld", viewFormH);
+//            formFrame.size.height = 30 + newSizeH;
+//            formFrame.origin.y = 199 ;//- (newSizeH - 18);
+//            self.toolbar.frame = formFrame;
+            
+            // table view
+            CGRect tableFrame = self.tblMessage.frame;
+            NSInteger viewTableH = tableFrame.size.height;
+            NSLog(@"TABLE VIEW HEIGHT : %ld", viewTableH);
+            tableFrame.size.height = 199 - (newSizeH - 18);
+            self.tblMessage.frame = tableFrame;
+        }
+        
+        // if our new height is greater than 90
+        // sets not set the height or move things
+        // around and enable scrolling
+        if (newSizeH > 90)
+        {
+            self.txtMessage.scrollEnabled = YES;
+        }
+    }
+}
+
+- (IBAction)chatButtonClick:(id)sender{
+    [self sendMessage];
+    
+    // hide the keyboard, we are done with it.
+    //[self.txtMessage resignFirstResponder];
+    self.txtMessage.text = nil;
+    
+}
+-(void)sendMessage{
+    
+    
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
+                                 [_messageData valueForKey:@"receiver_email"],@"receiver_email",
+                                 _txtMessage.text, @"message",
+                                 @"v2c",@"from_to",
+                                 @"customer_vendor_message_create",@"action",
+                                 @"ios",@"mode",
+                                 @"123123",@"device_id",
+                                 @"'message push'",@"push_data",
+                                 @"message", @"msg_type",
+                                 nil];
+    
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             NSMutableDictionary *messageData=[[responseDics valueForKey:@"json"] mutableCopy];
+             //[messageData seva:@"c2v" forKey:@"from_to"];
+             [messageData setValue:@"c2v" forKey:@"from_to"];
+             
+             [chatArray addObject:messageData];
+             [_tblMessage reloadData];
+             [self performSelector:@selector(tableScroll) withObject:nil afterDelay:0.03];
+         }
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
+    
+}
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+    if([textView.text isEqualToString:@"Type a message"]){
+        textView.text=@"";
+    }
+    return YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
