@@ -73,7 +73,7 @@
 		F4CB16F81B3898CA0078419A /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = F4CB16F71B3898CA0078419A /* YTPlayerView-iframe-player.html */; };
 		F4CBDB2B1B52FD15000DB347 /* WWLoginUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB2A1B52FD15000DB347 /* WWLoginUserData.m */; };
 		F4CBDB4F1B544998000DB347 /* WWCategoryFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB4D1B544998000DB347 /* WWCategoryFooterCell.xib */; };
-		F4CC6D0E1B59A592005237F5 /* wwCategoryFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CC6D0D1B59A592005237F5 /* wwCategoryFooterCell.m */; };
+		F4CC6D101B59A66F005237F5 /* wwCategoryFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CC6D0F1B59A66E005237F5 /* wwCategoryFooterCell.m */; };
 		F4CCA5531B48593800F33FDA /* gotham-book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4CCA5521B48593800F33FDA /* gotham-book.ttf */; };
 		F4CD4E2A1B3082310081FE0B /* WWCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD4E281B3082310081FE0B /* WWCategoryCell.m */; };
 		F4CD4E2B1B3082310081FE0B /* WWCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CD4E291B3082310081FE0B /* WWCategoryCell.xib */; };
@@ -234,7 +234,7 @@
 		F4CBDB2A1B52FD15000DB347 /* WWLoginUserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWLoginUserData.m; sourceTree = "<group>"; };
 		F4CBDB4B1B544998000DB347 /* WWCategoryFooterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCategoryFooterCell.h; sourceTree = "<group>"; };
 		F4CBDB4D1B544998000DB347 /* WWCategoryFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCategoryFooterCell.xib; sourceTree = "<group>"; };
-		F4CC6D0D1B59A592005237F5 /* wwCategoryFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wwCategoryFooterCell.m; sourceTree = "<group>"; };
+		F4CC6D0F1B59A66E005237F5 /* wwCategoryFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wwCategoryFooterCell.m; sourceTree = "<group>"; };
 		F4CCA5521B48593800F33FDA /* gotham-book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "gotham-book.ttf"; sourceTree = "<group>"; };
 		F4CD4E271B3082310081FE0B /* WWCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCategoryCell.h; sourceTree = "<group>"; };
 		F4CD4E281B3082310081FE0B /* WWCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCategoryCell.m; sourceTree = "<group>"; };
@@ -513,7 +513,7 @@
 				F4C2B1631B4D7348000639BC /* WWCategoryCommonCell.m */,
 				F4C2B1641B4D7348000639BC /* WWCategoryCommonCell.xib */,
 				F4CBDB4B1B544998000DB347 /* WWCategoryFooterCell.h */,
-				F4CC6D0D1B59A592005237F5 /* wwCategoryFooterCell.m */,
+				F4CC6D0F1B59A66E005237F5 /* wwCategoryFooterCell.m */,
 				F4CBDB4D1B544998000DB347 /* WWCategoryFooterCell.xib */,
 				F4C2B1671B4D7A29000639BC /* WWCommonData.h */,
 				F4C2B1681B4D7A29000639BC /* WWCommonData.m */,
@@ -978,7 +978,7 @@
 				F4CD4E451B30830F0081FE0B /* WWCategoryDescriptionCell.m in Sources */,
 				F4CD4E411B30830F0081FE0B /* WWCategoryTitleCell.m in Sources */,
 				F4D08A6B1B20CDB300AF8E36 /* DSLCalendarMonthView.m in Sources */,
-				F4CC6D0E1B59A592005237F5 /* wwCategoryFooterCell.m in Sources */,
+				F4CC6D101B59A66F005237F5 /* wwCategoryFooterCell.m in Sources */,
 				F4609B651B0BBA8100BCCCB8 /* WWDashboardVC.m in Sources */,
 				F4CD4E691B309D990081FE0B /* ReceiverMsgCell.m in Sources */,
 				F4CD4E471B30830F0081FE0B /* WWCategoryMapCell.m in Sources */,
