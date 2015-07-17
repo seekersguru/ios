@@ -58,8 +58,8 @@
                                                        @{@"2":@"6"}
                                                    }
                                          }];
-    
     [_calendarView showCalender];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
