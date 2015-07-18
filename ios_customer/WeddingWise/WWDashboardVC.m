@@ -59,7 +59,7 @@
              NSArray *arr=[[responseDics valueForKey:@"json"] valueForKey:@"data"];
              
              
-             NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",[arr objectAtIndex:0]]];
+             NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://52.11.207.26%@",[arr objectAtIndex:0]]];
              NSURLRequest *request = [NSURLRequest requestWithURL:url];
              UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
             

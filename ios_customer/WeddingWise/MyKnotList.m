@@ -84,7 +84,7 @@
     NSArray *arrObject=[arrCategoryImages objectAtIndex:indexPath.row];
     [cell.leftButton setTitle:[arrObject objectAtIndex:0] forState:UIControlStateNormal];
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",[arrObject objectAtIndex:1]]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://52.11.207.26%@",[arrObject objectAtIndex:1]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
     

@@ -23,4 +23,5 @@
 @property(nonatomic, weak)IBOutlet MKMapView *mapView;
 @property (nonatomic,strong) id delegate;
 
+- (void)showCoordinatesOnMapWithLatitude:(NSString *)latitude longitude:(NSString *)longitude;
 @end

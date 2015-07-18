@@ -32,6 +32,7 @@
 		C59CF19B1B5AACE90018248E /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF1981B5AACE90018248E /* GoogleOpenSource.framework */; };
 		C59CF19C1B5AACE90018248E /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C59CF1991B5AACE90018248E /* GooglePlus.bundle */; };
 		C59CF19D1B5AACE90018248E /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF19A1B5AACE90018248E /* GooglePlus.framework */; };
+		C59CF1A01B5AD75D0018248E /* AnnotationPin.m in Sources */ = {isa = PBXBuildFile; fileRef = C59CF19F1B5AD75D0018248E /* AnnotationPin.m */; };
 		DAC41D564FCD8A8345D36778 /* libPods-WeddingWise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F35EDC96DE2AB293288A448C /* libPods-WeddingWise.a */; };
 		F45332CE1B4B03DE00C09482 /* GothamRoundedBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F45332CD1B4B03DE00C09482 /* GothamRoundedBook.ttf */; };
 		F4609B651B0BBA8100BCCCB8 /* WWDashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */; };
@@ -174,6 +175,8 @@
 		C59CF1981B5AACE90018248E /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../../../../fb_gmail/google-plus-ios-sdk-1.5.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
 		C59CF1991B5AACE90018248E /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "../../../../../fb_gmail/google-plus-ios-sdk-1.5.1/GooglePlus.bundle"; sourceTree = "<group>"; };
 		C59CF19A1B5AACE90018248E /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../../../../fb_gmail/google-plus-ios-sdk-1.5.1/GooglePlus.framework"; sourceTree = "<group>"; };
+		C59CF19E1B5AD75D0018248E /* AnnotationPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationPin.h; sourceTree = "<group>"; };
+		C59CF19F1B5AD75D0018248E /* AnnotationPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationPin.m; sourceTree = "<group>"; };
 		F35EDC96DE2AB293288A448C /* libPods-WeddingWise.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeddingWise.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45332CD1B4B03DE00C09482 /* GothamRoundedBook.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamRoundedBook.ttf; sourceTree = "<group>"; };
 		F4609B621B0BBA8100BCCCB8 /* WWDashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDashboardVC.h; sourceTree = "<group>"; };
@@ -683,6 +686,8 @@
 				F4CD4E3A1B30830F0081FE0B /* WWCategoryDescriptionCell.xib */,
 				F4CD4E3B1B30830F0081FE0B /* WWCategoryMapCell.h */,
 				F4CD4E3C1B30830F0081FE0B /* WWCategoryMapCell.m */,
+				C59CF19E1B5AD75D0018248E /* AnnotationPin.h */,
+				C59CF19F1B5AD75D0018248E /* AnnotationPin.m */,
 				F4CD4E3D1B30830F0081FE0B /* WWCategoryMapCell.xib */,
 				F4CD4E3E1B30830F0081FE0B /* WWCategoryListingCell.h */,
 				F4CD4E3F1B30830F0081FE0B /* WWCategoryListingCell.m */,
@@ -977,6 +982,7 @@
 				F4C7D85E1B0D031500D69912 /* UITextField+ADTextField.m in Sources */,
 				F4D08A691B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.m in Sources */,
 				60C763081B53D19900387B54 /* WWLeadsListVC.m in Sources */,
+				C59CF1A01B5AD75D0018248E /* AnnotationPin.m in Sources */,
 				F4CD4E671B309D990081FE0B /* SenderMsgCell.m in Sources */,
 				F47047411B011AE700FEFEFF /* AppDelegate.m in Sources */,
 				F47047821B0123F600FEFEFF /* RDVTabBarItem.m in Sources */,
