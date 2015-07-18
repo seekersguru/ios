@@ -426,6 +426,7 @@
     
         //_key.text=[NSString stringWithFormat:@"%@",[[line1 allKeys] objectAtIndex:0]];
     
+//    cell.imgCategory.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://52.11.207.26%@",[dicVendorData valueForKey:@"image"]]]]];
     
     
     

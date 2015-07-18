@@ -119,8 +119,9 @@
 		F4D08A701B20CDB300AF8E36 /* NSDate+DSLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D08A671B20CDB300AF8E36 /* NSDate+DSLCalendarView.m */; };
 		F4D08A781B20D3BF00AF8E36 /* slicingbg.png in Resources */ = {isa = PBXBuildFile; fileRef = F4D08A771B20D3BF00AF8E36 /* slicingbg.png */; };
 		F4D50E061B5AB04300491A93 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D50E031B5AB04300491A93 /* GoogleOpenSource.framework */; };
-		F4D50E071B5AB04300491A93 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F4D50E041B5AB04300491A93 /* GooglePlus.bundle */; };
 		F4D50E081B5AB04300491A93 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D50E051B5AB04300491A93 /* GooglePlus.framework */; };
+		F4D50E111B5B11F000491A93 /* AnnotationPin.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D50E101B5B11F000491A93 /* AnnotationPin.m */; };
+		F4D50E131B5B127100491A93 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F4D50E121B5B127100491A93 /* GooglePlus.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -301,8 +302,10 @@
 		F4D08A671B20CDB300AF8E36 /* NSDate+DSLCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DSLCalendarView.m"; sourceTree = "<group>"; };
 		F4D08A771B20D3BF00AF8E36 /* slicingbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slicingbg.png; sourceTree = "<group>"; };
 		F4D50E031B5AB04300491A93 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleOpenSource.framework; sourceTree = "<group>"; };
-		F4D50E041B5AB04300491A93 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GooglePlus.bundle; sourceTree = "<group>"; };
 		F4D50E051B5AB04300491A93 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlus.framework; sourceTree = "<group>"; };
+		F4D50E0F1B5B11F000491A93 /* AnnotationPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationPin.h; sourceTree = "<group>"; };
+		F4D50E101B5B11F000491A93 /* AnnotationPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationPin.m; sourceTree = "<group>"; };
+		F4D50E121B5B127100491A93 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GooglePlus.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -568,8 +571,8 @@
 		F4BC31A41B1794CA00BF5BB2 /* FrameWorks */ = {
 			isa = PBXGroup;
 			children = (
+				F4D50E121B5B127100491A93 /* GooglePlus.bundle */,
 				F4D50E031B5AB04300491A93 /* GoogleOpenSource.framework */,
-				F4D50E041B5AB04300491A93 /* GooglePlus.bundle */,
 				F4D50E051B5AB04300491A93 /* GooglePlus.framework */,
 				C59CF1901B5AACDD0018248E /* FBSDKCoreKit.framework */,
 				C59CF1911B5AACDD0018248E /* FBSDKLoginKit.framework */,
@@ -643,6 +646,8 @@
 			children = (
 				F4CD4E271B3082310081FE0B /* WWCategoryCell.h */,
 				F4CD4E281B3082310081FE0B /* WWCategoryCell.m */,
+				F4D50E0F1B5B11F000491A93 /* AnnotationPin.h */,
+				F4D50E101B5B11F000491A93 /* AnnotationPin.m */,
 				F4CD4E291B3082310081FE0B /* WWCategoryCell.xib */,
 				F4CD4E321B30830F0081FE0B /* WWCategoryTitleCell.h */,
 				F4CD4E331B30830F0081FE0B /* WWCategoryTitleCell.m */,
@@ -655,8 +660,6 @@
 				F4CD4E3A1B30830F0081FE0B /* WWCategoryDescriptionCell.xib */,
 				F4CD4E3B1B30830F0081FE0B /* WWCategoryMapCell.h */,
 				F4CD4E3C1B30830F0081FE0B /* WWCategoryMapCell.m */,
-				C59CF19E1B5AD75D0018248E /* AnnotationPin.h */,
-				C59CF19F1B5AD75D0018248E /* AnnotationPin.m */,
 				F4CD4E3D1B30830F0081FE0B /* WWCategoryMapCell.xib */,
 				F4CD4E3E1B30830F0081FE0B /* WWCategoryListingCell.h */,
 				F4CD4E3F1B30830F0081FE0B /* WWCategoryListingCell.m */,
@@ -885,7 +888,7 @@
 				F4CD4E421B30830F0081FE0B /* WWCategoryTitleCell.xib in Resources */,
 				F4CD4E461B30830F0081FE0B /* WWCategoryDescriptionCell.xib in Resources */,
 				F470474C1B011AE700FEFEFF /* Images.xcassets in Resources */,
-				F4D50E071B5AB04300491A93 /* GooglePlus.bundle in Resources */,
+				F4D50E131B5B127100491A93 /* GooglePlus.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -951,7 +954,7 @@
 				F4C7D85E1B0D031500D69912 /* UITextField+ADTextField.m in Sources */,
 				F4D08A691B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.m in Sources */,
 				60C763081B53D19900387B54 /* WWLeadsListVC.m in Sources */,
-				C59CF1A01B5AD75D0018248E /* AnnotationPin.m in Sources */,
+				F4D50E111B5B11F000491A93 /* AnnotationPin.m in Sources */,
 				F4CD4E671B309D990081FE0B /* SenderMsgCell.m in Sources */,
 				F47047411B011AE700FEFEFF /* AppDelegate.m in Sources */,
 				F47047821B0123F600FEFEFF /* RDVTabBarItem.m in Sources */,
