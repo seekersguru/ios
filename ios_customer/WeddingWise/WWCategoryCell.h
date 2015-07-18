@@ -13,6 +13,9 @@
 @property(nonatomic, weak)IBOutlet UIImageView *imgCategory;
 @property(nonatomic, weak)IBOutlet UILabel *lblName;
 @property(nonatomic, weak)IBOutlet UILabel *lblVeg;
+@property(nonatomic, weak)IBOutlet UILabel *lbl3;
+@property(nonatomic, weak)IBOutlet UILabel *lbl4;
+
 @property(nonatomic, weak)IBOutlet UILabel *lblCapacity;
 @property(nonatomic, weak)IBOutlet UILabel *lblStartingPrice;
 

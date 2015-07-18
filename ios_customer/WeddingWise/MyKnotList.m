@@ -15,7 +15,7 @@
 #import "WWDashboardVC.h"
 
 
-@interface MyKnotList ()<MBProgressHUDDelegate>
+@interface MyKnotList ()<MBProgressHUDDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 {
     NSMutableArray *arrCategoryImages;
 }
@@ -35,13 +35,53 @@
     
     // Show the HUD while the provided method executes in a new thread
     [HUD showWhileExecuting:@selector(callWebService) onTarget:self withObject:nil animated:YES];
+    
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+        self.navigationController.interactivePopGestureRecognizer.delegate = self;
+        
+    }
+}
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    
+    if ([gestureRecognizer isEqual:self.navigationController.interactivePopGestureRecognizer]) {
+        
+        return NO;
+        
+    } else {
+        
+        return YES;
+        
+    }
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:YES];
+    
+    
 }
--(void)viewWillDisappear:(BOOL)animated{
-    //[self.navigationController.navigationBar setHidden:NO];
-}
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    
+//    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+//        self.navigationController.interactivePopGestureRecognizer.delegate = self;
+//    }
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:animated];
+//    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+//        self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+//    }
+//    
+//}
+
+//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+//{
+//    return NO;
+//}
 -(void)callWebService{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  @"ios",@"mode",
@@ -84,7 +124,7 @@
     NSArray *arrObject=[arrCategoryImages objectAtIndex:indexPath.row];
     [cell.leftButton setTitle:[arrObject objectAtIndex:0] forState:UIControlStateNormal];
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",[arrObject objectAtIndex:1]]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImagePrefixUrl,[arrObject objectAtIndex:1]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
     

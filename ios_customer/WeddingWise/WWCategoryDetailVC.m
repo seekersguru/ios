@@ -174,6 +174,8 @@
         
         
         NSDictionary *data = [[[[packageSectionDetailArray objectAtIndex:indexPath.section] allValues] objectAtIndex:0] objectAtIndex:indexPath.row];
+        
+//        NSDictionary *dicData=[arrReadMoreData objectAtIndex:indexPath.row];
 //        [cell setCommonData:dicData withIndexPath:indexPath];
         [cell.key setText:[[data allKeys] objectAtIndex:0]];
         [cell.value setText:[[data allValues] objectAtIndex:0]];

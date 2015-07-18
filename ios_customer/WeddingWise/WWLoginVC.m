@@ -32,7 +32,7 @@
                                    action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
     
-    _bgImage.image= _image;
+    //_bgImage.image= _image;
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -129,7 +129,7 @@
 }
 -(IBAction)btnForgotPasswordPressed:(id)sender{
     WWForgotPassword *forgotPasowrd=[[WWForgotPassword alloc]initWithNibName:@"WWForgotPassword" bundle:nil];
-    forgotPasowrd.image= _bgImage.image;
+    //forgotPasowrd.image= _bgImage.image;
     [self.navigationController pushViewController:forgotPasowrd animated:YES];
 }
 - (void)didReceiveMemoryWarning {

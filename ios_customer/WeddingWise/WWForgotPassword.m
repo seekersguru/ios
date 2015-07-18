@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:lblPolicy withText:lblPolicy.text];
     
-    _bgImage.image= _image;
+    //_bgImage.image= _image;
     [super viewDidLoad];
 }
 -(IBAction)btnSignInPressed:(id)sender{

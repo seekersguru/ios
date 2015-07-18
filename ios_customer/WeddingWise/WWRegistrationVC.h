@@ -14,11 +14,17 @@
 }
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIImageView *imgDatePicker;
+@property (weak, nonatomic) IBOutlet UIImageView *imgTextBG;
+
 @property(nonatomic, weak)IBOutlet UITextField *txtEmailAddress;
 @property(nonatomic, weak)IBOutlet UITextField *txtPassword;
 @property(nonatomic, weak)IBOutlet UITextField *txtGroomName;
 @property(nonatomic, weak)IBOutlet UITextField *txtBrideName;
 @property(nonatomic, weak)IBOutlet UITextField *txtContactNo;
+
+@property(nonatomic, weak)IBOutlet UIButton *btnTentativeDate;
+@property(nonatomic, weak)IBOutlet UIButton *btnSignIn;
+@property(nonatomic, weak)IBOutlet UIButton *btnBack;
 
 @property(nonatomic, weak)IBOutlet UIImageView *bgImage;
 @property(nonatomic, strong)UIImage *image;

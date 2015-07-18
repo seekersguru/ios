@@ -59,7 +59,7 @@
              NSArray *arr=[[responseDics valueForKey:@"json"] valueForKey:@"data"];
              
              
-             NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",[arr objectAtIndex:0]]];
+             NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImagePrefixUrl,[arr objectAtIndex:0]]];
              NSURLRequest *request = [NSURLRequest requestWithURL:url];
              UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
             
@@ -194,12 +194,12 @@
 }
 -(IBAction)btnLoginPressed:(id)sender{
     WWLoginVC *loginVC=[[WWLoginVC alloc]initWithNibName:@"WWLoginVC" bundle:nil];
-    loginVC.image= _bgImage.image;
+    //loginVC.image= _bgImage.image;
     [self.navigationController pushViewController:loginVC animated:YES];
 }
 -(IBAction)btnRegistrationPressed:(id)sender{
     WWRegistrationVC *registrationVC=[[WWRegistrationVC alloc]initWithNibName:@"WWRegistrationVC" bundle:nil];
-    registrationVC.image= _bgImage.image;
+    //registrationVC.image= _bgImage.image;
     [self.navigationController pushViewController:registrationVC animated:YES];
 }
 -(IBAction)btnShowMorePressed:(id)sender{

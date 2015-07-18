@@ -25,7 +25,7 @@
 
 - (void)showImagesFromArray:(NSArray *)imageLinks{
     for (int i = 0; i < imageLinks.count; i++) {
-        NSURL *imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",imageLinks[i]]];
+        NSURL *imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImagePrefixUrl,imageLinks[i]]];
         
         CGRect frame = CGRectMake(i*self.categoryImageScrollView.frame.size.width, 0, self.categoryImageScrollView.frame.size.width, self.categoryImageScrollView.frame.size.height);
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];

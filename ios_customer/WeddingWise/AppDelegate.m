@@ -79,16 +79,15 @@ static AppDelegate * _sharedInstance;
 
 - (BOOL)application: (UIApplication *)application openURL: (NSURL *)url sourceApplication: (NSString *)sourceApplication annotation: (id)annotation
 {
-    //
-    if(_isFBLogin){
+    if([url.absoluteString rangeOfString:@"fb1069293003099190"].location != NSNotFound){
         return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                               openURL:url
                                                     sourceApplication:sourceApplication
                                                            annotation:annotation];
     }
-    else
+    else{
         return [GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation];
-        
+    }
 }
 - (UITabBarController *)setupViewControllers:(UITabBarController *)tabVC{
     if (!tabVC) {
@@ -102,17 +101,25 @@ static AppDelegate * _sharedInstance;
     UINavigationController *secondNavigationController = [[UINavigationController alloc]
                                                     initWithRootViewController:secondViewController];
     
+    UIViewController *thirdViewController = [[WWLeadsListVC alloc] init];
+    UINavigationController *thirdNavigationController = [[UINavigationController alloc]
+                                                          initWithRootViewController:thirdViewController];
+    
+    
+    
     
     UIViewController *fourthViewController = [[WWScheduleVC alloc] init];
     UINavigationController *fourthNavigationController = [[UINavigationController alloc]
                                                     initWithRootViewController:fourthViewController];
     
     
-    [tabVC setViewControllers:@[firstNavigationController, secondNavigationController,
-                                            fourthNavigationController]];
+    [tabVC setViewControllers:@[firstNavigationController,
+                                secondNavigationController,
+                                thirdNavigationController,
+                                fourthNavigationController]];
     
-    NSArray *tabBarItemImages = @[@"home", @"message", @"menu",@"menu"];
-    NSArray *tabBarSelectedItemImages = @[@"home_icon", @"message_icon", @"menu_icon",@"menu_icon"];
+    NSArray *tabBarItemImages = @[@"home", @"message", @"led",@"menu"];
+    NSArray *tabBarSelectedItemImages = @[@"home_icon", @"message_icon", @"led",@"menu_icon"];
     
     [self customizeTabBarForController:tabVC images:tabBarItemImages selectedImages:tabBarSelectedItemImages];
     return tabVC;

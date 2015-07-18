@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *minPersonStaticLabel;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+
 - (IBAction)bidItAction:(id)sender;
 -(IBAction)backButtonPressed:(id)sender;
 @end

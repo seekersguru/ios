@@ -8,8 +8,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WWRegistrationVC">
             <connections>
                 <outlet property="bgImage" destination="pUG-tm-8mR" id="AgM-tE-6cC"/>
+                <outlet property="btnBack" destination="pDF-c6-qTl" id="H60-ww-3yj"/>
+                <outlet property="btnSignIn" destination="OYI-Sq-TtS" id="MqO-4j-m0P"/>
+                <outlet property="btnTentativeDate" destination="KSJ-pz-Rx8" id="yNm-1u-5Pb"/>
                 <outlet property="datePicker" destination="VRH-c2-PzL" id="x5D-WG-HEk"/>
                 <outlet property="imgDatePicker" destination="Whf-HB-BcT" id="F9o-ih-PbD"/>
+                <outlet property="imgTextBG" destination="23L-Ca-RAz" id="OYX-OW-w54"/>
                 <outlet property="lblPolicy" destination="kdb-e3-0q4" id="KJc-BZ-CTm"/>
                 <outlet property="txtBrideName" destination="P9k-8R-79i" id="YPQ-f4-QKm"/>
                 <outlet property="txtContactNo" destination="UW5-5d-V5f" id="PSK-we-5WL"/>
@@ -135,7 +139,7 @@
                     <rect key="frame" x="31" y="389" width="259" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Tentative Date">
+                    <state key="normal" title="Tentative Wedding Date">
                         <color key="titleColor" red="0.80784313730000001" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -163,7 +167,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="58" y="6"/>
+            <point key="canvasLocation" x="-410" y="11"/>
         </view>
     </objects>
     <resources>

@@ -59,6 +59,7 @@
     [self setMaxPerson:[NSNumber numberWithInteger:[bidInfo[@"bid_options"][@"quantity"][@"max"] integerValue]]];
     [self setMinPerson:[NSNumber numberWithInteger:[bidInfo[@"bid_options"][@"quantity"][@"min"][@"value"] integerValue]]];
     [self setBidDictionary:bidInfo];
+    
 }
 @end
 

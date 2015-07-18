@@ -21,12 +21,20 @@
 - (void)viewDidLoad {
     //[self setTextFieldPlacehoder];
     [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:lblPolicy withText:lblPolicy.text];
+    [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_btnTentativeDate withText:_btnTentativeDate.titleLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_btnSignIn withText:_btnSignIn.titleLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:13.0 withLabel:_btnBack withText:_btnBack.titleLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_txtEmailAddress withText:_txtEmailAddress.text];
+    [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_txtPassword withText:_txtPassword.text];
+    [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_txtGroomName withText:_txtGroomName.text];
+    [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_txtBrideName withText:_txtBrideName.text];
+    [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_txtContactNo withText:_txtContactNo.text];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
-    _bgImage.image= _image;
+    //_bgImage.image= _image;
     
     [_datePicker setHidden:YES];
      [_imgDatePicker setHidden:YES];
@@ -40,13 +48,27 @@
 -(void)fillFaceBookData{
     [_txtEmailAddress setEnabled:NO];
     _txtEmailAddress.text= [_fbResponse valueForKey:@"email"];
+    [_txtEmailAddress setTextColor:[UIColor lightGrayColor]];
+    
+    [_txtPassword setHidden:YES];
+    
+    
+    //Set buttons frame in case FB & G+ login:
+    [_txtBrideName setFrame:CGRectMake(_txtPassword.frame.origin.x, _txtPassword.frame.origin.y, _txtPassword.frame.size.width, _txtPassword.frame.size.height)];
+    [_txtGroomName setFrame:CGRectMake(_txtBrideName.frame.origin.x, _txtBrideName.frame.origin.y+48, _txtBrideName.frame.size.width, _txtBrideName.frame.size.height)];
+    [_txtContactNo setFrame:CGRectMake(_txtGroomName.frame.origin.x, _txtGroomName.frame.origin.y+48, _txtGroomName.frame.size.width, _txtGroomName.frame.size.height)];
+    [_btnTentativeDate setFrame:CGRectMake(_txtContactNo.frame.origin.x, _txtContactNo.frame.origin.y+48, _txtContactNo.frame.size.width, _txtContactNo.frame.size.height)];
+    [_imgTextBG setFrame:CGRectMake(_imgTextBG.frame.origin.x, _imgTextBG.frame.origin.y, _imgTextBG.frame.size.width, _imgTextBG.frame.size.height-38)];
+    
 }
 -(void)setTextFieldPlacehoder{
+    
     [_txtEmailAddress setTextFieldPlaceholder:@"Email Address" withcolor:[UIColor grayColor] withPadding:_txtEmailAddress];
     [_txtPassword setTextFieldPlaceholder:@"Password" withcolor:[UIColor grayColor] withPadding:_txtPassword];
     [_txtGroomName setTextFieldPlaceholder:@"Groom Name" withcolor:[UIColor grayColor] withPadding:_txtGroomName];
     [_txtBrideName setTextFieldPlaceholder:@"Bride Name" withcolor:[UIColor grayColor] withPadding:_txtBrideName];
     [_txtContactNo setTextFieldPlaceholder:@"Contact number" withcolor:[UIColor grayColor] withPadding:_txtContactNo];
+
 }
 
 #pragma mark: IBAction & utility methods:

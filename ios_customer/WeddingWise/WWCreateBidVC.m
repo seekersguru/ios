@@ -141,7 +141,7 @@
                                   @"device_id" : @"123123",
                                   @"push_data" : @"posting bid",
                                   @"msg_type" : @"bid",
-                                  @"event_date" : @"2015-12-12",    //TODO:date should be dynamic, Will do later
+                                  @"event_date" : @"2015-12-22",    //TODO:date should be dynamic, Will do later
                                   @"bid_json" : json_string,
                                   @"time_slot" : _timeSlotTextField.text,
                                   @"bid_price" : _bidPriceTextField.text,
