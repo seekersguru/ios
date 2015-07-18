@@ -103,7 +103,11 @@
         }
          else if ([result isEqualToString:@"success"]){
              //Login successfully
-             [[AppDelegate sharedAppDelegate]setupViewControllers:self.navigationController];
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 UITabBarController *tabVC = [[AppDelegate sharedAppDelegate]setupViewControllers:nil];
+                 [self.navigationController pushViewController:tabVC animated:YES];
+             });
+             
          }
      }
                                              failure:^(NSString *response)

@@ -10,15 +10,21 @@
 #import "WWCategoryCell.h"
 #import "WWCategoryDetailVC.h"
 
-@interface WWDetailScreen ()<MBProgressHUDDelegate>
+@interface WWDetailScreen ()<MBProgressHUDDelegate,UITextFieldDelegate>
 {
     NSMutableArray *arrVendorData;
+    NSString *filterType;
+    NSString *filterTime;
+    NSString *filterDate;
 }
 @end
 
 @implementation WWDetailScreen
 
 - (void)viewDidLoad {
+    
+    [super viewDidLoad];
+    
     [self.navigationController.navigationBar setHidden:YES];
     
     arrVendorData=[[NSMutableArray alloc]init];
@@ -30,19 +36,115 @@
     HUD.delegate = self;
     
     // Show the HUD while the provided method executes in a new thread
-    [HUD showWhileExecuting:@selector(callWebService) onTarget:self withObject:nil animated:YES];
+    [HUD showWhileExecuting:@selector(callWebService:) onTarget:self withObject:nil animated:YES];
     
-    [super viewDidLoad];
+    [_filterView setHidden:YES];
+    
+    [self.vendorNameLabel setTitle:self.vendorList[0] forState:UIControlStateNormal];
     // Do any additional setup after loading the view from its nib.
 }
--(void)callWebService{
+
+- (void)viewWillAppear:(BOOL)animated{
+//    [self setHidesBottomBarWhenPushed:NO];
+}
+- (IBAction)filterTypeSelection:(UIButton *)sender {
+    switch (sender.tag) {
+        case 1:
+            [(UIButton * )[sender.superview viewWithTag:2] setSelected:NO];
+            [sender setSelected:YES];
+            filterType = @"ENQUIRY";
+            break;
+        case 2:
+            [(UIButton * )[sender.superview viewWithTag:1] setSelected:NO];
+            [sender setSelected:YES];
+            filterType = @"BOOKING";
+            break;
+        case 3:
+            [(UIButton * )[sender.superview viewWithTag:4] setSelected:NO];
+            [(UIButton * )[sender.superview viewWithTag:5] setSelected:NO];
+            [sender setSelected:YES];
+            filterTime = @"MORNING";
+            break;
+        case 4:
+            [(UIButton * )[sender.superview viewWithTag:3] setSelected:NO];
+            [(UIButton * )[sender.superview viewWithTag:5] setSelected:NO];
+            [sender setSelected:YES];
+            filterTime = @"ALL DAY";
+            break;
+        case 5:
+            [(UIButton * )[sender.superview viewWithTag:3] setSelected:NO];
+            [(UIButton * )[sender.superview viewWithTag:4] setSelected:NO];
+            [sender setSelected:YES];
+            filterTime = @"EVENING";
+            break;
+        case 6:
+            [(UIButton * )[sender.superview viewWithTag:7] setSelected:NO];
+            [sender setSelected:YES];
+            filterDate = @"EVENT DATE";
+            break;
+        case 7:
+            [(UIButton * )[sender.superview viewWithTag:6] setSelected:NO];
+            [sender setSelected:YES];
+            filterDate = @"BOOKING DATE";
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)filterVendor:(id)sender{
+    [_filterTextfield resignFirstResponder];
+    BOOL isHidden = _filterView.hidden;
+    if (_filterView.hidden) {
+        [_filterView setHidden:NO];
+    }
     
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options: UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         if (isHidden) {
+                             _filterView.frame = CGRectMake(0, 58, self.view.frame.size.width, self.view.frame.size.height-60);
+                         }
+                         else{
+                             _filterView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+                         }
+                     }
+                     completion:^(BOOL finished){
+                         if (!isHidden) {
+                             [_filterView setHidden:YES];
+                         }
+                     }];
+}
+
+- (IBAction)submitFilterAction:(UIButton *)sender {
+    [self filterVendor:sender];
+    [_filterTextfield resignFirstResponder];
+    NSString *searchString = _filterTextfield.text;
+    //call api here
+    
+    [self callWebService:searchString];
+    if ([[searchString stringByReplacingOccurrencesOfString:@" " withString:@""] length] > 0) {
+        [_vendorNameLabel setTitle:[NSString stringWithFormat:@"%@..%@",[_vendorList[0] substringWithRange:NSMakeRange(0, 1)],searchString] forState:UIControlStateNormal];
+    }
+    
+    [_vendorNameLabel addTarget:self action:@selector(filterVendor:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+-(void)callWebService:(NSString *)searchString{
+    if (!searchString) {
+        searchString = @"";
+    }
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  @"ios",@"mode",
                                  @"2x",@"image_type",
-                                 _vendorType,@"vendor_type",
+                                 self.vendorList[0],@"vendor_type",
                                  @"1",@"page_no",
-                                 @"2x",@"search_string",
+                                 searchString,@"search_string",
                                  @"customer_vendor_list_and_search",@"action",
                                  nil];
     
@@ -52,6 +154,7 @@
              [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             [arrVendorData removeAllObjects];
              NSArray *arrData=[[responseDics valueForKey:@"json"] valueForKey:@"vendor_list"];
              for (NSDictionary *dicVendor in arrData) {
                  [arrVendorData addObject:dicVendor];
@@ -186,10 +289,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+//    [self setHidesBottomBarWhenPushed:YES];
     WWCategoryDetailVC *detailScreen=[[WWCategoryDetailVC alloc]initWithNibName:@"WWCategoryDetailVC" bundle:nil];
+    detailScreen.hidesBottomBarWhenPushed = YES;
     detailScreen.vendorEmail=[[arrVendorData objectAtIndex:indexPath.row] valueForKey:@"vendor_email"];
     [self.navigationController pushViewController:detailScreen animated:YES];
+    detailScreen.hidesBottomBarWhenPushed = NO;
 }
+
 -(IBAction)backButtonPressed:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }

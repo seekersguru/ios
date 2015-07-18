@@ -150,6 +150,8 @@
                 UIRectFill(self.bounds);
             }
                 break;
+            default:
+                break;
         }
     }
 }

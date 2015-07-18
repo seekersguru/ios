@@ -30,8 +30,8 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 +(instancetype)sharedAppDelegate;
-
-- (void)setupViewControllers:(UINavigationController*)navigationView;
+- (void)changeTabBarVC:(UITabBarController *)tabVC;
+- (UITabBarController *)setupViewControllers:(UITabBarController *)navigationView;
 
 @end
 

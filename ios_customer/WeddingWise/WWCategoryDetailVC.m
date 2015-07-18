@@ -22,6 +22,7 @@
 #import "WWCreateBidVC.h"
 #import "WWMessageList.h"
 #import "WWCategoryFooterCell.h"
+#import "WWScheduleVC.h"
 
 #define DEGREES_IN_RADIANS(x) (M_PI * x / 180.0)
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
@@ -42,8 +43,19 @@
     arrReadMoreData= [[NSArray alloc]init];
     [self setUpCustomView];
     [self callWebService];
+    
+//    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    [appDelegate changeTabBarVC:self.tabBarController];
+
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+//    [self setHidesBottomBarWhenPushed:NO];
+}
 -(void)callWebService{
     
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
@@ -424,6 +436,32 @@
     WWCreateBidVC *createBid=[[WWCreateBidVC alloc]initWithNibName:@"WWCreateBidVC" bundle:nil];
     [self.navigationController pushViewController:createBid animated:YES];
 }
+
+- (IBAction)selectCustomBottonAction:(UIButton *)sender {
+    UIViewController *vc = nil;
+    switch (sender.tag) {
+        case 1:
+            vc=[[WWCreateBidVC alloc]init];
+            [(WWCreateBidVC *)vc setRequestType:@"bid"];
+            break;
+        case 2:
+            vc=[[WWCreateBidVC alloc]init];
+            [(WWCreateBidVC *)vc setRequestType:@"book"];
+            break;
+        case 3:
+            vc=[[WWMessageList alloc]init];
+            break;
+        case 4:
+            vc=[[WWScheduleVC alloc]init];
+            break;
+            
+        default:
+            break;
+    }
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -18,6 +18,7 @@
 #import "WWCreateBidVC.h"
 #import "WWScheduleVC.h"
 #import "WWLeadsListVC.h"
+#import "WWSideMenuVC.h"
 
 void uncaughtExceptionHandler(NSException*);
 
@@ -90,8 +91,10 @@ static AppDelegate * _sharedInstance;
         return [GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation];
         
 }
-- (void)setupViewControllers:(UINavigationController*)navigationView{
-    
+- (UITabBarController *)setupViewControllers:(UITabBarController *)tabVC{
+    if (!tabVC) {
+        tabVC = [[UITabBarController alloc] init];
+    }
     UIViewController *firstViewController = [[MyKnotList alloc] init];
     UINavigationController *firstNavigationController = [[UINavigationController alloc]
                                                    initWithRootViewController:firstViewController];
@@ -100,35 +103,67 @@ static AppDelegate * _sharedInstance;
     UINavigationController *secondNavigationController = [[UINavigationController alloc]
                                                     initWithRootViewController:secondViewController];
     
-    UIViewController *thirdViewController = [[WWLeadsListVC alloc] init];
-    UINavigationController *thirdNavigationController = [[UINavigationController alloc]
-                                                   initWithRootViewController:thirdViewController];
     
     UIViewController *fourthViewController = [[WWScheduleVC alloc] init];
     UINavigationController *fourthNavigationController = [[UINavigationController alloc]
                                                     initWithRootViewController:fourthViewController];
     
-    _tabBarController = [[UITabBarController alloc] init];
-    [_tabBarController setViewControllers:@[firstNavigationController, secondNavigationController,
-                                            thirdNavigationController,fourthNavigationController]];
+    UIViewController *thirdViewController = [[WWSideMenuVC alloc] init];
+    UINavigationController *thirdNavigationController = [[UINavigationController alloc]
+                                                          initWithRootViewController:thirdViewController];
     
-    [navigationView pushViewController:_tabBarController animated:YES];
-    [self customizeTabBarForController:_tabBarController];
+    
+    
+    
+    [tabVC setViewControllers:@[firstNavigationController, secondNavigationController,
+                                            fourthNavigationController,thirdNavigationController]];
+    
+    NSArray *tabBarItemImages = @[@"home", @"message", @"menu",@"menu"];
+    NSArray *tabBarSelectedItemImages = @[@"home_icon", @"message_icon", @"menu_icon",@"menu_icon"];
+    
+    [self customizeTabBarForController:tabVC images:tabBarItemImages selectedImages:tabBarSelectedItemImages];
+    return tabVC;
 }
 
-- (void)customizeTabBarForController:(UITabBarController *)tabBarController {
-    
-    NSArray *tabBarItemImages = @[@"home", @"message", @"led",@"menu"];
-    NSArray *tabBarSelectedItemImages = @[@"home_icon", @"message_icon", @"led",@"menu_icon"];
+- (void)customizeTabBarForController:(UITabBarController *)tabBarController images:(NSArray *)images selectedImages:(NSArray *)selectedImages{
     
     NSInteger index = 0;
     for (UITabBarItem *item in [[tabBarController tabBar] items]) {
         
-        [item setImage:[UIImage imageNamed:[tabBarItemImages objectAtIndex:index]]];
-        item.selectedImage= [[UIImage imageNamed:[tabBarSelectedItemImages objectAtIndex:index]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        [item setImage:[UIImage imageNamed:[images objectAtIndex:index]]];
+        item.selectedImage= [[UIImage imageNamed:[selectedImages objectAtIndex:index]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         index++;
         
     }
+}
+
+- (void)changeTabBarVC:(UITabBarController *)tabVC{
+    
+    UIViewController *homeViewController = [[MyKnotList alloc] init];
+    UINavigationController *homeNavigationController = [[UINavigationController alloc]
+                                                         initWithRootViewController:homeViewController];
+    
+    UIViewController *firstViewController = [[WWCreateBidVC alloc] init];
+    UINavigationController *firstNavigationController = [[UINavigationController alloc]
+                                                         initWithRootViewController:firstViewController];
+    
+    UIViewController *secondViewController = [[WWCreateBidVC alloc] init];
+    UINavigationController *secondNavigationController = [[UINavigationController alloc]
+                                                         initWithRootViewController:secondViewController];
+    
+    UIViewController *thirdViewController = [[WWMessageList alloc] init];
+    UINavigationController *thirdNavigationController = [[UINavigationController alloc]
+                                                          initWithRootViewController:thirdViewController];
+    
+    
+    UIViewController *fourthViewController = [[WWScheduleVC alloc] init];
+    UINavigationController *fourthNavigationController = [[UINavigationController alloc]
+                                                          initWithRootViewController:fourthViewController];
+    [tabVC setViewControllers:@[homeNavigationController, firstNavigationController, secondNavigationController, thirdNavigationController,fourthNavigationController]];
+    
+    NSArray *tabBarItemImages = @[@"home", @"home", @"message", @"led", @"menu"];
+    NSArray *tabBarSelectedItemImages = @[@"home_icon", @"home_icon", @"message_icon", @"led", @"menu_icon"];
+    [self customizeTabBarForController:tabVC images:tabBarItemImages selectedImages:tabBarSelectedItemImages];
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

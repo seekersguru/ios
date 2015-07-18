@@ -55,9 +55,12 @@
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
              NSArray *arrData=[[responseDics valueForKey:@"json"] valueForKey:@"data"];
+             
              for (NSArray *arrImage in arrData) {
                  [arrCategoryImages addObject:arrImage];
              }
+             
+             
              [_tblMyKnotList reloadData];
          }
      }
@@ -79,7 +82,6 @@
     self.tblMyKnotList.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     NSArray *arrObject=[arrCategoryImages objectAtIndex:indexPath.row];
-    
     [cell.leftButton setTitle:[arrObject objectAtIndex:0] forState:UIControlStateNormal];
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",[arrObject objectAtIndex:1]]];
@@ -110,7 +112,7 @@
     
     WWDetailScreen *detailScreen=[[WWDetailScreen alloc]initWithNibName:@"WWDetailScreen" bundle:nil];
     NSArray *arrObject=[arrCategoryImages objectAtIndex:indexPath.row];
-    detailScreen.vendorType= [arrObject objectAtIndex:0];
+    detailScreen.vendorList= arrObject;
     
     [self.navigationController pushViewController:detailScreen animated:YES];
 }
