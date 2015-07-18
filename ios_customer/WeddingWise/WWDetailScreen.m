@@ -16,7 +16,12 @@
     NSString *filterType;
     NSString *filterTime;
     NSString *filterDate;
+    BOOL isFilterViewPrepared;
+    NSArray *filterArray;
+    NSMutableArray *filterSelectedArray;
 }
+@property (weak, nonatomic) IBOutlet UIView *dynamicFilterView;
+
 @end
 
 @implementation WWDetailScreen
@@ -47,49 +52,96 @@
 - (void)viewWillAppear:(BOOL)animated{
 //    [self setHidesBottomBarWhenPushed:NO];
 }
-- (IBAction)filterTypeSelection:(UIButton *)sender {
-    switch (sender.tag) {
-        case 1:
-            [(UIButton * )[sender.superview viewWithTag:2] setSelected:NO];
-            [sender setSelected:YES];
-            filterType = @"ENQUIRY";
-            break;
-        case 2:
-            [(UIButton * )[sender.superview viewWithTag:1] setSelected:NO];
-            [sender setSelected:YES];
-            filterType = @"BOOKING";
-            break;
-        case 3:
-            [(UIButton * )[sender.superview viewWithTag:4] setSelected:NO];
-            [(UIButton * )[sender.superview viewWithTag:5] setSelected:NO];
-            [sender setSelected:YES];
-            filterTime = @"MORNING";
-            break;
-        case 4:
-            [(UIButton * )[sender.superview viewWithTag:3] setSelected:NO];
-            [(UIButton * )[sender.superview viewWithTag:5] setSelected:NO];
-            [sender setSelected:YES];
-            filterTime = @"ALL DAY";
-            break;
-        case 5:
-            [(UIButton * )[sender.superview viewWithTag:3] setSelected:NO];
-            [(UIButton * )[sender.superview viewWithTag:4] setSelected:NO];
-            [sender setSelected:YES];
-            filterTime = @"EVENING";
-            break;
-        case 6:
-            [(UIButton * )[sender.superview viewWithTag:7] setSelected:NO];
-            [sender setSelected:YES];
-            filterDate = @"EVENT DATE";
-            break;
-        case 7:
-            [(UIButton * )[sender.superview viewWithTag:6] setSelected:NO];
-            [sender setSelected:YES];
-            filterDate = @"BOOKING DATE";
-            break;
-        default:
-            break;
+- (IBAction)radioTypeSelection:(UIButton *)sender {
+    if (!filterSelectedArray) {
+        filterSelectedArray = [NSMutableArray new];
     }
+    
+    
+    
+    
+    
+    
+    NSMutableDictionary *filterDict = [NSMutableDictionary new];
+    
+//    for (NSDictionary *dict in filterArray) {
+//        for (NSString *type in [dict valueForKey:@"values"]) {
+//            [filterDict setObject:[dict valueForKey:@"name"] forKey:type];
+//        }
+//    }
+    
+    for (int i = 0; i < filterArray.count; i++) {
+        NSDictionary *dict = filterArray[i];
+        for (int j = 0; j < [[dict valueForKey:@"values"] count]; j++) {
+            NSString *type = [[dict valueForKey:@"values"] objectAtIndex:j];
+            [filterDict setObject:[dict valueForKey:@"name"] forKey:type];
+        }
+    }
+    
+    NSString *key1 = [[filterDict allValues] objectAtIndex:sender.tag-1];
+    NSString *value1 = [[filterDict allKeys] objectAtIndex:sender.tag-1];
+    [filterDict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if ([obj isEqualToString:key1] && ![key isEqualToString:key1]) {
+            NSMutableArray *filterSelectedArrayCopy = [filterSelectedArray copy];
+            for (NSDictionary *dict in filterSelectedArrayCopy) {
+                if ([[dict allKeys] containsObject:key1]) {
+                    [filterSelectedArray removeObjectAtIndex:[[dict allKeys] indexOfObject:key1]];
+                }
+            }
+            
+            NSUInteger indexOfObject = [[filterDict allKeys] indexOfObject:key];
+            [(UIButton *)[sender.superview viewWithTag:indexOfObject+1] setSelected:NO];
+        }
+    }];
+    [filterSelectedArray addObject:@{key1:value1}];
+    sender.selected = YES;
+    
+//    switch (sender.tag) {
+//        case 1:
+//            [(UIButton * )[sender.superview viewWithTag:2] setSelected:NO];
+//            [sender setSelected:YES];
+//            filterType = @"ENQUIRY";
+//            break;
+//        case 2:
+//            [(UIButton * )[sender.superview viewWithTag:1] setSelected:NO];
+//            [sender setSelected:YES];
+//            filterType = @"BOOKING";
+//            break;
+//        case 3:
+//            [(UIButton * )[sender.superview viewWithTag:4] setSelected:NO];
+//            [(UIButton * )[sender.superview viewWithTag:5] setSelected:NO];
+//            [sender setSelected:YES];
+//            filterTime = @"MORNING";
+//            break;
+//        case 4:
+//            [(UIButton * )[sender.superview viewWithTag:3] setSelected:NO];
+//            [(UIButton * )[sender.superview viewWithTag:5] setSelected:NO];
+//            [sender setSelected:YES];
+//            filterTime = @"ALL DAY";
+//            break;
+//        case 5:
+//            [(UIButton * )[sender.superview viewWithTag:3] setSelected:NO];
+//            [(UIButton * )[sender.superview viewWithTag:4] setSelected:NO];
+//            [sender setSelected:YES];
+//            filterTime = @"EVENING";
+//            break;
+//        case 6:
+//            [(UIButton * )[sender.superview viewWithTag:7] setSelected:NO];
+//            [sender setSelected:YES];
+//            filterDate = @"EVENT DATE";
+//            break;
+//        case 7:
+//            [(UIButton * )[sender.superview viewWithTag:6] setSelected:NO];
+//            [sender setSelected:YES];
+//            filterDate = @"BOOKING DATE";
+//            break;
+//        default:
+//            break;
+//    }
+}
+
+- (IBAction)checkTypeSelection:(UIButton *)sender{
+    
 }
 
 - (void)filterVendor:(id)sender{
@@ -154,6 +206,11 @@
              [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             if (!isFilterViewPrepared) {
+                 //prepare dynamic search view
+                 filterArray = [[responseDics valueForKey:@"json"] valueForKey:@"filters"];
+                 [self prepareDynamicFilterView:[[responseDics valueForKey:@"json"] valueForKey:@"filters"]];
+             }
              [arrVendorData removeAllObjects];
              NSArray *arrData=[[responseDics valueForKey:@"json"] valueForKey:@"vendor_list"];
              for (NSDictionary *dicVendor in arrData) {
@@ -167,6 +224,74 @@
          DLog(@"%@",response);
      }];
 }
+
+- (void)prepareDynamicFilterView:(NSArray *)filterArray{
+    int index = 1;
+    int x1 = 20, x2 = 158, y = 66;
+    for (NSDictionary *dict in filterArray) {
+        NSString *buttonType = [dict valueForKey:@"type"];
+        int index1 = 1;
+        for (NSString *type in [dict valueForKey:@"values"]) {
+            CGRect buttonFrame;
+            buttonFrame.size.width = 25;
+            buttonFrame.size.height = 25;
+            buttonFrame.origin.y = y;
+            if (index % 2 != 0) {
+                buttonFrame.origin.x = x1;
+            }
+            else{
+                buttonFrame.origin.x = x2;
+                if (index1 != [[dict valueForKey:@"values"] count]) {
+                    y+=28;
+                }
+            }
+            UIButton *checkBox = [[UIButton alloc] initWithFrame:buttonFrame];
+            checkBox.tag = index;
+            [checkBox setTitle:buttonType forState:UIControlStateNormal];
+            if ([buttonType isEqualToString:@"radio"]) {
+                [checkBox setImage:[UIImage imageNamed:@"radiobt"] forState:UIControlStateNormal];
+                [checkBox setImage:[UIImage imageNamed:@"radiobtMark"] forState:UIControlStateSelected];
+                [checkBox addTarget:self action:@selector(radioTypeSelection:) forControlEvents:UIControlEventTouchUpInside];
+            }else{
+                [checkBox setImage:[UIImage imageNamed:@"checkbt"] forState:UIControlStateNormal];
+                [checkBox setImage:[UIImage imageNamed:@"checkbtMark"] forState:UIControlStateSelected];
+                [checkBox addTarget:self action:@selector(checkTypeSelection:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            
+            
+            buttonFrame.origin.x += 25;
+            buttonFrame.origin.y += 6;
+            buttonFrame.size.width = 76;
+            UILabel *label = [[UILabel alloc] initWithFrame:buttonFrame];
+            [label setTextColor:[UIColor lightGrayColor]];
+            [label setText:type];
+            [label setFont:[UIFont systemFontOfSize:10]];
+            [label setNumberOfLines:0];
+            [label sizeToFit];
+            
+            [_dynamicFilterView addSubview:checkBox];
+            [_dynamicFilterView addSubview:label];
+            index++;
+            index1++;
+        }
+        
+        UIView *seperatorView = [[UIView alloc] initWithFrame:CGRectMake(10, y+28, 262, 1)];
+        [seperatorView setBackgroundColor:[UIColor lightGrayColor]];
+        [_dynamicFilterView addSubview:seperatorView];
+        y+=33;
+    }
+    
+    UIButton *submitButton = [[UIButton alloc] initWithFrame:CGRectMake(76, y+3, 131, 25)];
+    [submitButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
+    [submitButton setBackgroundColor:[UIColor colorWithRed:240/255.0 green:105/255.0 blue:89/255.0 alpha:1.0]];
+    [submitButton addTarget:self action:@selector(submitFilterAction:) forControlEvents:UIControlEventTouchUpInside];
+    [_dynamicFilterView addSubview:submitButton];
+    
+    CGRect frame = _dynamicFilterView.frame;
+    frame.size.height = submitButton.frame.origin.y + 35;
+    [_dynamicFilterView setFrame:frame];
+}
+
 #pragma mark - Table view
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"WWCategoryCell";
@@ -178,7 +303,7 @@
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     NSDictionary *dicVendorData=[arrVendorData objectAtIndex:indexPath.row];
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",[dicVendorData valueForKey:@"image"]]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://52.11.207.26%@",[dicVendorData valueForKey:@"image"]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
     
@@ -196,9 +321,9 @@
     if(icons.count>0){
         for (int i=0; i< icons.count; i++) {
             NSString *iconURL= [icons objectAtIndex:i];
-            NSLog(@"iconURL :%@",[NSString stringWithFormat:@"http://wedwise.work%@",iconURL]);
+            NSLog(@"iconURL :%@",[NSString stringWithFormat:@"http://52.11.207.26%@",iconURL]);
             
-            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",iconURL]];
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://52.11.207.26%@",iconURL]];
             NSURLRequest *request = [NSURLRequest requestWithURL:url];
             UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
             
@@ -264,7 +389,7 @@
     
     
     
-//    cell.imgCategory.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wedwise.work%@",[dicVendorData valueForKey:@"image"]]]]];
+//    cell.imgCategory.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://52.11.207.26%@",[dicVendorData valueForKey:@"image"]]]]];
     
     cell.lblName.text=[dicVendorData valueForKey:@"name"];
     cell.lblStartingPrice.text=[NSString stringWithFormat:@"%@/-",[dicVendorData valueForKey:@"starting_price"]];
