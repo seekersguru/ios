@@ -18,7 +18,6 @@
 #import "WWCreateBidVC.h"
 #import "WWScheduleVC.h"
 #import "WWLeadsListVC.h"
-#import "WWSideMenuVC.h"
 
 void uncaughtExceptionHandler(NSException*);
 
@@ -108,15 +107,9 @@ static AppDelegate * _sharedInstance;
     UINavigationController *fourthNavigationController = [[UINavigationController alloc]
                                                     initWithRootViewController:fourthViewController];
     
-    UIViewController *thirdViewController = [[WWSideMenuVC alloc] init];
-    UINavigationController *thirdNavigationController = [[UINavigationController alloc]
-                                                          initWithRootViewController:thirdViewController];
-    
-    
-    
     
     [tabVC setViewControllers:@[firstNavigationController, secondNavigationController,
-                                            fourthNavigationController,thirdNavigationController]];
+                                            fourthNavigationController]];
     
     NSArray *tabBarItemImages = @[@"home", @"message", @"menu",@"menu"];
     NSArray *tabBarSelectedItemImages = @[@"home_icon", @"message_icon", @"menu_icon",@"menu_icon"];
