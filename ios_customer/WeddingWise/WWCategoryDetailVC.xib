@@ -7,7 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WWCategoryDetailVC">
             <connections>
-                <outlet property="descriptionView" destination="vlZ-41-SEI" id="2c7-Sh-ene"/>
+                <outlet property="descriptionView" destination="vlZ-41-SEI" id="ao3-b5-obr"/>
+                <outlet property="lblReadMoreTitle" destination="eLx-Lg-srt" id="xP4-Ym-4Pb"/>
                 <outlet property="listingView" destination="xf4-fl-hQh" id="k77-xf-0H9"/>
                 <outlet property="map" destination="RDU-hZ-k4k" id="mqk-Mn-XWs"/>
                 <outlet property="mapView" destination="1cH-l1-Rqy" id="zxE-Og-bTr"/>

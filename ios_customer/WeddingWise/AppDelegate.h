@@ -32,6 +32,6 @@
 +(instancetype)sharedAppDelegate;
 
 - (void)setupViewControllers:(UINavigationController*)navigationView;
-
+- (void)setUpCustomView:(UINavigationController*)navigationView;
 @end
 

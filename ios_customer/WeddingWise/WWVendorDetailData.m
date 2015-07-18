@@ -93,23 +93,32 @@
         [self setArrDescriptionData:[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"key_values"] objectAtIndex:0]];
         
         if([[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] objectAtIndex:0]!= [NSNull null]){
-            [self setDescReadMoreData:[[[[[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] valueForKey:@"key_values"] objectAtIndex:0] objectAtIndex:0] objectAtIndex:0]];
-            NSLog(@"_descReadMoreData :%@", _descReadMoreData);
+            
+            NSLog(@"Type :%@",[[[[[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] valueForKey:@"type"] objectAtIndex:0] objectAtIndex:0] objectAtIndex:0]);
+            
+            [self setType:[[[[[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] valueForKey:@"type"] objectAtIndex:0] objectAtIndex:0] objectAtIndex:0]];
+            
+            if([[[[[[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] valueForKey:@"type"] objectAtIndex:0] objectAtIndex:0] objectAtIndex:0] isEqualToString:@"key_value"]){
+                 [self setDescReadMoreData:[[[[[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] valueForKey:@"key_values"] objectAtIndex:0] objectAtIndex:0] objectAtIndex:0]];
+            }
+            else if ([[[[[[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] valueForKey:@"type"] objectAtIndex:0] objectAtIndex:0] objectAtIndex:0] isEqualToString:@"packages"]){
+                
+                [self setDescReadMoreData:[[[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] objectAtIndex:0] objectAtIndex:0]];
+            }
         }
         else{
             NSLog(@"Value is null");
         }
         
-        //NSArray *strHeading=[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"heading"];
-         NSArray *strHeading=[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"heading"];
-        if([strHeading objectAtIndex:0] !=[NSNull null]){
-            
-            NSLog(@"strHeading ®: %@",[[strHeading objectAtIndex:0] objectAtIndex:0]);
-            [self setHeading:[[strHeading objectAtIndex:0] objectAtIndex:0]];
+        NSString *strHeading= [descriptionInfo valueForKey:@"heading"];
+        if(strHeading !=(id)[NSNull null]){
+            [self setHeading:strHeading];
         }
         else{
             [self setHeading:@"N/A"];
         }
+        
+        
     }
     @catch (NSException *exception) {
         NSLog(@"Exception :%@", exception);

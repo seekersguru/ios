@@ -130,6 +130,53 @@ static AppDelegate * _sharedInstance;
         
     }
 }
+
+- (void)setUpCustomView:(UINavigationController*)navigationView{
+    
+    UIViewController *firstViewController = [[MyKnotList alloc] init];
+    UINavigationController *firstNavigationController = [[UINavigationController alloc]
+                                                         initWithRootViewController:firstViewController];
+    
+    UIViewController *secondViewController = [[WWMessageList alloc] init];
+    UINavigationController *secondNavigationController = [[UINavigationController alloc]
+                                                          initWithRootViewController:secondViewController];
+    
+    UIViewController *thirdViewController = [[WWLeadsListVC alloc] init];
+    UINavigationController *thirdNavigationController = [[UINavigationController alloc]
+                                                         initWithRootViewController:thirdViewController];
+    
+    UIViewController *fourthViewController = [[MyKnotList alloc] init];
+    UINavigationController *fourthNavigationController = [[UINavigationController alloc]
+                                                          initWithRootViewController:fourthViewController];
+    
+    if(_tabBarController){
+        [_tabBarController removeFromParentViewController];
+    }
+    _tabBarController = [[UITabBarController alloc] init];
+    [_tabBarController setViewControllers:@[firstNavigationController, secondNavigationController,
+                                            thirdNavigationController,fourthNavigationController]];
+    
+    [navigationView pushViewController:_tabBarController animated:YES];
+    [self customizeTabBarForVendorDetailController:_tabBarController];
+}
+
+- (void)customizeTabBarForVendorDetailController:(UITabBarController *)tabBarController {
+    
+    NSArray *tabBarItemImages = @[@"home", @"message", @"led",@"home"];
+    NSArray *tabBarSelectedItemImages = @[@"home_icon", @"message_icon", @"led",@"home_icon"];
+    
+    NSInteger index = 0;
+    for (UITabBarItem *item in [[tabBarController tabBar] items]) {
+        
+        [item setImage:[UIImage imageNamed:[tabBarItemImages objectAtIndex:index]]];
+        item.selectedImage= [[UIImage imageNamed:[tabBarSelectedItemImages objectAtIndex:index]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        index++;
+        
+    }
+}
+
+
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

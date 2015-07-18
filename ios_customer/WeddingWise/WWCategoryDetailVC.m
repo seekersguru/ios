@@ -30,6 +30,9 @@
 {
     NSMutableArray *arrVendorDetailData;
     NSArray *arrReadMoreData;
+    
+    NSMutableArray *packageSectionsArray;
+    NSMutableArray *packageSectionDetailArray;
 }
 @end
 
@@ -42,6 +45,12 @@
     arrReadMoreData= [[NSArray alloc]init];
     [self setUpCustomView];
     [self callWebService];
+    
+    packageSectionsArray = [NSMutableArray new];
+    packageSectionDetailArray = [NSMutableArray new];
+    
+    //[[AppDelegate sharedAppDelegate]setUpCustomView:self.navigationController];
+    
 }
 
 -(void)callWebService{
@@ -153,9 +162,22 @@
             NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
             cell = [topLevelObjects objectAtIndex:0];
         }
-        NSDictionary *dicData=[arrReadMoreData objectAtIndex:indexPath.row];
-        [cell setCommonData:dicData withIndexPath:indexPath];
+//        NSDictionary *dicData= [[[[[[[[arrReadMoreData objectAtIndex:0] allValues] objectAtIndex:indexPath.section]allValues]valueForKey:@"package_values"] objectAtIndex:0] valueForKey:@"options"] objectAtIndex:indexPath.row];
+//        
+//        NSArray *allKeys=[[arrReadMoreData objectAtIndex:0] allValues];
+//        NSMutableArray *arrTemp=[NSMutableArray new];
+//        
+//        for (NSDictionary *dic1 in allKeys) {
+//            [arrTemp addObject:dic1];
+//        }
+        
+        
+        NSDictionary *data = [[[[packageSectionDetailArray objectAtIndex:indexPath.section] allValues] objectAtIndex:0] objectAtIndex:indexPath.row];
+//        [cell setCommonData:dicData withIndexPath:indexPath];
+        [cell.key setText:[[data allKeys] objectAtIndex:0]];
+        [cell.value setText:[[data allValues] objectAtIndex:0]];
         return cell;
+        
     }
     else{
         switch (indexPath.row) {
@@ -319,16 +341,38 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(tableView== _tblReadMore){
-        return arrReadMoreData.count;
+        NSLog(@"rows %lu for section %lu",[[[[packageSectionDetailArray objectAtIndex:section] allValues] objectAtIndex:0] count],section);
+        return [[[[packageSectionDetailArray objectAtIndex:section] allValues] objectAtIndex:0] count];
     }
     else{
         return arrVendorDetailData.count+2;
     }
     
 }
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    if(tableView== _tblReadMore){
+        return [packageSectionDetailArray count];
+    }
+    return 1;
+}
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (tableView == _tblReadMore) {
+        UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, tableView.sectionHeaderHeight )];
+        [header setBackgroundColor:[UIColor blackColor]];
+        [header setAlpha:0.5];
+        [header setTextColor:[UIColor whiteColor]];
+        [header setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
+        [header setTextAlignment:NSTextAlignmentCenter];
+        [header setText:[[[packageSectionDetailArray objectAtIndex:section] allKeys] objectAtIndex:0]];
+        return header;
+    }
+    return nil;
+}
 
 #pragma mark: Cell Delegate methods:
+BOOL isPackage;
 -(void)showCategryReadMoreView:(id)sender{
     [UIView animateWithDuration:0.3
                           delay:0.0
@@ -337,9 +381,29 @@
                          UIButton *readMore=sender;
                          WWVendorDescription *descData=[arrVendorDetailData objectAtIndex:readMore.tag-1];
                          arrReadMoreData= nil;
+                         isPackage = NO;
                          if (descData.descReadMoreData != (id)[NSNull null] && descData.descReadMoreData.count>0) {
-                             arrReadMoreData=descData.descReadMoreData;
-                             _descriptionView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-100);
+                             if ([descData.type isEqualToString:@"packages"]) {
+                                 isPackage = YES;
+                                 arrReadMoreData=descData.descReadMoreData;
+                                 [packageSectionsArray removeAllObjects];
+                                 [packageSectionDetailArray removeAllObjects];
+                                 [packageSectionsArray addObjectsFromArray:[arrReadMoreData[0] allKeys]];   //last key will be removed
+                                 
+                                 for (int i =0; i < packageSectionsArray.count-1; i++) {
+                                     NSString *type = packageSectionsArray[i];
+                                     NSArray* options = [[[[arrReadMoreData[0] valueForKey:type] valueForKey:@"package_values"] objectAtIndex:0] valueForKey:@"options"];
+                                     [packageSectionDetailArray addObject:@{type:options}];
+                                 }
+                                 
+                             }
+                             else{
+                                 arrReadMoreData=descData.descReadMoreData;
+                             }
+                             _lblReadMoreTitle.text=descData.heading;
+                             
+                             _descriptionView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-49);
+                             _tblReadMore.frame = _descriptionView.bounds;
                              _tblReadMore.delegate= self;
                              _tblReadMore.dataSource= self;
                              [_tblReadMore reloadData];

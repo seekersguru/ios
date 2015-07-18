@@ -19,7 +19,8 @@
 
     // Configure the view for the selected state
 }
--(void)setCommonData:(NSDictionary*)dicData withIndexPath:(NSIndexPath*)index{
+-(void)setCommonData:(NSDictionary*)dicData withIndexPath:(NSIndexPath*)index
+{
     if([[NSString stringWithFormat:@"%@",[dicData valueForKey:[[dicData allKeys] objectAtIndex:0]]] isEqualToString:@"YES"]){
         [_imgCheck setImage:[UIImage imageNamed:@"Sright"]];
         [_value setHidden:YES];
