@@ -23,6 +23,7 @@
 #import "WWMessageList.h"
 #import "WWCategoryFooterCell.h"
 #import "WWScheduleVC.h"
+#import "AnnotationPin.h"
 
 #define DEGREES_IN_RADIANS(x) (M_PI * x / 180.0)
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
@@ -99,7 +100,7 @@
                      }
                      else if ([[type objectAtIndex:0] isEqualToString:@"map"]){
                          NSLog(@"type: %@", [type objectAtIndex:0]);
-                         WWVendorMap *mapData= [[WWVendorMap alloc]setVendorMap:nil];
+                         WWVendorMap *mapData= [[WWVendorMap alloc]setVendorMap:dataDisplay];
                          [arrVendorDetailData addObject:mapData];
                      }
                      else if([[type objectAtIndex:0] isEqualToString:@"para"]){
@@ -163,14 +164,17 @@
             NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
             cell = [topLevelObjects objectAtIndex:0];
         }
-//        NSDictionary *dicData= [[[[[[[[arrReadMoreData objectAtIndex:0] allValues] objectAtIndex:indexPath.section]allValues]valueForKey:@"package_values"] objectAtIndex:0] valueForKey:@"options"] objectAtIndex:indexPath.row];
-//        
-//        NSArray *allKeys=[[arrReadMoreData objectAtIndex:0] allValues];
-//        NSMutableArray *arrTemp=[NSMutableArray new];
-//        
-//        for (NSDictionary *dic1 in allKeys) {
-//            [arrTemp addObject:dic1];
-//        }
+
+        if (isPackage) {
+            NSDictionary *data = [[[[packageSectionDetailArray objectAtIndex:indexPath.section] allValues] objectAtIndex:0] objectAtIndex:indexPath.row];
+            [cell.key setText:[[data allKeys] objectAtIndex:0]];
+            [cell.value setText:[[data allValues] objectAtIndex:0]];
+        }
+        else{
+            
+            NSDictionary *dicData=[arrReadMoreData objectAtIndex:indexPath.row];
+            [cell setCommonData:dicData withIndexPath:indexPath];
+        }
         
         
         NSDictionary *data = [[[[packageSectionDetailArray objectAtIndex:indexPath.section] allValues] objectAtIndex:0] objectAtIndex:indexPath.row];
@@ -270,6 +274,7 @@
                                     cell = [topLevelObjects objectAtIndex:0];
                                 }
                                 cell.delegate= self;
+                                [cell showCoordinatesOnMapWithLatitude:[(WWVendorMap *)object latitude] longitude:[(WWVendorMap *)object longitude]];
                                 [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
                                 self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
                                 return cell;
@@ -303,6 +308,12 @@
     
     
     return nil;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (tableView == _tblReadMore && isPackage) {
+        return tableView.sectionHeaderHeight;
+    }
+    return 0;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView== _tblReadMore){
@@ -344,8 +355,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(tableView== _tblReadMore){
-        NSLog(@"rows %lu for section %lu",[[[[packageSectionDetailArray objectAtIndex:section] allValues] objectAtIndex:0] count],section);
-        return [[[[packageSectionDetailArray objectAtIndex:section] allValues] objectAtIndex:0] count];
+        if (isPackage) {
+            return [[[[packageSectionDetailArray objectAtIndex:section] allValues] objectAtIndex:0] count];
+        }
+        else{
+            return arrReadMoreData.count;
+        }
     }
     else{
         return arrVendorDetailData.count+2;
@@ -355,21 +370,25 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
     if(tableView== _tblReadMore){
-        return [packageSectionDetailArray count];
+        if (isPackage) {
+            return [packageSectionDetailArray count];
+        }
     }
     return 1;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (tableView == _tblReadMore) {
-        UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, tableView.sectionHeaderHeight )];
-        [header setBackgroundColor:[UIColor blackColor]];
-        [header setAlpha:0.5];
-        [header setTextColor:[UIColor whiteColor]];
-        [header setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
-        [header setTextAlignment:NSTextAlignmentCenter];
-        [header setText:[[[packageSectionDetailArray objectAtIndex:section] allKeys] objectAtIndex:0]];
-        return header;
+        if (isPackage) {
+            UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, tableView.sectionHeaderHeight )];
+            [header setBackgroundColor:[UIColor blackColor]];
+            [header setAlpha:0.5];
+            [header setTextColor:[UIColor whiteColor]];
+            [header setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
+            [header setTextAlignment:NSTextAlignmentCenter];
+            [header setText:[[[packageSectionDetailArray objectAtIndex:section] allKeys] objectAtIndex:0]];
+            return header;
+        }
     }
     return nil;
 }
@@ -406,7 +425,7 @@ BOOL isPackage;
                              _lblReadMoreTitle.text=descData.heading;
                              
                              _descriptionView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-49);
-                             _tblReadMore.frame = _descriptionView.bounds;
+//                             _tblReadMore.frame = CGRectMake(0, 69, _descriptionView.frame.size.width, _descriptionView.frame.size.width);
                              _tblReadMore.delegate= self;
                              _tblReadMore.dataSource= self;
                              [_tblReadMore reloadData];
@@ -455,6 +474,23 @@ BOOL isPackage;
                         options: UIViewAnimationOptionCurveEaseIn
                      animations:^{
                          _mapView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+                         WWVendorMap *mapData = nil;
+                         for (id object in arrVendorDetailData) {
+                             if ([object isKindOfClass:[WWVendorMap class]]) {
+                                 mapData = object;
+                                 break;
+                             }
+                         }
+                         
+                         if (mapData) {
+                             CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([mapData.latitude floatValue], [mapData.longitude floatValue]);
+                             AnnotationPin *annotation = [[AnnotationPin alloc] initWithCoordinate:coordinates];
+                             [self.map addAnnotation:annotation];
+                             
+                             MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(coordinates, 500, 500);
+                             MKCoordinateRegion adjustedRegion = [self.map regionThatFits:viewRegion];
+                             [self.map setRegion:adjustedRegion animated:YES];
+                         }
                      }
                      completion:^(BOOL finished){
                      }];

@@ -84,7 +84,8 @@
 @interface WWVendorMap : NSObject
 @property(nonatomic, strong)NSString* heading;
 @property(nonatomic, strong)NSString* type;
-
+@property(nonatomic, strong) NSString* latitude;
+@property(nonatomic, strong) NSString* longitude;
 @property(nonatomic, strong)NSArray *arrPackageData;
 @property(nonatomic, strong)NSArray *packageReadMoreData;
 
