@@ -23,6 +23,7 @@
 @property(nonatomic, weak)IBOutlet YTPlayerView *playerView;
 
 @property(nonatomic, weak)IBOutlet UIImageView *ratateImage;
+@property(nonatomic, strong)IBOutlet UILabel *lblReadMoreTitle;
 
 @property(nonatomic, strong)NSString *vendorEmail;
 
