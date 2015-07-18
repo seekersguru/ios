@@ -47,18 +47,13 @@
     [self setUpCustomView];
     [self callWebService];
     
-//    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//    [appDelegate changeTabBarVC:self.tabBarController];
-
-}
-
-- (void)viewWillAppear:(BOOL)animated{
+    packageSectionsArray = [NSMutableArray new];
+    packageSectionDetailArray = [NSMutableArray new];
+    
+    //[[AppDelegate sharedAppDelegate]setUpCustomView:self.navigationController];
     
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
-//    [self setHidesBottomBarWhenPushed:NO];
-}
 -(void)callWebService{
     
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:

@@ -25,6 +25,13 @@
 		60D0866A1B31388700BCD2BE /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D086671B31388700BCD2BE /* GoogleOpenSource.framework */; };
 		60D0866B1B31388700BCD2BE /* GooglePlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D086681B31388700BCD2BE /* GooglePlus.bundle */; };
 		60D0866C1B31388700BCD2BE /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D086691B31388700BCD2BE /* GooglePlus.framework */; };
+		C59CF1941B5AACDD0018248E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF1901B5AACDD0018248E /* FBSDKCoreKit.framework */; };
+		C59CF1951B5AACDE0018248E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF1911B5AACDD0018248E /* FBSDKLoginKit.framework */; };
+		C59CF1961B5AACDE0018248E /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF1921B5AACDD0018248E /* FBSDKMessengerShareKit.framework */; };
+		C59CF1971B5AACDE0018248E /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF1931B5AACDD0018248E /* FBSDKShareKit.framework */; };
+		C59CF19B1B5AACE90018248E /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF1981B5AACE90018248E /* GoogleOpenSource.framework */; };
+		C59CF19C1B5AACE90018248E /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C59CF1991B5AACE90018248E /* GooglePlus.bundle */; };
+		C59CF19D1B5AACE90018248E /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF19A1B5AACE90018248E /* GooglePlus.framework */; };
 		DAC41D564FCD8A8345D36778 /* libPods-WeddingWise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F35EDC96DE2AB293288A448C /* libPods-WeddingWise.a */; };
 		F45332CE1B4B03DE00C09482 /* GothamRoundedBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F45332CD1B4B03DE00C09482 /* GothamRoundedBook.ttf */; };
 		F4609B651B0BBA8100BCCCB8 /* WWDashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */; };
@@ -160,6 +167,13 @@
 		60D086691B31388700BCD2BE /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../../../../../Downloads/google-plus-ios-sdk-1.7.1/GooglePlus.framework"; sourceTree = "<group>"; };
 		B7F75524AF798B2E38C82249 /* Pods-WeddingWise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingWise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingWise/Pods-WeddingWise.debug.xcconfig"; sourceTree = "<group>"; };
 		BCA744BDD1EACD68F038680E /* Pods-WeddingWise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingWise.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingWise/Pods-WeddingWise.release.xcconfig"; sourceTree = "<group>"; };
+		C59CF1901B5AACDD0018248E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		C59CF1911B5AACDD0018248E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		C59CF1921B5AACDD0018248E /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKMessengerShareKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
+		C59CF1931B5AACDD0018248E /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		C59CF1981B5AACE90018248E /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../../../../fb_gmail/google-plus-ios-sdk-1.5.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
+		C59CF1991B5AACE90018248E /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "../../../../../fb_gmail/google-plus-ios-sdk-1.5.1/GooglePlus.bundle"; sourceTree = "<group>"; };
+		C59CF19A1B5AACE90018248E /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../../../../fb_gmail/google-plus-ios-sdk-1.5.1/GooglePlus.framework"; sourceTree = "<group>"; };
 		F35EDC96DE2AB293288A448C /* libPods-WeddingWise.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeddingWise.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45332CD1B4B03DE00C09482 /* GothamRoundedBook.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamRoundedBook.ttf; sourceTree = "<group>"; };
 		F4609B621B0BBA8100BCCCB8 /* WWDashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDashboardVC.h; sourceTree = "<group>"; };
@@ -205,8 +219,6 @@
 		F4BC31B91B179BA500BF5BB2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F4BC31BB1B179BBC00BF5BB2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F4BC31BD1B179BC400BF5BB2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		F4BCBA941B1F8AA800082A73 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../R&D/google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
-		F4BCBA951B1F8AA800082A73 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../R&D/google-plus-ios-sdk-1.7.1/GooglePlus.framework"; sourceTree = "<group>"; };
 		F4BCBA9A1B1F961800082A73 /* WeddingWise.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeddingWise.pch; sourceTree = "<group>"; };
 		F4C2B15D1B4D70FF000639BC /* WWCategoryListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCategoryListCell.h; sourceTree = "<group>"; };
 		F4C2B15E1B4D70FF000639BC /* WWCategoryListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCategoryListCell.m; sourceTree = "<group>"; };
@@ -279,10 +291,6 @@
 		F4CFD7D41B1B02C500D53E56 /* WWForgotPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWForgotPassword.h; sourceTree = "<group>"; };
 		F4CFD7D51B1B02C500D53E56 /* WWForgotPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWForgotPassword.m; sourceTree = "<group>"; };
 		F4CFD7D61B1B02C500D53E56 /* WWForgotPassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWForgotPassword.xib; sourceTree = "<group>"; };
-		F4CFD7E11B1B6C4800D53E56 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../Documents/FacebookSdk/FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		F4CFD7E21B1B6C4800D53E56 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../Documents/FacebookSdk/FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		F4CFD7E31B1B6C4800D53E56 /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKMessengerShareKit.framework; path = ../../../../Documents/FacebookSdk/FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
-		F4CFD7E41B1B6C4800D53E56 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../Documents/FacebookSdk/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		F4CFD7E91B1B6F8A00D53E56 /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookManager.h; sourceTree = "<group>"; };
 		F4CFD7EA1B1B6F8A00D53E56 /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookManager.m; sourceTree = "<group>"; };
 		F4CFFA251B45A9430065D5D6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -318,15 +326,21 @@
 			files = (
 				F4CFFA261B45A9430065D5D6 /* CFNetwork.framework in Frameworks */,
 				60D0866A1B31388700BCD2BE /* GoogleOpenSource.framework in Frameworks */,
+				C59CF19B1B5AACE90018248E /* GoogleOpenSource.framework in Frameworks */,
 				60D0866B1B31388700BCD2BE /* GooglePlus.bundle in Frameworks */,
+				C59CF1941B5AACDD0018248E /* FBSDKCoreKit.framework in Frameworks */,
+				C59CF1961B5AACDE0018248E /* FBSDKMessengerShareKit.framework in Frameworks */,
 				60D0866C1B31388700BCD2BE /* GooglePlus.framework in Frameworks */,
+				C59CF1951B5AACDE0018248E /* FBSDKLoginKit.framework in Frameworks */,
 				60D086631B31385E00BCD2BE /* FBSDKCoreKit.framework in Frameworks */,
 				60D086641B31385E00BCD2BE /* FBSDKLoginKit.framework in Frameworks */,
 				60D086651B31385E00BCD2BE /* FBSDKMessengerShareKit.framework in Frameworks */,
 				60D086661B31385E00BCD2BE /* FBSDKShareKit.framework in Frameworks */,
 				F4CD4E511B308E150081FE0B /* MapKit.framework in Frameworks */,
+				C59CF1971B5AACDE0018248E /* FBSDKShareKit.framework in Frameworks */,
 				F4BC31BE1B179BC400BF5BB2 /* UIKit.framework in Frameworks */,
 				F4BC31BC1B179BBC00BF5BB2 /* SystemConfiguration.framework in Frameworks */,
+				C59CF19D1B5AACE90018248E /* GooglePlus.framework in Frameworks */,
 				F4BC31BA1B179BA500BF5BB2 /* Security.framework in Frameworks */,
 				F4BC31B81B179B9E00BF5BB2 /* MediaPlayer.framework in Frameworks */,
 				F4BC31B61B179B9500BF5BB2 /* CoreText.framework in Frameworks */,
@@ -582,13 +596,14 @@
 		F4BC31A41B1794CA00BF5BB2 /* FrameWorks */ = {
 			isa = PBXGroup;
 			children = (
+				C59CF1981B5AACE90018248E /* GoogleOpenSource.framework */,
+				C59CF1991B5AACE90018248E /* GooglePlus.bundle */,
+				C59CF19A1B5AACE90018248E /* GooglePlus.framework */,
+				C59CF1901B5AACDD0018248E /* FBSDKCoreKit.framework */,
+				C59CF1911B5AACDD0018248E /* FBSDKLoginKit.framework */,
+				C59CF1921B5AACDD0018248E /* FBSDKMessengerShareKit.framework */,
+				C59CF1931B5AACDD0018248E /* FBSDKShareKit.framework */,
 				F4CD4E501B308E150081FE0B /* MapKit.framework */,
-				F4BCBA941B1F8AA800082A73 /* GoogleOpenSource.framework */,
-				F4BCBA951B1F8AA800082A73 /* GooglePlus.framework */,
-				F4CFD7E11B1B6C4800D53E56 /* FBSDKCoreKit.framework */,
-				F4CFD7E21B1B6C4800D53E56 /* FBSDKLoginKit.framework */,
-				F4CFD7E31B1B6C4800D53E56 /* FBSDKMessengerShareKit.framework */,
-				F4CFD7E41B1B6C4800D53E56 /* FBSDKShareKit.framework */,
 				F4BC31BD1B179BC400BF5BB2 /* UIKit.framework */,
 				F4BC31BB1B179BBC00BF5BB2 /* SystemConfiguration.framework */,
 				F4BC31B91B179BA500BF5BB2 /* Security.framework */,
@@ -896,6 +911,7 @@
 				F4CD4E421B30830F0081FE0B /* WWCategoryTitleCell.xib in Resources */,
 				F4CD4E461B30830F0081FE0B /* WWCategoryDescriptionCell.xib in Resources */,
 				F470474C1B011AE700FEFEFF /* Images.xcassets in Resources */,
+				C59CF19C1B5AACE90018248E /* GooglePlus.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1124,6 +1140,8 @@
 					"/Users/Home/Desktop/Projects/R&D/google-plus-ios-sdk-1.7.1",
 					/Users/dotsquares/Documents/FacebookSDK,
 					"/Users/dotsquares/Downloads/google-plus-ios-sdk-1.7.1",
+					"/Users/ranosys-mac3/Documents/FacebookSDK",
+					"/Users/ranosys-mac3/Downloads/fb_gmail/google-plus-ios-sdk-1.5.1",
 				);
 				GCC_PREFIX_HEADER = WeddingWise/WeddingWise.pch;
 				INFOPLIST_FILE = WeddingWise/Info.plist;
@@ -1155,6 +1173,8 @@
 					"/Users/Home/Desktop/Projects/R&D/google-plus-ios-sdk-1.7.1",
 					/Users/dotsquares/Documents/FacebookSDK,
 					"/Users/dotsquares/Downloads/google-plus-ios-sdk-1.7.1",
+					"/Users/ranosys-mac3/Documents/FacebookSDK",
+					"/Users/ranosys-mac3/Downloads/fb_gmail/google-plus-ios-sdk-1.5.1",
 				);
 				GCC_PREFIX_HEADER = WeddingWise/WeddingWise.pch;
 				INFOPLIST_FILE = WeddingWise/Info.plist;
