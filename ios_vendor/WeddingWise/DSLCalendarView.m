@@ -119,7 +119,9 @@
     [self positionViewsForMonth:_visibleMonth fromMonth:_visibleMonth animated:NO];
 }
 
-
+- (void)showCalender{
+    [self positionViewsForMonth:_visibleMonth fromMonth:_visibleMonth animated:NO];
+}
 #pragma mark - Properties
 
 + (Class)monthSelectorViewClass {
@@ -204,8 +206,8 @@
     NSString *monthViewKey = [self monthViewKeyForMonth:month];
     DSLCalendarMonthView *monthView = [self.monthViews objectForKey:monthViewKey];
     if (monthView == nil) {
-        monthView = [[[[self class] monthViewClass] alloc] initWithMonth:month width:self.bounds.size.width dayViewClass:[[self class] dayViewClass] dayViewHeight:_dayViewHeight];
-        [self.monthViews setObject:monthView forKey:monthViewKey];
+        monthView = [[[[self class] monthViewClass] alloc] initWithMonth:month width:self.bounds.size.width dayViewClass:[[self class] dayViewClass] dayViewHeight:_dayViewHeight showEvent:_showEventsOnCalloutView withEventDict:_eventsDictionary];
+//        [self.monthViews setObject:monthView forKey:monthViewKey];
         [self.monthContainerViewContentView addSubview:monthView];
 
         [monthView updateDaySelectionStatesForRange:self.selectedRange];

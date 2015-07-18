@@ -142,19 +142,13 @@
                 break;
                 
             case DSLCalendarDayViewStartOfSelection:
-                [[[UIImage imageNamed:@"DSLCalendarDaySelection"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] drawInRect:self.bounds];
-                break;
-                
             case DSLCalendarDayViewEndOfSelection:
-                [[[UIImage imageNamed:@"DSLCalendarDaySelection"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] drawInRect:self.bounds];
-                break;
-                
             case DSLCalendarDayViewWithinSelection:
-                [[[UIImage imageNamed:@"DSLCalendarDaySelection"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] drawInRect:self.bounds];
-                break;
-                
             case DSLCalendarDayViewWholeSelection://cal_seldate
-                [[[UIImage imageNamed:@"DSLCalendarDaySelection"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] drawInRect:self.bounds];
+            {
+                [[UIColor colorWithRed:240/255.0 green:103/255.0 blue:90/255.0 alpha:1.0] setFill];
+                UIRectFill(self.bounds);
+            }
                 break;
         }
     }
@@ -212,7 +206,6 @@
 - (void)showEventCount:(NSString *)count{
     _eventCountLabel.hidden = NO;
     [_eventCountLabel setText:count];
-    [self setNeedsDisplay];
 }
 
 @end
