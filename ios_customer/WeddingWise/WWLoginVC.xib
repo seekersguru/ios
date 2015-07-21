@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6724" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WWLoginVC">
             <connections>
                 <outlet property="bgImage" destination="asX-NE-ZoJ" id="j1W-m5-6fV"/>
+                <outlet property="btnForgotPassword" destination="iWf-uJ-kgP" id="zh0-N1-vAm"/>
+                <outlet property="btnSignIn" destination="paW-al-iJR" id="hbY-pe-fqD"/>
                 <outlet property="lblPolicy" destination="cUn-rY-qm0" id="C99-Ld-kto"/>
                 <outlet property="txtEmailAddress" destination="G5M-Oc-Eqx" id="uTQ-zq-Jya"/>
                 <outlet property="txtPassword" destination="MDq-yR-cWt" id="bl4-jz-tH7"/>
@@ -24,10 +26,10 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6KA-7g-Yvb">
-                    <rect key="frame" x="10" y="10" width="85" height="37"/>
+                    <rect key="frame" x="0.0" y="10" width="60" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="  Sign In" image="header_arrow">
+                    <state key="normal" image="header_arrow">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>

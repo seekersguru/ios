@@ -12,6 +12,7 @@
 {
     IBOutlet UILabel *lblPolicy;
 }
+@property (weak, nonatomic) IBOutlet UIButton *btnSkip;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIImageView *imgDatePicker;
 @property (weak, nonatomic) IBOutlet UIImageView *imgTextBG;

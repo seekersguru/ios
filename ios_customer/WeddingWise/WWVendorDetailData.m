@@ -165,8 +165,8 @@
 
 @implementation WWVendorMap : NSObject
 -(WWVendorMap*)setVendorMap:(NSDictionary*)mapInfo{
-    [self setLatitude:[[[mapInfo valueForKey:@"data_display"] objectAtIndex:0] valueForKey:@"lat"]];
-    [self setLongitude:[[[mapInfo valueForKey:@"data_display"] objectAtIndex:0] valueForKey:@"long"]];
+    [self setLatitude:[NSString stringWithFormat:@"%@",[[[mapInfo valueForKey:@"data_display"] objectAtIndex:0] valueForKey:@"lat"]]];
+    [self setLongitude:[NSString stringWithFormat:@"%@",[[[mapInfo valueForKey:@"data_display"] objectAtIndex:0] valueForKey:@"long"]]];
     return self;
 }
 @end

@@ -72,6 +72,10 @@
 		F4CBDB4F1B544998000DB347 /* WWCategoryFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB4D1B544998000DB347 /* WWCategoryFooterCell.xib */; };
 		F4CC6D101B59A66F005237F5 /* wwCategoryFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CC6D0F1B59A66E005237F5 /* wwCategoryFooterCell.m */; };
 		F4CCA5531B48593800F33FDA /* gotham-book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4CCA5521B48593800F33FDA /* gotham-book.ttf */; };
+		F4CD0F2C1B5EBEBC0006FAC4 /* WWSideMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD0F2A1B5EBEBC0006FAC4 /* WWSideMenuVC.m */; };
+		F4CD0F2D1B5EBEBC0006FAC4 /* WWSideMenuVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CD0F2B1B5EBEBC0006FAC4 /* WWSideMenuVC.xib */; };
+		F4CD0F331B5EC13D0006FAC4 /* WWProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD0F311B5EC13D0006FAC4 /* WWProfileVC.m */; };
+		F4CD0F341B5EC13D0006FAC4 /* WWProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CD0F321B5EC13D0006FAC4 /* WWProfileVC.xib */; };
 		F4CD4E2A1B3082310081FE0B /* WWCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD4E281B3082310081FE0B /* WWCategoryCell.m */; };
 		F4CD4E2B1B3082310081FE0B /* WWCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CD4E291B3082310081FE0B /* WWCategoryCell.xib */; };
 		F4CD4E2F1B3082F20081FE0B /* WWCategoryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD4E2D1B3082F20081FE0B /* WWCategoryDetailVC.m */; };
@@ -232,6 +236,12 @@
 		F4CBDB4D1B544998000DB347 /* WWCategoryFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCategoryFooterCell.xib; sourceTree = "<group>"; };
 		F4CC6D0F1B59A66E005237F5 /* wwCategoryFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wwCategoryFooterCell.m; sourceTree = "<group>"; };
 		F4CCA5521B48593800F33FDA /* gotham-book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "gotham-book.ttf"; sourceTree = "<group>"; };
+		F4CD0F291B5EBEBC0006FAC4 /* WWSideMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWSideMenuVC.h; sourceTree = "<group>"; };
+		F4CD0F2A1B5EBEBC0006FAC4 /* WWSideMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWSideMenuVC.m; sourceTree = "<group>"; };
+		F4CD0F2B1B5EBEBC0006FAC4 /* WWSideMenuVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWSideMenuVC.xib; sourceTree = "<group>"; };
+		F4CD0F301B5EC13D0006FAC4 /* WWProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWProfileVC.h; sourceTree = "<group>"; };
+		F4CD0F311B5EC13D0006FAC4 /* WWProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWProfileVC.m; sourceTree = "<group>"; };
+		F4CD0F321B5EC13D0006FAC4 /* WWProfileVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWProfileVC.xib; sourceTree = "<group>"; };
 		F4CD4E271B3082310081FE0B /* WWCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCategoryCell.h; sourceTree = "<group>"; };
 		F4CD4E281B3082310081FE0B /* WWCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCategoryCell.m; sourceTree = "<group>"; };
 		F4CD4E291B3082310081FE0B /* WWCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCategoryCell.xib; sourceTree = "<group>"; };
@@ -553,6 +563,8 @@
 		F47047B81B027FAB00FEFEFF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F4CD0F2F1B5EC1180006FAC4 /* Profile */,
+				F4CD0F2E1B5EBEC90006FAC4 /* SideMenu */,
 				F4CB16EF1B3770350078419A /* YouTube */,
 				F4CB16A41B35AB160078419A /* Schedule */,
 				60D0866D1B31445400BCD2BE /* Bid */,
@@ -639,6 +651,26 @@
 				F4CBDB2A1B52FD15000DB347 /* WWLoginUserData.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		F4CD0F2E1B5EBEC90006FAC4 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				F4CD0F291B5EBEBC0006FAC4 /* WWSideMenuVC.h */,
+				F4CD0F2A1B5EBEBC0006FAC4 /* WWSideMenuVC.m */,
+				F4CD0F2B1B5EBEBC0006FAC4 /* WWSideMenuVC.xib */,
+			);
+			name = SideMenu;
+			sourceTree = "<group>";
+		};
+		F4CD0F2F1B5EC1180006FAC4 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F4CD0F301B5EC13D0006FAC4 /* WWProfileVC.h */,
+				F4CD0F311B5EC13D0006FAC4 /* WWProfileVC.m */,
+				F4CD0F321B5EC13D0006FAC4 /* WWProfileVC.xib */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		F4CD4E311B3083060081FE0B /* Views */ = {
@@ -860,6 +892,7 @@
 				F4CFD7D81B1B02C500D53E56 /* WWForgotPassword.xib in Resources */,
 				F4C2B1661B4D7348000639BC /* WWCategoryCommonCell.xib in Resources */,
 				F47047B51B01273100FEFEFF /* myKnotCell.xib in Resources */,
+				F4CD0F341B5EC13D0006FAC4 /* WWProfileVC.xib in Resources */,
 				F4CD4E301B3082F20081FE0B /* WWCategoryDetailVC.xib in Resources */,
 				F4CB16EE1B373EEC0078419A /* WWCategoryPackageCell.xib in Resources */,
 				60C763111B53D19900387B54 /* WWBidListCell.xib in Resources */,
@@ -880,6 +913,7 @@
 				F4609B731B0BC4B800BCCCB8 /* WWRegistrationVC.xib in Resources */,
 				F4C2B1611B4D70FF000639BC /* WWCategoryListCell.xib in Resources */,
 				F4D08A781B20D3BF00AF8E36 /* slicingbg.png in Resources */,
+				F4CD0F2D1B5EBEBC0006FAC4 /* WWSideMenuVC.xib in Resources */,
 				F4CD4E2B1B3082310081FE0B /* WWCategoryCell.xib in Resources */,
 				F4CD4E4A1B30830F0081FE0B /* WWCategoryListingCell.xib in Resources */,
 				60C7630D1B53D19900387B54 /* WWInquiryDetailVC.xib in Resources */,
@@ -949,6 +983,7 @@
 				F4C2B1691B4D7A29000639BC /* WWCommonData.m in Sources */,
 				F47047B41B01273100FEFEFF /* myKnotCell.m in Sources */,
 				60C7630E1B53D19900387B54 /* WWInquiryCell.m in Sources */,
+				F4CD0F2C1B5EBEBC0006FAC4 /* WWSideMenuVC.m in Sources */,
 				60C7630C1B53D19900387B54 /* WWInquiryDetailVC.m in Sources */,
 				F4C2B1651B4D7348000639BC /* WWCategoryCommonCell.m in Sources */,
 				F4C7D85E1B0D031500D69912 /* UITextField+ADTextField.m in Sources */,
@@ -960,6 +995,7 @@
 				F47047821B0123F600FEFEFF /* RDVTabBarItem.m in Sources */,
 				F47047471B011AE700FEFEFF /* MyKnotList.m in Sources */,
 				F4D08A6C1B20CDB300AF8E36 /* DSLCalendarDayView.m in Sources */,
+				F4CD0F331B5EC13D0006FAC4 /* WWProfileVC.m in Sources */,
 				F4CD4E651B309D990081FE0B /* MessageListCell.m in Sources */,
 				60C763101B53D19900387B54 /* WWBidListCell.m in Sources */,
 				F4CBDB2B1B52FD15000DB347 /* WWLoginUserData.m in Sources */,

@@ -2,8 +2,8 @@
 //  WWCategoryDetailVC.m
 //  WeddingWise
 //
-//  Created by Dotsquares on 6/16/15.
-//  Copyright (c) 2015 DS. All rights reserved.
+//  Created by Deepak Sharma on 6/16/15.
+//  Copyright (c) 2015 Deepak Sharma. All rights reserved.
 //
 #import <Foundation/Foundation.h>
 #import "WWCategoryDetailVC.h"
@@ -51,7 +51,7 @@
     packageSectionsArray = [NSMutableArray new];
     packageSectionDetailArray = [NSMutableArray new];
     
-    //[[AppDelegate sharedAppDelegate]setUpCustomView:self.navigationController];
+    _lblTitle.text= [_vendorDetail valueForKey:@"name"];
     
 }
 
@@ -78,8 +78,6 @@
              //setting booking info for this vendor, to use on add booking page
              WWVendorBookingData *bookingInfo = [WWVendorBookingData sharedInstance];
              [bookingInfo setVendorBookingInfo:responseDics[@"json"][@"data"][@"book"]];
-             
-             //[arrVendorDetailData addObject:bookingInfo];
              
              WWVendorDetailData *basicInfo = [WWVendorDetailData sharedInstance];
              [basicInfo setVendorBasicInfo:[[[responseDics valueForKey:@"json"] valueForKey:@"data"] valueForKey:@"info"]];
@@ -177,12 +175,9 @@
         }
         
         
-        NSDictionary *data = [[[[packageSectionDetailArray objectAtIndex:indexPath.section] allValues] objectAtIndex:0] objectAtIndex:indexPath.row];
-        
-//        NSDictionary *dicData=[arrReadMoreData objectAtIndex:indexPath.row];
-//        [cell setCommonData:dicData withIndexPath:indexPath];
-        [cell.key setText:[[data allKeys] objectAtIndex:0]];
-        [cell.value setText:[[data allValues] objectAtIndex:0]];
+//        NSDictionary *data = [[[[packageSectionDetailArray objectAtIndex:indexPath.section] allValues] objectAtIndex:0] objectAtIndex:indexPath.row];
+//        [cell.key setText:[[data allKeys] objectAtIndex:0]];
+//        [cell.value setText:[[data allValues] objectAtIndex:0]];
         return cell;
         
     }
@@ -200,10 +195,12 @@
                 self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
                 
                 if(arrVendorDetailData.count>0){
+                   /*
                     WWVendorDetailData *basicInfo= [arrVendorDetailData objectAtIndex:0];
                     cell.name.text= [NSString stringWithFormat:@"%@",basicInfo.name];
                     cell.contactNumber.text= [NSString stringWithFormat:@"%@",basicInfo.contact];
                     cell.address.text= [NSString stringWithFormat:@"%@",basicInfo.top_address];
+                    */
                 }
                 return cell;
             }
@@ -224,6 +221,8 @@
                 if(arrVendorDetailData.count>0){
                     WWVendorDetailData *basicInfo= [arrVendorDetailData objectAtIndex:0];
                     [cell showImagesFromArray:basicInfo.heroImages];
+                    [cell.lblPrice setText:basicInfo.startingPrice];
+                    cell.lblPrice.font = [UIFont fontWithName:AppFont size:13.0];
                 }
                 
                 return cell;
@@ -234,19 +233,19 @@
                 if(arrVendorDetailData.count>0){
                     @try {
                         NSLog(@"indexPath :%lu array count :%lu", indexPath.row, arrVendorDetailData.count);
-                        if (indexPath.row==arrVendorDetailData.count+1) {
-                            static NSString *CellIdentifier = @"WWCategoryFooterCell";
-                            WWCategoryFooterCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                            if (cell == nil) {
-                                NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
-                                cell = [topLevelObjects objectAtIndex:0];
-                            }
-                            cell.delegate= self;
-                            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-                            self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
-                            return cell;
-                        }
-                        else{
+//                        if (indexPath.row==arrVendorDetailData.count+1) {
+//                            static NSString *CellIdentifier = @"WWCategoryFooterCell";
+//                            WWCategoryFooterCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//                            if (cell == nil) {
+//                                NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+//                                cell = [topLevelObjects objectAtIndex:0];
+//                            }
+//                            cell.delegate= self;
+//                            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+//                            self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
+//                            return cell;
+//                        }
+                        //else{
                             id object= [arrVendorDetailData objectAtIndex:indexPath.row-1];
                             if([object isKindOfClass:[WWVendorDescription class]]){
                                 static NSString *CellIdentifier = @"WWCategoryListCell";
@@ -264,6 +263,7 @@
                                 [cell getDescriptionData:descData.arrDescriptionData];
                                 cell.lblHeading.text= descData.heading;
                                 cell.lblHeading.font = [UIFont fontWithName:AppFont size:12.0];
+                                
                                 return cell;
                             }
                             else if ([object isKindOfClass:[WWVendorMap class]]){
@@ -291,7 +291,7 @@
                                 self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
                                 return cell;
                             }
-                        }
+                       // }
                     }
                     @catch (NSException *exception) {
                         NSLog(@"Exception :%@", exception);
@@ -322,30 +322,18 @@
     else{
         switch (indexPath.row) {
             case 0:
-                return 64;
+                return 0;
                 break;
             case 1:
                 return 180;
                 break;
             default:
             {
-                if (indexPath.row==14) {
-                    return 50;
-                }
-                else
-                    return 224;
-//                id object= [arrVendorDetailData objectAtIndex:indexPath.row-1];
-//                
-//                if([object isKindOfClass:[WWVendorDescription class]]){
-//                    return 224;
-//                    
+//                if (indexPath.row==14) {
+//                    return 50;
 //                }
-//                else if ([object isKindOfClass:[WWVendorMap class]]){
-//                    return 130;
-//                }
-//                else if ([object isKindOfClass:[WWVendorPackage class]]){
-//                    return 185;
-//                }
+//                else
+                    return 200;
             }
                 break;
         }
@@ -363,7 +351,7 @@
         }
     }
     else{
-        return arrVendorDetailData.count+2;
+        return arrVendorDetailData.count+1;
     }
     
 }
@@ -423,6 +411,7 @@ BOOL isPackage;
                                  arrReadMoreData=descData.descReadMoreData;
                              }
                              _lblReadMoreTitle.text=descData.heading;
+                             _lblReadMoreTitle.font = [UIFont fontWithName:AppFont size:13.0];
                              
                              _descriptionView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-49);
 //                             _tblReadMore.frame = CGRectMake(0, 69, _descriptionView.frame.size.width, _descriptionView.frame.size.width);

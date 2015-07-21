@@ -2,8 +2,8 @@
 //  UITextField+ADTextField.m
 //  AirDates
 //
-//  Created by Dotsquares on 5/13/15.
-//  Copyright (c) 2015 Dotsquares. All rights reserved.
+//  Created by Deepak Sharma on 5/13/15.
+//  Copyright (c) 2015 Deepak Sharma. All rights reserved.
 //
 
 #import "UITextField+ADTextField.h"

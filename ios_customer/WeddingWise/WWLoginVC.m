@@ -25,6 +25,10 @@
     //[self setTextFieldPlacehoder];
     
     [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:lblPolicy withText:lblPolicy.text];
+    [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:btnSignIn withText:btnSignIn.titleLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:15.0 withLabel:btnForgotPassword withText:btnForgotPassword        .titleLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_txtEmailAddress withText:_txtEmailAddress.text];
+    [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_txtPassword withText:_txtPassword.text];
     
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]

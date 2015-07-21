@@ -10,13 +10,16 @@
 #import "WWInquiryCell.h"
 
 @interface WWInquiryDetailVC ()
-
+{
+    NSMutableArray *arrBidData;
+}
 @end
 
 @implementation WWInquiryDetailVC
 
 - (void)viewDidLoad {
     [self callBidDetailAPI];
+    arrBidData= [NSMutableArray new];
     [super viewDidLoad];
    
 }
@@ -54,7 +57,7 @@
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
              NSArray *arrJson=[responseDics valueForKey:@"json"];
              for (NSDictionary *bidData in arrJson) {
-                
+                 [arrBidData addObject:bidData];
              }
              
          }

@@ -18,6 +18,7 @@
 #import "WWCreateBidVC.h"
 #import "WWScheduleVC.h"
 #import "WWLeadsListVC.h"
+#import "WWSideMenuVC.h"
 
 void uncaughtExceptionHandler(NSException*);
 
@@ -105,10 +106,7 @@ static AppDelegate * _sharedInstance;
     UINavigationController *thirdNavigationController = [[UINavigationController alloc]
                                                           initWithRootViewController:thirdViewController];
     
-    
-    
-    
-    UIViewController *fourthViewController = [[WWScheduleVC alloc] init];
+    UIViewController *fourthViewController = [[WWSideMenuVC alloc] init];
     UINavigationController *fourthNavigationController = [[UINavigationController alloc]
                                                     initWithRootViewController:fourthViewController];
     
@@ -154,7 +152,6 @@ static AppDelegate * _sharedInstance;
     UIViewController *thirdViewController = [[WWMessageList alloc] init];
     UINavigationController *thirdNavigationController = [[UINavigationController alloc]
                                                           initWithRootViewController:thirdViewController];
-    
     
     UIViewController *fourthViewController = [[WWScheduleVC alloc] init];
     UINavigationController *fourthNavigationController = [[UINavigationController alloc]
