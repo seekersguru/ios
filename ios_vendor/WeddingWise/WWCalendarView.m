@@ -41,7 +41,7 @@
     [_imgPickerBG setHidden:YES];
     
     _calendarView.showEventsOnCalloutView = YES;
-    
+    _calendarView.delegate = self;
     [_calendarView setEventsDictionary:@{@"2015":
                                              @{@"7":
                                                    @{@"1":@"5",
