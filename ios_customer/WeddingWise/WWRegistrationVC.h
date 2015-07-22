@@ -22,8 +22,8 @@
 @property(nonatomic, weak)IBOutlet UITextField *txtGroomName;
 @property(nonatomic, weak)IBOutlet UITextField *txtBrideName;
 @property(nonatomic, weak)IBOutlet UITextField *txtContactNo;
-
 @property(nonatomic, weak)IBOutlet UIButton *btnTentativeDate;
+
 @property(nonatomic, weak)IBOutlet UIButton *btnSignIn;
 @property(nonatomic, weak)IBOutlet UIButton *btnBack;
 

@@ -43,7 +43,7 @@
     if(_fbResponse){
         [self fillFaceBookData];
     }
-    [_btnSkip setHidden:YES];
+    //[_btnSkip setHidden:YES];
     
     [super viewDidLoad];
 }
@@ -181,6 +181,12 @@
         [[WWCommon getSharedObject]createAlertView:kAppName :kEnterPassword :nil :000 ];
         return NO;
     }
+    if (_btnTentativeDate.titleLabel.text && _btnTentativeDate.titleLabel.text.length == 0)
+    {
+        [[WWCommon getSharedObject]createAlertView:kAppName :kTentativeDate :nil :000 ];
+        return NO;
+    }
+
     if(_txtEmailAddress.text.length>0){
         if(![[WWCommon getSharedObject] validEmail:_txtEmailAddress.text]){
             [[WWCommon getSharedObject]createAlertView:kAppName :kValidEmail :nil :000 ];

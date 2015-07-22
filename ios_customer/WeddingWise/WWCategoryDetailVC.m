@@ -45,9 +45,6 @@
     [self setUpCustomView];
     [self callWebService];
     
-    packageSectionsArray = [NSMutableArray new];
-    packageSectionDetailArray = [NSMutableArray new];
-    
     _lblTitle.text= [_vendorDetail valueForKey:@"name"];
     
 }

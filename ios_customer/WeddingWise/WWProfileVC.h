@@ -10,4 +10,15 @@
 
 @interface WWProfileVC : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UIImageView *imgDatePicker;
+
+@property(nonatomic, weak)IBOutlet UITextField *txtEmailAddress;
+@property(nonatomic, weak)IBOutlet UITextField *txtGroomName;
+@property(nonatomic, weak)IBOutlet UITextField *txtBrideName;
+@property(nonatomic, weak)IBOutlet UITextField *txtContactNo;
+@property(nonatomic, weak)IBOutlet UIButton *btnTentativeDate;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+
+-(IBAction)btnTentativeDatePressed:(id)sender;
 @end
