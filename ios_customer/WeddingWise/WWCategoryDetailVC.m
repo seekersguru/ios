@@ -20,7 +20,7 @@
 #import "WWCategoryCommonCell.h"
 
 #import "WWCreateBidVC.h"
-#import "WWMessageList.h"
+#import "WWPrivateMessage.h"
 #import "WWCategoryFooterCell.h"
 #import "WWScheduleVC.h"
 #import "AnnotationPin.h"
@@ -621,7 +621,9 @@ BOOL isPackage;
             [(WWCreateBidVC *)vc setRequestType:@"book"];
             break;
         case 3:
-            vc=[[WWMessageList alloc]init];
+            vc=[[WWPrivateMessage alloc]init];
+            [(WWPrivateMessage *)vc setMessageData:@{@"receiver_name" : _vendorName,
+                                                     @"receiver_email" : _vendorEmail}];
             break;
         case 4:
             vc=[[WWScheduleVC alloc]init];

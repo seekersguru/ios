@@ -26,6 +26,7 @@
 @property(nonatomic, strong)IBOutlet UILabel *lblReadMoreTitle;
 
 @property(nonatomic, strong)NSString *vendorEmail;
+@property(nonatomic, strong)NSString *vendorName;
 
 @property(nonatomic, weak)IBOutlet MKMapView *map;
 -(IBAction)backButtonPressed:(id)sender;
