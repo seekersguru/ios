@@ -2,7 +2,7 @@
 //  WWCreateBidVC.m
 //  WeddingWise
 //
-//  Created by Dotsquares on 6/17/15.
+//  Created by Deepak Sharma on 6/17/15.
 //  Copyright (c) 2015 DS. All rights reserved.
 //
 
@@ -11,16 +11,32 @@
 #import "WWWebService.h"
 
 @interface WWCreateBidVC ()<UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate>
+{
+    NSMutableArray *packageList;
+    NSMutableArray *packageOrder;
+    NSMutableArray *currentArray;
+    NSMutableArray *packageFinal;
+    UIToolbar *doneEventToolbar;
+    BOOL isFlexible;
+    BOOL isTimeSlotTextField;
+}
 @property (nonatomic, strong) UIPickerView *pickerView;
-@property (nonatomic, strong) NSArray *pickerArray;
+@property (nonatomic, strong) NSMutableArray *pickerArray;
 @end
 
 @implementation WWCreateBidVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    currentArray =[NSMutableArray new];
+    packageFinal =[NSMutableArray new];
     
     [self.navigationController.navigationBar setHidden:YES];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissDatePicker:)];
+    [self.view addGestureRecognizer:tap];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -47,19 +63,26 @@
     else{
         //set title
         [_headerTitleLabel setTitle:@"Create Bid" forState:UIControlStateNormal];
-        [_submitButton setTitle:@"BID IT" forState:UIControlStateNormal];
         
         //set data
         [_packageLabel setText:[WWVendorBidData sharedInstance].package[@"value"]];
-        [_QuotedPriceLabel setText:[WWVendorBidData sharedInstance].quoted[@"value"]];
         [_timeSlotTextField setText:[WWVendorBidData sharedInstance].time_slot[0]];
+    
+        [_eventStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"event_date"]]];
+        [_flexibleStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"flexible_date"]]];
+        [_timeSlotStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"time_slot"][@"name"]]];
+        [_packageStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"package"][@"name"]]];
+        [_packageTextField setText:@"Select Package"];
+         packageOrder= [[NSMutableArray alloc]initWithArray:[WWVendorBidData sharedInstance].bidDictionary[@"package"][@"package_order"] ];
         
+        NSDictionary *dicPackecList=[WWVendorBidData sharedInstance].bidDictionary[@"package"][@"package_list"];
+        for (NSString *strKey in packageOrder) {
+            [packageFinal addObject:[dicPackecList valueForKey:strKey]];
+        }
+        [_submitButton setTitle:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"button"]] forState:UIControlStateNormal];
         _pickerArray = [[WWVendorBidData sharedInstance] time_slot];
     }
     
-    //hide extra fields
-    [_QuotedPriceLabel setHidden:hideFields];
-    [_quotedPriceStaticLabel setHidden:hideFields];
     [_bidPriceStaticLabel setHidden:hideFields];
     [_perPlateStaticLabel setHidden:hideFields];
     [_minPersonStaticLabel setHidden:hideFields];
@@ -69,43 +92,114 @@
     _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-216, self.view.frame.size.width, 150)];
     _pickerView.delegate = self;
     [_pickerView setBackgroundColor:[UIColor whiteColor]];
+    [_datePicker setBackgroundColor:[UIColor whiteColor]];
     [_timeSlotTextField setInputView:_pickerView];
+    [_packageTextField setInputView:_pickerView];
     
     UIToolbar *doneToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissKeyboard:)];
     [doneToolbar setItems:@[item]];
     [_timeSlotTextField setInputAccessoryView:doneToolbar];
+    [_packageTextField setInputAccessoryView:doneToolbar];
 }
 
 - (void)dismissKeyboard:(id)sender{
     [_timeSlotTextField resignFirstResponder];
+    [_packageTextField resignFirstResponder];
 }
+-(IBAction)btnFlexiblePressed:(id)sender{
+    if(isFlexible){
+        isFlexible = NO;
+        //Selec
+        [_btnFlexible setImage:[UIImage imageNamed:@"radiobt"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        isFlexible= YES;
+        [_btnFlexible setImage:[UIImage imageNamed:@"radiobtMark"] forState:UIControlStateNormal];
+        //
+    }
+}
+-(IBAction)datePickerBtnAction:(id)sender
+{
+    _datePicker =[[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-216, self.view.frame.size.width, 100)];
+    _datePicker.datePickerMode=UIDatePickerModeDate;
+    _datePicker.hidden=NO;
+    _datePicker.date=[NSDate date];
+    [_datePicker addTarget:self action:@selector(LabelTitle:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:_datePicker];
+    
+    doneEventToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-240, 320, 44)];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissDatePicker:)];
+    [doneEventToolbar setItems:@[item]];
+    [self.view addSubview:doneEventToolbar];
+}
+- (void)dismissDatePicker:(id)sender{
+    [_datePicker setFrame:CGRectMake(0, 568, self.view.frame.size.width, 150)];
+    [doneEventToolbar setFrame:CGRectMake(0, 568, self.view.frame.size.width, 150)];
+    
+}
+-(void)LabelTitle:(id)sender
+{
+    NSDateFormatter *dateFormat=[[NSDateFormatter alloc]init];
+    dateFormat.dateStyle=NSDateFormatterMediumStyle;
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSString *str=[NSString stringWithFormat:@"%@",[dateFormat  stringFromDate:_datePicker.date]];
+    //_eventDateLabel.text=str;
+    [_eventDateButton setTitle:str forState:UIControlStateNormal];
+}
+
+
 #pragma mark - pickerview delegates/datasource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return _pickerArray.count;
+    return currentArray.count;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    return _pickerArray[row];
+    return currentArray[row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    [_timeSlotTextField setText:_pickerArray[row]];
+    if(isTimeSlotTextField)
+        [_timeSlotTextField setText:currentArray[row]];
+    else{
+        [_packageTextField setText:currentArray[row]];
+        [_packageLabel setText:[packageFinal objectAtIndex:row][@"description"]];
+        
+    }
+    
 }
 
 #pragma mark - textfield delegate methods
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    if (textField == _timeSlotTextField) {
-        [_pickerView reloadAllComponents];
+    [currentArray removeAllObjects];
+    
+    if (textField == _timeSlotTextField){
+        [currentArray addObjectsFromArray:_pickerArray];
+        isTimeSlotTextField= YES;
     }
+    else if(textField == _packageTextField){
+        for (NSDictionary *dicValue in packageFinal) {
+            [currentArray addObject:[dicValue valueForKey:@"select_val"]];
+        }
+        isTimeSlotTextField= NO;
+    }
+    [_pickerView reloadAllComponents];
     return YES;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if (textField == _timeSlotTextField){
+        isTimeSlotTextField= YES;
+    }
+    else if(textField == _packageTextField) {
+        isTimeSlotTextField= NO;
+    }
+    
     [textField resignFirstResponder];
     return YES;
 }
@@ -141,7 +235,7 @@
                                   @"device_id" : @"123123",
                                   @"push_data" : @"posting bid",
                                   @"msg_type" : @"bid",
-                                  @"event_date" : @"2015-12-22",    //TODO:date should be dynamic, Will do later
+                                  @"event_date" : _eventDateButton.titleLabel.text,    //TODO:date should be dynamic, Will do later
                                   @"bid_json" : json_string,
                                   @"time_slot" : _timeSlotTextField.text,
                                   @"bid_price" : _bidPriceTextField.text,
@@ -175,14 +269,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -2,7 +2,7 @@
 //  WWWebService.m
 //  WeddingWise
 //
-//  Created by Dotsquares on 7/2/15.
+//  Created by Deepak Sharma on 7/2/15.
 //  Copyright (c) 2015 DS. All rights reserved.
 //
 

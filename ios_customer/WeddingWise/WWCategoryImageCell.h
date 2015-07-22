@@ -2,7 +2,7 @@
 //  WWCategoryImageCell.h
 //  WeddingWise
 //
-//  Created by Dotsquares on 6/16/15.
+//  Created by Deepak Sharma on 6/16/15.
 //  Copyright (c) 2015 DS. All rights reserved.
 //
 
@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *categoryImageScrollView;
 @property(nonatomic, weak)IBOutlet UIButton *btnVideoLink;
 @property(nonatomic, weak)IBOutlet UIButton *btnImage;
+@property(nonatomic, weak)IBOutlet UILabel *lblPrice;
 @property (nonatomic,strong) id delegate;
 
 -(IBAction)showVideoPlayerView:(id)sender;

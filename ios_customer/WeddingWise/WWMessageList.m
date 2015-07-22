@@ -2,7 +2,7 @@
 //  WWMessageList.m
 //  WeddingWise
 //
-//  Created by Dotsquares on 6/11/15.
+//  Created by Deepak Sharma on 6/11/15.
 //  Copyright (c) 2015 DS. All rights reserved.
 //
 
@@ -59,54 +59,11 @@
     [UIView commitAnimations];
     
 }
-
--(IBAction)createBidPressed:(id)sender{
-    WWCreateBidVC *createBid=[[WWCreateBidVC alloc]initWithNibName:@"WWCreateBidVC" bundle:nil];
-    if ([(UIButton *)sender tag] == 1) {
-        createBid.requestType = @"bid";
-    }
-    else{
-        createBid.requestType = @"book";
-    }
-    [self.navigationController pushViewController:createBid animated:YES];
-}
-
--(IBAction)bidBtnClicked:(id)sender
-{
-    btnCreateBid.hidden= NO;
-    [btnCreateBid setTitle:@"Create a new Bid" forState:UIControlStateNormal];
-    [btnCreateBid setTag:1];    //if 1 then pass bid in requestType in WWCreateBidVC
-    bidBtn.selected = YES;
-    bookBtn.selected = NO;
-    messageBtn.selected = NO;
-    [self moveImage:selectorImage duration:0.2 curve:UIViewAnimationCurveLinear x:bidBtn.frame.origin.x y:0.0];
-    
-    [messageTable setFrame:CGRectMake(messageTable.frame.origin.x, btnCreateBid.frame.origin.y + btnCreateBid.frame.size.height+10, messageTable.frame.size.width, self.view.frame.size.height-175)];
-    
-}
--(IBAction)bookBtnClicked:(id)sender
-{
-    btnCreateBid.hidden= NO;
-    [btnCreateBid setTitle:@"Create a new Booking" forState:UIControlStateNormal];
-    [btnCreateBid setTag:2];     //if 1 then pass bid in requestType in WWCreateBidVC
-    bidBtn.selected = NO;
-    bookBtn.selected = YES;
-    messageBtn.selected = NO;
-    
-    // Move the image
-    [self moveImage:selectorImage duration:0.2
-              curve:UIViewAnimationCurveLinear x:bookBtn.frame.origin.x y:0.0];
-    
-    [messageTable setFrame:CGRectMake(messageTable.frame.origin.x, btnCreateBid.frame.origin.y + btnCreateBid.frame.size.height+10, messageTable.frame.size.width, self.view.frame.size.height-175)];
-}
-
 -(IBAction)messageBtnClicked:(id)sender
 {
     btnCreateBid.hidden= YES;
     bidBtn.selected = NO;
     bookBtn.selected = NO;
-    
-   
     
     [self moveImage:selectorImage duration:0.2
               curve:UIViewAnimationCurveLinear x:messageBtn.frame.origin.x y:0.0];

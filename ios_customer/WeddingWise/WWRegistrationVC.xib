@@ -10,6 +10,7 @@
                 <outlet property="bgImage" destination="pUG-tm-8mR" id="AgM-tE-6cC"/>
                 <outlet property="btnBack" destination="pDF-c6-qTl" id="H60-ww-3yj"/>
                 <outlet property="btnSignIn" destination="OYI-Sq-TtS" id="MqO-4j-m0P"/>
+                <outlet property="btnSkip" destination="dL6-b4-uJc" id="pTn-Fy-KvP"/>
                 <outlet property="btnTentativeDate" destination="KSJ-pz-Rx8" id="yNm-1u-5Pb"/>
                 <outlet property="datePicker" destination="VRH-c2-PzL" id="x5D-WG-HEk"/>
                 <outlet property="imgDatePicker" destination="Whf-HB-BcT" id="F9o-ih-PbD"/>
@@ -33,10 +34,10 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pDF-c6-qTl">
-                    <rect key="frame" x="10" y="10" width="85" height="37"/>
+                    <rect key="frame" x="0.0" y="10" width="60" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="  Sign In" image="header_arrow">
+                    <state key="normal" image="header_arrow">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -164,10 +165,22 @@
                         <!--2015-07-10 20:21:13 +0000-->
                     </date>
                 </datePicker>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dL6-b4-uJc">
+                    <rect key="frame" x="231" y="103" width="73" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Skip">
+                        <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="skipButtonPressed:" destination="-1" eventType="touchUpInside" id="KTS-Qi-VJo"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-410" y="11"/>
+            <point key="canvasLocation" x="-476" y="4"/>
         </view>
     </objects>
     <resources>

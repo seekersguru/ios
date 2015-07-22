@@ -59,6 +59,7 @@
             <connections>
                 <outlet property="btnVideoLink" destination="aSu-6b-P0p" id="UFb-lT-EDA"/>
                 <outlet property="categoryImageScrollView" destination="ftb-iZ-Lzk" id="3zX-VE-kmC"/>
+                <outlet property="lblPrice" destination="Q07-FR-cf4" id="6XT-Js-yqB"/>
             </connections>
             <point key="canvasLocation" x="188" y="207.5"/>
         </tableViewCell>

@@ -19,11 +19,13 @@
     _eventDate.text= [data valueForKey:@"event_date"];
     _inquiryDate.text= [[data valueForKey:@"msg_time"] substringToIndex:[[data valueForKey:@"msg_time"] length] - 9];
     _details.text= [NSString stringWithFormat:@"%@ %@",[data valueForKey:@"line1"],[data valueForKey:@"line2"] ];
+    _status.text=[data valueForKey:@"status"];
     
     _name.font = [UIFont fontWithName:AppFont size:14.0];
     _inquiryDate.font = [UIFont fontWithName:AppFont size:12.0];
     _eventDate.font = [UIFont fontWithName:AppFont size:12.0];
     _details.font = [UIFont fontWithName:AppFont size:12.0];
+    _status.font = [UIFont fontWithName:AppFont size:12.0];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

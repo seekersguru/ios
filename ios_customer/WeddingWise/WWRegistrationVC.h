@@ -12,6 +12,7 @@
 {
     IBOutlet UILabel *lblPolicy;
 }
+@property (weak, nonatomic) IBOutlet UIButton *btnSkip;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIImageView *imgDatePicker;
 @property (weak, nonatomic) IBOutlet UIImageView *imgTextBG;
@@ -21,8 +22,8 @@
 @property(nonatomic, weak)IBOutlet UITextField *txtGroomName;
 @property(nonatomic, weak)IBOutlet UITextField *txtBrideName;
 @property(nonatomic, weak)IBOutlet UITextField *txtContactNo;
-
 @property(nonatomic, weak)IBOutlet UIButton *btnTentativeDate;
+
 @property(nonatomic, weak)IBOutlet UIButton *btnSignIn;
 @property(nonatomic, weak)IBOutlet UIButton *btnBack;
 

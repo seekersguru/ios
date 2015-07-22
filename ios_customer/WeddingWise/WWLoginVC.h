@@ -12,13 +12,13 @@
 @interface WWLoginVC : UIViewController<UITextFieldDelegate>
 {
     IBOutlet UILabel *lblPolicy;
+    __weak IBOutlet UIButton *btnSignIn;
+    __weak IBOutlet UIButton *btnForgotPassword;
 }
 @property(nonatomic, weak)IBOutlet UITextField *txtEmailAddress;
 @property(nonatomic, weak)IBOutlet UITextField *txtPassword;
 
-
 @property(nonatomic, weak)IBOutlet UIImageView *bgImage;
-
 @property(nonatomic, strong)UIImage *image;
 
 -(IBAction)btnSignInPressed:(id)sender;

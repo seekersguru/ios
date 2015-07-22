@@ -23,7 +23,7 @@
 @end
 
 @interface WWVendorBidData : NSObject
-@property(nonatomic, strong) NSArray *time_slot;
+@property(nonatomic, strong) NSMutableArray *time_slot;
 @property(nonatomic, strong) NSDictionary *package;
 @property(nonatomic, strong) NSDictionary *quoted;
 @property(nonatomic, strong) NSNumber *maxItemPerPlate;
@@ -37,7 +37,7 @@
 @end
 
 @interface WWVendorBookingData : NSObject
-@property(nonatomic, strong) NSArray *time_slot;
+@property(nonatomic, strong) NSMutableArray *time_slot;
 @property(nonatomic, strong) NSDictionary *package;
 @property(nonatomic, strong) NSDictionary *bookDictionary;
 + (instancetype)sharedInstance;

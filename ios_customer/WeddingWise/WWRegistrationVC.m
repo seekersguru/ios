@@ -22,6 +22,7 @@
     //[self setTextFieldPlacehoder];
     [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:lblPolicy withText:lblPolicy.text];
     [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_btnTentativeDate withText:_btnTentativeDate.titleLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_btnSkip withText:_btnSkip.titleLabel.text];
     [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_btnSignIn withText:_btnSignIn.titleLabel.text];
     [[WWCommon getSharedObject]setCustomFont:13.0 withLabel:_btnBack withText:_btnBack.titleLabel.text];
     [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_txtEmailAddress withText:_txtEmailAddress.text];
@@ -42,6 +43,7 @@
     if(_fbResponse){
         [self fillFaceBookData];
     }
+    //[_btnSkip setHidden:YES];
     
     [super viewDidLoad];
 }
@@ -51,7 +53,7 @@
     [_txtEmailAddress setTextColor:[UIColor lightGrayColor]];
     
     [_txtPassword setHidden:YES];
-    
+    [_btnSkip setHidden:NO];
     
     //Set buttons frame in case FB & G+ login:
     [_txtBrideName setFrame:CGRectMake(_txtPassword.frame.origin.x, _txtPassword.frame.origin.y, _txtPassword.frame.size.width, _txtPassword.frame.size.height)];
@@ -94,6 +96,10 @@
         // Show the HUD while the provided method executes in a new thread
         [HUD showWhileExecuting:@selector(callRegistrationAPI) onTarget:self withObject:nil animated:YES];
     }
+}
+- (IBAction)skipButtonPressed:(id)sender {
+    UITabBarController *tabVC = [[AppDelegate sharedAppDelegate]setupViewControllers:nil];
+    [self.navigationController pushViewController:tabVC animated:YES];
 }
 -(IBAction)btnTentativeDatePressed:(id)sender{
     [_datePicker setHidden:NO];
@@ -175,6 +181,12 @@
         [[WWCommon getSharedObject]createAlertView:kAppName :kEnterPassword :nil :000 ];
         return NO;
     }
+    if (_btnTentativeDate.titleLabel.text && _btnTentativeDate.titleLabel.text.length == 0)
+    {
+        [[WWCommon getSharedObject]createAlertView:kAppName :kTentativeDate :nil :000 ];
+        return NO;
+    }
+
     if(_txtEmailAddress.text.length>0){
         if(![[WWCommon getSharedObject] validEmail:_txtEmailAddress.text]){
             [[WWCommon getSharedObject]createAlertView:kAppName :kValidEmail :nil :000 ];
