@@ -62,8 +62,18 @@
              [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
-             WWLoginUserData *userData=[[WWLoginUserData alloc]setUserData:[responseDics valueForKey:@"json"]];
+             NSMutableDictionary *profileDict = [[[responseDics valueForKey:@"json"] valueForKey:@"profile"] mutableCopy];
+             [profileDict setValue:[AppDelegate sharedAppDelegate].userData.identifier forKey:@"identifier"];
+             WWLoginUserData *userData=[[WWLoginUserData alloc]setUserData:profileDict];
              [AppDelegate sharedAppDelegate].userData= userData;
+             
+             
+             //update view
+             _txtBrideName.text = [profileDict valueForKey:@"bride_name"];
+             _txtGroomName.text = [profileDict valueForKey:@"groom_name"];
+             _txtContactNo.text = [profileDict valueForKey:@"contact_number"];
+             _txtEmailAddress.text = [profileDict valueForKey:@"email"];
+             
          }
      }
                                              failure:^(NSString *response)
@@ -106,6 +116,8 @@
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
              WWLoginUserData *userData=[[WWLoginUserData alloc]setUserData:[responseDics valueForKey:@"json"]];
              [AppDelegate sharedAppDelegate].userData= userData;
+             
+//             _txtBrideName setText:<#(NSString *)#>
          }
      }
                                              failure:^(NSString *response)

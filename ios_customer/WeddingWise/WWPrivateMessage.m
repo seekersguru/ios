@@ -18,11 +18,14 @@
     
     CGFloat maxChatTextWidth;
 }
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation WWPrivateMessage
 
 - (void)viewDidLoad {
+    
+    [super viewDidLoad];
     
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationController.navigationBar setHidden:YES];
@@ -56,8 +59,21 @@
     
     chatArray = [[NSMutableArray alloc] init];
     [self callPrivateChatAPI];
-    [super viewDidLoad];
+    
+    
+    _refreshControl = [[UIRefreshControl alloc] init];
+    [_refreshControl setBackgroundColor:[UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0]];
+    [_refreshControl setTintColor:[UIColor whiteColor]];
+    [_refreshControl addTarget:self action:@selector(loadPrevioudMessages:) forControlEvents:UIControlEventValueChanged];
+    [_tblMessage addSubview:_refreshControl];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)loadPrevioudMessages:(id)sender{
+    [self.tblMessage reloadData];
+    if (_refreshControl) {
+        [_refreshControl endRefreshing];
+    }
 }
 -(void)callPrivateChatAPI{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:

@@ -45,7 +45,7 @@
     [self setUpCustomView];
     [self callWebService];
     
-    _lblTitle.text= [_vendorDetail valueForKey:@"name"];
+    _lblTitle.text= _vendorName;
     
 }
 

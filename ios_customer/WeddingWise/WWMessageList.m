@@ -15,12 +15,13 @@
 {
     NSMutableArray *arrMessageData;
 }
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation WWMessageList
 
 - (void)viewDidLoad {
-    
+    [super viewDidLoad];
     [self.navigationController.navigationBar setHidden:YES];
     
     messageTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -35,11 +36,24 @@
     [bidBtn.titleLabel setFont:[UIFont fontWithName:AppFont size:17.0f]];
     [bookBtn.titleLabel setFont:[UIFont fontWithName:AppFont size:17.0f]];
     [messageBtn.titleLabel setFont:[UIFont fontWithName:AppFont size:17.0f]];
-    [super viewDidLoad];
+    
+    _refreshControl = [[UIRefreshControl alloc] init];
+    [_refreshControl setBackgroundColor:[UIColor whiteColor]];
+    [_refreshControl setTintColor:[UIColor lightGrayColor]];
+    [_refreshControl addTarget:self action:@selector(loadPrevioudMessages:) forControlEvents:UIControlEventValueChanged];
+    [messageTable addSubview:_refreshControl];
+    
     // Do any additional setup after loading the view from its nib.
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:YES];
+}
+
+- (void)loadPrevioudMessages:(id)sender{
+    [messageTable reloadData];
+    if (_refreshControl) {
+        [_refreshControl endRefreshing];
+    }
 }
 
 - (void)moveImage:(UIImageView *)image duration:(NSTimeInterval)duration
