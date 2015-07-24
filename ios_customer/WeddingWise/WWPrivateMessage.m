@@ -12,15 +12,10 @@
 
 @interface WWPrivateMessage ()
 {
-    NSMutableDictionary *offscreenCells;
-    
     NSMutableArray *chatArray;
-    
-    CGFloat maxChatTextWidth;
 }
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImageData;
 @property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImageData;
-@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation WWPrivateMessage
@@ -32,77 +27,38 @@
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationController.navigationBar setHidden:YES];
     
-    [_lblVendorName setFont:[UIFont fontWithName:AppFont size:13.0f]];
-    _lblVendorName.text=[_messageData valueForKey:@"receiver_name"];
-    [self.view bringSubviewToFront:_lblVendorName];
-//    [_txtMessage setFont:[UIFont fontWithName:AppFont size:13.0f]];
-    
-    
-    
-    
-    
-    self.title = @"JSQMessages";
-    
-    /**
-     *  You MUST set your senderId and display name
-     */
+    [self.lblVendorName setFont:[UIFont fontWithName:AppFont size:13.0f]];
+    self.lblVendorName.text = [_messageData valueForKey:@"receiver_name"];
+
     self.senderId = @"1";
-    self.senderDisplayName = @"shiv";
+    self.senderDisplayName = @"";
     
     self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
     self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
     
     self.showLoadEarlierMessagesHeader = YES;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage jsq_defaultTypingIndicatorImage]
-                                                                              style:UIBarButtonItemStyleBordered
-                                                                             target:self
-                                                                             action:@selector(receiveMessagePressed:)];
-    
-    
-    
-    
     
     chatArray = [[NSMutableArray alloc] init];
-    chatArray = [[NSMutableArray alloc] initWithObjects:
-                     [[JSQMessage alloc] initWithSenderId:@"1"
-                                        senderDisplayName:@"shiv"
-                                                     date:[NSDate distantPast]
-                                                     text:@"Welcome to JSQMessages: A messaging UI framework for iOS."],
-                     
-                     [[JSQMessage alloc] initWithSenderId:@"2"
-                                        senderDisplayName:@"Nishant"
-                                                     date:[NSDate distantPast]
-                                                     text:@"It is simple, elegant, and easy to use. There are super sweet default settings, but you can customize like crazy."],
-                 
-                     nil];
-    
     
     JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
     
     self.outgoingBubbleImageData = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
     self.incomingBubbleImageData = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleGreenColor]];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+
+    [chatArray removeAllObjects];
+    [self callPrivateChatAPI:@""];
+}
+- (void)backButtonAction:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)refreshMessageAction:(id)sender{
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    [self callPrivateChatAPI];
-//    
-//    
-//    _refreshControl = [[UIRefreshControl alloc] init];
-//    [_refreshControl setBackgroundColor:[UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0]];
-//    [_refreshControl setTintColor:[UIColor whiteColor]];
-//    [_refreshControl addTarget:self action:@selector(loadPrevioudMessages:) forControlEvents:UIControlEventValueChanged];
-//    [_tblMessage addSubview:_refreshControl];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)receiveMessagePressed:(UIBarButtonItem *)sender
@@ -115,7 +71,8 @@
     if (!copyMessage) {
         copyMessage = [JSQMessage messageWithSenderId:@"1"
                                           displayName:@"shiv"
-                                                 text:@"First received!"];
+                                                 text:@"First received!"
+                                            messageId:@""];
     }
     
     [chatArray addObject:copyMessage];
@@ -137,25 +94,52 @@
      *  2. Add new id<JSQMessageData> object to your data source
      *  3. Call `finishSendingMessage`
      */
+    NSString *messageId = @"1";
+    if (chatArray.count > 0) {
+        messageId = [[chatArray lastObject] messageId];
+    }
     [JSQSystemSoundPlayer jsq_playMessageSentSound];
     
     JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
                                              senderDisplayName:senderDisplayName
                                                           date:date
-                                                          text:text];
+                                                          text:text
+                                                     messageId:messageId];
     
     [chatArray addObject:message];
     
     [self finishSendingMessageAnimated:YES];
+    
+    NSDictionary *requestDict = @{@"identifier" : [AppDelegate sharedAppDelegate].userData.identifier,
+                                  @"receiver_email" : [_messageData valueForKey:@"receiver_email"],
+                                  @"message" : text,
+                                  @"from_to" : @"c2v",
+                                  @"action" : @"customer_vendor_message_create",
+                                  @"mode" : @"ios",
+                                  @"device_id" : @"123123",
+                                  @"push_data" : text,
+                                  @"msg_type" : @"message",
+                                  @"event_date" : @"",    //TODO:date should be dynamic, Will do later
+                                  @"bid_json" : @"",
+                                  @"time_slot" : @"",
+                                  @"bid_price" : @"",
+                                  @"bid_quantity" : @""};
+    
+    [[WWWebService sharedInstanceAPI] callWebService:requestDict imgData:nil loadThreadWithCompletion:^(NSDictionary *response) {
+        if([[response valueForKey:@"result"] isEqualToString:@"error"]){
+            [[WWCommon getSharedObject]createAlertView:kAppName :[response valueForKey:@"message"] :nil :000 ];
+            [chatArray removeObject:message];
+            [self finishReceivingMessageAnimated:YES];
+        }
+        else if ([[response valueForKey:@"result"] isEqualToString:@"success"]){
+        }
+    } failure:^(NSString *failureResponse) {
+        [chatArray removeObject:message];
+        [self finishReceivingMessageAnimated:YES];
+    }];
+    
 }
-
-- (void)loadPrevioudMessages:(id)sender{
-//    [self.tblMessage reloadData];
-    if (_refreshControl) {
-        [_refreshControl endRefreshing];
-    }
-}
--(void)callPrivateChatAPI{
+-(void)callPrivateChatAPI:(NSString *)lastMessageId{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
                                  [_messageData valueForKey:@"receiver_email"],@"receiver_email",
@@ -163,6 +147,7 @@
                                  @"c2v",@"from_to",
                                  @"customer_vendor_message_detail",@"action",
                                  @"message",@"msg_type",
+                                 lastMessageId,@"last_message_id",
                                  nil];
     
     [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
@@ -172,10 +157,31 @@
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
              NSArray *arrData=[responseDics valueForKey:@"json"];
-             [chatArray removeAllObjects];
-             for (NSDictionary *arrMessages in arrData) {
-                 [chatArray addObject:arrMessages];
+             NSDateFormatter *df = [[NSDateFormatter alloc] init];
+             [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+             
+             for (int i = arrData.count-1; i >= 0; i--) {
+                 NSDictionary *arrMessages = [arrData objectAtIndex:i];
+                 NSString *senderId = @"1";
+                 if ([[arrMessages valueForKey:@"from_to"] isEqualToString:@"v2c"]) {
+                     senderId = @"2";
+                 }
+                 NSString *vendorName = [arrMessages valueForKey:@"vendor_name"];
+                 NSString *text = [arrMessages valueForKey:@"message"];
+                 NSString *messageId = [NSString stringWithFormat:@"%ld",[[arrMessages valueForKey:@"id"] longValue]];
+                 NSDate *date = [df dateFromString:[arrMessages valueForKey:@"msg_time"]];
+                 JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
+                                                          senderDisplayName:vendorName
+                                                                       date:date
+                                                                       text:text
+                                                                  messageId:messageId];
+                 [chatArray insertObject:message atIndex:0];
              }
+             
+             
+             
+             
+             [self finishReceivingMessage];
 
          }
      }
@@ -421,6 +427,12 @@
                 header:(JSQMessagesLoadEarlierHeaderView *)headerView didTapLoadEarlierMessagesButton:(UIButton *)sender
 {
     NSLog(@"Load earlier messages!");
+    NSString *lastMessageId = @"";
+    if (chatArray.count > 0) {
+        JSQMessage *firstMessage = [chatArray firstObject];
+        lastMessageId = firstMessage.messageId;
+    }
+    [self callPrivateChatAPI:lastMessageId];
 }
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapAvatarImageView:(UIImageView *)avatarImageView atIndexPath:(NSIndexPath *)indexPath
@@ -438,6 +450,8 @@
     NSLog(@"Tapped cell at %@!", NSStringFromCGPoint(touchLocation));
 }
 
-
+- (void)didPressAccessoryButton:(UIButton *)sender{
+    return;
+}
 
 @end

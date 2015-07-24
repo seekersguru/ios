@@ -6,14 +6,9 @@
 //  Copyright (c) 2015 DS. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "JSQMessages.h"
 
-@interface WWPrivateMessage : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
-
-@property(nonatomic, weak)IBOutlet UITableView *tblMessage;
-@property (weak, nonatomic) IBOutlet UIView *toolbar;
-@property (weak, nonatomic) IBOutlet UITextView *txtMessage;
+@interface WWPrivateMessage : JSQMessagesViewController
 @property(weak, nonatomic)IBOutlet UILabel *lblVendorName;
-
 @property(nonatomic, strong)NSDictionary *messageData;
 @end
