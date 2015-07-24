@@ -53,6 +53,9 @@
     [chatArray removeAllObjects];
     [self callPrivateChatAPI:@""];
 }
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+}
 - (void)backButtonAction:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }

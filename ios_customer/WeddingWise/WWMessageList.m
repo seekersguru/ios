@@ -46,6 +46,8 @@
     // Do any additional setup after loading the view from its nib.
 }
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.hidesBottomBarWhenPushed = NO;
     [self.navigationController.navigationBar setHidden:YES];
 }
 
@@ -159,8 +161,9 @@
     WWPrivateMessage *messageVc = [[WWPrivateMessage alloc] initWithNibName:@"WWPrivateMessage" bundle:nil];
     NSDictionary *messageData=[arrMessageData objectAtIndex:indexPath.row];
     messageVc.messageData =messageData;
-    self.hidesBottomBarWhenPushed = YES;
+    messageVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:messageVc animated:YES];
+    messageVc.hidesBottomBarWhenPushed = NO;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

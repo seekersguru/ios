@@ -220,8 +220,9 @@
     WWPrivateMessage *messageVc = [[WWPrivateMessage alloc] initWithNibName:@"WWPrivateMessage" bundle:nil];
     NSDictionary *messageData=[arrMessageData objectAtIndex:indexPath.row];
     messageVc.messageData =messageData;
-    self.hidesBottomBarWhenPushed = YES;
+    messageVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:messageVc animated:YES];
+    messageVc.hidesBottomBarWhenPushed = NO;
 }
 
 - (void)loadMoreOnBottom{
