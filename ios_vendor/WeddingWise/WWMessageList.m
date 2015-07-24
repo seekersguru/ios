@@ -10,16 +10,23 @@
 #import "MessageListCell.h"
 #import "WWPrivateMessage.h"
 #import "WWCreateBidVC.h"
+#import "WWBasicDetails.h"
 
-@interface WWMessageList ()
+@interface WWMessageList ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray *arrMessageData;
+    NSString* max;
+    NSString* min;
+    NSString *calendarDate;
 }
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation WWMessageList
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
     
     [self.navigationController.navigationBar setHidden:YES];
     
@@ -30,18 +37,46 @@
     
     arrMessageData=[[NSMutableArray alloc]init];
     
-    [self callCustomerMessageAPI];
-    
     [bidBtn.titleLabel setFont:[UIFont fontWithName:AppFont size:17.0f]];
     [bookBtn.titleLabel setFont:[UIFont fontWithName:AppFont size:17.0f]];
     [messageBtn.titleLabel setFont:[UIFont fontWithName:AppFont size:17.0f]];
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    _refreshControl = [[UIRefreshControl alloc] init];
+    [_refreshControl setBackgroundColor:[UIColor whiteColor]];
+    [_refreshControl setTintColor:[UIColor lightGrayColor]];
+    [_refreshControl addTarget:self action:@selector(loadMoreOnTop) forControlEvents:UIControlEventValueChanged];
+    [messageTable addSubview:_refreshControl];
 }
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self.navigationController.navigationBar setHidden:YES];
+    
+    [arrMessageData removeAllObjects];
+    max = @"";
+    min = @"";
+    calendarDate = [[WWBasicDetails sharedInstance] calendarDate];
+    
+    [self callCustomerMessageAPI:^(NSArray *messageArray) {
+        [arrMessageData addObjectsFromArray:messageArray];
+        [messageTable reloadData];
+    }];
+    
 }
 
+- (void)loadMoreOnTop{
+    min = [[arrMessageData firstObject] valueForKey:@"id"];
+    max = @"";
+    [self callCustomerMessageAPI:^(NSArray *messageArray) {
+        for (int i = messageArray.count-1; i >= 0; i--) {
+            [arrMessageData insertObject:messageArray[i] atIndex:0];
+        }
+        [messageTable reloadData];
+        if (_refreshControl) {
+            [_refreshControl endRefreshing];
+        }
+    }];
+    
+}
 - (void)moveImage:(UIImageView *)image duration:(NSTimeInterval)duration
             curve:(int)curve x:(CGFloat)x y:(CGFloat)y
 {
@@ -104,13 +139,16 @@
     }
     
 }
--(void)callCustomerMessageAPI{
+-(void)callCustomerMessageAPI:(void(^)(NSArray *))completion{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
                                  @"1",@"page_no",
                                  @"customer_vendor_message_list",@"action",
                                  @"v2c",@"from_to",
                                  @"message",@"msg_type",
+                                 calendarDate?calendarDate:@"",@"date",
+                                 min,@"min",
+                                 max,@"max",
                                  nil];
     
     [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
@@ -120,10 +158,7 @@
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
              NSArray *arrData=[responseDics valueForKey:@"json"];
-             for (NSDictionary *arrMessages in arrData) {
-                 [arrMessageData addObject:arrMessages];
-             }
-             [messageTable reloadData];
+             completion(arrData);
          }
      }
                                              failure:^(NSString *response)
@@ -143,9 +178,18 @@
     return 70;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 44;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIButton *loadMoreButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 44)];
+    [loadMoreButton setTitle:@"Load More" forState:UIControlStateNormal];
+    [loadMoreButton.titleLabel setTextColor:[UIColor whiteColor]];
+    [loadMoreButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [loadMoreButton setBackgroundColor:[UIColor lightGrayColor]];
+    [loadMoreButton addTarget:self action:@selector(loadMoreOnBottom) forControlEvents:UIControlEventTouchUpInside];
+    return loadMoreButton;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -177,6 +221,18 @@
     NSDictionary *messageData=[arrMessageData objectAtIndex:indexPath.row];
     messageVc.messageData =messageData;
     [self.navigationController pushViewController:messageVc animated:YES];
+}
+
+- (void)loadMoreOnBottom{
+    max = [[arrMessageData lastObject] valueForKey:@"id"];
+    min = @"";
+    [self callCustomerMessageAPI:^(NSArray *messageArray) {
+        [arrMessageData addObjectsFromArray:messageArray];
+        [messageTable reloadData];
+        if (arrMessageData.count*70 > messageTable.frame.size.height) {
+            [messageTable setContentOffset:CGPointMake(0, (messageTable.contentSize.height - messageTable.frame.size.height))];
+        }
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

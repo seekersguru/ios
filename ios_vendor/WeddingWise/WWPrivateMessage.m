@@ -18,6 +18,7 @@
     
     CGFloat maxChatTextWidth;
 }
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation WWPrivateMessage
@@ -56,6 +57,13 @@
     
     chatArray = [[NSMutableArray alloc] init];
     [self callPrivateChatAPI];
+    
+        _refreshControl = [[UIRefreshControl alloc] init];
+        [_refreshControl setBackgroundColor:[UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0]];
+        [_refreshControl setTintColor:[UIColor whiteColor]];
+        [_refreshControl addTarget:self action:@selector(loadPrevioudMessages:) forControlEvents:UIControlEventValueChanged];
+        [_tblMessage addSubview:_refreshControl];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
