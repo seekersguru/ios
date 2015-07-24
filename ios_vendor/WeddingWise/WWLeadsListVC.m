@@ -46,6 +46,8 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [arrBidData removeAllObjects];
+    [arrBookData removeAllObjects];
+    [_tblBidView reloadData];
     max = @"";
     min = @"";
     calendarDate = [[WWBasicDetails sharedInstance] calendarDate];

@@ -52,6 +52,7 @@
     [self.navigationController.navigationBar setHidden:YES];
     
     [arrMessageData removeAllObjects];
+    [messageTable reloadData];
     max = @"";
     min = @"";
     calendarDate = [[WWBasicDetails sharedInstance] calendarDate];
