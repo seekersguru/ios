@@ -24,6 +24,8 @@
 #import "WWCategoryFooterCell.h"
 #import "WWScheduleVC.h"
 #import "AnnotationPin.h"
+#import "WWProfileVC.h"
+
 
 #define DEGREES_IN_RADIANS(x) (M_PI * x / 180.0)
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
@@ -622,28 +624,45 @@ BOOL isPackage;
 }
 
 - (IBAction)selectCustomBottonAction:(UIButton *)sender {
+    
     UIViewController *vc = nil;
-    switch (sender.tag) {
-        case 1:
-            vc=[[WWCreateBidVC alloc]init];
-            [(WWCreateBidVC *)vc setRequestType:@"bid"];
-            break;
-        case 2:
-            vc=[[WWCreateBidVC alloc]init];
-            [(WWCreateBidVC *)vc setRequestType:@"book"];
-            break;
-        case 3:
-            vc=[[WWMessageList alloc]init];
-            break;
-        case 4:
-            vc=[[WWScheduleVC alloc]init];
-            break;
-            
-        default:
-            break;
+    NSString *savedGroomName = [[NSUserDefaults standardUserDefaults]
+                                stringForKey:@"groom_name"];
+    if(savedGroomName == nil){
+        WWProfileVC *profileVC=[[WWProfileVC alloc]init];
+        [self.navigationController pushViewController:profileVC animated:YES];
+        
+        return;
+    }
+    else{
+        switch (sender.tag) {
+            case 1:{
+                vc=[[WWCreateBidVC alloc]init];
+                [(WWCreateBidVC *)vc setRequestType:@"bid"];
+            }
+                break;
+            case 2:{
+                vc=[[WWCreateBidVC alloc]init];
+                [(WWCreateBidVC *)vc setRequestType:@"book"];
+            }
+                break;
+            case 3:
+            {
+                vc=[[WWMessageList alloc]init];
+            }
+                
+                break;
+            case 4:
+                vc=[[WWScheduleVC alloc]init];
+                break;
+                
+            default:
+                break;
+        }
+        
+        [self.navigationController pushViewController:vc animated:YES];
     }
     self.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

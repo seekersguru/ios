@@ -10,6 +10,7 @@
 #import "MessageListCell.h"
 #import "WWPrivateMessage.h"
 #import "WWCreateBidVC.h"
+#import "WWProfileVC.h"
 
 @interface WWMessageList ()
 {
@@ -18,6 +19,11 @@
 @end
 
 @implementation WWMessageList
+- (void)awakeFromNib{
+//    WWProfileVC *profileVc=[[WWProfileVC alloc]initWithNibName:@"WWProfileVC" bundle:nil];
+//    [self.navigationController pushViewController:profileVc animated:YES];
+}
+
 
 - (void)viewDidLoad {
     
@@ -75,7 +81,8 @@
 }
 -(void)callCustomerMessageAPI{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  @"1",@"page_no",
                                  @"customer_vendor_message_list",@"action",
                                  @"c2v",@"from_to",

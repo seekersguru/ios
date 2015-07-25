@@ -40,7 +40,8 @@
 }
 -(void)callBidDetailAPI{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  [_messageData valueForKey:@"receiver_email"],@"receiver_email",
                                  @"1",@"page_no",
                                  @"v2c",@"from_to",

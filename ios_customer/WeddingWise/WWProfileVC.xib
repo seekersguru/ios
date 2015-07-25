@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WWProfileVC">
             <connections>
+                <outlet property="btnBackButton" destination="rbO-rl-3X0" id="ZDl-eA-4AS"/>
                 <outlet property="btnTentativeDate" destination="Hut-dP-YSW" id="Rqj-hX-840"/>
                 <outlet property="datePicker" destination="WhB-hG-itW" id="3G5-xo-wSN"/>
                 <outlet property="imgDatePicker" destination="r6E-Uq-OhB" id="Vm9-dQ-UMA"/>
@@ -56,7 +57,7 @@
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bride Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ujo-rO-GZz">
                     <rect key="frame" x="31" y="201" width="259" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="Xzz-uD-FEu"/>
                     </connections>
@@ -131,7 +132,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-763" y="23"/>
+            <point key="canvasLocation" x="-1342" y="-30"/>
         </view>
     </objects>
     <resources>

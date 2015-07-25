@@ -226,7 +226,8 @@
         json_string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     }
     
-    NSDictionary *requestDict = @{@"identifier" : [AppDelegate sharedAppDelegate].userData.identifier,
+    NSDictionary *requestDict = @{@"identifier" : [[NSUserDefaults standardUserDefaults]
+                                                   stringForKey:@"identifier"],
                                   @"receiver_email" : [WWVendorDetailData sharedInstance].vendorEmail,
                                   @"message" : @"posting bid",
                                   @"from_to" : @"c2v",

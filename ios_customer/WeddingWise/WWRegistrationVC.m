@@ -116,8 +116,19 @@
     _datePicker.maximumDate = maxDate;
     _datePicker.date = currentDate;
     
-    
+    [_datePicker addTarget:self action:@selector(LabelTitle:) forControlEvents:UIControlEventValueChanged];
 }
+-(void)LabelTitle:(id)sender
+{
+    NSDateFormatter *dateFormat=[[NSDateFormatter alloc]init];
+    dateFormat.dateStyle=NSDateFormatterMediumStyle;
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSString *str=[NSString stringWithFormat:@"%@",[dateFormat  stringFromDate:_datePicker.date]];
+    [_btnTentativeDate setTitle:str forState:UIControlStateNormal];
+}
+
+//yyyy-mm-dd
+
 -(void)callRegistrationAPI{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  _txtEmailAddress.text,@"email",
@@ -125,6 +136,11 @@
                                  _txtGroomName.text,@"groom_name",
                                  _txtBrideName.text,@"bride_name",
                                  _txtContactNo.text,@"contact_number",
+                                 _btnTentativeDate.titleLabel.text,@"tentative_wedding_date",
+                                 @"",@"fbid",
+                                 @"",@"gid",
+                                 @"",@"operation",
+                                 @"",@"identifier",
                                  @"customer_registration",@"action",
                                  nil];
     
@@ -134,14 +150,20 @@
              [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
-             //Login successfully
              dispatch_async(dispatch_get_main_queue(), ^{
+                 
+                 NSMutableDictionary *requestData = [responseDics[@"request_data"] mutableCopy];
+                 [requestData setValue:responseDics[@"json"][@"identifier"] forKey:@"identifier"];
+                 
+                 WWLoginUserData *userData=[[WWLoginUserData alloc]setUserData:requestData];
+                 [AppDelegate sharedAppDelegate].userData= userData;
+                 
                  UITabBarController *tabVC = [[AppDelegate sharedAppDelegate]setupViewControllers:nil];
                  [self.navigationController pushViewController:tabVC animated:YES];
              });
          }
      }
-                                             failure:^(NSString *response)
+            failure:^(NSString *response)
      {
          DLog(@"%@",response);
      }];

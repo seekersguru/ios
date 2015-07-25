@@ -19,6 +19,14 @@
     [super viewDidLoad];
     [self.navigationController.navigationBar setHidden:YES];
     
+    NSUInteger selectedIndex = self.tabBarController.selectedIndex;
+    
+    if(selectedIndex!=3){
+        if ([[NSUserDefaults standardUserDefaults]stringForKey:@"groom_name"] == nil){
+            [_btnBackButton setHidden:YES];
+        }
+    }
+    
     [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_btnTentativeDate withText:_btnTentativeDate.titleLabel.text];
     [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_txtEmailAddress withText:_txtEmailAddress.text];
     [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_txtGroomName withText:_txtGroomName.text];
@@ -35,7 +43,10 @@
     
     [self getUserProfileAPI];
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [self.tabBarController.navigationController.navigationBar setHidden:YES];
+    [self.navigationController.navigationBar setHidden:YES];
+}
 #pragma mark: IBAction & utility methods:
 -(void)dismissKeyboard {
     [_txtEmailAddress resignFirstResponder];
@@ -46,13 +57,19 @@
     [_imgDatePicker setHidden:YES];
 }
 -(void)getUserProfileAPI{
+  
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 _txtEmailAddress.text,@"email",
-                                 _txtGroomName.text,@"groom_name",
-                                 _txtBrideName.text,@"bride_name",
-                                 _txtContactNo.text,@"contact_number",
+                                 @"",@"email",
+                                 @"",@"password",
+                                 @"",@"groom_name",
+                                 @"",@"bride_name",
+                                 @"",@"contact_number",
+                                 @"",@"tentative_wedding_date",
+                                 @"",@"fbid",
+                                 @"",@"gid",
                                  @"get",@"operation",
-                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  @"customer_registration",@"action",
                                  nil];
     
@@ -62,8 +79,19 @@
              [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
-             WWLoginUserData *userData=[[WWLoginUserData alloc]setUserData:[responseDics valueForKey:@"json"]];
+             NSMutableDictionary *profile = [responseDics[@"json"][@"profile"] mutableCopy];
+             [profile setValue:responseDics[@"request_data"][@"identifier"] forKey:@"identifier"];
+             
+             WWLoginUserData *userData=[[WWLoginUserData alloc]setUserData:profile];
              [AppDelegate sharedAppDelegate].userData= userData;
+             
+             if([AppDelegate sharedAppDelegate].userData.groomName.length>0){
+                 [AppDelegate sharedAppDelegate].userData.isProfileComplete= YES;
+             }
+             _txtBrideName.text= [AppDelegate sharedAppDelegate].userData.brideName;
+             _txtContactNo.text= [AppDelegate sharedAppDelegate].userData.contactNumber;
+             _txtEmailAddress.text= [AppDelegate sharedAppDelegate].userData.emailID;
+             _txtGroomName.text= [AppDelegate sharedAppDelegate].userData.groomName;
          }
      }
                                              failure:^(NSString *response)
@@ -94,7 +122,8 @@
                                  _txtBrideName.text,@"bride_name",
                                  _txtContactNo.text,@"contact_number",
                                  @"update",@"operation",
-                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  @"customer_registration",@"action",
                                  nil];
     
@@ -106,6 +135,12 @@
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
              WWLoginUserData *userData=[[WWLoginUserData alloc]setUserData:[responseDics valueForKey:@"json"]];
              [AppDelegate sharedAppDelegate].userData= userData;
+             
+             if([AppDelegate sharedAppDelegate].userData.groomName.length>0){
+                 [AppDelegate sharedAppDelegate].userData.isProfileComplete= YES;
+             }
+             
+             [[AppDelegate sharedAppDelegate]resetViewControllerOnTabbar:self.tabBarController];
          }
      }
                                              failure:^(NSString *response)

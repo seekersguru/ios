@@ -18,6 +18,8 @@
 @property(nonatomic, weak)IBOutlet UITextField *txtBrideName;
 @property(nonatomic, weak)IBOutlet UITextField *txtContactNo;
 @property(nonatomic, weak)IBOutlet UIButton *btnTentativeDate;
+@property(nonatomic, weak)IBOutlet UIButton *btnBackButton;
+
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 
 -(IBAction)btnTentativeDatePressed:(id)sender;

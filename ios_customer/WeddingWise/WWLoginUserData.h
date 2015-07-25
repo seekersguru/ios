@@ -16,6 +16,7 @@
 @property(nonatomic, strong)NSString *groomName;
 @property(nonatomic, strong)NSString *contactNumber;
 @property(nonatomic, strong)NSString *tentativeDate;
+@property(nonatomic, assign)BOOL isProfileComplete;
 
 -(instancetype)setUserData:(NSDictionary*)userData;
 

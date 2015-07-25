@@ -61,7 +61,8 @@
 }
 -(void)callPrivateChatAPI{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  [_messageData valueForKey:@"receiver_email"],@"receiver_email",
                                  @"1",@"page_no",
                                  @"c2v",@"from_to",
@@ -366,7 +367,8 @@
     
     
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  [_messageData valueForKey:@"receiver_email"],@"receiver_email",
                                  _txtMessage.text, @"message",
                                  @"c2v",@"from_to",

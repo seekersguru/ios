@@ -19,6 +19,7 @@
 #import "WWScheduleVC.h"
 #import "WWLeadsListVC.h"
 #import "WWSideMenuVC.h"
+#import "WWProfileVC.h"
 
 void uncaughtExceptionHandler(NSException*);
 
@@ -63,10 +64,28 @@ static AppDelegate * _sharedInstance;
 #else
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 #endif
-    //WWDashboardVC~ipad
-    //WWDashboardVC *dashboard=[[WWDashboardVC alloc]initWithNibName:@"WWDashboardVC" bundle:nil];
-    WWDashboardVC *dashboard=[[WWDashboardVC alloc]init];
-    _navigation=[[UINavigationController alloc]initWithRootViewController:dashboard];
+    
+    NSString *savedIdentifier = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:@"identifier"];
+    
+    if(savedIdentifier.length>0){
+        NSString *savedGroomName = [[NSUserDefaults standardUserDefaults]
+                                     stringForKey:@"groom_name"];
+        
+        _navigation=[[UINavigationController alloc]init];
+        if(savedGroomName.length>0){
+             UITabBarController *tabVC = [self setupViewControllers:nil];
+             [_navigation pushViewController:tabVC animated:YES];
+        }
+        else{
+            UITabBarController *tabVC = [self setupViewControllers:nil];
+            [_navigation pushViewController:tabVC animated:YES];
+        }
+    }
+    else{
+        WWDashboardVC *dashboard=[[WWDashboardVC alloc]init];
+        _navigation=[[UINavigationController alloc]initWithRootViewController:dashboard];
+    }
     
     [self.window setRootViewController:_navigation];
     [self.window makeKeyAndVisible];
@@ -98,14 +117,31 @@ static AppDelegate * _sharedInstance;
     UINavigationController *firstNavigationController = [[UINavigationController alloc]
                                                    initWithRootViewController:firstViewController];
     
-    UIViewController *secondViewController = [[WWMessageList alloc] init];
-    UINavigationController *secondNavigationController = [[UINavigationController alloc]
-                                                    initWithRootViewController:secondViewController];
+    NSString *savedGroomName = [[NSUserDefaults standardUserDefaults]
+                                stringForKey:@"groom_name"];
+    UINavigationController *secondNavigationController;
+    if(savedGroomName.length>0){
+        UIViewController *secondViewController = [[WWMessageList alloc] init];
+        secondNavigationController= [[UINavigationController alloc]
+                                     initWithRootViewController:secondViewController];
+    }
+    else{
+        UIViewController *secondViewController = [[WWProfileVC alloc] init];
+        secondNavigationController = [[UINavigationController alloc]
+                                      initWithRootViewController:secondViewController];
+    }
     
-    UIViewController *thirdViewController = [[WWLeadsListVC alloc] init];
-    UINavigationController *thirdNavigationController = [[UINavigationController alloc]
-                                                          initWithRootViewController:thirdViewController];
-    
+    UINavigationController *thirdNavigationController;
+    if(savedGroomName.length>0){
+        UIViewController *thirdViewController = [[WWLeadsListVC alloc] init];
+        thirdNavigationController = [[UINavigationController alloc]
+                                     initWithRootViewController:thirdViewController];
+    }
+    else{
+        UIViewController *thirdViewController = [[WWProfileVC alloc] init];
+        thirdNavigationController = [[UINavigationController alloc]
+                                     initWithRootViewController:thirdViewController];
+    }
     UIViewController *fourthViewController = [[WWSideMenuVC alloc] init];
     UINavigationController *fourthNavigationController = [[UINavigationController alloc]
                                                     initWithRootViewController:fourthViewController];
@@ -121,6 +157,38 @@ static AppDelegate * _sharedInstance;
     
     [self customizeTabBarForController:tabVC images:tabBarItemImages selectedImages:tabBarSelectedItemImages];
     return tabVC;
+}
+
+-(void)resetViewControllerOnTabbar:(UITabBarController*)tabVC{
+    if (!tabVC) {
+        tabVC = [[UITabBarController alloc] init];
+    }
+    UIViewController *firstViewController = [[MyKnotList alloc] init];
+    UINavigationController *firstNavigationController = [[UINavigationController alloc]
+                                                         initWithRootViewController:firstViewController];
+    
+    UIViewController *secondViewController = [[WWMessageList alloc] init];
+    UINavigationController *secondNavigationController= [[UINavigationController alloc]
+                                                         initWithRootViewController:secondViewController];
+
+    UIViewController *thirdViewController = [[WWLeadsListVC alloc] init];
+    UINavigationController *thirdNavigationController = [[UINavigationController alloc]
+                                                         initWithRootViewController:thirdViewController];
+    
+    UIViewController *fourthViewController = [[WWSideMenuVC alloc] init];
+    UINavigationController *fourthNavigationController = [[UINavigationController alloc]
+                                                          initWithRootViewController:fourthViewController];
+    
+    [tabVC setViewControllers:@[firstNavigationController,
+                                secondNavigationController,
+                                thirdNavigationController,
+                                fourthNavigationController]];
+    
+    NSArray *tabBarItemImages = @[@"home", @"message", @"led",@"menu"];
+    NSArray *tabBarSelectedItemImages = @[@"home_icon", @"message_icon", @"led",@"menu_icon"];
+    
+    [self customizeTabBarForController:tabVC images:tabBarItemImages selectedImages:tabBarSelectedItemImages];
+    
 }
 
 - (void)customizeTabBarForController:(UITabBarController *)tabBarController images:(NSArray *)images selectedImages:(NSArray *)selectedImages{
@@ -162,6 +230,8 @@ static AppDelegate * _sharedInstance;
     NSArray *tabBarSelectedItemImages = @[@"home_icon", @"home_icon", @"message_icon", @"led", @"menu_icon"];
     [self customizeTabBarForController:tabVC images:tabBarItemImages selectedImages:tabBarSelectedItemImages];
 }
+
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

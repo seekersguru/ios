@@ -31,7 +31,8 @@
 - (NSURL *)applicationDocumentsDirectory;
 +(instancetype)sharedAppDelegate;
 - (void)changeTabBarVC:(UITabBarController *)tabVC;
-- (UITabBarController *)setupViewControllers:(UITabBarController *)navigationView;
 
+- (UITabBarController *)setupViewControllers:(UITabBarController *)navigationView;
+-(void)resetViewControllerOnTabbar:(UITabBarController*)tabVC;
 @end
 

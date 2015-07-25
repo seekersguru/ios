@@ -63,7 +63,8 @@
 }
 -(void)callBidDetailAPI:(NSString*)type{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  @"1",@"page_no",
                                  @"c2v",@"from_to",
                                  type,@"msg_type",

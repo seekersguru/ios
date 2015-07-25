@@ -22,6 +22,10 @@
     menuData =[[NSArray alloc]initWithObjects:@"Favorite",@"Profile",@"Logout", nil];
     // Do any additional setup after loading the view from its nib.
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [self.tabBarController.navigationController.navigationBar setHidden:YES];
+    [self.navigationController.navigationBar setHidden:YES];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }

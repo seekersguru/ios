@@ -25,6 +25,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+//    [self.tabBarController.navigationController.navigationBar setHidden:YES];
+//    [[AppDelegate sharedAppDelegate].navigation.navigationBar setHidden:YES];
+//    [self.navigationController.navigationBar setHidden:YES];
+    
+    
+    
     arrCategoryImages=[[NSMutableArray alloc]init];
     
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -52,14 +59,11 @@
     } else {
         
         return YES;
-        
     }
-    
 }
 -(void)viewWillAppear:(BOOL)animated{
+    [self.tabBarController.navigationController.navigationBar setHidden:YES];
     [self.navigationController.navigationBar setHidden:YES];
-    
-    
 }
 -(void)callWebService{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
@@ -78,8 +82,6 @@
              for (NSArray *arrImage in arrData) {
                  [arrCategoryImages addObject:arrImage];
              }
-             
-             
              [_tblMyKnotList reloadData];
          }
      }

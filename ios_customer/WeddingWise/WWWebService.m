@@ -29,7 +29,7 @@ static WWWebService * _sharedInstance;
 }
 #pragma mark web api method:
 -(void)callWebService:(NSDictionary *)parameters imgData:(NSData *)imageData loadThreadWithCompletion:(void(^)(NSDictionary * response))cmpl failure:(void(^)(NSString *failureResponse))failure{
-    if([self checkReachablity]){
+    //if([self checkReachablity]){
         AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kWebServiceUrl]];
         manager.requestSerializer = [AFHTTPRequestSerializer serializer];
         
@@ -45,16 +45,16 @@ static WWWebService * _sharedInstance;
                                                       otherButtonTitles:nil];
             [alertView show];
         }];
-    }
-    else{
-        DLog(@"Non Reachable");
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kAppName
-                                                            message:@"No network connection"
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-    }
+//    }
+//    else{
+//        DLog(@"Non Reachable");
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kAppName
+//                                                            message:@"No network connection"
+//                                                           delegate:nil
+//                                                  cancelButtonTitle:@"Ok"
+//                                                  otherButtonTitles:nil];
+//        [alertView show];
+//    }
 }
 
 @end
