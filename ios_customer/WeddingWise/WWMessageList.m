@@ -16,6 +16,7 @@
 {
     NSMutableArray *arrMessageData;
 }
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation WWMessageList
@@ -26,7 +27,7 @@
 
 
 - (void)viewDidLoad {
-    
+    [super viewDidLoad];
     [self.navigationController.navigationBar setHidden:YES];
     
     messageTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -41,11 +42,26 @@
     [bidBtn.titleLabel setFont:[UIFont fontWithName:AppFont size:17.0f]];
     [bookBtn.titleLabel setFont:[UIFont fontWithName:AppFont size:17.0f]];
     [messageBtn.titleLabel setFont:[UIFont fontWithName:AppFont size:17.0f]];
-    [super viewDidLoad];
+    
+    _refreshControl = [[UIRefreshControl alloc] init];
+    [_refreshControl setBackgroundColor:[UIColor whiteColor]];
+    [_refreshControl setTintColor:[UIColor lightGrayColor]];
+    [_refreshControl addTarget:self action:@selector(loadPrevioudMessages:) forControlEvents:UIControlEventValueChanged];
+    [messageTable addSubview:_refreshControl];
+    
     // Do any additional setup after loading the view from its nib.
 }
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.hidesBottomBarWhenPushed = NO;
     [self.navigationController.navigationBar setHidden:YES];
+}
+
+- (void)loadPrevioudMessages:(id)sender{
+    [messageTable reloadData];
+    if (_refreshControl) {
+        [_refreshControl endRefreshing];
+    }
 }
 
 - (void)moveImage:(UIImageView *)image duration:(NSTimeInterval)duration
@@ -152,7 +168,9 @@
     WWPrivateMessage *messageVc = [[WWPrivateMessage alloc] initWithNibName:@"WWPrivateMessage" bundle:nil];
     NSDictionary *messageData=[arrMessageData objectAtIndex:indexPath.row];
     messageVc.messageData =messageData;
+    messageVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:messageVc animated:YES];
+    messageVc.hidesBottomBarWhenPushed = NO;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

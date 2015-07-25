@@ -17,4 +17,7 @@
 
 -(IBAction)btnDonePressed:(id)sender;
 -(IBAction)submitButtonPressed:(id)sender;
+- (IBAction)filterDateType:(UIButton *)sender;
+- (IBAction)filterEnquiryType:(UIButton *)sender;
+- (IBAction)filterTimeType:(UIButton *)sender;
 @end

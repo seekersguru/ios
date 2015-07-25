@@ -46,7 +46,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.row) {
-        case 0:
+        case 1:
         {
             WWProfileVC *profileVC=[[WWProfileVC alloc]initWithNibName:@"WWProfileVC" bundle:nil];
             [self.navigationController pushViewController:profileVC animated:YES];

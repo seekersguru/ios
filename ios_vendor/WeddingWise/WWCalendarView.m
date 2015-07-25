@@ -10,10 +10,18 @@
 #import "DSLCalendarView.h"
 #import "AppDelegate.h"
 #import "WWFilterVC.h"     
+#import "WWBasicDetails.h"
 
 @interface WWCalendarView ()<DSLCalendarViewDelegate,FilterProtocolDelegate>
 {
     NSArray *_pickerData;
+    NSDate *lastSelectedDate;
+    NSString *filter1,*filter2,*filter3;
+    NSString *filter1LabelText,*filter2LabelText,*filter3LabelText;
+    NSDate *selectedMonthFromCalendar;
+    __weak IBOutlet UILabel *filter1Label;
+    __weak IBOutlet UILabel *filter2Label;
+    __weak IBOutlet UILabel *filter3Label;
 }
 @property (nonatomic, weak) IBOutlet DSLCalendarView *calendarView;
 @end
@@ -41,27 +49,58 @@
     [_imgPickerBG setHidden:YES];
     
     _calendarView.showEventsOnCalloutView = YES;
+    _calendarView.delegate = self;
     
-    [_calendarView setEventsDictionary:@{@"2015":
-                                             @{@"7":
-                                                   @{@"1":@"5",
-                                                     @"5":@"7"},
-                                               @"8":
-                                                     @{@"4":@"1",
-                                                       @"12":@"2"}
-                                               },
-                                         @"2016":
-                                                 @{@"1":
-                                                       @{@"1":@"5",
-                                                          @"5":@"7"},
-                                                   @"2":
-                                                       @{@"2":@"6"}
-                                                   }
-                                         }];
-    [_calendarView showCalender];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];;
+    [formatter setDateFormat:@"yyyy"];
+    NSString *year = [formatter stringFromDate:[NSDate date]];
+    [formatter setDateFormat:@"mm"];
+    NSString *month = [formatter stringFromDate:[NSDate date]];
+    
+    [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:year month:month additionalFilter:@"" completionBlock:^(NSDictionary *response) {
+        NSMutableDictionary *eventDict = [NSMutableDictionary new];
+        for (NSDictionary *events in [response valueForKey:@"data"]) {
+            [eventDict setValue:[NSString stringWithFormat:@"%ld",(long)[[events valueForKey:@"count"] integerValue]] forKey:[NSString stringWithFormat:@"%ld",(long)[[events valueForKey:@"day"] integerValue]]];
+        }
+        NSDictionary *finalEventDict = @{year:@{month:eventDict}};
+        [self showEvents:finalEventDict];
+    } errorBlock:^(NSError *error) {
+        
+    }];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    lastSelectedDate = nil;
+    [self hideView];
+    filter1 = @"";
+    filter2 = @"";
+    filter3 = @"";
+    filter1Label.text = filter1;
+    filter2Label.text = filter2;
+    filter3Label.text = filter3;
+    for (UIButton *bt in _filterView.subviews) {
+        if ([bt isKindOfClass:[UIButton class]]) {
+            [bt setSelected:NO];
+        }
+        
+    }
+}
+- (IBAction)clearAllFilters:(id)sender {
+    filter1 = @"";
+    filter2 = @"";
+    filter3 = @"";
+    filter1Label.text = filter1;
+    filter2Label.text = filter2;
+    filter3Label.text = filter3;
+}
+
+- (void)showEvents:(NSDictionary *)eventDict{
+    [_calendarView setEventsDictionary:eventDict];
+    [_calendarView showCalender];
 }
 -(void)showPackageReadMoreView{
     
@@ -73,19 +112,41 @@
 - (IBAction)filterButtonPressed:(id)sender {
     [self hidePickerView];
     [self showCustomFilterView];
-    
-//    CATransition* transition = [CATransition animation];
-//    transition.duration = .3;
-//    transition.type = kCATransitionReveal;
-//    transition.subtype = kCATransitionFromBottom;
-//    [self.view.window.layer addAnimation:transition forKey:kCATransition];
-//    
-//    WWFilterVC *flterVC=[[WWFilterVC alloc]initWithNibName:@"WWFilterVC" bundle:nil];
-//    flterVC.delegate= self;
-//    [self presentViewController:flterVC animated:NO completion:nil];
 }
 -(IBAction)submitButtonPressed:(id)sender{
+    filter1Label.text = filter1LabelText;
+    filter2Label.text = filter2LabelText;
+    filter3Label.text = filter3LabelText;
     [self hideView];
+    if (!selectedMonthFromCalendar) {
+        selectedMonthFromCalendar = [NSDate date];
+    }
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];;
+    [formatter setDateFormat:@"yyyy"];
+    NSString *year = [formatter stringFromDate:selectedMonthFromCalendar];
+    [formatter setDateFormat:@"mm"];
+    NSString *month = [formatter stringFromDate:selectedMonthFromCalendar];
+    
+    NSString *filterString = @"";
+    if (filter1.length > 0 ) {
+        filterString = [filterString stringByAppendingString:filter1];
+    }
+    if (filter2.length > 0) {
+        filterString = [filterString stringByAppendingFormat:@"%@%@",filterString.length > 0 ? @"&":@"",filter2];
+    }
+    if (filter3.length > 0) {
+        filterString = [filterString stringByAppendingFormat:@"%@%@",filterString.length > 0 ? @"&":@"",filter3];
+    }
+    [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:year month:month additionalFilter:filterString completionBlock:^(NSDictionary *response) {
+        NSMutableDictionary *eventDict = [NSMutableDictionary new];
+        for (NSDictionary *events in [response valueForKey:@"data"]) {
+            [eventDict setValue:[events valueForKey:@"count"] forKey:[events valueForKey:@"day"]];
+        }
+        NSDictionary *finalEventDict = @{[NSString stringWithFormat:@"%@",year]:@{[NSString stringWithFormat:@"%@",month]:eventDict}};
+        [self showEvents:finalEventDict];
+    } errorBlock:^(NSError *error) {
+        
+    }];
 }
 -(void)showCustomFilterView{
     [UIView animateWithDuration:0.3
@@ -185,6 +246,15 @@
 - (void)calendarView:(DSLCalendarView *)calendarView didSelectRange:(DSLCalendarRange *)range {
     if (range != nil) {
         NSLog( @"Selected %ld/%ld - %ld/%ld", (long)range.startDay.day, (long)range.startDay.month, (long)range.endDay.day, (long)range.endDay.month);
+        //store this date to session/singleton instance
+        [[WWBasicDetails sharedInstance] setCalendarDate:[NSString stringWithFormat:@"%ld-%ld-%ld",(long)range.startDay.day,(long)range.startDay.month,(long)range.startDay.year]];
+        if (lastSelectedDate != nil) {
+            NSDate *date = [[NSCalendar currentCalendar] dateFromComponents:range.startDay];
+            if (lastSelectedDate == date) {
+                self.tabBarController.selectedIndex = 2;
+            }
+        }
+        lastSelectedDate = [[NSCalendar currentCalendar] dateFromComponents:range.startDay];
     }
     else {
         NSLog( @"No selection" );
@@ -225,6 +295,18 @@
 
 - (void)calendarView:(DSLCalendarView *)calendarView didChangeToVisibleMonth:(NSDateComponents *)month {
     NSLog(@"Now showing %@", month);
+    selectedMonthFromCalendar = [[NSCalendar currentCalendar] dateFromComponents:month];
+    [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:[NSString stringWithFormat:@"%ld",(long)month.year] month:[NSString stringWithFormat:@"%ld",(long)month.month] additionalFilter:@"" completionBlock:^(NSDictionary *response) {
+        NSMutableDictionary *eventDict = [NSMutableDictionary new];
+        for (NSDictionary *events in [response valueForKey:@"data"]) {
+            [eventDict setValue:[events valueForKey:@"count"] forKey:[events valueForKey:@"day"]];
+        }
+        NSDictionary *finalEventDict = @{[NSString stringWithFormat:@"%ld",(long)month.year]:@{[NSString stringWithFormat:@"%ld",(long)month.month]:eventDict}};
+        [self showEvents:finalEventDict];
+    } errorBlock:^(NSError *error) {
+        
+    }];
+    
 }
 
 - (BOOL)day:(NSDateComponents*)day1 isBeforeDay:(NSDateComponents*)day2 {
@@ -236,17 +318,82 @@
     [appDelegate.navigation popViewControllerAnimated:YES];
 }
 
-- (void)filterDateType:(id)sender{
-    
+- (void)filterDateType:(UIButton *)sender{
+    sender.selected = YES;
+    if (sender.tag == 6) {
+        [(UIButton *)[_filterView viewWithTag:7] setSelected:NO];
+        filter3 = @"date=EVENT DATE";
+        filter3LabelText = @"EVENT DATE";
+    }
+    else{
+        [(UIButton *)[_filterView viewWithTag:6] setSelected:NO];
+        filter3 = @"date=BOOKING DATE";
+        filter3LabelText = @"BOOKING DATE";
+    }
 }
 
-- (void)filterEnquiryType:(id)sender{
-    
+- (void)filterEnquiryType:(UIButton *)sender{
+    if (sender.tag == 1) {
+        [(UIButton *)[_filterView viewWithTag:2] setSelected:NO];
+        filter1 = @"type=ENQUIRY";
+        filter1LabelText = @"ENQUIRY";
+    }
+    else{
+        [(UIButton *)[_filterView viewWithTag:1] setSelected:NO];
+        filter1 = @"type=BOOKING";
+        filter1LabelText = @"BOOKING";
+    }
+    sender.selected = YES;
 }
 
-- (void)filterTimeType:(id)sender{
+- (void)filterTimeType:(UIButton *)sender{
+    if (sender.tag == 3) {
+        [(UIButton *)[_filterView viewWithTag:4] setSelected:NO];
+        [(UIButton *)[_filterView viewWithTag:5] setSelected:NO];
+        filter2 = @"time=MORNING";
+        filter2LabelText = @"MORNING";
+    }
+    else if (sender.tag == 4){
+        [(UIButton *)[_filterView viewWithTag:3] setSelected:NO];
+        [(UIButton *)[_filterView viewWithTag:5] setSelected:NO];
+        filter2 = @"time=ALL DAY";
+        filter2LabelText = @"ALL DAY";
+    }
+    else{
+        [(UIButton *)[_filterView viewWithTag:3] setSelected:NO];
+        [(UIButton *)[_filterView viewWithTag:4] setSelected:NO];
+        filter2 = @"time=EVENING";
+        filter2LabelText = @"EVENING";
+    }
     
+    sender.selected = YES;
 }
+
+-(void)updateCalendarHomeWithUserId:(NSString *)userId year:(NSString *)year month:(NSString *)month additionalFilter:(NSString *)filter completionBlock:(void(^)(NSDictionary *))completion errorBlock:(void(^)(NSError *))error{
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 userId,@"identifier",
+                                 year,@"year",
+                                 month,@"month",
+                                 filter,@"filter_string",
+                                 @"vendor_calendar_home",@"action",
+                                 nil];
+    
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+             error([NSError errorWithDomain:@"error" code:0 userInfo:[responseDics valueForKey:@"message"]]);
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             completion([responseDics valueForKey:@"json"]);
+         }
+     }failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+         error([NSError errorWithDomain:@"error" code:0 userInfo:@{NSLocalizedDescriptionKey:response}]);
+     }];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

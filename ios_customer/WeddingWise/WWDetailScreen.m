@@ -447,7 +447,7 @@
     WWCategoryDetailVC *detailScreen=[[WWCategoryDetailVC alloc]initWithNibName:@"WWCategoryDetailVC" bundle:nil];
     detailScreen.hidesBottomBarWhenPushed = YES;
     detailScreen.vendorEmail=[[arrVendorData objectAtIndex:indexPath.row] valueForKey:@"vendor_email"];
-    detailScreen.vendorDetail= [arrVendorData objectAtIndex:indexPath.row];
+    detailScreen.vendorName=[[arrVendorData objectAtIndex:indexPath.row] valueForKey:@"name"];
     [self.navigationController pushViewController:detailScreen animated:YES];
     detailScreen.hidesBottomBarWhenPushed = NO;
 }

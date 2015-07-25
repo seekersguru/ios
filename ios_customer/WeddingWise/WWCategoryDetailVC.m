@@ -20,7 +20,7 @@
 #import "WWCategoryCommonCell.h"
 
 #import "WWCreateBidVC.h"
-#import "WWMessageList.h"
+#import "WWPrivateMessage.h"
 #import "WWCategoryFooterCell.h"
 #import "WWScheduleVC.h"
 #import "AnnotationPin.h"
@@ -47,7 +47,7 @@
     [self setUpCustomView];
     [self callWebService];
     
-    _lblTitle.text= [_vendorDetail valueForKey:@"name"];
+    _lblTitle.text= _vendorName;
     
 }
 
