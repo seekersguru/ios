@@ -92,6 +92,22 @@
              _txtContactNo.text= [AppDelegate sharedAppDelegate].userData.contactNumber;
              _txtEmailAddress.text= [AppDelegate sharedAppDelegate].userData.emailID;
              _txtGroomName.text= [AppDelegate sharedAppDelegate].userData.groomName;
+             _btnTentativeDate.titleLabel.text= [AppDelegate sharedAppDelegate].userData.tentativeDate;
+             [_btnTentativeDate setTitle:[AppDelegate sharedAppDelegate].userData.tentativeDate forState:UIControlStateNormal];
+             
+             if([_btnTentativeDate.titleLabel.text isEqualToString:@"Tentative Wedding Date"]){
+                 [_btnTentativeDate setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+             }
+             else{
+                 [_btnTentativeDate.titleLabel setTextColor:[UIColor blackColor]];
+                 [_btnTentativeDate setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+             }
+             
+             
+             NSUInteger selectedIndex = self.tabBarController.selectedIndex;
+             if(selectedIndex!=3){
+                 [[AppDelegate sharedAppDelegate]resetViewControllerOnTabbar:self.tabBarController];
+             }
          }
      }
                                              failure:^(NSString *response)
@@ -118,9 +134,13 @@
 -(void)updateUserProfile{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  _txtEmailAddress.text,@"email",
+                                  @"123456",@"password",
                                  _txtGroomName.text,@"groom_name",
                                  _txtBrideName.text,@"bride_name",
                                  _txtContactNo.text,@"contact_number",
+                                 _btnTentativeDate.titleLabel.text,@"tentative_wedding_date",
+                                 @"",@"fbid",
+                                 @"",@"gid",
                                  @"update",@"operation",
                                  [[NSUserDefaults standardUserDefaults]
                                   stringForKey:@"identifier"],@"identifier",
@@ -133,7 +153,15 @@
              [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
-             WWLoginUserData *userData=[[WWLoginUserData alloc]setUserData:[responseDics valueForKey:@"json"]];
+             NSMutableDictionary *requestData = [responseDics[@"request_data"] mutableCopy];
+             //[requestData setValue:responseDics[@"json"][@"identifier"] forKey:@"identifier"];
+             
+             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"identifier"];
+             
+             [[NSUserDefaults standardUserDefaults] setObject:responseDics[@"request_data"][@"identifier"] forKey:@"identifier"];
+              [[NSUserDefaults standardUserDefaults] synchronize];
+             
+             WWLoginUserData *userData=[[WWLoginUserData alloc]setUserData:requestData];
              [AppDelegate sharedAppDelegate].userData= userData;
              
              if([AppDelegate sharedAppDelegate].userData.groomName.length>0){
@@ -182,7 +210,29 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(IBAction)btnTentativeDatePressed:(id)sender{
+    [_datePicker setHidden:NO];
+    [_imgDatePicker setHidden:NO];
     
+    //Show only last 100 years dates in picker:
+    NSCalendar * gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
+    NSDate * currentDate = [NSDate date];
+    NSDateComponents * comps = [[NSDateComponents alloc] init];
+    [comps setYear: +1];
+    NSDate * maxDate = [gregorian dateByAddingComponents: comps toDate: currentDate options: 0];
+    [comps setYear: +1];
+    _datePicker.minimumDate = currentDate;
+    _datePicker.maximumDate = maxDate;
+    _datePicker.date = currentDate;
+    
+    [_datePicker addTarget:self action:@selector(LabelTitle:) forControlEvents:UIControlEventValueChanged];
+}
+-(void)LabelTitle:(id)sender
+{
+    NSDateFormatter *dateFormat=[[NSDateFormatter alloc]init];
+    dateFormat.dateStyle=NSDateFormatterMediumStyle;
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSString *str=[NSString stringWithFormat:@"%@",[dateFormat  stringFromDate:_datePicker.date]];
+    [_btnTentativeDate setTitle:str forState:UIControlStateNormal];
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField {
     [self toggleAnimation:textField];

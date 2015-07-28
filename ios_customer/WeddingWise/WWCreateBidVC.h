@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DSLCalendarView.h"
 
 @interface WWCreateBidVC : UIViewController
 
@@ -19,8 +20,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *packageTextField;
 @property (weak, nonatomic) IBOutlet UILabel *eventDateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *eventDateButton;
-
 @property (weak, nonatomic) IBOutlet UILabel *packageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleView;
+
+
+@property(nonatomic, weak)IBOutlet UIView *vwCalander;
+@property (nonatomic, weak) IBOutlet DSLCalendarView *calendarView;
 
 //Static Label
 @property (weak, nonatomic) IBOutlet UILabel *eventStaticLabel;
@@ -37,7 +42,14 @@
 @property(weak, nonatomic) IBOutlet UIButton *btnFlexible;
 
 
+
 - (IBAction)bidItAction:(id)sender;
 -(IBAction)backButtonPressed:(id)sender;
 -(IBAction)btnFlexiblePressed:(id)sender;
+
+-(IBAction)calendarBackButtonPressed:(id)sender;
+
+- (IBAction)selectClicked:(id)sender;
+-(void)rel;
+
 @end

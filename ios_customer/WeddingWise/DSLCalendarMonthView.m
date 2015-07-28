@@ -56,7 +56,7 @@
 #pragma mark - Initialisation
 
 // Designated initialiser
-- (id)initWithMonth:(NSDateComponents*)month width:(CGFloat)width dayViewClass:(Class)dayViewClass dayViewHeight:(CGFloat)dayViewHeight {
+- (id)initWithMonth:(NSDateComponents*)month width:(CGFloat)width dayViewClass:(Class)dayViewClass dayViewHeight:(CGFloat)dayViewHeight showEvent:(BOOL)showEvent withEventDict:(NSDictionary *)eventDict{
     self = [super initWithFrame:CGRectMake(0, 0, width, dayViewHeight)];
     if (self != nil) {
         // Initialise properties
@@ -64,7 +64,8 @@
         _dayViewHeight = dayViewHeight;
         _dayViewsDictionary = [[NSMutableDictionary alloc] init];
         _dayViewClass = dayViewClass;
-        
+        _showEventOnDate = showEvent;
+        _eventDict = eventDict;
         [self createDayViews];
     }
 
@@ -106,6 +107,23 @@
                 
                 DSLCalendarDayView *dayView = [[_dayViewClass alloc] initWithFrame:dayFrame];
                 dayView.day = day;
+                if (self.showEventOnDate) {
+                    //show events in day
+                    NSString *currentYear = [NSString stringWithFormat:@"%ld",(long)day.year];
+                    NSString *currentMonth = [NSString stringWithFormat:@"%ld",(long)day.month];
+//                    NSString *currentDay = [NSString stringWithFormat:@"%ld",(long)day.day];
+                    if ([[_eventDict allKeys] containsObject:currentYear]) {
+                        //this is current year
+                        if ( [[[_eventDict valueForKey:currentYear] allKeys] containsObject:currentMonth] ) {
+                            //event count exist for current month
+                            if ([[[_eventDict valueForKey:currentYear] valueForKey:currentMonth] objectForKey:[NSNumber numberWithLong:day.day]] != nil) {
+                                //event exist on this day
+                                NSString *count = [NSString stringWithFormat:@"%ld",[[[[_eventDict valueForKey:currentYear] valueForKey:currentMonth] objectForKey:[NSNumber numberWithLong:day.day]] longValue]];
+                                [dayView showEventCount:count];
+                            }
+                        }
+                    }
+                }
                 switch (column) {
                     case 0:
                         dayView.positionInWeek = DSLCalendarDayViewStartOfWeek;

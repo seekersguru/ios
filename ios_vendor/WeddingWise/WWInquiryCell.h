@@ -13,4 +13,6 @@
 @property(nonatomic, weak)IBOutlet UILabel *lblTitle;
 @property(nonatomic, weak)IBOutlet UILabel *lblValue;
 
+-(void)setDetailData:(NSDictionary*)detailData;
+
 @end

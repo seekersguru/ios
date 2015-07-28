@@ -10,18 +10,89 @@
 #import "WWInquiryCell.h"
 
 @interface WWInquiryDetailVC ()
-
+{
+    NSMutableArray *arrBidData;
+}
 @end
 
 @implementation WWInquiryDetailVC
 
 - (void)viewDidLoad {
-    [self callBidDetailAPI];
     [super viewDidLoad];
+    [self callBidDetailAPI];
+    arrBidData= [NSMutableArray new];
+    
+    [[btnAccept layer] setBorderWidth:1.0f];
+    [[btnAccept layer] setBorderColor:[UIColor redColor].CGColor];
+    
+    [[btnDecline layer] setBorderWidth:1.0f];
+    [[btnDecline layer] setBorderColor:[UIColor redColor].CGColor];
+    
+    
+    if([_messageData[@"status"] isEqualToString:@"Rejected"] || [_messageData[@"status"] isEqualToString:@"Accepted"]){
+        [lblStatus setHidden:NO];
+        lblStatus.text= _messageData[@"status"];
+        [lblStatus setFont:[UIFont fontWithName:AppFont size:17.0]];
+        
+    }else if ([_messageData[@"status"] isEqualToString:@"Pending"]){
+        [btnAccept setHidden:NO];
+        [btnDecline setHidden:NO];
+    }
    
 }
 -(IBAction)backButtonPressed:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
+}
+-(IBAction)acceptButtonClicked:(id)sender{
+    
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"banquet_homotel@wedwise.in:ni-ZYm7L8xzNoyhafIJkKE3GIs0",@"identifier",
+                                 _messageData[@"id"],@"msg_id",
+                                 @"vendor_bid_book_response",@"action",
+                                 @"1",@"status",
+                                 nil];
+    
+    
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             [self.navigationController popViewControllerAnimated:YES];
+         }
+         
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
+
+    
+}
+-(IBAction)declineButtonClicked:(id)sender{
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"banquet_homotel@wedwise.in:ni-ZYm7L8xzNoyhafIJkKE3GIs0",@"identifier",
+                                 _messageData[@"id"],@"msg_id",
+                                 @"vendor_bid_book_response",@"action",
+                                 @"0",@"status",
+                                 nil];
+    
+    
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             [self.navigationController popViewControllerAnimated:YES];
+         }
+         
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
 }
 #pragma mark - Table view
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -31,17 +102,17 @@
         NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
         cell = [topLevelObjects objectAtIndex:0];
     }
+    [cell setDetailData:[arrBidData objectAtIndex:indexPath.row]];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;
 }
 -(void)callBidDetailAPI{
+
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
-                                 [_messageData valueForKey:@"receiver_email"],@"receiver_email",
-                                 @"1",@"page_no",
-                                 @"v2c",@"from_to",
-                                 @"customer_vendor_message_detail",@"action",
+                                 @"banquet_homotel@wedwise.in:ni-ZYm7L8xzNoyhafIJkKE3GIs0",@"identifier",
+                                 _messageData[@"id"] ,@"msg_id",
+                                 @"vendor_bid_book_detail",@"action",
                                  [_messageData valueForKey:@"msg_type"],@"msg_type",
                                  nil];
     
@@ -52,13 +123,12 @@
              [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
-             NSArray *arrJson=[responseDics valueForKey:@"json"];
+             NSArray *arrJson=[responseDics valueForKey:@"json"][@"table"];
              for (NSDictionary *bidData in arrJson) {
-                
+                 [arrBidData addObject:bidData];
              }
-             
+             [tblInquery reloadData];
          }
-         
      }
                                              failure:^(NSString *response)
      {
@@ -67,10 +137,10 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 175.0f;
+    return 45.0f;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return arrBidData.count;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

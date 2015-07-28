@@ -8,6 +8,8 @@
 
 #import "WWSideMenuVC.h"
 #import "WWProfileVC.h"
+#import "WWDashboardVC.h"
+#import "WWChangePasswordVC.h"
 
 @interface WWSideMenuVC ()
 {
@@ -19,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    menuData =[[NSArray alloc]initWithObjects:@"Favorite",@"Profile",@"Logout", nil];
+    menuData =[[NSArray alloc]initWithObjects:@"Favorite",@"Profile",@"Change Password",@"Logout", nil];
     // Do any additional setup after loading the view from its nib.
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -52,7 +54,20 @@
             [self.navigationController pushViewController:profileVC animated:YES];
         }
             break;
+        case 2:{
+            WWChangePasswordVC *changePassword=[[WWChangePasswordVC alloc]initWithNibName:@"WWChangePasswordVC" bundle:nil];
+            [self.navigationController pushViewController:changePassword animated:YES];
+        }
+            break;
+        case 3:{
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"identifier"];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"groom_name"];
             
+            WWDashboardVC *dash=[[WWDashboardVC alloc]initWithNibName:@"WWDashboardVC" bundle:nil];
+            dash.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:dash animated:YES];
+        }
+            break;
         default:
             break;
     }

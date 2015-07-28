@@ -13,6 +13,8 @@
 @interface WWPrivateMessage ()
 {
     NSMutableArray *chatArray;
+    __block NSString *globalLastMessageID;
+    NSTimer *myTimer;
 }
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImageData;
 @property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImageData;
@@ -52,6 +54,9 @@
     
     [chatArray removeAllObjects];
     [self callPrivateChatAPI:@""];
+    
+    myTimer =[NSTimer scheduledTimerWithTimeInterval: 10.0 target: self
+                                            selector: @selector(callPrivateChatAPI:) userInfo: @"" repeats: YES];
 }
 - (void)backButtonAction:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
@@ -160,6 +165,9 @@
              NSDateFormatter *df = [[NSDateFormatter alloc] init];
              [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
              
+             __block NSString *strMessageID;
+             [chatArray removeAllObjects];
+             
              for (int i = arrData.count-1; i >= 0; i--) {
                  NSDictionary *arrMessages = [arrData objectAtIndex:i];
                  NSString *senderId = @"1";
@@ -175,14 +183,23 @@
                                                                        date:date
                                                                        text:text
                                                                   messageId:messageId];
+                 
+                 if(strMessageID.length==0){
+                     strMessageID = messageId;
+                     
+                 }
+                 
                  [chatArray insertObject:message atIndex:0];
              }
-             
-             
-             
-             
-             [self finishReceivingMessage];
-             
+             if([globalLastMessageID isEqualToString:strMessageID]){
+                 //No need to refresh table
+             }
+             else{
+                 //Refresh table
+                 globalLastMessageID = strMessageID;
+                 strMessageID=@"";
+                 [self finishReceivingMessage];
+             }
          }
      }
                                              failure:^(NSString *response)

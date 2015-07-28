@@ -39,7 +39,7 @@
     _key.text=[NSString stringWithFormat:@"%@",[[dicData allKeys] objectAtIndex:0]];
     
 
-    _key.font = [UIFont fontWithName:AppFont size:10.0];
-    _value.font = [UIFont fontWithName:AppFont size:10.0];
+    _key.font = [UIFont fontWithName:AppFont size:12.0];
+    _value.font = [UIFont fontWithName:AppFont size:12.0];
 }
 @end

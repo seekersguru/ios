@@ -54,6 +54,22 @@
     if (self != nil) {
         self.backgroundColor = [UIColor whiteColor];
         _positionInWeek = DSLCalendarDayViewMidWeek;
+        
+        CGRect frame = self.bounds;
+        frame.origin.x = frame.size.width-15;
+        frame.size.width = 15;
+        frame.size.height = 15;
+        _eventCountLabel = [[UILabel alloc] initWithFrame:frame];
+        [_eventCountLabel setTextColor:[UIColor whiteColor]];
+        [_eventCountLabel setBackgroundColor:[UIColor redColor]];
+        [_eventCountLabel setTextAlignment:NSTextAlignmentCenter];
+        [_eventCountLabel setFont:[UIFont systemFontOfSize:12.0]];
+        [_eventCountLabel.layer setCornerRadius:7.5];
+        [_eventCountLabel.layer setMasksToBounds:YES];
+        [self addSubview:_eventCountLabel];
+        [self bringSubviewToFront:_eventCountLabel];
+        
+        _eventCountLabel.hidden = YES;
     }
     
     return self;
@@ -109,8 +125,7 @@
 - (void)drawBackground {
     if (self.selectionState == DSLCalendarDayViewNotSelected) {
         if (self.isInCurrentMonth) {
-            //[[UIColor colorWithRed:238.0/255.0 green:236.0/255.0 blue:236.0/255.0 alpha:1.0] setFill];
-            [[UIColor whiteColor] setFill];
+            [[UIColor colorWithRed:252.0/255.0 green:252.0/255.0 blue:252.0/255.0 alpha:1.0] setFill];
         }
         else {
             [[UIColor whiteColor] setFill];
@@ -123,19 +138,15 @@
                 break;
                 
             case DSLCalendarDayViewStartOfSelection:
-                [[[UIImage imageNamed:@"DSLCalendarDaySelection"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] drawInRect:self.bounds];
-                break;
-                
             case DSLCalendarDayViewEndOfSelection:
-                [[[UIImage imageNamed:@"DSLCalendarDaySelection"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] drawInRect:self.bounds];
-                break;
-                
             case DSLCalendarDayViewWithinSelection:
-                [[[UIImage imageNamed:@"DSLCalendarDaySelection"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] drawInRect:self.bounds];
+            case DSLCalendarDayViewWholeSelection://cal_seldate
+            {
+                [[UIColor colorWithRed:240/255.0 green:103/255.0 blue:90/255.0 alpha:1.0] setFill];
+                UIRectFill(self.bounds);
+            }
                 break;
-                
-            case DSLCalendarDayViewWholeSelection:
-                [[[UIImage imageNamed:@"DSLCalendarDaySelection"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] drawInRect:self.bounds];
+            default:
                 break;
         }
     }
@@ -171,17 +182,28 @@
 - (void)drawDayNumber {
     if (self.selectionState == DSLCalendarDayViewNotSelected) {
         [[UIColor colorWithWhite:66.0/255.0 alpha:1.0] set];
+        
+        
     }
     else {
         [[UIColor whiteColor] set];
     }
     
-    UIFont *textFont = [UIFont systemFontOfSize:8.0];
-    CGSize textSize = [_labelText sizeWithFont:textFont];
+    UIFont *textFont = [UIFont systemFontOfSize:14.0];
+    //CGSize textSize = [_labelText sizeWithFont:textFont];
     
+    CGSize textSize = [_labelText sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.0f]}];
     
     CGRect textRect = CGRectMake(ceilf(CGRectGetMidX(self.bounds) - (textSize.width / 2.0)), ceilf(CGRectGetMidY(self.bounds) - (textSize.height / 2.0)), textSize.width, textSize.height);
     [_labelText drawInRect:textRect withFont:textFont];
+    
+    
+    
+}
+
+- (void)showEventCount:(NSString *)count{
+    _eventCountLabel.hidden = NO;
+    [_eventCountLabel setText:count];
 }
 
 @end

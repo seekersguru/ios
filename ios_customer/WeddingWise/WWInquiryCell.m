@@ -19,5 +19,11 @@
 
     // Configure the view for the selected state
 }
-
+-(void)setDetailData:(NSDictionary*)detailData{
+    _lblValue.text=[NSString stringWithFormat:@"%@",[detailData valueForKey:[[detailData allKeys] objectAtIndex:0]]];
+    _lblTitle.text=[NSString stringWithFormat:@"%@",[[detailData allKeys] objectAtIndex:0]];
+    
+    _lblTitle.font = [UIFont fontWithName:AppFont size:11.0];
+    _lblValue.font = [UIFont fontWithName:AppFont size:11.0];
+}
 @end

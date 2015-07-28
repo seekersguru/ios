@@ -99,6 +99,8 @@
         cell = [topLevelObjects objectAtIndex:0];
     }
     
+    [cell.imgBottom setFrame:CGRectMake(cell.imgBottom.frame.origin.x, cell.imgBottom.frame.origin.y, cell.imgBottom.frame.size.width, cell.imgBottom.frame.size.height)];
+    
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     self.tblMyKnotList.separatorStyle = UITableViewCellSeparatorStyleNone;
     

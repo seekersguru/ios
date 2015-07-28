@@ -130,9 +130,17 @@
 //yyyy-mm-dd
 
 -(void)callRegistrationAPI{
+    
+    NSString *password;
+    if(_fbResponse){
+        password= @"123456";
+    }
+    else{
+        password= _txtPassword.text;
+    }
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  _txtEmailAddress.text,@"email",
-                                 _txtPassword.text,@"password",
+                                  password,@"password",
                                  _txtGroomName.text,@"groom_name",
                                  _txtBrideName.text,@"bride_name",
                                  _txtContactNo.text,@"contact_number",
@@ -183,10 +191,12 @@
         [[WWCommon getSharedObject]createAlertView:kAppName :kEnterEmail :nil :000 ];
         return NO;
     }
-    if (_txtPassword.text && _txtPassword.text.length == 0)
-    {
-        [[WWCommon getSharedObject]createAlertView:kAppName :kEnterPassword :nil :000 ];
-        return NO;
+    if(!_fbResponse){
+        if (_txtPassword.text && _txtPassword.text.length == 0)
+        {
+            [[WWCommon getSharedObject]createAlertView:kAppName :kEnterPassword :nil :000 ];
+            return NO;
+        }
     }
     if (_txtBrideName.text && _txtBrideName.text.length == 0)
     {

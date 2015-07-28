@@ -85,7 +85,7 @@
                     <rect key="frame" x="7" y="19" width="210" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="  Create Bid" image="back@arrow">
+                    <state key="normal" title="  Create Bid" image="backarrow">
                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -168,7 +168,7 @@
     </objects>
     <resources>
         <image name="BT" width="141" height="23"/>
-        <image name="back@arrow" width="14" height="14"/>
+        <image name="backarrow" width="14" height="14"/>
         <image name="dropdown" width="107" height="15"/>
         <image name="header_divder" width="326" height="6"/>
     </resources>

@@ -18,6 +18,8 @@
 #import "WWBookingDetails.h"
 #import "WWInquiryDetailVC.h"
 #import "WWLeadsListVC.h"
+#import "WWSideMenuVC.h"
+
 void uncaughtExceptionHandler(NSException*);
 
 @interface AppDelegate ()
@@ -44,11 +46,11 @@ static AppDelegate * _sharedInstance;
     
     for (NSString* family in [UIFont familyNames])
     {
-        NSLog(@"%@", family);
+       // NSLog(@"%@", family);
         
         for (NSString* name in [UIFont fontNamesForFamilyName: family])
         {
-            NSLog(@"  %@", name);
+            //NSLog(@"  %@", name);
         }
     }
    // return YES;
@@ -103,7 +105,7 @@ static AppDelegate * _sharedInstance;
     UINavigationController *thirdNavigationController = [[UINavigationController alloc]
                                                          initWithRootViewController:thirdViewController];
     
-    UIViewController *fourthViewController = [[WWLeadsListVC alloc] init];
+    UIViewController *fourthViewController = [[WWSideMenuVC alloc] init];
     UINavigationController *fourthNavigationController = [[UINavigationController alloc]
                                                           initWithRootViewController:fourthViewController];
     

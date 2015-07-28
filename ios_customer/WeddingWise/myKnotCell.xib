@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6724" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -15,20 +15,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RJ3-1O-xhS">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RJ3-1O-xhS">
                         <rect key="frame" x="0.0" y="1" width="320" height="175"/>
                         <color key="backgroundColor" red="0.80784313730000001" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="320" id="I5t-sd-otV"/>
-                            <constraint firstAttribute="height" constant="175" id="Pry-ac-Lpv"/>
+                            <constraint firstAttribute="width" constant="320" id="lU6-Cp-fkY"/>
+                            <constraint firstAttribute="height" constant="175" id="ol1-u3-wIB"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FsI-NW-al8">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FsI-NW-al8">
                         <rect key="frame" x="176" y="145" width="144" height="30"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="572-Rw-rxj"/>
-                            <constraint firstAttribute="width" constant="144" id="L6o-eT-yJc"/>
+                            <constraint firstAttribute="width" constant="144" id="Hnh-7l-wfS"/>
+                            <constraint firstAttribute="height" constant="30" id="iYJ-3p-ekj"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <state key="normal" backgroundImage="tag_bg">
@@ -36,29 +36,29 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m6c-bF-3gw">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m6c-bF-3gw">
                         <rect key="frame" x="0.0" y="175" width="320" height="1"/>
                         <color key="backgroundColor" red="0.80784313730000001" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="J2t-5D-F4f"/>
-                            <constraint firstAttribute="width" constant="320" id="OV6-Jb-dAW"/>
+                            <constraint firstAttribute="width" constant="320" id="3TX-Me-9hG"/>
+                            <constraint firstAttribute="height" constant="1" id="a6e-W4-tNb"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="m6c-bF-3gw" secondAttribute="bottom" constant="-9" id="8FR-D7-5ri"/>
-                    <constraint firstItem="FsI-NW-al8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="168" id="Mej-6Z-2YB"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="FsI-NW-al8" secondAttribute="trailing" constant="-8" id="Qa4-8f-Nkw"/>
-                    <constraint firstItem="RJ3-1O-xhS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="VKD-tr-szD"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="RJ3-1O-xhS" secondAttribute="trailing" constant="-8" id="enz-hd-GEJ"/>
-                    <constraint firstItem="m6c-bF-3gw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="nj9-3u-6az"/>
-                    <constraint firstItem="RJ3-1O-xhS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="pE5-lM-yXS"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="RJ3-1O-xhS" secondAttribute="bottom" constant="-9" id="pOo-QZ-olN"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="m6c-bF-3gw" secondAttribute="trailing" constant="-8" id="uie-Yx-6ym"/>
-                    <constraint firstItem="m6c-bF-3gw" firstAttribute="top" secondItem="FsI-NW-al8" secondAttribute="bottom" id="z3s-qw-8L5"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="m6c-bF-3gw" secondAttribute="bottom" constant="-10" id="AM5-Re-tlo"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="RJ3-1O-xhS" secondAttribute="bottom" constant="-10" id="Cfv-GC-4Vx"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="m6c-bF-3gw" secondAttribute="trailing" constant="-8" id="Ewi-sE-mBW"/>
+                    <constraint firstItem="RJ3-1O-xhS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="Xp8-v3-x0t"/>
+                    <constraint firstItem="m6c-bF-3gw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="Z3R-9Y-AEi"/>
+                    <constraint firstItem="m6c-bF-3gw" firstAttribute="top" secondItem="FsI-NW-al8" secondAttribute="bottom" id="cUu-hy-vfh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="FsI-NW-al8" secondAttribute="trailing" constant="-8" id="db5-VN-2TG"/>
+                    <constraint firstItem="RJ3-1O-xhS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-7" id="efm-6A-RGY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="RJ3-1O-xhS" secondAttribute="trailing" constant="-8" id="yiq-c7-rnj"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imgBottom" destination="m6c-bF-3gw" id="dl8-kP-A0N"/>
                 <outlet property="leftButton" destination="FsI-NW-al8" id="k2q-oi-O8V"/>
                 <outlet property="leftImage" destination="RJ3-1O-xhS" id="XmC-kO-PZ8"/>
             </connections>

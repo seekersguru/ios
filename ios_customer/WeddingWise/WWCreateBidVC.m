@@ -9,8 +9,11 @@
 #import "WWCreateBidVC.h"
 #import "WWVendorDetailData.h"
 #import "WWWebService.h"
+#import "NIDropDown.h"
+#import "DSLCalendarView.h"
 
-@interface WWCreateBidVC ()<UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate>
+@interface WWCreateBidVC ()<UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate, NIDropDownDelegate,DSLCalendarViewDelegate, UIAlertViewDelegate>
+
 {
     NSMutableArray *packageList;
     NSMutableArray *packageOrder;
@@ -19,24 +22,42 @@
     UIToolbar *doneEventToolbar;
     BOOL isFlexible;
     BOOL isTimeSlotTextField;
+    NIDropDown *dropDown;
+    IBOutlet UIButton *btnSelect;
+     IBOutlet UIButton *btnPackage;
+    UITapGestureRecognizer *tap;
 }
+@property (retain, nonatomic) IBOutlet UIButton *btnSelect;
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, strong) NSMutableArray *pickerArray;
 @end
 
 @implementation WWCreateBidVC
+@synthesize btnSelect;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     currentArray =[NSMutableArray new];
     packageFinal =[NSMutableArray new];
     
+    btnSelect.layer.borderWidth = 1;
+    btnSelect.layer.borderColor = [[UIColor blackColor] CGColor];
+    btnSelect.layer.cornerRadius = 5;
+    
+    btnPackage.layer.borderWidth = 1;
+    btnPackage.layer.borderColor = [[UIColor blackColor] CGColor];
+    btnPackage.layer.cornerRadius = 5;
+    
     [self.navigationController.navigationBar setHidden:YES];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+     tap= [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissDatePicker:)];
     [self.view addGestureRecognizer:tap];
+    
+    
+    _calendarView.showEventsOnCalloutView = YES;
+    _calendarView.delegate = self;
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -44,25 +65,42 @@
 - (void)viewWillAppear:(BOOL)animated{
     if (_requestType.length == 0) {
         _requestType = @"bid";
+        [_titleView setText:@"Create Bid"];
         //TODO:if not come from messagelist then directly assigning it to bid for now
         //it will depend on tab bar icons
     }
     BOOL hideFields = NO;
     if ([_requestType isEqualToString:@"book"]) {
         //set title
-        [_headerTitleLabel setTitle:@"Create Booking" forState:UIControlStateNormal];
+        //[_headerTitleLabel setTitle:@"Create Booking" forState:UIControlStateNormal];
         [_submitButton setTitle:@"Book IT" forState:UIControlStateNormal];
         hideFields = YES;
+        
+        [_titleView setText:@"Create Book"];
         
         //set data
         [_packageLabel setText:[WWVendorBookingData sharedInstance].package[@"value"]];
         [_timeSlotTextField setText:[WWVendorBookingData sharedInstance].time_slot[0]];
         
         _pickerArray = [[WWVendorBookingData sharedInstance] time_slot];
+        
+        [_eventStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"event_date"]]];
+        [_flexibleStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"flexible_date"]]];
+        [_timeSlotStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"time_slot"][@"name"]]];
+        [_packageStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"package"][@"name"]]];
+        [_packageTextField setText:@"Select Package"];
+        packageOrder= [[NSMutableArray alloc]initWithArray:[WWVendorBidData sharedInstance].bidDictionary[@"package"][@"package_order"] ];
+        
+        NSDictionary *dicPackecList=[WWVendorBidData sharedInstance].bidDictionary[@"package"][@"package_list"];
+        for (NSString *strKey in packageOrder) {
+            [packageFinal addObject:[dicPackecList valueForKey:strKey]];
+        }
+        [_submitButton setTitle:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"button"]] forState:UIControlStateNormal];
+        _pickerArray = [[WWVendorBidData sharedInstance] time_slot];
     }
     else{
         //set title
-        [_headerTitleLabel setTitle:@"Create Bid" forState:UIControlStateNormal];
+        //[_headerTitleLabel setTitle:@"Create Bid" forState:UIControlStateNormal];
         
         //set data
         [_packageLabel setText:[WWVendorBidData sharedInstance].package[@"value"]];
@@ -74,13 +112,14 @@
         [_packageStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"package"][@"name"]]];
         [_packageTextField setText:@"Select Package"];
          packageOrder= [[NSMutableArray alloc]initWithArray:[WWVendorBidData sharedInstance].bidDictionary[@"package"][@"package_order"] ];
-        
+    
         NSDictionary *dicPackecList=[WWVendorBidData sharedInstance].bidDictionary[@"package"][@"package_list"];
         for (NSString *strKey in packageOrder) {
             [packageFinal addObject:[dicPackecList valueForKey:strKey]];
         }
         [_submitButton setTitle:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"button"]] forState:UIControlStateNormal];
         _pickerArray = [[WWVendorBidData sharedInstance] time_slot];
+        
     }
     
     [_bidPriceStaticLabel setHidden:hideFields];
@@ -102,7 +141,29 @@
     [_timeSlotTextField setInputAccessoryView:doneToolbar];
     [_packageTextField setInputAccessoryView:doneToolbar];
 }
-
+- (void)viewDidUnload {
+    //    [btnSelect release];
+    btnSelect = nil;
+    [self setBtnSelect:nil];
+    [super viewDidUnload];
+}
+-(void)setLabelFonts{
+    [[WWCommon getSharedObject]setCustomFont:13.0 withLabel:_headerTitleLabel withText:_headerTitleLabel.titleLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:12.0 withLabel:_packageLabel withText:_packageLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:13.0 withLabel:_timeSlotTextField withText:_timeSlotTextField.text];
+    [[WWCommon getSharedObject]setCustomFont:13.0 withLabel:_packageTextField withText:_packageTextField.text];
+    
+    
+    [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:_eventStaticLabel withText:_eventStaticLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:_flexibleStaticLabel withText:_flexibleStaticLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:_timeSlotStaticLabel withText:_timeSlotStaticLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:_packageStaticLabel withText:_packageStaticLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:_bidPriceStaticLabel withText:_bidPriceStaticLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:_minPersonStaticLabel withText:_minPersonStaticLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:_perPlateStaticLabel withText:_perPlateStaticLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:10.0 withLabel:_bidPriceStaticLabel withText:_bidPriceStaticLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:15.0 withLabel:_titleView withText:_titleView.text];
+}
 - (void)dismissKeyboard:(id)sender{
     [_timeSlotTextField resignFirstResponder];
     [_packageTextField resignFirstResponder];
@@ -111,32 +172,36 @@
     if(isFlexible){
         isFlexible = NO;
         //Selec
-        [_btnFlexible setImage:[UIImage imageNamed:@"radiobt"] forState:UIControlStateNormal];
+        [_btnFlexible setBackgroundImage:[UIImage imageNamed:@"Unchecked"] forState:UIControlStateNormal];
     }
     else
     {
         isFlexible= YES;
-        [_btnFlexible setImage:[UIImage imageNamed:@"radiobtMark"] forState:UIControlStateNormal];
+        [_btnFlexible setBackgroundImage:[UIImage imageNamed:@"Checked"] forState:UIControlStateNormal];
         //
     }
 }
 -(IBAction)datePickerBtnAction:(id)sender
 {
-    _datePicker =[[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-216, self.view.frame.size.width, 100)];
-    _datePicker.datePickerMode=UIDatePickerModeDate;
-    _datePicker.hidden=NO;
-    _datePicker.date=[NSDate date];
-    [_datePicker addTarget:self action:@selector(LabelTitle:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:_datePicker];
-    
-    doneEventToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-240, 320, 44)];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissDatePicker:)];
-    [doneEventToolbar setItems:@[item]];
-    [self.view addSubview:doneEventToolbar];
+//    _datePicker =[[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-216, self.view.frame.size.width, 100)];
+//    _datePicker.datePickerMode=UIDatePickerModeDate;
+//    _datePicker.hidden=NO;
+//    _datePicker.date=[NSDate date];
+//    [_datePicker addTarget:self action:@selector(LabelTitle:) forControlEvents:UIControlEventValueChanged];
+//    [self.view addSubview:_datePicker];
+//    
+//    doneEventToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-240, 320, 44)];
+//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissDatePicker:)];
+//    [doneEventToolbar setItems:@[item]];
+//    [self.view addSubview:doneEventToolbar];
+    [tap setCancelsTouchesInView:NO];
+    [self showCustomCalendarView];
 }
 - (void)dismissDatePicker:(id)sender{
     [_datePicker setFrame:CGRectMake(0, 568, self.view.frame.size.width, 150)];
     [doneEventToolbar setFrame:CGRectMake(0, 568, self.view.frame.size.width, 150)];
+    [_bidPriceTextField resignFirstResponder];
+    [_minPersonTextField resignFirstResponder];
     
 }
 -(void)LabelTitle:(id)sender
@@ -149,6 +214,56 @@
     [_eventDateButton setTitle:str forState:UIControlStateNormal];
 }
 
+- (IBAction)selectClicked:(id)sender {
+    NSArray * arr = [[NSArray alloc] init];
+    UIButton *btn= sender;
+    [currentArray removeAllObjects];
+    [tap setCancelsTouchesInView:NO];
+    
+    if(btn.tag==1){
+        arr = _pickerArray;
+    }
+    else if (btn.tag==2){
+        for (NSDictionary *dicValue in packageFinal) {
+            [currentArray addObject:[dicValue valueForKey:@"select_val"]];
+        }
+        arr = currentArray;
+    }    
+    if(dropDown == nil) {
+        CGFloat f = 100;
+        dropDown = [[NIDropDown alloc]showDropDown:sender :&f :arr :nil :@"down"];
+        dropDown.delegate = self;
+    }
+    else {
+        [dropDown hideDropDown:sender];
+        [self rel];
+    }
+}
+- (void) niDropDownDelegateMethod: (NIDropDown *) sender withRow:(NSInteger)row withButtonTag:(NSInteger)buttonTag{
+    [self rel];
+    if(buttonTag==2){
+        [_packageLabel setText:[packageFinal objectAtIndex:row][@"description"]];
+    }
+    
+    
+}
+
+-(void)rel{
+    dropDown = nil;
+    [tap setCancelsTouchesInView:YES];
+}
+#pragma mark CalendarView
+-(void)showCustomCalendarView{
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options: UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         _vwCalander.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-60);
+                         //[_vwCalander setBackgroundColor:[UIColor whiteColor]];
+                     }
+                     completion:^(BOOL finished){
+                     }];
+}
 
 #pragma mark - pickerview delegates/datasource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -205,6 +320,10 @@
 }
 - (void)bidItAction:(id)sender{
     NSString *json_string = nil;
+    
+    NSString *messageType;
+    NSString *jsonType;
+    
     if ([_requestType isEqualToString:@"bid"]) {
         //check validations for bid price
         NSString *errorMessage = nil;
@@ -220,10 +339,16 @@
         }
         NSData *data = [NSJSONSerialization dataWithJSONObject:[WWVendorBidData sharedInstance].bidDictionary options:NSJSONWritingPrettyPrinted error:nil];
         json_string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+        messageType= @"bid";
+        jsonType= @"bid_json";
     }
     else{
         NSData *data = [NSJSONSerialization dataWithJSONObject:[WWVendorBookingData sharedInstance].bookDictionary options:NSJSONWritingPrettyPrinted error:nil];
         json_string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+         messageType= @"book";
+        jsonType= @"book_json";
     }
     
     NSDictionary *requestDict = @{@"identifier" : [[NSUserDefaults standardUserDefaults]
@@ -235,9 +360,9 @@
                                   @"mode" : @"mode",
                                   @"device_id" : @"123123",
                                   @"push_data" : @"posting bid",
-                                  @"msg_type" : @"bid",
+                                  @"msg_type" : messageType,
                                   @"event_date" : _eventDateButton.titleLabel.text,    //TODO:date should be dynamic, Will do later
-                                  @"bid_json" : json_string,
+                                  jsonType : json_string,
                                   @"time_slot" : _timeSlotTextField.text,
                                   @"bid_price" : _bidPriceTextField.text,
                                   @"bid_quantity" : _minPersonTextField.text};
@@ -254,7 +379,7 @@
             else{
                 successMsg = @"Booking successfully created";
             }
-            [[WWCommon getSharedObject]createAlertView:@"" :successMsg :nil :000 ];
+            [[WWCommon getSharedObject]createAlertView:@"" :successMsg :self :000 ];
             //go back to vendor detail page
             self.tabBarController.selectedIndex = 0;
         }
@@ -263,6 +388,91 @@
     }];
 }
 -(IBAction)backButtonPressed:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(IBAction)calendarBackButtonPressed:(id)sender{
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options: UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         _vwCalander.frame = CGRectMake(0, 700, self.view.frame.size.width, self.view.frame.size.height-60);
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+}
+#pragma mark - DSLCalendarViewDelegate methods
+- (void)calendarView:(DSLCalendarView *)calendarView didSelectRange:(DSLCalendarRange *)range {
+    if (range != nil) {
+        NSLog( @"Selected %ld/%ld/%ld - %ld/%ld/%ld", (long)range.startDay.day, (long)range.startDay.month,(long)range.startDay.year, (long)range.endDay.day, (long)range.endDay.month, (long)range.endDay.year);
+        //store this date to session/singleton instance
+        
+        NSDateFormatter *dateFormat=[[NSDateFormatter alloc]init];
+        dateFormat.dateStyle=NSDateFormatterMediumStyle;
+        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+        
+        NSDate *selecteDate= [dateFormat dateFromString:[NSString stringWithFormat:@"%ld-%ld-%ld",(long)range.startDay.year, (long)range.startDay.month,(long)range.startDay.day]];
+    
+        NSString *strDate=[dateFormat stringFromDate:selecteDate];
+        
+        [_eventDateButton setTitle:strDate forState:UIControlStateNormal];
+        
+        [UIView animateWithDuration:0.3
+                              delay:0.0
+                            options: UIViewAnimationOptionCurveEaseIn
+                         animations:^{
+                             _vwCalander.frame = CGRectMake(0, 700, self.view.frame.size.width, self.view.frame.size.height-60);
+                         }
+                         completion:^(BOOL finished){
+                             
+                         }];
+    }
+    else {
+        NSLog( @"No selection" );
+    }
+}
+
+- (DSLCalendarRange*)calendarView:(DSLCalendarView *)calendarView didDragToDay:(NSDateComponents *)day selectingRange:(DSLCalendarRange *)range {
+    if (NO) { // Only select a single day
+        return [[DSLCalendarRange alloc] initWithStartDay:day endDay:day];
+    }
+    else if (NO) { // Don't allow selections before today
+        NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
+        
+        NSDateComponents *startDate = range.startDay;
+        NSDateComponents *endDate = range.endDay;
+        
+        if ([self day:startDate isBeforeDay:today] && [self day:endDate isBeforeDay:today]) {
+            return nil;
+        }
+        else {
+            if ([self day:startDate isBeforeDay:today]) {
+                startDate = [today copy];
+            }
+            if ([self day:endDate isBeforeDay:today]) {
+                endDate = [today copy];
+            }
+            
+            return [[DSLCalendarRange alloc] initWithStartDay:startDate endDay:endDate];
+        }
+    }
+    
+    return range;
+}
+
+- (void)calendarView:(DSLCalendarView *)calendarView willChangeToVisibleMonth:(NSDateComponents *)month duration:(NSTimeInterval)duration {
+    NSLog(@"Will show %@ in %.3f seconds", month, duration);
+}
+
+- (void)calendarView:(DSLCalendarView *)calendarView didChangeToVisibleMonth:(NSDateComponents *)month {
+    NSLog(@"Now showing %@", month);
+}
+
+- (BOOL)day:(NSDateComponents*)day1 isBeforeDay:(NSDateComponents*)day2 {
+    return ([day1.date compare:day2.date] == NSOrderedAscending);
+}
+#pragma mark UIalertview delegate methods:
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {

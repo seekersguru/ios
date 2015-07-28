@@ -126,10 +126,6 @@
     if (self.selectionState == DSLCalendarDayViewNotSelected) {
         if (self.isInCurrentMonth) {
             [[UIColor colorWithRed:252.0/255.0 green:252.0/255.0 blue:252.0/255.0 alpha:1.0] setFill];
-            if([_labelText isEqualToString:@"15"]){
-                [[UIColor lightGrayColor] setFill];
-            }
-            
         }
         else {
             [[UIColor whiteColor] setFill];

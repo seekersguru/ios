@@ -82,6 +82,9 @@
              WWLoginUserData *userData=[[WWLoginUserData alloc]setUserData:[responseDics valueForKey:@"json"]];
              [AppDelegate sharedAppDelegate].userData= userData;
              
+             [[NSUserDefaults standardUserDefaults] setObject:[responseDics valueForKey:@"json"][@"identifier"] forKey:@"identifier"];
+             [[NSUserDefaults standardUserDefaults] synchronize];
+             
              [AppDelegate sharedAppDelegate].userData.isProfileComplete= YES;
              
              dispatch_async(dispatch_get_main_queue(), ^{

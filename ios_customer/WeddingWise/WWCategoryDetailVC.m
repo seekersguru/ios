@@ -25,7 +25,7 @@
 #import "WWScheduleVC.h"
 #import "AnnotationPin.h"
 #import "WWProfileVC.h"
-
+#import "WWMessageList.h"
 
 #define DEGREES_IN_RADIANS(x) (M_PI * x / 180.0)
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
@@ -636,21 +636,18 @@ BOOL isPackage;
     }
     else{
         switch (sender.tag) {
-            case 1:{
+            case 1:
                 vc=[[WWCreateBidVC alloc]init];
                 [(WWCreateBidVC *)vc setRequestType:@"bid"];
-            }
                 break;
-            case 2:{
+            case 2:
                 vc=[[WWCreateBidVC alloc]init];
                 [(WWCreateBidVC *)vc setRequestType:@"book"];
-            }
                 break;
             case 3:
-            {
-                vc=[[WWMessageList alloc]init];
-            }
-                
+                vc=[[WWPrivateMessage alloc]init];
+                [(WWPrivateMessage *)vc setMessageData:@{@"receiver_name" : _vendorName,
+                                                         @"receiver_email" : _vendorEmail}];
                 break;
             case 4:
                 vc=[[WWScheduleVC alloc]init];
@@ -659,10 +656,10 @@ BOOL isPackage;
             default:
                 break;
         }
-        
+        self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    self.hidesBottomBarWhenPushed = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning {

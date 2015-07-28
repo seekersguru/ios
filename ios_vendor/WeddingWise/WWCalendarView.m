@@ -241,20 +241,64 @@
     return attString;
     
 }
+#pragma mark: Date range methods:
+-(void)getAllDatesFromRange:(NSString*)startingDate withLastDate:(NSString*)lastDate
+{
+    
+    NSDateFormatter *f = [[NSDateFormatter alloc] init];
+    [f setDateFormat:@"yyyy-MM-dd"];
+    NSDate *startDate = [f dateFromString:startingDate];
+    NSDate *endDate = [f dateFromString:lastDate];
+    
+    NSMutableArray *dates = [@[startDate] mutableCopy];
+    
+    
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [gregorianCalendar components:NSDayCalendarUnit
+                                                        fromDate:startDate
+                                                          toDate:endDate
+                                                         options:0];
+    
+    for (int i = 1; i < components.day; ++i) {
+        NSDateComponents *newComponents = [NSDateComponents new];
+        newComponents.day = i;
+        
+        NSDate *date = [gregorianCalendar dateByAddingComponents:newComponents
+                                                          toDate:startDate
+                                                         options:0];
+        [dates addObject:date];
+    }
+    
+    [dates addObject:endDate];
+    
+    NSLog(@"dates :%@",dates);
+}
+
 
 #pragma mark - DSLCalendarViewDelegate methods
 - (void)calendarView:(DSLCalendarView *)calendarView didSelectRange:(DSLCalendarRange *)range {
     if (range != nil) {
         NSLog( @"Selected %ld/%ld - %ld/%ld", (long)range.startDay.day, (long)range.startDay.month, (long)range.endDay.day, (long)range.endDay.month);
         //store this date to session/singleton instance
-        [[WWBasicDetails sharedInstance] setCalendarDate:[NSString stringWithFormat:@"%ld-%ld-%ld",(long)range.startDay.day,(long)range.startDay.month,(long)range.startDay.year]];
-        if (lastSelectedDate != nil) {
-            NSDate *date = [[NSCalendar currentCalendar] dateFromComponents:range.startDay];
-            if (lastSelectedDate == date) {
-                self.tabBarController.selectedIndex = 2;
+        
+        NSString *startDate= [NSString stringWithFormat:@"%ld-%ld-%ld",(long)range.startDay.year,(long)range.startDay.month,(long)range.startDay.day];
+        NSString *endDate= [NSString stringWithFormat:@"%ld-%ld-%ld",(long)range.endDay.year,(long)range.endDay.month,(long)range.endDay.day];
+        
+        if([startDate isEqualToString:endDate]){
+            [[WWBasicDetails sharedInstance] setCalendarDate:[NSString stringWithFormat:@"%ld-%ld-%ld",(long)range.startDay.day,(long)range.startDay.month,(long)range.startDay.year]];
+            
+            if (lastSelectedDate != nil) {
+                NSDate *date = [[NSCalendar currentCalendar] dateFromComponents:range.startDay];
+                if (lastSelectedDate == date) {
+                    self.tabBarController.selectedIndex = 2;
+                }
             }
+            lastSelectedDate = [[NSCalendar currentCalendar] dateFromComponents:range.startDay];
+        }else{
+            [self getAllDatesFromRange:startDate withLastDate:endDate];
         }
-        lastSelectedDate = [[NSCalendar currentCalendar] dateFromComponents:range.startDay];
+        
+        
     }
     else {
         NSLog( @"No selection" );
@@ -296,7 +340,7 @@
 - (void)calendarView:(DSLCalendarView *)calendarView didChangeToVisibleMonth:(NSDateComponents *)month {
     NSLog(@"Now showing %@", month);
     selectedMonthFromCalendar = [[NSCalendar currentCalendar] dateFromComponents:month];
-    [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:[NSString stringWithFormat:@"%ld",(long)month.year] month:[NSString stringWithFormat:@"%ld",(long)month.month] additionalFilter:@"" completionBlock:^(NSDictionary *response) {
+    [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:[NSString stringWithFormat:@"%ld",(long)month.year] month:[NSString stringWithFormat:@"%02ld",(long)month.month] additionalFilter:@"" completionBlock:^(NSDictionary *response) {
         NSMutableDictionary *eventDict = [NSMutableDictionary new];
         for (NSDictionary *events in [response valueForKey:@"data"]) {
             [eventDict setValue:[events valueForKey:@"count"] forKey:[events valueForKey:@"day"]];

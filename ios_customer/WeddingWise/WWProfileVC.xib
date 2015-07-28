@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6724" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WWProfileVC">
             <connections>
                 <outlet property="btnBackButton" destination="rbO-rl-3X0" id="ZDl-eA-4AS"/>
                 <outlet property="btnTentativeDate" destination="Hut-dP-YSW" id="Rqj-hX-840"/>
-                <outlet property="datePicker" destination="WhB-hG-itW" id="3G5-xo-wSN"/>
+                <outlet property="datePicker" destination="WhB-hG-itW" id="W4B-xN-ohA"/>
                 <outlet property="imgDatePicker" destination="r6E-Uq-OhB" id="Vm9-dQ-UMA"/>
                 <outlet property="lblTitle" destination="3Tk-4F-gW8" id="cCX-FB-qj2"/>
                 <outlet property="txtBrideName" destination="Ujo-rO-GZz" id="F4g-EB-uyI"/>
@@ -43,7 +43,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="txtbox_reg" translatesAutoresizingMaskIntoConstraints="NO" id="x8r-2Y-nVp">
                     <rect key="frame" x="17" y="141" width="287" height="244"/>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uCa-7x-0vn">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uCa-7x-0vn">
                     <rect key="frame" x="31" y="152" width="259" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
@@ -92,7 +92,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="Tentative Wedding Date">
                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" red="0.80784313730000001" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="btnTentativeDatePressed:" destination="-1" eventType="touchUpInside" id="UvC-Hv-D9z"/>
@@ -113,11 +113,11 @@
                     <rect key="frame" x="31" y="383" width="259" height="2"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r6E-Uq-OhB">
-                    <rect key="frame" x="0.0" y="429" width="320" height="139"/>
+                    <rect key="frame" x="0.0" y="380" width="320" height="139"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </imageView>
                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="WhB-hG-itW">
-                    <rect key="frame" x="0.0" y="429" width="320" height="139"/>
+                    <rect key="frame" x="0.0" y="380" width="320" height="139"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <date key="date" timeIntervalSinceReferenceDate="458252473.24607402">
                         <!--2015-07-10 20:21:13 +0000-->
@@ -132,7 +132,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-1342" y="-30"/>
+            <point key="canvasLocation" x="-1629" y="-89"/>
         </view>
     </objects>
     <resources>

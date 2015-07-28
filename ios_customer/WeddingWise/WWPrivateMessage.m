@@ -13,10 +13,15 @@
 @interface WWPrivateMessage ()
 {
     NSMutableArray *chatArray;
+    __block NSString *globalLastMessageID;
+    NSTimer *myTimer;
+    
+  
 }
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImageData;
 @property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImageData;
 @end
+
 
 @implementation WWPrivateMessage
 
@@ -37,14 +42,12 @@
     self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
     
     self.showLoadEarlierMessagesHeader = YES;
-    
-    
     chatArray = [[NSMutableArray alloc] init];
     
     JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
     
     self.outgoingBubbleImageData = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
-    self.incomingBubbleImageData = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleGreenColor]];
+    self.incomingBubbleImageData = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleBlueColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -52,9 +55,13 @@
 
     [chatArray removeAllObjects];
     [self callPrivateChatAPI:@""];
+    
+    myTimer =[NSTimer scheduledTimerWithTimeInterval: 10.0 target: self
+                                   selector: @selector(callPrivateChatAPI:) userInfo: @"" repeats: YES];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [myTimer invalidate];
 }
 - (void)backButtonAction:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
@@ -113,7 +120,9 @@
     
     [self finishSendingMessageAnimated:YES];
     
-    NSDictionary *requestDict = @{@"identifier" : [AppDelegate sharedAppDelegate].userData.identifier,
+    
+    NSDictionary *requestDict = @{@"identifier" : [[NSUserDefaults standardUserDefaults]
+                                                   stringForKey:@"identifier"],
                                   @"receiver_email" : [_messageData valueForKey:@"receiver_email"],
                                   @"message" : text,
                                   @"from_to" : @"c2v",
@@ -143,6 +152,7 @@
     
 }
 -(void)callPrivateChatAPI:(NSString *)lastMessageId{
+    NSLog(@"callPrivateChatAPI");
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  [[NSUserDefaults standardUserDefaults]
                                   stringForKey:@"identifier"],@"identifier",
@@ -154,6 +164,8 @@
                                  lastMessageId,@"last_message_id",
                                  nil];
     
+    
+
     [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
      {
          if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
@@ -163,6 +175,9 @@
              NSArray *arrData=[responseDics valueForKey:@"json"];
              NSDateFormatter *df = [[NSDateFormatter alloc] init];
              [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+            
+             __block NSString *strMessageID;
+             [chatArray removeAllObjects];
              
              for (int i = arrData.count-1; i >= 0; i--) {
                  NSDictionary *arrMessages = [arrData objectAtIndex:i];
@@ -179,14 +194,23 @@
                                                                        date:date
                                                                        text:text
                                                                   messageId:messageId];
+                 
+                 
+                 if(strMessageID.length==0){
+                    strMessageID = messageId;
+                     
+                 }
                  [chatArray insertObject:message atIndex:0];
              }
-             
-             
-             
-             
-             [self finishReceivingMessage];
-
+             if([globalLastMessageID isEqualToString:strMessageID]){
+                 //No need to refresh table
+             }
+             else{
+                 //Refresh table
+                 globalLastMessageID = strMessageID;
+                 strMessageID=@"";
+                 [self finishReceivingMessage];
+             }
          }
      }
                                              failure:^(NSString *response)
@@ -194,6 +218,7 @@
          DLog(@"%@",response);
      }];
 }
+
 #pragma mark - JSQMessages CollectionView DataSource
 
 - (id<JSQMessageData>)collectionView:(JSQMessagesCollectionView *)collectionView messageDataForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -395,18 +420,19 @@
         return kJSQMessagesCollectionViewCellLabelHeightDefault;
     }
     
-    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 [[NSUserDefaults standardUserDefaults]
-                                  stringForKey:@"identifier"],@"identifier",
-                                 [_messageData valueForKey:@"receiver_email"],@"receiver_email",
-                                 _txtMessage.text, @"message",
-                                 @"c2v",@"from_to",
-                                 @"customer_vendor_message_create",@"action",
-                                 @"ios",@"mode",
-                                 @"123123",@"device_id",
-                                 @"'message push'",@"push_data",
-                                 @"message", @"msg_type",
-                                 nil];
+    return 0.0f;
+}
+
+- (CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView
+                   layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath
+{
+    /**
+     *  iOS7-style sender name labels
+     */
+    JSQMessage *currentMessage = [chatArray objectAtIndex:indexPath.item];
+    if ([[currentMessage senderId] isEqualToString:self.senderId]) {
+        return 0.0f;
+    }
     
     if (indexPath.item - 1 > 0) {
         JSQMessage *previousMessage = [chatArray objectAtIndex:indexPath.item - 1];

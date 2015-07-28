@@ -19,7 +19,7 @@
     [self setTentativeDate:[userData valueForKey:@"tentative_wedding_date"]];
     [self setIsProfileComplete:NO];
     
-    [[NSUserDefaults standardUserDefaults] setObject:[userData valueForKey:@"identifier"] forKey:@"identifier"];
+    //[[NSUserDefaults standardUserDefaults] setObject:[userData valueForKey:@"identifier"] forKey:@"identifier"];
     [[NSUserDefaults standardUserDefaults] setObject:[userData valueForKey:@"groom_name"] forKey:@"groom_name"];
     
     [[NSUserDefaults standardUserDefaults] synchronize];

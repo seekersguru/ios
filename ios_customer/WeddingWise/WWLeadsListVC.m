@@ -25,8 +25,12 @@
      [self.navigationController.navigationBar setHidden:YES];
     [_tblBidView registerNib:[UINib nibWithNibName:@"WWBidListCell" bundle:nil] forCellReuseIdentifier:@"WWBidListCell"];
     arrBidData=[[NSMutableArray alloc]init];
-    [self callBidDetailAPI:@"bid"];
     
+    
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [self moveImage:selectorImage duration:0.2 curve:UIViewAnimationCurveLinear x:0.0 y:0.0];
+    [self callBidDetailAPI:@"bid"];
 }
 -(IBAction)bidBtnClicked:(id)sender
 {
