@@ -36,7 +36,7 @@
 #define AppFont                         @"GothamRounded-Book"
 
 
-#define kAppName                        @"Wed Wise Wise"
+#define kAppName                        @"WedWise"
 #define kEnterEmail                     @"Please enter email address."
 #define kEnterPassword                  @"Please enter password."
 #define kEnterBrideName                 @"Please enter bride name."

@@ -26,7 +26,7 @@
         //Call web service
         NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                      _txtEmailAddress.text,@"email",
-                                     @"forgot_password",@"action",
+                                     @"customer_forgot_password",@"action",
                                      nil];
         
         [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)

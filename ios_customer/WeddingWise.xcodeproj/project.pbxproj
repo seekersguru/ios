@@ -107,20 +107,14 @@
 		F4C7D85E1B0D031500D69912 /* UITextField+ADTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C7D85D1B0D031500D69912 /* UITextField+ADTextField.m */; };
 		F4CB16A81B35AB310078419A /* WWScheduleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB16A61B35AB310078419A /* WWScheduleVC.m */; };
 		F4CB16A91B35AB310078419A /* WWScheduleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB16A71B35AB310078419A /* WWScheduleVC.xib */; };
-		F4CB16ED1B373EEC0078419A /* WWCategoryPackageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB16EB1B373EEC0078419A /* WWCategoryPackageCell.m */; };
-		F4CB16EE1B373EEC0078419A /* WWCategoryPackageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB16EC1B373EEC0078419A /* WWCategoryPackageCell.xib */; };
 		F4CB16F21B3770420078419A /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CB16F11B3770420078419A /* YTPlayerView.m */; };
 		F4CB16F81B3898CA0078419A /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = F4CB16F71B3898CA0078419A /* YTPlayerView-iframe-player.html */; };
 		F4CBDB2B1B52FD15000DB347 /* WWLoginUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB2A1B52FD15000DB347 /* WWLoginUserData.m */; };
-		F4CBDB4F1B544998000DB347 /* WWCategoryFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB4D1B544998000DB347 /* WWCategoryFooterCell.xib */; };
-		F4CC6D101B59A66F005237F5 /* wwCategoryFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CC6D0F1B59A66E005237F5 /* wwCategoryFooterCell.m */; };
 		F4CCA5531B48593800F33FDA /* gotham-book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4CCA5521B48593800F33FDA /* gotham-book.ttf */; };
 		F4CD0F2C1B5EBEBC0006FAC4 /* WWSideMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD0F2A1B5EBEBC0006FAC4 /* WWSideMenuVC.m */; };
 		F4CD0F2D1B5EBEBC0006FAC4 /* WWSideMenuVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CD0F2B1B5EBEBC0006FAC4 /* WWSideMenuVC.xib */; };
 		F4CD0F331B5EC13D0006FAC4 /* WWProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD0F311B5EC13D0006FAC4 /* WWProfileVC.m */; };
 		F4CD0F341B5EC13D0006FAC4 /* WWProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CD0F321B5EC13D0006FAC4 /* WWProfileVC.xib */; };
-		F4CD0F391B615F590006FAC4 /* WWChangePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD0F371B615F590006FAC4 /* WWChangePasswordVC.m */; };
-		F4CD0F3A1B615F590006FAC4 /* WWChangePasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CD0F381B615F590006FAC4 /* WWChangePasswordVC.xib */; };
 		F4CD0F3E1B630BCC0006FAC4 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4CD0F3B1B630BCC0006FAC4 /* GoogleOpenSource.framework */; };
 		F4CD0F3F1B630BCC0006FAC4 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F4CD0F3C1B630BCC0006FAC4 /* GooglePlus.bundle */; };
 		F4CD0F401B630BCC0006FAC4 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4CD0F3D1B630BCC0006FAC4 /* GooglePlus.framework */; };
@@ -146,8 +140,6 @@
 		F4CD4E461B30830F0081FE0B /* WWCategoryDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CD4E3A1B30830F0081FE0B /* WWCategoryDescriptionCell.xib */; };
 		F4CD4E471B30830F0081FE0B /* WWCategoryMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD4E3C1B30830F0081FE0B /* WWCategoryMapCell.m */; };
 		F4CD4E481B30830F0081FE0B /* WWCategoryMapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CD4E3D1B30830F0081FE0B /* WWCategoryMapCell.xib */; };
-		F4CD4E491B30830F0081FE0B /* WWCategoryListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD4E3F1B30830F0081FE0B /* WWCategoryListingCell.m */; };
-		F4CD4E4A1B30830F0081FE0B /* WWCategoryListingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CD4E401B30830F0081FE0B /* WWCategoryListingCell.xib */; };
 		F4CD4E4E1B3084D30081FE0B /* WWDetailScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD4E4C1B3084D30081FE0B /* WWDetailScreen.m */; };
 		F4CD4E4F1B3084D30081FE0B /* WWDetailScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CD4E4D1B3084D30081FE0B /* WWDetailScreen.xib */; };
 		F4CD4E511B308E150081FE0B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4CD4E501B308E150081FE0B /* MapKit.framework */; };
@@ -171,6 +163,8 @@
 		F4CFFA2F1B45B15D0065D5D6 /* WWLoginVC~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CFFA2E1B45B15D0065D5D6 /* WWLoginVC~ipad.xib */; };
 		F4CFFA311B45B1850065D5D6 /* WWForgotPassword~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CFFA301B45B1850065D5D6 /* WWForgotPassword~ipad.xib */; };
 		F4D50E111B5B11F000491A93 /* AnnotationPin.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D50E101B5B11F000491A93 /* AnnotationPin.m */; };
+		F4D8A7671B69520B00677F92 /* WWChangePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8A7651B69520B00677F92 /* WWChangePasswordVC.m */; };
+		F4D8A7681B69520B00677F92 /* WWChangePasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D8A7661B69520B00677F92 /* WWChangePasswordVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -356,17 +350,11 @@
 		F4CB16A51B35AB310078419A /* WWScheduleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWScheduleVC.h; sourceTree = "<group>"; };
 		F4CB16A61B35AB310078419A /* WWScheduleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWScheduleVC.m; sourceTree = "<group>"; };
 		F4CB16A71B35AB310078419A /* WWScheduleVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWScheduleVC.xib; sourceTree = "<group>"; };
-		F4CB16EA1B373EEC0078419A /* WWCategoryPackageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCategoryPackageCell.h; sourceTree = "<group>"; };
-		F4CB16EB1B373EEC0078419A /* WWCategoryPackageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCategoryPackageCell.m; sourceTree = "<group>"; };
-		F4CB16EC1B373EEC0078419A /* WWCategoryPackageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCategoryPackageCell.xib; sourceTree = "<group>"; };
 		F4CB16F01B3770420078419A /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
 		F4CB16F11B3770420078419A /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
 		F4CB16F71B3898CA0078419A /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
 		F4CBDB291B52FD15000DB347 /* WWLoginUserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWLoginUserData.h; sourceTree = "<group>"; };
 		F4CBDB2A1B52FD15000DB347 /* WWLoginUserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWLoginUserData.m; sourceTree = "<group>"; };
-		F4CBDB4B1B544998000DB347 /* WWCategoryFooterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCategoryFooterCell.h; sourceTree = "<group>"; };
-		F4CBDB4D1B544998000DB347 /* WWCategoryFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCategoryFooterCell.xib; sourceTree = "<group>"; };
-		F4CC6D0F1B59A66E005237F5 /* wwCategoryFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wwCategoryFooterCell.m; sourceTree = "<group>"; };
 		F4CCA5521B48593800F33FDA /* gotham-book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "gotham-book.ttf"; sourceTree = "<group>"; };
 		F4CD0F291B5EBEBC0006FAC4 /* WWSideMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWSideMenuVC.h; sourceTree = "<group>"; };
 		F4CD0F2A1B5EBEBC0006FAC4 /* WWSideMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWSideMenuVC.m; sourceTree = "<group>"; };
@@ -374,9 +362,6 @@
 		F4CD0F301B5EC13D0006FAC4 /* WWProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWProfileVC.h; sourceTree = "<group>"; };
 		F4CD0F311B5EC13D0006FAC4 /* WWProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWProfileVC.m; sourceTree = "<group>"; };
 		F4CD0F321B5EC13D0006FAC4 /* WWProfileVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWProfileVC.xib; sourceTree = "<group>"; };
-		F4CD0F361B615F590006FAC4 /* WWChangePasswordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWChangePasswordVC.h; sourceTree = "<group>"; };
-		F4CD0F371B615F590006FAC4 /* WWChangePasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWChangePasswordVC.m; sourceTree = "<group>"; };
-		F4CD0F381B615F590006FAC4 /* WWChangePasswordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWChangePasswordVC.xib; sourceTree = "<group>"; };
 		F4CD0F3B1B630BCC0006FAC4 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../../../R&D/googleplus-ios-sdk-master/GoogleOpenSource.framework"; sourceTree = "<group>"; };
 		F4CD0F3C1B630BCC0006FAC4 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "../../../../R&D/googleplus-ios-sdk-master/GooglePlus.bundle"; sourceTree = "<group>"; };
 		F4CD0F3D1B630BCC0006FAC4 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../../../R&D/googleplus-ios-sdk-master/GooglePlus.framework"; sourceTree = "<group>"; };
@@ -416,9 +401,6 @@
 		F4CD4E3B1B30830F0081FE0B /* WWCategoryMapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCategoryMapCell.h; sourceTree = "<group>"; };
 		F4CD4E3C1B30830F0081FE0B /* WWCategoryMapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCategoryMapCell.m; sourceTree = "<group>"; };
 		F4CD4E3D1B30830F0081FE0B /* WWCategoryMapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCategoryMapCell.xib; sourceTree = "<group>"; };
-		F4CD4E3E1B30830F0081FE0B /* WWCategoryListingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCategoryListingCell.h; sourceTree = "<group>"; };
-		F4CD4E3F1B30830F0081FE0B /* WWCategoryListingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCategoryListingCell.m; sourceTree = "<group>"; };
-		F4CD4E401B30830F0081FE0B /* WWCategoryListingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCategoryListingCell.xib; sourceTree = "<group>"; };
 		F4CD4E4B1B3084D30081FE0B /* WWDetailScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDetailScreen.h; sourceTree = "<group>"; };
 		F4CD4E4C1B3084D30081FE0B /* WWDetailScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWDetailScreen.m; sourceTree = "<group>"; };
 		F4CD4E4D1B3084D30081FE0B /* WWDetailScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWDetailScreen.xib; sourceTree = "<group>"; };
@@ -452,6 +434,9 @@
 		F4CFFA301B45B1850065D5D6 /* WWForgotPassword~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "WWForgotPassword~ipad.xib"; sourceTree = "<group>"; };
 		F4D50E0F1B5B11F000491A93 /* AnnotationPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationPin.h; sourceTree = "<group>"; };
 		F4D50E101B5B11F000491A93 /* AnnotationPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationPin.m; sourceTree = "<group>"; };
+		F4D8A7641B69520B00677F92 /* WWChangePasswordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWChangePasswordVC.h; sourceTree = "<group>"; };
+		F4D8A7651B69520B00677F92 /* WWChangePasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWChangePasswordVC.m; sourceTree = "<group>"; };
+		F4D8A7661B69520B00677F92 /* WWChangePasswordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWChangePasswordVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -815,9 +800,6 @@
 				F4C2B1621B4D7348000639BC /* WWCategoryCommonCell.h */,
 				F4C2B1631B4D7348000639BC /* WWCategoryCommonCell.m */,
 				F4C2B1641B4D7348000639BC /* WWCategoryCommonCell.xib */,
-				F4CBDB4B1B544998000DB347 /* WWCategoryFooterCell.h */,
-				F4CC6D0F1B59A66E005237F5 /* wwCategoryFooterCell.m */,
-				F4CBDB4D1B544998000DB347 /* WWCategoryFooterCell.xib */,
 				F4C2B1671B4D7A29000639BC /* WWCommonData.h */,
 				F4C2B1681B4D7A29000639BC /* WWCommonData.m */,
 			);
@@ -983,9 +965,9 @@
 		F4CD0F351B615EEB0006FAC4 /* ChangePassword */ = {
 			isa = PBXGroup;
 			children = (
-				F4CD0F361B615F590006FAC4 /* WWChangePasswordVC.h */,
-				F4CD0F371B615F590006FAC4 /* WWChangePasswordVC.m */,
-				F4CD0F381B615F590006FAC4 /* WWChangePasswordVC.xib */,
+				F4D8A7641B69520B00677F92 /* WWChangePasswordVC.h */,
+				F4D8A7651B69520B00677F92 /* WWChangePasswordVC.m */,
+				F4D8A7661B69520B00677F92 /* WWChangePasswordVC.xib */,
 			);
 			name = ChangePassword;
 			sourceTree = "<group>";
@@ -1018,9 +1000,9 @@
 			children = (
 				F4CD4E271B3082310081FE0B /* WWCategoryCell.h */,
 				F4CD4E281B3082310081FE0B /* WWCategoryCell.m */,
+				F4CD4E291B3082310081FE0B /* WWCategoryCell.xib */,
 				F4D50E0F1B5B11F000491A93 /* AnnotationPin.h */,
 				F4D50E101B5B11F000491A93 /* AnnotationPin.m */,
-				F4CD4E291B3082310081FE0B /* WWCategoryCell.xib */,
 				F4CD4E321B30830F0081FE0B /* WWCategoryTitleCell.h */,
 				F4CD4E331B30830F0081FE0B /* WWCategoryTitleCell.m */,
 				F4CD4E341B30830F0081FE0B /* WWCategoryTitleCell.xib */,
@@ -1033,12 +1015,6 @@
 				F4CD4E3B1B30830F0081FE0B /* WWCategoryMapCell.h */,
 				F4CD4E3C1B30830F0081FE0B /* WWCategoryMapCell.m */,
 				F4CD4E3D1B30830F0081FE0B /* WWCategoryMapCell.xib */,
-				F4CD4E3E1B30830F0081FE0B /* WWCategoryListingCell.h */,
-				F4CD4E3F1B30830F0081FE0B /* WWCategoryListingCell.m */,
-				F4CD4E401B30830F0081FE0B /* WWCategoryListingCell.xib */,
-				F4CB16EA1B373EEC0078419A /* WWCategoryPackageCell.h */,
-				F4CB16EB1B373EEC0078419A /* WWCategoryPackageCell.m */,
-				F4CB16EC1B373EEC0078419A /* WWCategoryPackageCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1194,7 +1170,6 @@
 				F4CCA5531B48593800F33FDA /* gotham-book.ttf in Resources */,
 				F4CD4E681B309D990081FE0B /* SenderMsgCell.xib in Resources */,
 				F4609B781B0BC4D500BCCCB8 /* WWLoginVC.xib in Resources */,
-				F4CBDB4F1B544998000DB347 /* WWCategoryFooterCell.xib in Resources */,
 				F4CB16A91B35AB310078419A /* WWScheduleVC.xib in Resources */,
 				C5D2101D1B60388200DEEBEE /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				F4609B661B0BBA8100BCCCB8 /* WWDashboardVC.xib in Resources */,
@@ -1204,12 +1179,12 @@
 				C5D210271B60388200DEEBEE /* JSQMessagesToolbarContentView.xib in Resources */,
 				F4CD0F341B5EC13D0006FAC4 /* WWProfileVC.xib in Resources */,
 				F4CD4E301B3082F20081FE0B /* WWCategoryDetailVC.xib in Resources */,
-				F4CB16EE1B373EEC0078419A /* WWCategoryPackageCell.xib in Resources */,
 				60C763111B53D19900387B54 /* WWBidListCell.xib in Resources */,
 				F4CD4E481B30830F0081FE0B /* WWCategoryMapCell.xib in Resources */,
 				F45332CE1B4B03DE00C09482 /* GothamRoundedBook.ttf in Resources */,
 				C5D210241B60388200DEEBEE /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
 				60C7630F1B53D19900387B54 /* WWInquiryCell.xib in Resources */,
+				F4D8A7681B69520B00677F92 /* WWChangePasswordVC.xib in Resources */,
 				F4CD4E591B309D020081FE0B /* WWMessageList.xib in Resources */,
 				F4CB16F81B3898CA0078419A /* YTPlayerView-iframe-player.html in Resources */,
 				60C763091B53D19900387B54 /* WWLeadsListVC.xib in Resources */,
@@ -1224,12 +1199,10 @@
 				F4CD4E6A1B309D990081FE0B /* ReceiverMsgCell.xib in Resources */,
 				F4609B731B0BC4B800BCCCB8 /* WWRegistrationVC.xib in Resources */,
 				F4C2B1611B4D70FF000639BC /* WWCategoryListCell.xib in Resources */,
-				F4CD0F3A1B615F590006FAC4 /* WWChangePasswordVC.xib in Resources */,
 				F4CD0F2D1B5EBEBC0006FAC4 /* WWSideMenuVC.xib in Resources */,
 				F4CD0F781B64ECE20006FAC4 /* DSLCalendarMonthSelectorView.xib in Resources */,
 				F4CD4E2B1B3082310081FE0B /* WWCategoryCell.xib in Resources */,
 				C5D20FFF1B60388200DEEBEE /* JSQMessagesAssets.bundle in Resources */,
-				F4CD4E4A1B30830F0081FE0B /* WWCategoryListingCell.xib in Resources */,
 				60C7630D1B53D19900387B54 /* WWInquiryDetailVC.xib in Resources */,
 				F4CD4E441B30830F0081FE0B /* WWCategoryImageCell.xib in Resources */,
 				60C7630B1B53D19900387B54 /* WWCreateBidVC.xib in Resources */,
@@ -1287,7 +1260,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5D2102E1B60394500DEEBEE /* JSQSystemSoundPlayer.m in Sources */,
-				F4CB16ED1B373EEC0078419A /* WWCategoryPackageCell.m in Sources */,
 				C5D210181B60388200DEEBEE /* JSQVideoMediaItem.m in Sources */,
 				C5D210151B60388200DEEBEE /* JSQMessagesAvatarImage.m in Sources */,
 				F4CB16A81B35AB310078419A /* WWScheduleVC.m in Sources */,
@@ -1335,8 +1307,8 @@
 				F4CFD7D71B1B02C500D53E56 /* WWForgotPassword.m in Sources */,
 				F4CD0F771B64ECE20006FAC4 /* DSLCalendarMonthSelectorView.m in Sources */,
 				F4CD0F7B1B64ECE20006FAC4 /* DSLCalendarRange.m in Sources */,
-				F4CD4E491B30830F0081FE0B /* WWCategoryListingCell.m in Sources */,
 				F47047811B0123F600FEFEFF /* RDVTabBarController.m in Sources */,
+				F4D8A7671B69520B00677F92 /* WWChangePasswordVC.m in Sources */,
 				F4CFD7EB1B1B6F8A00D53E56 /* FacebookManager.m in Sources */,
 				C5D210221B60388200DEEBEE /* JSQMessagesLabel.m in Sources */,
 				F4CD4E2A1B3082310081FE0B /* WWCategoryCell.m in Sources */,
@@ -1351,7 +1323,6 @@
 				C5D210171B60388200DEEBEE /* JSQPhotoMediaItem.m in Sources */,
 				F4CD4E451B30830F0081FE0B /* WWCategoryDescriptionCell.m in Sources */,
 				F4CD4E411B30830F0081FE0B /* WWCategoryTitleCell.m in Sources */,
-				F4CC6D101B59A66F005237F5 /* wwCategoryFooterCell.m in Sources */,
 				F4609B651B0BBA8100BCCCB8 /* WWDashboardVC.m in Sources */,
 				C5D2101E1B60388200DEEBEE /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
 				F4CD4E691B309D990081FE0B /* ReceiverMsgCell.m in Sources */,
@@ -1373,7 +1344,6 @@
 				F470473E1B011AE700FEFEFF /* main.m in Sources */,
 				C5D2101B1B60388200DEEBEE /* JSQMessagesCollectionViewCell.m in Sources */,
 				C5D210061B60388200DEEBEE /* UIView+JSQMessages.m in Sources */,
-				F4CD0F391B615F590006FAC4 /* WWChangePasswordVC.m in Sources */,
 				C5D210071B60388200DEEBEE /* JSQMessagesKeyboardController.m in Sources */,
 				F47047831B0123F600FEFEFF /* RDVTabBar.m in Sources */,
 				F4CD4E2F1B3082F20081FE0B /* WWCategoryDetailVC.m in Sources */,

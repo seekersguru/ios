@@ -12,10 +12,8 @@
 
 -(void)setTextFieldPlaceholder:(NSString*)string withcolor:(UIColor*)color withPadding:(UITextField*)textField{
      self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:string attributes:@{NSForegroundColorAttributeName: color}];
-    
-    
-    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 37, 18)];
-    textField.leftView = paddingView;
-    textField.leftViewMode = UITextFieldViewModeAlways;
+//    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 37, 18)];
+//    textField.leftView = paddingView;
+//    textField.leftViewMode = UITextFieldViewModeAlways;
 }
 @end

@@ -29,6 +29,8 @@
 @implementation WWCalendarView
 
 - (void)viewDidLoad {
+    [_calendarTitle setFont:[UIFont fontWithName:AppFont size:15.0]];
+    
     _filterView.frame = CGRectMake(0, self.view.frame.size.height+60, self.view.frame.size.width, self.view.frame.size.height);
     [self.navigationController.navigationBar setHidden:YES];
     _pickerData=[[NSArray alloc]initWithObjects:@"January",
@@ -58,7 +60,7 @@
     [formatter setDateFormat:@"mm"];
     NSString *month = [formatter stringFromDate:[NSDate date]];
     
-    [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:year month:month additionalFilter:@"" completionBlock:^(NSDictionary *response) {
+    [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:year month:@"7" additionalFilter:@"" completionBlock:^(NSDictionary *response) {
         NSMutableDictionary *eventDict = [NSMutableDictionary new];
         for (NSDictionary *events in [response valueForKey:@"data"]) {
             [eventDict setValue:[NSString stringWithFormat:@"%ld",(long)[[events valueForKey:@"count"] integerValue]] forKey:[NSString stringWithFormat:@"%ld",(long)[[events valueForKey:@"day"] integerValue]]];

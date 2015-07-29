@@ -90,7 +90,6 @@
 -(WWVendorDescription*)setVendorDescrition:(NSDictionary*)descriptionInfo{
     
     @try {
-        
         [self setArrDescriptionData:[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"key_values"] objectAtIndex:0]];
         
         if([[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] objectAtIndex:0]!= [NSNull null]){

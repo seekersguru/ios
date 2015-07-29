@@ -153,7 +153,7 @@ static AppDelegate * _sharedInstance;
                                 fourthNavigationController]];
     
     NSArray *tabBarItemImages = @[@"home", @"message", @"led",@"menu"];
-    NSArray *tabBarSelectedItemImages = @[@"home_icon", @"message_icon", @"led",@"menu_icon"];
+    NSArray *tabBarSelectedItemImages = @[@"home_icon", @"message_icon", @"sbid",@"menu_icon"];
     
     [self customizeTabBarForController:tabVC images:tabBarItemImages selectedImages:tabBarSelectedItemImages];
     return tabVC;

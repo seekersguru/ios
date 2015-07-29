@@ -12,8 +12,6 @@
 #import "WWCategoryImageCell.h"
 #import "WWCategoryDescriptionCell.h"
 #import "WWCategoryMapCell.h"
-#import "WWCategoryListingCell.h"
-#import "WWCategoryPackageCell.h"
 #import "WWVendorDetailData.h"
 
 #import "WWCategoryListCell.h"
@@ -21,7 +19,6 @@
 
 #import "WWCreateBidVC.h"
 #import "WWPrivateMessage.h"
-#import "WWCategoryFooterCell.h"
 #import "WWScheduleVC.h"
 #import "AnnotationPin.h"
 #import "WWProfileVC.h"
@@ -30,7 +27,7 @@
 #define DEGREES_IN_RADIANS(x) (M_PI * x / 180.0)
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
 
-@interface WWCategoryDetailVC ()<PackageDelegate,FacilityDelegate,DescriptionDelegate, MapCellDelegate,ImageCellDelegate, FooterCellDelegate>
+@interface WWCategoryDetailVC ()<DescriptionDelegate, MapCellDelegate,ImageCellDelegate>
 {
     NSMutableArray *arrVendorDetailData;
     NSArray *arrReadMoreData;
@@ -176,11 +173,6 @@
             NSDictionary *dicData=[arrReadMoreData objectAtIndex:indexPath.row];
             [cell setCommonData:dicData withIndexPath:indexPath];
         }
-        
-        
-//        NSDictionary *data = [[[[packageSectionDetailArray objectAtIndex:indexPath.section] allValues] objectAtIndex:0] objectAtIndex:indexPath.row];
-//        [cell.key setText:[[data allKeys] objectAtIndex:0]];
-//        [cell.value setText:[[data allValues] objectAtIndex:0]];
         return cell;
         
     }
@@ -196,14 +188,8 @@
                 }
                 [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
                 self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
-                
                 if(arrVendorDetailData.count>0){
-                   /*
-                    WWVendorDetailData *basicInfo= [arrVendorDetailData objectAtIndex:0];
-                    cell.name.text= [NSString stringWithFormat:@"%@",basicInfo.name];
-                    cell.contactNumber.text= [NSString stringWithFormat:@"%@",basicInfo.contact];
-                    cell.address.text= [NSString stringWithFormat:@"%@",basicInfo.top_address];
-                    */
+                
                 }
                 return cell;
             }
@@ -235,10 +221,49 @@
             {
                 if(arrVendorDetailData.count>0){
                     @try {
-                        NSLog(@"indexPath :%lu array count :%lu", indexPath.row, arrVendorDetailData.count);
-//                        if (indexPath.row==arrVendorDetailData.count+1) {
-//                            static NSString *CellIdentifier = @"WWCategoryFooterCell";
-//                            WWCategoryFooterCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                        
+                        id object= [arrVendorDetailData objectAtIndex:indexPath.row-1];
+                        if([object isKindOfClass:[WWVendorDescription class]]){
+                            static NSString *CellIdentifier = @"WWCategoryListCell";
+                            WWCategoryListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                            if (cell == nil) {
+                                NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+                                cell = [topLevelObjects objectAtIndex:0];
+                            }
+                            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+                            self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
+                            cell.delegate= self;
+                            cell.btnReadMore.tag=indexPath.row;
+                            
+                            WWVendorDescription *descData=(WWVendorDescription*)object;
+                            [cell getDescriptionData:descData.arrDescriptionData];
+                            cell.lblHeading.text= descData.heading;
+                            cell.lblHeading.font = [UIFont fontWithName:AppFont size:12.0];
+                            
+                            if (descData.descReadMoreData.count==0) {
+                                [cell.btnReadMore setHidden:YES];
+                            }
+                            else{
+                                [cell.btnReadMore setHidden:NO];
+                            }
+                            return cell;
+                        }
+                        else if ([object isKindOfClass:[WWVendorMap class]]){
+                            static NSString *CellIdentifier = @"WWCategoryMapCell";
+                            WWCategoryMapCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                            if (cell == nil) {
+                                NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+                                cell = [topLevelObjects objectAtIndex:0];
+                            }
+                            cell.delegate= self;
+                            [cell showCoordinatesOnMapWithLatitude:[(WWVendorMap *)object latitude] longitude:[(WWVendorMap *)object longitude]];
+                            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+                            self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
+                            return cell;
+                        }
+//                        else if ([object isKindOfClass:[WWVendorPackage class]]){
+//                            static NSString *CellIdentifier = @"WWCategoryPackageCell";
+//                            WWCategoryPackageCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 //                            if (cell == nil) {
 //                                NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
 //                                cell = [topLevelObjects objectAtIndex:0];
@@ -248,53 +273,6 @@
 //                            self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
 //                            return cell;
 //                        }
-                        //else{
-                            id object= [arrVendorDetailData objectAtIndex:indexPath.row-1];
-                            if([object isKindOfClass:[WWVendorDescription class]]){
-                                static NSString *CellIdentifier = @"WWCategoryListCell";
-                                WWCategoryListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                                if (cell == nil) {
-                                    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
-                                    cell = [topLevelObjects objectAtIndex:0];
-                                }
-                                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-                                self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
-                                cell.delegate= self;
-                                cell.btnReadMore.tag=indexPath.row;
-                                
-                                WWVendorDescription *descData=(WWVendorDescription*)object;
-                                [cell getDescriptionData:descData.arrDescriptionData];
-                                cell.lblHeading.text= descData.heading;
-                                cell.lblHeading.font = [UIFont fontWithName:AppFont size:12.0];
-                                
-                                return cell;
-                            }
-                            else if ([object isKindOfClass:[WWVendorMap class]]){
-                                static NSString *CellIdentifier = @"WWCategoryMapCell";
-                                WWCategoryMapCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                                if (cell == nil) {
-                                    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
-                                    cell = [topLevelObjects objectAtIndex:0];
-                                }
-                                cell.delegate= self;
-                                [cell showCoordinatesOnMapWithLatitude:[(WWVendorMap *)object latitude] longitude:[(WWVendorMap *)object longitude]];
-                                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-                                self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
-                                return cell;
-                            }
-                            else if ([object isKindOfClass:[WWVendorPackage class]]){
-                                static NSString *CellIdentifier = @"WWCategoryPackageCell";
-                                WWCategoryPackageCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                                if (cell == nil) {
-                                    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
-                                    cell = [topLevelObjects objectAtIndex:0];
-                                }
-                                cell.delegate= self;
-                                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-                                self.tblCategoryDetail.separatorStyle = UITableViewCellSeparatorStyleNone;
-                                return cell;
-                            }
-                       // }
                     }
                     @catch (NSException *exception) {
                         NSLog(@"Exception :%@", exception);
@@ -316,6 +294,7 @@
 BOOL isRowClicked;
 NSInteger selectedRow = -1;
 NSInteger lastArrayCount = 0;
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     BOOL shouldSelect = NO;
     for (NSDictionary *dict in originalRowsArray) {
@@ -411,11 +390,7 @@ NSInteger lastArrayCount = 0;
                 break;
             default:
             {
-//                if (indexPath.row==14) {
-//                    return 50;
-//                }
-//                else
-                    return 200;
+                    return 170;
             }
                 break;
         }

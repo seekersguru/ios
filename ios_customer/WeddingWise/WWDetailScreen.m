@@ -50,25 +50,13 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-//    [self setHidesBottomBarWhenPushed:NO];
+
 }
 - (IBAction)radioTypeSelection:(UIButton *)sender {
     if (!filterSelectedArray) {
         filterSelectedArray = [NSMutableArray new];
     }
-    
-    
-    
-    
-    
-    
     NSMutableDictionary *filterDict = [NSMutableDictionary new];
-    
-//    for (NSDictionary *dict in filterArray) {
-//        for (NSString *type in [dict valueForKey:@"values"]) {
-//            [filterDict setObject:[dict valueForKey:@"name"] forKey:type];
-//        }
-//    }
     
     for (int i = 0; i < filterArray.count; i++) {
         NSDictionary *dict = filterArray[i];
@@ -95,49 +83,6 @@
     }];
     [filterSelectedArray addObject:@{key1:value1}];
     sender.selected = YES;
-    
-//    switch (sender.tag) {
-//        case 1:
-//            [(UIButton * )[sender.superview viewWithTag:2] setSelected:NO];
-//            [sender setSelected:YES];
-//            filterType = @"ENQUIRY";
-//            break;
-//        case 2:
-//            [(UIButton * )[sender.superview viewWithTag:1] setSelected:NO];
-//            [sender setSelected:YES];
-//            filterType = @"BOOKING";
-//            break;
-//        case 3:
-//            [(UIButton * )[sender.superview viewWithTag:4] setSelected:NO];
-//            [(UIButton * )[sender.superview viewWithTag:5] setSelected:NO];
-//            [sender setSelected:YES];
-//            filterTime = @"MORNING";
-//            break;
-//        case 4:
-//            [(UIButton * )[sender.superview viewWithTag:3] setSelected:NO];
-//            [(UIButton * )[sender.superview viewWithTag:5] setSelected:NO];
-//            [sender setSelected:YES];
-//            filterTime = @"ALL DAY";
-//            break;
-//        case 5:
-//            [(UIButton * )[sender.superview viewWithTag:3] setSelected:NO];
-//            [(UIButton * )[sender.superview viewWithTag:4] setSelected:NO];
-//            [sender setSelected:YES];
-//            filterTime = @"EVENING";
-//            break;
-//        case 6:
-//            [(UIButton * )[sender.superview viewWithTag:7] setSelected:NO];
-//            [sender setSelected:YES];
-//            filterDate = @"EVENT DATE";
-//            break;
-//        case 7:
-//            [(UIButton * )[sender.superview viewWithTag:6] setSelected:NO];
-//            [sender setSelected:YES];
-//            filterDate = @"BOOKING DATE";
-//            break;
-//        default:
-//            break;
-//    }
 }
 
 - (IBAction)checkTypeSelection:(UIButton *)sender{

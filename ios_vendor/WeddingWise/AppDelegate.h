@@ -30,5 +30,7 @@
 +(instancetype)sharedAppDelegate;
 
 @property(nonatomic, assign)BOOL isFaceBookLogin;
+
+@property(nonatomic, strong)NSString *vendorEmailID;
 @end
 

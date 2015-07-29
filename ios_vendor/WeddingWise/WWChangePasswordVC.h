@@ -12,7 +12,9 @@
 @property(nonatomic, weak)IBOutlet UITextField *txtOldPassword;
 @property(nonatomic, weak)IBOutlet UITextField *txtNewPassword;
 @property(nonatomic, weak)IBOutlet UITextField *txtConfirmPassword;
+@property (weak, nonatomic) IBOutlet UIButton *btnSave;
 
-
+@property(nonatomic, weak)IBOutlet UILabel *lblTitle;
+- (IBAction)btnSavePassword:(id)sender;
 
 @end

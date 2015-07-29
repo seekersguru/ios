@@ -59,6 +59,7 @@
     [self setMaxPerson:[NSNumber numberWithInteger:[bidInfo[@"bid_options"][@"quantity"][@"max"] integerValue]]];
     [self setMinPerson:[NSNumber numberWithInteger:[bidInfo[@"bid_options"][@"quantity"][@"min"][@"value"] integerValue]]];
     [self setBidDictionary:bidInfo];
+    
 }
 @end
 
@@ -87,13 +88,45 @@
 
 @implementation WWVendorDescription
 -(WWVendorDescription*)setVendorDescrition:(NSDictionary*)descriptionInfo{
-
-    [self setArrDescriptionData:[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"key_values"]];
-    [self setDescReadMoreData:[[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] valueForKey:@"key_values"]];
     
-    NSArray *strHeading=[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"heading"];
-    [self setHeading:[strHeading objectAtIndex:0]];
-    
+    @try {
+        
+        [self setArrDescriptionData:[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"key_values"] objectAtIndex:0]];
+        
+        if([[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] objectAtIndex:0]!= [NSNull null]){
+            
+            NSLog(@"Type :%@",[[[[[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] valueForKey:@"type"] objectAtIndex:0] objectAtIndex:0] objectAtIndex:0]);
+            
+            [self setType:[[[[[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] valueForKey:@"type"] objectAtIndex:0] objectAtIndex:0] objectAtIndex:0]];
+            
+            if([[[[[[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] valueForKey:@"type"] objectAtIndex:0] objectAtIndex:0] objectAtIndex:0] isEqualToString:@"key_value"]){
+                [self setDescReadMoreData:[[[[[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] valueForKey:@"key_values"] objectAtIndex:0] objectAtIndex:0] objectAtIndex:0]];
+            }
+            else if ([[[[[[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] valueForKey:@"type"] objectAtIndex:0] objectAtIndex:0] objectAtIndex:0] isEqualToString:@"packages"]){
+                
+                [self setDescReadMoreData:[[[[[descriptionInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] objectAtIndex:0] objectAtIndex:0]];
+            }
+        }
+        else{
+            NSLog(@"Value is null");
+        }
+        
+        NSString *strHeading= [descriptionInfo valueForKey:@"heading"];
+        if(strHeading !=(id)[NSNull null]){
+            [self setHeading:strHeading];
+        }
+        else{
+            [self setHeading:@"N/A"];
+        }
+        
+        
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Exception :%@", exception);
+    }
+    @finally {
+        
+    }
     return self;
 }
 @end
@@ -117,10 +150,14 @@
 -(WWVendorPackage*)setVendorPackage:(NSDictionary*)packageInfo{
     
     [self setArrPackageData:[[packageInfo valueForKey:@"data_display"] valueForKey:@"key_values"]];
+    
     [self setPackageReadMoreData:[[[[packageInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"data_display"] valueForKey:@"key_values"]];
     
-    NSArray *strHeading=[[[packageInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"heading"];
+    //NSArray *strHeading=[[[packageInfo valueForKey:@"data_display"] valueForKey:@"read_more"] valueForKey:@"heading"];
+    NSArray *strHeading=[[packageInfo valueForKey:@"data_display"] valueForKey:@"heading"];
+    
     [self setHeading:[strHeading objectAtIndex:0]];
+    
     
     return self;
 }
@@ -128,7 +165,8 @@
 
 @implementation WWVendorMap : NSObject
 -(WWVendorMap*)setVendorMap:(NSDictionary*)mapInfo{
-    
+    [self setLatitude:[NSString stringWithFormat:@"%@",[[[mapInfo valueForKey:@"data_display"] objectAtIndex:0] valueForKey:@"lat"]]];
+    [self setLongitude:[NSString stringWithFormat:@"%@",[[[mapInfo valueForKey:@"data_display"] objectAtIndex:0] valueForKey:@"long"]]];
     return self;
 }
 @end
