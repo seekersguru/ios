@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="133"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </scrollView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fav_icon_3" id="8XR-T7-P39">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fav_icon_3" id="8XR-T7-P39">
                         <rect key="frame" x="8" y="8" width="24" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -61,7 +61,7 @@
                 <outlet property="categoryImageScrollView" destination="ftb-iZ-Lzk" id="3zX-VE-kmC"/>
                 <outlet property="lblPrice" destination="Q07-FR-cf4" id="6XT-Js-yqB"/>
             </connections>
-            <point key="canvasLocation" x="188" y="207.5"/>
+            <point key="canvasLocation" x="130" y="123"/>
         </tableViewCell>
     </objects>
     <resources>

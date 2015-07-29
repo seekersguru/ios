@@ -30,6 +30,8 @@
 @implementation WWCalendarView
 
 - (void)viewDidLoad {
+    [_calendarTitle setFont:[UIFont fontWithName:AppFont size:15.0]];
+    
     _filterView.frame = CGRectMake(0, self.view.frame.size.height+60, self.view.frame.size.width, self.view.frame.size.height);
     [self.navigationController.navigationBar setHidden:YES];
     _pickerData=[[NSArray alloc]initWithObjects:@"January",

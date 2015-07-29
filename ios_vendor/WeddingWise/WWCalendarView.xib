@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WWCalendarView">
             <connections>
+                <outlet property="calendarTitle" destination="iEJ-Rb-fqD" id="Mud-R6-auh"/>
                 <outlet property="calendarView" destination="HI4-H6-V5C" id="1hx-Vb-B5u"/>
                 <outlet property="filter1Label" destination="CS7-r4-7rJ" id="ovS-3f-gEQ"/>
                 <outlet property="filter2Label" destination="O9r-12-E8S" id="qGb-oO-Gfd"/>
@@ -24,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="TDY-qZ-ePV">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="700" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" alpha="0.39999999999999963" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="MoV-Bo-mXD">

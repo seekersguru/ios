@@ -10,6 +10,7 @@
 
 @implementation WWLoginUserData
 -(instancetype)setUserData:(NSDictionary*)userData{
+    
     [self setIdentifier:[userData valueForKey:@"identifier"]];
     return self;
 }

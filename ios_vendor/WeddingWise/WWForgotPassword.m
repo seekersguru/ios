@@ -41,12 +41,17 @@
         //Call web service
         NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                      _txtEmailAddress.text,@"email",
-                                     @"forgot_password",@"action",
+                                     @"vendor_forgot_password",@"action",
                                      nil];
         
         [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
          {
-             
+             if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+                 [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+             }
+             else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+                 [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+             }
          }
                                                  failure:^(NSString *response)
          {

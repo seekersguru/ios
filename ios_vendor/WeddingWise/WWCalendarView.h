@@ -14,6 +14,7 @@
 @property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
 @property (nonatomic, weak) IBOutlet UIImageView *imgPickerBG;
 @property(nonatomic, weak)IBOutlet UIView *filterView;
+@property (weak, nonatomic) IBOutlet UILabel *calendarTitle;
 
 -(IBAction)btnDonePressed:(id)sender;
 -(IBAction)submitButtonPressed:(id)sender;

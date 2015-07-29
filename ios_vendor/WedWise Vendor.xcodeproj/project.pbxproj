@@ -124,8 +124,6 @@
 		F4CBDB2E1B53060A000DB347 /* WWLoginUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB2D1B53060A000DB347 /* WWLoginUserData.m */; };
 		F4CBDB3E1B5307B6000DB347 /* WWLeadsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB301B5307B6000DB347 /* WWLeadsListVC.m */; };
 		F4CBDB3F1B5307B6000DB347 /* WWLeadsListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB311B5307B6000DB347 /* WWLeadsListVC.xib */; };
-		F4CBDB401B5307B6000DB347 /* WWCreateBidVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB331B5307B6000DB347 /* WWCreateBidVC.m */; };
-		F4CBDB411B5307B6000DB347 /* WWCreateBidVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB341B5307B6000DB347 /* WWCreateBidVC.xib */; };
 		F4CBDB461B5307B6000DB347 /* WWBidListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB3C1B5307B6000DB347 /* WWBidListCell.m */; };
 		F4CBDB471B5307B6000DB347 /* WWBidListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB3D1B5307B6000DB347 /* WWBidListCell.xib */; };
 		F4CBDB4A1B530802000DB347 /* WWVendorDetailData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB491B530802000DB347 /* WWVendorDetailData.m */; };
@@ -157,6 +155,9 @@
 		F4D08A8D1B20D72800AF8E36 /* WWCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D08A8B1B20D72800AF8E36 /* WWCalendarView.xib */; };
 		F4D8A7621B65119F00677F92 /* WWChangePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8A7601B65119F00677F92 /* WWChangePasswordVC.m */; };
 		F4D8A7631B65119F00677F92 /* WWChangePasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D8A7611B65119F00677F92 /* WWChangePasswordVC.xib */; };
+		F4D8A76C1B6957DD00677F92 /* WWCreateBidVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8A76A1B6957DD00677F92 /* WWCreateBidVC.m */; };
+		F4D8A76D1B6957DD00677F92 /* WWCreateBidVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D8A76B1B6957DD00677F92 /* WWCreateBidVC.xib */; };
+		F4D8A7701B69584000677F92 /* NIDropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8A76F1B69584000677F92 /* NIDropDown.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -362,9 +363,6 @@
 		F4CBDB2F1B5307B6000DB347 /* WWLeadsListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWLeadsListVC.h; sourceTree = "<group>"; };
 		F4CBDB301B5307B6000DB347 /* WWLeadsListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWLeadsListVC.m; sourceTree = "<group>"; };
 		F4CBDB311B5307B6000DB347 /* WWLeadsListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWLeadsListVC.xib; sourceTree = "<group>"; };
-		F4CBDB321B5307B6000DB347 /* WWCreateBidVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCreateBidVC.h; sourceTree = "<group>"; };
-		F4CBDB331B5307B6000DB347 /* WWCreateBidVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCreateBidVC.m; sourceTree = "<group>"; };
-		F4CBDB341B5307B6000DB347 /* WWCreateBidVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCreateBidVC.xib; sourceTree = "<group>"; };
 		F4CBDB3B1B5307B6000DB347 /* WWBidListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWBidListCell.h; sourceTree = "<group>"; };
 		F4CBDB3C1B5307B6000DB347 /* WWBidListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWBidListCell.m; sourceTree = "<group>"; };
 		F4CBDB3D1B5307B6000DB347 /* WWBidListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWBidListCell.xib; sourceTree = "<group>"; };
@@ -414,6 +412,11 @@
 		F4D8A75F1B65119F00677F92 /* WWChangePasswordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWChangePasswordVC.h; sourceTree = "<group>"; };
 		F4D8A7601B65119F00677F92 /* WWChangePasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWChangePasswordVC.m; sourceTree = "<group>"; };
 		F4D8A7611B65119F00677F92 /* WWChangePasswordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWChangePasswordVC.xib; sourceTree = "<group>"; };
+		F4D8A7691B6957DD00677F92 /* WWCreateBidVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCreateBidVC.h; sourceTree = "<group>"; };
+		F4D8A76A1B6957DD00677F92 /* WWCreateBidVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCreateBidVC.m; sourceTree = "<group>"; };
+		F4D8A76B1B6957DD00677F92 /* WWCreateBidVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWCreateBidVC.xib; sourceTree = "<group>"; };
+		F4D8A76E1B69584000677F92 /* NIDropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIDropDown.h; sourceTree = "<group>"; };
+		F4D8A76F1B69584000677F92 /* NIDropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIDropDown.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -878,14 +881,16 @@
 		F4CB170A1B3B2ABA0078419A /* Leads */ = {
 			isa = PBXGroup;
 			children = (
+				F4D8A76E1B69584000677F92 /* NIDropDown.h */,
+				F4D8A76F1B69584000677F92 /* NIDropDown.m */,
 				F4CBDB481B530802000DB347 /* WWVendorDetailData.h */,
 				F4CBDB491B530802000DB347 /* WWVendorDetailData.m */,
 				F4CBDB2F1B5307B6000DB347 /* WWLeadsListVC.h */,
 				F4CBDB301B5307B6000DB347 /* WWLeadsListVC.m */,
 				F4CBDB311B5307B6000DB347 /* WWLeadsListVC.xib */,
-				F4CBDB321B5307B6000DB347 /* WWCreateBidVC.h */,
-				F4CBDB331B5307B6000DB347 /* WWCreateBidVC.m */,
-				F4CBDB341B5307B6000DB347 /* WWCreateBidVC.xib */,
+				F4D8A7691B6957DD00677F92 /* WWCreateBidVC.h */,
+				F4D8A76A1B6957DD00677F92 /* WWCreateBidVC.m */,
+				F4D8A76B1B6957DD00677F92 /* WWCreateBidVC.xib */,
 				F4CD0F4C1B64235E0006FAC4 /* WWInquiryDetailVC.h */,
 				F4CD0F4D1B64235E0006FAC4 /* WWInquiryDetailVC.m */,
 				F4CD0F4E1B64235E0006FAC4 /* WWInquiryDetailVC.xib */,
@@ -1149,8 +1154,8 @@
 				C5998FE11B62FB3700A23482 /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				F4D08A8D1B20D72800AF8E36 /* WWCalendarView.xib in Resources */,
 				F4CD0F501B64235E0006FAC4 /* WWInquiryDetailVC.xib in Resources */,
-				F4CBDB411B5307B6000DB347 /* WWCreateBidVC.xib in Resources */,
 				F4CBDB1F1B52F9D1000DB347 /* WWMessageList.xib in Resources */,
+				F4D8A76D1B6957DD00677F92 /* WWCreateBidVC.xib in Resources */,
 				F4CD0F551B6423A90006FAC4 /* WWInquiryCell.xib in Resources */,
 				F470474C1B011AE700FEFEFF /* Images.xcassets in Resources */,
 				C54844A01B68F631007882BF /* GooglePlus.bundle in Resources */,
@@ -1205,9 +1210,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D8A76C1B6957DD00677F92 /* WWCreateBidVC.m in Sources */,
 				C5998FCE1B62FB3700A23482 /* JSQMessagesMediaViewBubbleImageMasker.m in Sources */,
-				F4CBDB401B5307B6000DB347 /* WWCreateBidVC.m in Sources */,
 				F4C4EA801B2CD9A000D2CD7F /* WWBookingHeaderCell.m in Sources */,
+				F4D8A7701B69584000677F92 /* NIDropDown.m in Sources */,
 				C5998FDD1B62FB3700A23482 /* JSQMessagesCollectionViewCell.m in Sources */,
 				C5998FDC1B62FB3700A23482 /* JSQMessagesCollectionView.m in Sources */,
 				F47047441B011AE700FEFEFF /* WeddingWise.xcdatamodeld in Sources */,

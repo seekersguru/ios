@@ -35,68 +35,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WeddingWise/WWPrivateMessage.m"
-            timestampString = "459548694.802463"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "-didPressSendButton:withMessageText:senderId:senderDisplayName:date:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeddingWise/WWPrivateMessage.m"
-            timestampString = "459548694.802463"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "-didPressSendButton:withMessageText:senderId:senderDisplayName:date:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[WWPrivateMessage didPressSendButton:withMessageText:senderId:senderDisplayName:date:]"
-                  moduleName = "WeddingWise"
-                  urlString = "file:///Users/Home/Desktop/Projects/WeddingWise_Final/ios%202/ios_customer/WeddingWise/WWPrivateMessage.m"
-                  timestampString = "459620255.486833"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "140"
-                  endingLineNumber = "140"
-                  offsetFromSymbolStart = "1337">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__87-[WWPrivateMessage didPressSendButton:withMessageText:senderId:senderDisplayName:date:]_block_invoke"
-                  moduleName = "WeddingWise"
-                  urlString = "file:///Users/Home/Desktop/Projects/WeddingWise_Final/ios%202/ios_customer/WeddingWise/WWPrivateMessage.m"
-                  timestampString = "459620255.487048"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "140"
-                  endingLineNumber = "140"
-                  offsetFromSymbolStart = "46">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "WeddingWise/JSQMessagesViewController/Factories/JSQMessagesMediaViewBubbleImageMasker.m"
             timestampString = "459549370.754007"
             startingColumnNumber = "9223372036854775807"
@@ -145,7 +83,7 @@
                   symbolName = "-[WWCreateBidVC bidItAction:]"
                   moduleName = "WeddingWise"
                   urlString = "file:///Users/Home/Desktop/Projects/WeddingWise_Final/ios%202/ios_customer/WeddingWise/WWCreateBidVC.m"
-                  timestampString = "459620255.500048"
+                  timestampString = "459892452.752972"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "370"
@@ -159,7 +97,7 @@
                   symbolName = "__29-[WWCreateBidVC bidItAction:]_block_invoke"
                   moduleName = "WeddingWise"
                   urlString = "file:///Users/Home/Desktop/Projects/WeddingWise_Final/ios%202/ios_customer/WeddingWise/WWCreateBidVC.m"
-                  timestampString = "459620255.501969"
+                  timestampString = "459892452.753403"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "370"
@@ -167,6 +105,22 @@
                   offsetFromSymbolStart = "46">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeddingWise/WWCreateBidVC.m"
+            timestampString = "459892426.86421"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -23,7 +23,7 @@
 @end
 
 @interface WWVendorBidData : NSObject
-@property(nonatomic, strong) NSArray *time_slot;
+@property(nonatomic, strong) NSMutableArray *time_slot;
 @property(nonatomic, strong) NSDictionary *package;
 @property(nonatomic, strong) NSDictionary *quoted;
 @property(nonatomic, strong) NSNumber *maxItemPerPlate;
@@ -31,12 +31,13 @@
 @property(nonatomic, strong) NSNumber *maxPerson;
 @property(nonatomic, strong) NSNumber *minPerson;
 @property(nonatomic, strong) NSDictionary *bidDictionary;
+
 + (instancetype)sharedInstance;
 -(void)setVendorBidInfo:(NSDictionary*)bidInfo;
 @end
 
 @interface WWVendorBookingData : NSObject
-@property(nonatomic, strong) NSArray *time_slot;
+@property(nonatomic, strong) NSMutableArray *time_slot;
 @property(nonatomic, strong) NSDictionary *package;
 @property(nonatomic, strong) NSDictionary *bookDictionary;
 + (instancetype)sharedInstance;
@@ -48,6 +49,9 @@
 @property(nonatomic, strong)NSString* type;
 
 @property(nonatomic, strong)NSArray *arrDescriptionData;
+@property(nonatomic, strong)NSArray *arrPackageData;
+
+
 @property(nonatomic, strong)NSArray *descReadMoreData;
 
 -(WWVendorDescription*)setVendorDescrition:(NSDictionary*)descriptionInfo;
@@ -80,7 +84,8 @@
 @interface WWVendorMap : NSObject
 @property(nonatomic, strong)NSString* heading;
 @property(nonatomic, strong)NSString* type;
-
+@property(nonatomic, strong) NSString* latitude;
+@property(nonatomic, strong) NSString* longitude;
 @property(nonatomic, strong)NSArray *arrPackageData;
 @property(nonatomic, strong)NSArray *packageReadMoreData;
 

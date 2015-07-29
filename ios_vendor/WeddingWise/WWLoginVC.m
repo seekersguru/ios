@@ -52,6 +52,9 @@
 -(void)setTextFieldPlacehoder{
     [_txtEmailAddress setTextFieldPlaceholder:@"Email Address" withcolor:[UIColor darkGrayColor] withPadding:_txtEmailAddress];
     [_txtPassword setTextFieldPlaceholder:@"Password" withcolor:[UIColor darkGrayColor] withPadding:_txtPassword];
+    
+    [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_txtEmailAddress withText:_txtEmailAddress.text];
+    [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_txtPassword withText:_txtPassword.text];
 }
 -(IBAction)btnSignInPressed:(id)sender{
     if([self checkValidations]){
@@ -81,6 +84,7 @@
              //Login successfully
              WWLoginUserData *userData=[[WWLoginUserData alloc]setUserData:[responseDics valueForKey:@"json"]];
              [AppDelegate sharedAppDelegate].userData= userData;
+             [AppDelegate sharedAppDelegate].vendorEmailID= _txtEmailAddress.text;
              
              [[AppDelegate sharedAppDelegate]setupViewControllers:self.navigationController];
          }
@@ -94,12 +98,12 @@
 -(BOOL)checkValidations{
     if (_txtEmailAddress.text && _txtEmailAddress.text.length == 0)
     {
-        [[WWCommon getSharedObject]createAlertView:@"Wedding Wise" :@"Please enter email address" :nil :000 ];
+        [[WWCommon getSharedObject]createAlertView:kAppName :@"Please enter email address" :nil :000 ];
         return YES;
     }
     if (_txtPassword.text && _txtPassword.text.length == 0)
     {
-        [[WWCommon getSharedObject]createAlertView:@"Wedding Wise" :@"Please enter password" :nil :000 ];
+        [[WWCommon getSharedObject]createAlertView:kAppName :@"Please enter password" :nil :000 ];
         return NO;
     }
     return YES;
