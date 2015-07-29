@@ -12,6 +12,8 @@
 @required
 - (void)showVideoPlayer;
 
+@optional
+- (void)imageSelected:(UIImage *)image;
 @end
 
 @interface WWCategoryImageCell : UITableViewCell

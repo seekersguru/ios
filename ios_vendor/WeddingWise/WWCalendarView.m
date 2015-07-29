@@ -22,6 +22,7 @@
     __weak IBOutlet UILabel *filter1Label;
     __weak IBOutlet UILabel *filter2Label;
     __weak IBOutlet UILabel *filter3Label;
+    
 }
 @property (nonatomic, weak) IBOutlet DSLCalendarView *calendarView;
 @end
@@ -57,7 +58,7 @@
     NSString *year = [formatter stringFromDate:[NSDate date]];
     [formatter setDateFormat:@"mm"];
     NSString *month = [formatter stringFromDate:[NSDate date]];
-    
+    [[WWBasicDetails sharedInstance] setCurrentDateInCalendar:[NSDate date]];
     [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:year month:month additionalFilter:@"" completionBlock:^(NSDictionary *response) {
         NSMutableDictionary *eventDict = [NSMutableDictionary new];
         for (NSDictionary *events in [response valueForKey:@"data"]) {
@@ -74,6 +75,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+   
     lastSelectedDate = nil;
     [self hideView];
     filter1 = @"";
@@ -86,7 +88,6 @@
         if ([bt isKindOfClass:[UIButton class]]) {
             [bt setSelected:NO];
         }
-        
     }
 }
 - (IBAction)clearAllFilters:(id)sender {
@@ -242,6 +243,7 @@
     
 }
 #pragma mark: Date range methods:
+NSString *selectedDatesString = @"";
 -(void)getAllDatesFromRange:(NSString*)startingDate withLastDate:(NSString*)lastDate
 {
     
@@ -250,7 +252,7 @@
     NSDate *startDate = [f dateFromString:startingDate];
     NSDate *endDate = [f dateFromString:lastDate];
     
-    NSMutableArray *dates = [@[startDate] mutableCopy];
+//    NSMutableArray *dates = [@[startDate] mutableCopy];
     
     
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -266,12 +268,9 @@
         NSDate *date = [gregorianCalendar dateByAddingComponents:newComponents
                                                           toDate:startDate
                                                          options:0];
-        [dates addObject:date];
+        NSString *dateString = [f stringFromDate:date];
+        selectedDatesString = [selectedDatesString stringByAppendingFormat:@"%@%@",(selectedDatesString.length == 0)?@"":@",",dateString];
     }
-    
-    [dates addObject:endDate];
-    
-    NSLog(@"dates :%@",dates);
 }
 
 
@@ -281,11 +280,11 @@
         NSLog( @"Selected %ld/%ld - %ld/%ld", (long)range.startDay.day, (long)range.startDay.month, (long)range.endDay.day, (long)range.endDay.month);
         //store this date to session/singleton instance
         
-        NSString *startDate= [NSString stringWithFormat:@"%ld-%ld-%ld",(long)range.startDay.year,(long)range.startDay.month,(long)range.startDay.day];
-        NSString *endDate= [NSString stringWithFormat:@"%ld-%ld-%ld",(long)range.endDay.year,(long)range.endDay.month,(long)range.endDay.day];
+        NSString *startDate= [NSString stringWithFormat:@"%ld-%02ld-%02ld",(long)range.startDay.year,(long)range.startDay.month,(long)range.startDay.day];
+        NSString *endDate= [NSString stringWithFormat:@"%ld-%02ld-%02ld",(long)range.endDay.year,(long)range.endDay.month,(long)range.endDay.day];
         
         if([startDate isEqualToString:endDate]){
-            [[WWBasicDetails sharedInstance] setCalendarDate:[NSString stringWithFormat:@"%ld-%ld-%ld",(long)range.startDay.day,(long)range.startDay.month,(long)range.startDay.year]];
+            [[WWBasicDetails sharedInstance] setCalendarDate:[NSString stringWithFormat:@"%02ld-%02ld-%ld",(long)range.startDay.day,(long)range.startDay.month,(long)range.startDay.year]];
             
             if (lastSelectedDate != nil) {
                 NSDate *date = [[NSCalendar currentCalendar] dateFromComponents:range.startDay];
@@ -340,6 +339,8 @@
 - (void)calendarView:(DSLCalendarView *)calendarView didChangeToVisibleMonth:(NSDateComponents *)month {
     NSLog(@"Now showing %@", month);
     selectedMonthFromCalendar = [[NSCalendar currentCalendar] dateFromComponents:month];
+    
+    [[WWBasicDetails sharedInstance] setCurrentDateInCalendar:selectedMonthFromCalendar];
     [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:[NSString stringWithFormat:@"%ld",(long)month.year] month:[NSString stringWithFormat:@"%02ld",(long)month.month] additionalFilter:@"" completionBlock:^(NSDictionary *response) {
         NSMutableDictionary *eventDict = [NSMutableDictionary new];
         for (NSDictionary *events in [response valueForKey:@"data"]) {

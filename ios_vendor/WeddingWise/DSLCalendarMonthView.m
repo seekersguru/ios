@@ -56,7 +56,7 @@
 #pragma mark - Initialisation
 
 // Designated initialiser
-- (id)initWithMonth:(NSDateComponents*)month width:(CGFloat)width dayViewClass:(Class)dayViewClass dayViewHeight:(CGFloat)dayViewHeight showEvent:(BOOL)showEvent withEventDict:(NSDictionary *)eventDict{
+- (id)initWithMonth:(NSDateComponents*)month width:(CGFloat)width dayViewClass:(Class)dayViewClass dayViewHeight:(CGFloat)dayViewHeight showEvent:(BOOL)showEvent withEventDict:(NSDictionary *)eventDict withAvailabilityDict:(NSDictionary *)availabilityDict{
     self = [super initWithFrame:CGRectMake(0, 0, width, dayViewHeight)];
     if (self != nil) {
         // Initialise properties
@@ -66,6 +66,7 @@
         _dayViewClass = dayViewClass;
         _showEventOnDate = showEvent;
         _eventDict = eventDict;
+        _availabilityDict = availabilityDict;
         [self createDayViews];
     }
 
@@ -107,7 +108,7 @@
                 
                 DSLCalendarDayView *dayView = [[_dayViewClass alloc] initWithFrame:dayFrame];
                 dayView.day = day;
-                if (self.showEventOnDate) {
+//                if (self.showEventOnDate) {
                     //show events in day
                     NSString *currentYear = [NSString stringWithFormat:@"%ld",(long)day.year];
                     NSString *currentMonth = [NSString stringWithFormat:@"%ld",(long)day.month];
@@ -123,7 +124,18 @@
                             }
                         }
                     }
+                if ([[_availabilityDict allKeys] containsObject:currentYear]) {
+                    //this is current year
+                    if ( [[[_availabilityDict valueForKey:currentYear] allKeys] containsObject:currentMonth] ) {
+                        //event count exist for current month
+                        if ([[[_availabilityDict valueForKey:currentYear] valueForKey:currentMonth] objectForKey:[NSNumber numberWithLong:day.day]] != nil) {
+                            //event exist on this day
+                            NSString *url = [[[_availabilityDict valueForKey:currentYear] valueForKey:currentMonth] objectForKey:[NSNumber numberWithLong:day.day]];
+                            [dayView showImageWithURL:url];
+                        }
+                    }
                 }
+//                }
                 switch (column) {
                     case 0:
                         dayView.positionInWeek = DSLCalendarDayViewStartOfWeek;

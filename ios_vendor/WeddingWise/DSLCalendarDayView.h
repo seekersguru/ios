@@ -53,7 +53,8 @@ enum {
 @property (nonatomic, assign) DSLCalendarDayViewSelectionState selectionState;
 @property (nonatomic, assign, getter = isInCurrentMonth) BOOL inCurrentMonth;
 @property (nonatomic, strong) UILabel *eventCountLabel;
+@property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong, readonly) NSDate *dayAsDate;
 - (void)showEventCount:(NSString *)count;
-
+- (void)showImageWithURL:(NSString *)url;
 @end

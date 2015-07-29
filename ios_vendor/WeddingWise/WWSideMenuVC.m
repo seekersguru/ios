@@ -10,6 +10,7 @@
 #import "WWProfileVC.h"
 #import "WWDashboardVC.h"
 #import "WWChangePasswordVC.h"
+#import "WWAvailabilityVC.h"
 
 @interface WWSideMenuVC ()
 {
@@ -21,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    menuData =[[NSArray alloc]initWithObjects:@"Change Password",@"Logout", nil];
+    menuData =[[NSArray alloc]initWithObjects:@"Availability",@"Change Password",@"Logout", nil];
     // Do any additional setup after loading the view from its nib.
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -49,11 +50,18 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.row) {
         case 0:{
+            WWAvailabilityVC *availabilityVC = [[WWAvailabilityVC alloc] init];
+            self.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:availabilityVC animated:YES];
+            self.hidesBottomBarWhenPushed = NO;
+            break;
+        }
+        case 1:{
             WWChangePasswordVC *changePassword=[[WWChangePasswordVC alloc]initWithNibName:@"WWChangePasswordVC" bundle:nil];
             [self.navigationController pushViewController:changePassword animated:YES];
         }
             break;
-        case 1:{
+        case 2:{
             WWDashboardVC *dash=[[WWDashboardVC alloc]initWithNibName:@"WWDashboardVC" bundle:nil];
             dash.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:dash animated:YES];

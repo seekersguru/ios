@@ -43,6 +43,7 @@
 @property (nonatomic, assign) BOOL showDayCalloutView;
 @property (nonatomic, assign) BOOL showEventsOnCalloutView;
 @property (nonatomic, strong) NSDictionary *eventsDictionary;
+@property (nonatomic, strong) NSDictionary *availabilityDict;
 
 + (Class)monthSelectorViewClass;
 + (Class)monthViewClass;

@@ -313,6 +313,30 @@
     return nil;
 }
 
+//cell delegate will be called when user taps on image
+- (void)imageSelected:(UIImage *)image{
+    AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    UIView *zoomImageView = [[UIView alloc] initWithFrame:appdelegate.window.bounds];
+    [zoomImageView setBackgroundColor:[UIColor blackColor]];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:zoomImageView.frame];
+    imageView.contentMode = UIViewContentModeCenter;
+    imageView.image = image;
+    [zoomImageView addSubview:imageView];
+    
+    UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(250, 10, 60, 30)];
+    [doneButton setTitle:@"Done" forState:UIControlStateNormal];
+    [doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [doneButton addTarget:self action:@selector(doneButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [zoomImageView addSubview:doneButton];
+    
+    [appdelegate.window addSubview:zoomImageView];
+}
+
+- (void)doneButtonClicked:(UIButton *)bt{
+    [bt.superview removeFromSuperview];
+}
 BOOL isRowClicked;
 NSInteger selectedRow = -1;
 NSInteger lastArrayCount = 0;
@@ -453,13 +477,22 @@ NSInteger lastArrayCount = 0;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (tableView == _tblReadMore) {
         if (isPackage) {
-            UIButton *headerView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, tableView.sectionHeaderHeight)];
+            UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 44)];
+//            [bgView setBackgroundColor:[UIColor lightGrayColor]];
+            UIView *sepView = [[UIView alloc] initWithFrame:CGRectMake(0, 43, bgView.frame.size.width, 1)];
+            sepView.backgroundColor = [UIColor lightGrayColor];
+            
+            UIButton *headerView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 43)];
             [headerView setTitle:[[[arrReadMoreData objectAtIndex:0] allKeys] objectAtIndex:section] forState:UIControlStateNormal];
-            [headerView.titleLabel setTextColor:[UIColor blackColor]];
-            [headerView setBackgroundColor:[UIColor purpleColor]];
+            [headerView setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+            [headerView setBackgroundColor:[UIColor whiteColor]];
             [headerView addTarget:self action:@selector(sectionClicked:) forControlEvents:UIControlEventTouchUpInside];
             [headerView setTag:section];
-            return headerView;
+            
+            [bgView addSubview:sepView];
+            [bgView addSubview:headerView];
+            
+            return bgView;
         }
     }
     return nil;

@@ -205,7 +205,7 @@
 
     NSString *monthViewKey = [self monthViewKeyForMonth:month];
     DSLCalendarMonthView *monthView = nil;
-    monthView = [[[[self class] monthViewClass] alloc] initWithMonth:month width:self.bounds.size.width dayViewClass:[[self class] dayViewClass] dayViewHeight:_dayViewHeight showEvent:_showEventsOnCalloutView withEventDict:_eventsDictionary];
+    monthView = [[[[self class] monthViewClass] alloc] initWithMonth:month width:self.bounds.size.width dayViewClass:[[self class] dayViewClass] dayViewHeight:_dayViewHeight showEvent:_showEventsOnCalloutView withEventDict:_eventsDictionary withAvailabilityDict:_availabilityDict];
     [self.monthViews setObject:monthView forKey:monthViewKey];
     [self.monthContainerViewContentView addSubview:monthView];
     
@@ -497,7 +497,6 @@
     
     return nil;
 }
-
 
 #pragma mark - Day callout view methods
 

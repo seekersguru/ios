@@ -31,6 +31,7 @@
 #endif
 
 #define kWebServiceUrl                  @"http://52.11.207.26/api/"
+#define kBaseUrl                        @"http://52.11.207.26/"
 #define kNoNetwork                      @"No network available"
 #define kNotifacationReachability       @"NotifacationReachability"
 #define AppFont                         @"GothamRounded-Book"

@@ -75,7 +75,7 @@
     
     if (!copyMessage) {
         copyMessage = [JSQMessage messageWithSenderId:@"1"
-                                          displayName:@"shiv"
+                                          displayName:@"shivam"
                                                  text:@"First received!"
                                             messageId:@""];
     }
@@ -171,7 +171,7 @@
              for (int i = arrData.count-1; i >= 0; i--) {
                  NSDictionary *arrMessages = [arrData objectAtIndex:i];
                  NSString *senderId = @"1";
-                 if ([[arrMessages valueForKey:@"from_to"] isEqualToString:@"v2c"]) {
+                 if ([[arrMessages valueForKey:@"from_to"] isEqualToString:@"c2v"]) {
                      senderId = @"2";
                  }
                  NSString *vendorName = [arrMessages valueForKey:@"vendor_name"];

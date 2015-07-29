@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:WeddingWise.xcodeproj">
+      location = "group:/Users/ranosys-mac3/Downloads/xCode Projects/Seekerguru/ios/ios_vendor/WedWise Vendor.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

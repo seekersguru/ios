@@ -80,7 +80,7 @@
     
     if (!copyMessage) {
         copyMessage = [JSQMessage messageWithSenderId:@"1"
-                                          displayName:@"shiv"
+                                          displayName:@"shivam"
                                                  text:@"First received!"
                                             messageId:@""];
     }

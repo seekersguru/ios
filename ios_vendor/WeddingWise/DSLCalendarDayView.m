@@ -32,7 +32,7 @@
 
 #import "DSLCalendarDayView.h"
 #import "NSDate+DSLCalendarView.h"
-
+#import <UIImageView+AFNetworking.h>
 
 @interface DSLCalendarDayView ()
 
@@ -69,7 +69,12 @@
         [self addSubview:_eventCountLabel];
         [self bringSubviewToFront:_eventCountLabel];
         
+        _imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        [self addSubview:_imageView];
+        [self bringSubviewToFront:_imageView];
+        
         _eventCountLabel.hidden = YES;
+        _imageView.hidden = YES;
     }
     
     return self;
@@ -206,4 +211,11 @@
     [_eventCountLabel setText:count];
 }
 
+- (void)showImageWithURL:(NSString *)url{
+    _imageView.hidden = NO;
+    url = [kBaseUrl stringByAppendingString:url];
+    if (url.length > 0) {
+        [_imageView setImageWithURL:[NSURL URLWithString:url]];
+    }
+}
 @end

@@ -41,9 +41,10 @@
 @property (nonatomic, strong, readonly) NSSet *dayViews;
 @property (nonatomic, assign) BOOL showEventOnDate;
 @property (nonatomic, strong) NSDictionary *eventDict;
+@property (nonatomic, strong) NSDictionary *availabilityDict;
 
 // Designated initialiser
-- (id)initWithMonth:(NSDateComponents*)month width:(CGFloat)width dayViewClass:(Class)dayViewClass dayViewHeight:(CGFloat)dayViewHeight showEvent:(BOOL)showEvent withEventDict:(NSDictionary *)eventDict;
+- (id)initWithMonth:(NSDateComponents*)month width:(CGFloat)width dayViewClass:(Class)dayViewClass dayViewHeight:(CGFloat)dayViewHeight showEvent:(BOOL)showEvent withEventDict:(NSDictionary *)eventDict withAvailabilityDict:(NSDictionary *)availabilityDict;
 
 - (DSLCalendarDayView*)dayViewForDay:(NSDateComponents*)day;
 - (void)updateDaySelectionStatesForRange:(DSLCalendarRange*)range;

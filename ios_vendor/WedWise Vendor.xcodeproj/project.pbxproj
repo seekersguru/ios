@@ -14,6 +14,9 @@
 		60C762F41B53D06500387B54 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C762F21B53D06500387B54 /* GoogleOpenSource.framework */; };
 		60C762F51B53D06500387B54 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C762F31B53D06500387B54 /* GooglePlus.framework */; };
 		7315CFF1DDF95E3B98748ADA /* libPods-WeddingWise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0381FBBBEBC9947D010CFF78 /* libPods-WeddingWise.a */; };
+		C548449F1B68F631007882BF /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C548449C1B68F631007882BF /* GoogleOpenSource.framework */; };
+		C54844A01B68F631007882BF /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C548449D1B68F631007882BF /* GooglePlus.bundle */; };
+		C54844A11B68F631007882BF /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C548449E1B68F631007882BF /* GooglePlus.framework */; };
 		C55C6FEA1B616F5700732BE5 /* WWBasicDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = C55C6FE91B616F5700732BE5 /* WWBasicDetails.m */; };
 		C5998FC11B62FB3700A23482 /* JSQMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C5998F611B62FB3700A23482 /* JSQMessagesAssets.bundle */; };
 		C5998FC21B62FB3700A23482 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = C5998F641B62FB3700A23482 /* JSQSystemSoundPlayer+JSQMessages.m */; };
@@ -63,6 +66,8 @@
 		C59CF18D1B5AAC800018248E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF1891B5AAC800018248E /* FBSDKLoginKit.framework */; };
 		C59CF18E1B5AAC800018248E /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF18A1B5AAC800018248E /* FBSDKMessengerShareKit.framework */; };
 		C59CF18F1B5AAC800018248E /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF18B1B5AAC800018248E /* FBSDKShareKit.framework */; };
+		C5BCF9411B69528400FD2F83 /* WWAvailabilityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C5BCF93F1B69528400FD2F83 /* WWAvailabilityVC.m */; };
+		C5BCF9421B69528400FD2F83 /* WWAvailabilityVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5BCF9401B69528400FD2F83 /* WWAvailabilityVC.xib */; };
 		F4609B651B0BBA8100BCCCB8 /* WWDashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */; };
 		F4609B661B0BBA8100BCCCB8 /* WWDashboardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4609B641B0BBA8100BCCCB8 /* WWDashboardVC.xib */; };
 		F4609B721B0BC4B800BCCCB8 /* WWRegistrationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4609B701B0BC4B800BCCCB8 /* WWRegistrationVC.m */; };
@@ -125,9 +130,6 @@
 		F4CBDB471B5307B6000DB347 /* WWBidListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CBDB3D1B5307B6000DB347 /* WWBidListCell.xib */; };
 		F4CBDB4A1B530802000DB347 /* WWVendorDetailData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CBDB491B530802000DB347 /* WWVendorDetailData.m */; };
 		F4CCA54D1B47B0B500F33FDA /* WWWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CCA54C1B47B0B500F33FDA /* WWWebService.m */; };
-		F4CD0F491B6422B40006FAC4 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4CD0F461B6422B30006FAC4 /* GoogleOpenSource.framework */; };
-		F4CD0F4A1B6422B40006FAC4 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F4CD0F471B6422B40006FAC4 /* GooglePlus.bundle */; };
-		F4CD0F4B1B6422B40006FAC4 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4CD0F481B6422B40006FAC4 /* GooglePlus.framework */; };
 		F4CD0F4F1B64235E0006FAC4 /* WWInquiryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD0F4D1B64235E0006FAC4 /* WWInquiryDetailVC.m */; };
 		F4CD0F501B64235E0006FAC4 /* WWInquiryDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CD0F4E1B64235E0006FAC4 /* WWInquiryDetailVC.xib */; };
 		F4CD0F541B6423A90006FAC4 /* WWInquiryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CD0F521B6423A90006FAC4 /* WWInquiryCell.m */; };
@@ -176,6 +178,9 @@
 		60C762ED1B53D01300387B54 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		60C762F21B53D06500387B54 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = ../../../../../GoogleOpenSource.framework; sourceTree = "<group>"; };
 		60C762F31B53D06500387B54 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = ../../../../../GooglePlus.framework; sourceTree = "<group>"; };
+		C548449C1B68F631007882BF /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../../../../fb_gmail/google-plus-ios-sdk-1.5.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
+		C548449D1B68F631007882BF /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "../../../../../fb_gmail/google-plus-ios-sdk-1.5.1/GooglePlus.bundle"; sourceTree = "<group>"; };
+		C548449E1B68F631007882BF /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../../../../fb_gmail/google-plus-ios-sdk-1.5.1/GooglePlus.framework"; sourceTree = "<group>"; };
 		C55C6FE81B616F5700732BE5 /* WWBasicDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWBasicDetails.h; sourceTree = "<group>"; };
 		C55C6FE91B616F5700732BE5 /* WWBasicDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWBasicDetails.m; sourceTree = "<group>"; };
 		C5998F611B62FB3700A23482 /* JSQMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JSQMessagesAssets.bundle; sourceTree = "<group>"; };
@@ -270,6 +275,9 @@
 		C59CF1891B5AAC800018248E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		C59CF18A1B5AAC800018248E /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKMessengerShareKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
 		C59CF18B1B5AAC800018248E /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		C5BCF93E1B69528400FD2F83 /* WWAvailabilityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWAvailabilityVC.h; sourceTree = "<group>"; };
+		C5BCF93F1B69528400FD2F83 /* WWAvailabilityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWAvailabilityVC.m; sourceTree = "<group>"; };
+		C5BCF9401B69528400FD2F83 /* WWAvailabilityVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWAvailabilityVC.xib; sourceTree = "<group>"; };
 		D2DCC82CCECF86CC682CBC0B /* Pods-WeddingWise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingWise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingWise/Pods-WeddingWise.debug.xcconfig"; sourceTree = "<group>"; };
 		F4609B621B0BBA8100BCCCB8 /* WWDashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDashboardVC.h; sourceTree = "<group>"; };
 		F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWDashboardVC.m; sourceTree = "<group>"; };
@@ -280,7 +288,7 @@
 		F4609B741B0BC4D500BCCCB8 /* WWLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWLoginVC.h; sourceTree = "<group>"; };
 		F4609B751B0BC4D500BCCCB8 /* WWLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWLoginVC.m; sourceTree = "<group>"; };
 		F4609B761B0BC4D500BCCCB8 /* WWLoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWLoginVC.xib; sourceTree = "<group>"; };
-		F47047381B011AE700FEFEFF /* WeddingWise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeddingWise.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47047381B011AE700FEFEFF /* WedWise Vendor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WedWise Vendor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F470473C1B011AE700FEFEFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F470473D1B011AE700FEFEFF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F470473F1B011AE700FEFEFF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -288,7 +296,7 @@
 		F47047431B011AE700FEFEFF /* WeddingWise.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeddingWise.xcdatamodel; sourceTree = "<group>"; };
 		F470474B1B011AE700FEFEFF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F470474E1B011AE700FEFEFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		F47047541B011AE700FEFEFF /* WeddingWiseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeddingWiseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47047541B011AE700FEFEFF /* WedWise VendorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WedWise VendorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47047591B011AE700FEFEFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F470475A1B011AE700FEFEFF /* WeddingWiseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeddingWiseTests.m; sourceTree = "<group>"; };
 		F470477B1B0123F600FEFEFF /* RDVTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVTabBarController.h; sourceTree = "<group>"; };
@@ -311,7 +319,7 @@
 		F4BC31B91B179BA500BF5BB2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F4BC31BB1B179BBC00BF5BB2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F4BC31BD1B179BC400BF5BB2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		F4BCBA9A1B1F961800082A73 /* WeddingWise.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeddingWise.pch; sourceTree = "<group>"; };
+		F4BCBA9A1B1F961800082A73 /* WedWise Vendor.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WedWise Vendor.pch"; sourceTree = "<group>"; };
 		F4C4EA771B2CD81E00D2CD7F /* WWBookingDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWBookingDetails.h; sourceTree = "<group>"; };
 		F4C4EA781B2CD81E00D2CD7F /* WWBookingDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWBookingDetails.m; sourceTree = "<group>"; };
 		F4C4EA791B2CD81E00D2CD7F /* WWBookingDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWBookingDetails.xib; sourceTree = "<group>"; };
@@ -364,9 +372,6 @@
 		F4CBDB491B530802000DB347 /* WWVendorDetailData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWVendorDetailData.m; sourceTree = "<group>"; };
 		F4CCA54B1B47B0AF00F33FDA /* WWWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWebService.h; sourceTree = "<group>"; };
 		F4CCA54C1B47B0B500F33FDA /* WWWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWebService.m; sourceTree = "<group>"; };
-		F4CD0F461B6422B30006FAC4 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleOpenSource.framework; sourceTree = "<group>"; };
-		F4CD0F471B6422B40006FAC4 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GooglePlus.bundle; sourceTree = "<group>"; };
-		F4CD0F481B6422B40006FAC4 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlus.framework; sourceTree = "<group>"; };
 		F4CD0F4C1B64235E0006FAC4 /* WWInquiryDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWInquiryDetailVC.h; sourceTree = "<group>"; };
 		F4CD0F4D1B64235E0006FAC4 /* WWInquiryDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWInquiryDetailVC.m; sourceTree = "<group>"; };
 		F4CD0F4E1B64235E0006FAC4 /* WWInquiryDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWInquiryDetailVC.xib; sourceTree = "<group>"; };
@@ -417,12 +422,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				60C762F41B53D06500387B54 /* GoogleOpenSource.framework in Frameworks */,
-				F4CD0F4B1B6422B40006FAC4 /* GooglePlus.framework in Frameworks */,
+				C54844A11B68F631007882BF /* GooglePlus.framework in Frameworks */,
 				60C762F51B53D06500387B54 /* GooglePlus.framework in Frameworks */,
 				60C762EE1B53D01300387B54 /* FBSDKCoreKit.framework in Frameworks */,
 				C59CF18C1B5AAC800018248E /* FBSDKCoreKit.framework in Frameworks */,
 				60C762EF1B53D01300387B54 /* FBSDKLoginKit.framework in Frameworks */,
-				F4CD0F491B6422B40006FAC4 /* GoogleOpenSource.framework in Frameworks */,
+				C548449F1B68F631007882BF /* GoogleOpenSource.framework in Frameworks */,
 				C59CF18E1B5AAC800018248E /* FBSDKMessengerShareKit.framework in Frameworks */,
 				C59CF18F1B5AAC800018248E /* FBSDKShareKit.framework in Frameworks */,
 				60C762F01B53D01300387B54 /* FBSDKMessengerShareKit.framework in Frameworks */,
@@ -642,6 +647,16 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		C5BCF93D1B69526600FD2F83 /* Availability */ = {
+			isa = PBXGroup;
+			children = (
+				C5BCF93E1B69528400FD2F83 /* WWAvailabilityVC.h */,
+				C5BCF93F1B69528400FD2F83 /* WWAvailabilityVC.m */,
+				C5BCF9401B69528400FD2F83 /* WWAvailabilityVC.xib */,
+			);
+			name = Availability;
+			sourceTree = "<group>";
+		};
 		F4609B601B0BBA4D00BCCCB8 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -677,8 +692,8 @@
 		F47047391B011AE700FEFEFF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F47047381B011AE700FEFEFF /* WeddingWise.app */,
-				F47047541B011AE700FEFEFF /* WeddingWiseTests.xctest */,
+				F47047381B011AE700FEFEFF /* WedWise Vendor.app */,
+				F47047541B011AE700FEFEFF /* WedWise VendorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -707,7 +722,7 @@
 				F4CB16E21B35E8DD0078419A /* gotham-book.ttf */,
 				F470473C1B011AE700FEFEFF /* Info.plist */,
 				F470473D1B011AE700FEFEFF /* main.m */,
-				F4BCBA9A1B1F961800082A73 /* WeddingWise.pch */,
+				F4BCBA9A1B1F961800082A73 /* WedWise Vendor.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -773,6 +788,7 @@
 		F47047B81B027FAB00FEFEFF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C5BCF93D1B69526600FD2F83 /* Availability */,
 				F4CD0F5C1B64CF4C0006FAC4 /* Profile */,
 				F4CD0F561B64CDDA0006FAC4 /* SideMenu */,
 				F4CB170A1B3B2ABA0078419A /* Leads */,
@@ -791,11 +807,11 @@
 		F4BC31A41B1794CA00BF5BB2 /* FrameWorks */ = {
 			isa = PBXGroup;
 			children = (
+				C548449C1B68F631007882BF /* GoogleOpenSource.framework */,
+				C548449D1B68F631007882BF /* GooglePlus.bundle */,
+				C548449E1B68F631007882BF /* GooglePlus.framework */,
 				C5998F5F1B62FB3600A23482 /* JSQMessagesViewController */,
 				C5998FBD1B62FB3700A23482 /* JSQSystemSoundPlayer */,
-				F4CD0F461B6422B30006FAC4 /* GoogleOpenSource.framework */,
-				F4CD0F471B6422B40006FAC4 /* GooglePlus.bundle */,
-				F4CD0F481B6422B40006FAC4 /* GooglePlus.framework */,
 				C59CF1881B5AAC800018248E /* FBSDKCoreKit.framework */,
 				C59CF1891B5AAC800018248E /* FBSDKLoginKit.framework */,
 				C59CF18A1B5AAC800018248E /* FBSDKMessengerShareKit.framework */,
@@ -1015,9 +1031,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F47047371B011AE700FEFEFF /* WeddingWise */ = {
+		F47047371B011AE700FEFEFF /* WedWise Vendor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F470475E1B011AE700FEFEFF /* Build configuration list for PBXNativeTarget "WeddingWise" */;
+			buildConfigurationList = F470475E1B011AE700FEFEFF /* Build configuration list for PBXNativeTarget "WedWise Vendor" */;
 			buildPhases = (
 				03D33161C4E30349A2897CE4 /* Check Pods Manifest.lock */,
 				F47047341B011AE700FEFEFF /* Sources */,
@@ -1029,14 +1045,14 @@
 			);
 			dependencies = (
 			);
-			name = WeddingWise;
+			name = "WedWise Vendor";
 			productName = WeddingWise;
-			productReference = F47047381B011AE700FEFEFF /* WeddingWise.app */;
+			productReference = F47047381B011AE700FEFEFF /* WedWise Vendor.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F47047531B011AE700FEFEFF /* WeddingWiseTests */ = {
+		F47047531B011AE700FEFEFF /* WedWise VendorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F47047611B011AE700FEFEFF /* Build configuration list for PBXNativeTarget "WeddingWiseTests" */;
+			buildConfigurationList = F47047611B011AE700FEFEFF /* Build configuration list for PBXNativeTarget "WedWise VendorTests" */;
 			buildPhases = (
 				F47047501B011AE700FEFEFF /* Sources */,
 				F47047511B011AE700FEFEFF /* Frameworks */,
@@ -1047,9 +1063,9 @@
 			dependencies = (
 				F47047561B011AE700FEFEFF /* PBXTargetDependency */,
 			);
-			name = WeddingWiseTests;
+			name = "WedWise VendorTests";
 			productName = WeddingWiseTests;
-			productReference = F47047541B011AE700FEFEFF /* WeddingWiseTests.xctest */;
+			productReference = F47047541B011AE700FEFEFF /* WedWise VendorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1072,7 +1088,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F47047331B011AE700FEFEFF /* Build configuration list for PBXProject "WeddingWise" */;
+			buildConfigurationList = F47047331B011AE700FEFEFF /* Build configuration list for PBXProject "WedWise Vendor" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1085,8 +1101,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F47047371B011AE700FEFEFF /* WeddingWise */,
-				F47047531B011AE700FEFEFF /* WeddingWiseTests */,
+				F47047371B011AE700FEFEFF /* WedWise Vendor */,
+				F47047531B011AE700FEFEFF /* WedWise VendorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1109,7 +1125,6 @@
 				F4CD0F611B64CF630006FAC4 /* WWProfileVC.xib in Resources */,
 				F4CD4E6D1B30A2BF0081FE0B /* cal_seldate@2x.png in Resources */,
 				F4D08A6A1B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.xib in Resources */,
-				F4CD0F4A1B6422B40006FAC4 /* GooglePlus.bundle in Resources */,
 				F4C680AC1B2475BE00C6ED57 /* slicingfooter.png in Resources */,
 				C5998FC11B62FB3700A23482 /* JSQMessagesAssets.bundle in Resources */,
 				C5998FE91B62FB3700A23482 /* JSQMessagesToolbarContentView.xib in Resources */,
@@ -1122,6 +1137,7 @@
 				F4C4EA7B1B2CD81E00D2CD7F /* WWBookingDetails.xib in Resources */,
 				F4CD4E6E1B30A2BF0081FE0B /* cal_seldate@3x.png in Resources */,
 				F4CBDB3F1B5307B6000DB347 /* WWLeadsListVC.xib in Resources */,
+				C5BCF9421B69528400FD2F83 /* WWAvailabilityVC.xib in Resources */,
 				F4C4EA811B2CD9A000D2CD7F /* WWBookingHeaderCell.xib in Resources */,
 				F4609B731B0BC4B800BCCCB8 /* WWRegistrationVC.xib in Resources */,
 				C5998FE61B62FB3700A23482 /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
@@ -1137,6 +1153,7 @@
 				F4CBDB1F1B52F9D1000DB347 /* WWMessageList.xib in Resources */,
 				F4CD0F551B6423A90006FAC4 /* WWInquiryCell.xib in Resources */,
 				F470474C1B011AE700FEFEFF /* Images.xcassets in Resources */,
+				C54844A01B68F631007882BF /* GooglePlus.bundle in Resources */,
 				F4CBDB211B52F9D1000DB347 /* WWPrivateMessage.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1199,6 +1216,7 @@
 				C5998FDB1B62FB3700A23482 /* JSQMessagesCellTextView.m in Sources */,
 				F4C4EA7A1B2CD81E00D2CD7F /* WWBookingDetails.m in Sources */,
 				C5998FC41B62FB3700A23482 /* NSString+JSQMessages.m in Sources */,
+				C5BCF9411B69528400FD2F83 /* WWAvailabilityVC.m in Sources */,
 				F4CBDB201B52F9D1000DB347 /* WWPrivateMessage.m in Sources */,
 				C5998FE51B62FB3700A23482 /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
 				F47047B41B01273100FEFEFF /* myKnotCell.m in Sources */,
@@ -1285,7 +1303,7 @@
 /* Begin PBXTargetDependency section */
 		F47047561B011AE700FEFEFF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F47047371B011AE700FEFEFF /* WeddingWise */;
+			target = F47047371B011AE700FEFEFF /* WedWise Vendor */;
 			targetProxy = F47047551B011AE700FEFEFF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1398,7 +1416,7 @@
 					"/Users/ranosys-mac3/Downloads/fb_gmail/google-plus-ios-sdk-1.5.1",
 					"/Users/ranosys-mac3/Documents/FacebookSDK",
 				);
-				GCC_PREFIX_HEADER = WeddingWise/WeddingWise.pch;
+				GCC_PREFIX_HEADER = "WeddingWise/WedWise Vendor.pch";
 				INFOPLIST_FILE = WeddingWise/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1408,7 +1426,7 @@
 					"-l\"Pods-WeddingWise-MBProgressHUD\"",
 					"-l\"Pods-WeddingWise-SCNetworkReachability\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "WedWise Vendor";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -1431,7 +1449,7 @@
 					"/Users/ranosys-mac3/Downloads/fb_gmail/google-plus-ios-sdk-1.5.1",
 					"/Users/ranosys-mac3/Documents/FacebookSDK",
 				);
-				GCC_PREFIX_HEADER = WeddingWise/WeddingWise.pch;
+				GCC_PREFIX_HEADER = "WeddingWise/WedWise Vendor.pch";
 				INFOPLIST_FILE = WeddingWise/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1441,7 +1459,7 @@
 					"-l\"Pods-WeddingWise-MBProgressHUD\"",
 					"-l\"Pods-WeddingWise-SCNetworkReachability\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "WedWise Vendor";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -1462,7 +1480,7 @@
 				);
 				INFOPLIST_FILE = WeddingWiseTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "WedWise VendorTests";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeddingWise.app/WeddingWise";
 			};
@@ -1480,7 +1498,7 @@
 				);
 				INFOPLIST_FILE = WeddingWiseTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "WedWise VendorTests";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeddingWise.app/WeddingWise";
 			};
@@ -1489,7 +1507,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F47047331B011AE700FEFEFF /* Build configuration list for PBXProject "WeddingWise" */ = {
+		F47047331B011AE700FEFEFF /* Build configuration list for PBXProject "WedWise Vendor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F470475C1B011AE700FEFEFF /* Debug */,
@@ -1498,7 +1516,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F470475E1B011AE700FEFEFF /* Build configuration list for PBXNativeTarget "WeddingWise" */ = {
+		F470475E1B011AE700FEFEFF /* Build configuration list for PBXNativeTarget "WedWise Vendor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F470475F1B011AE700FEFEFF /* Debug */,
@@ -1507,7 +1525,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F47047611B011AE700FEFEFF /* Build configuration list for PBXNativeTarget "WeddingWiseTests" */ = {
+		F47047611B011AE700FEFEFF /* Build configuration list for PBXNativeTarget "WedWise VendorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F47047621B011AE700FEFEFF /* Debug */,

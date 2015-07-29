@@ -32,8 +32,19 @@
         UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
         [imageView setImageWithURL:imageUrl placeholderImage:placeholderImage];
         [self.categoryImageScrollView addSubview:imageView];
+        
+        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
+        imageView.userInteractionEnabled = YES;
+        [imageView addGestureRecognizer:gesture];
     }
     [self.categoryImageScrollView setPagingEnabled:YES];
     [self.categoryImageScrollView setContentSize:CGSizeMake(imageLinks.count*self.categoryImageScrollView.frame.size.width, 0)];
+}
+
+- (void)imageTapped:(UITapGestureRecognizer *)gesture{
+    if ([self.delegate respondsToSelector:@selector(imageSelected:)]) {
+        UIImage *image = [(UIImageView *)gesture.view image];
+        [self.delegate imageSelected:image];
+    }
 }
 @end
