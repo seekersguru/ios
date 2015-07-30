@@ -58,7 +58,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];;
     [formatter setDateFormat:@"yyyy"];
     NSString *year = [formatter stringFromDate:[NSDate date]];
-    [formatter setDateFormat:@"mm"];
+    [formatter setDateFormat:@"MM"];
     NSString *month = [formatter stringFromDate:[NSDate date]];
     [[WWBasicDetails sharedInstance] setCurrentDateInCalendar:[NSDate date]];
     [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:year month:month additionalFilter:@"" completionBlock:^(NSDictionary *response) {
@@ -127,7 +127,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];;
     [formatter setDateFormat:@"yyyy"];
     NSString *year = [formatter stringFromDate:selectedMonthFromCalendar];
-    [formatter setDateFormat:@"mm"];
+    [formatter setDateFormat:@"MM"];
     NSString *month = [formatter stringFromDate:selectedMonthFromCalendar];
     
     NSString *filterString = @"";

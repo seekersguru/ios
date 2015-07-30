@@ -215,6 +215,7 @@
     _imageView.hidden = NO;
     url = [kBaseUrl stringByAppendingString:url];
     if (url.length > 0) {
+        _imageView.alpha = 0.5;
         [_imageView setImageWithURL:[NSURL URLWithString:url]];
     }
 }

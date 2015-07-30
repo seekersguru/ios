@@ -122,7 +122,8 @@
     
     [self callWebService:searchString];
     if ([[searchString stringByReplacingOccurrencesOfString:@" " withString:@""] length] > 0) {
-        [_vendorNameLabel setTitle:[NSString stringWithFormat:@"%@..%@",[_vendorList[0] substringWithRange:NSMakeRange(0, 1)],searchString] forState:UIControlStateNormal];
+//        [_vendorNameLabel setTitle:[NSString stringWithFormat:@"%@..%@",[_vendorList[0] substringWithRange:NSMakeRange(0, 1)],searchString] forState:UIControlStateNormal];
+                [_vendorNameLabel setTitle:[NSString stringWithFormat:@"%@",searchString] forState:UIControlStateNormal];
     }
     
     [_vendorNameLabel addTarget:self action:@selector(filterVendor:) forControlEvents:UIControlEventTouchUpInside];
@@ -154,7 +155,7 @@
              if (!isFilterViewPrepared) {
                  //prepare dynamic search view
                  filterArray = [[responseDics valueForKey:@"json"] valueForKey:@"filters"];
-                 [self prepareDynamicFilterView:[[responseDics valueForKey:@"json"] valueForKey:@"filters"]];
+//                 [self prepareDynamicFilterView:[[responseDics valueForKey:@"json"] valueForKey:@"filters"]];
              }
              [arrVendorData removeAllObjects];
              NSArray *arrData=[[responseDics valueForKey:@"json"] valueForKey:@"vendor_list"];

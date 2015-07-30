@@ -55,11 +55,11 @@
                     </connections>
                 </button>
                 <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="xJc-Kq-Max">
-                    <rect key="frame" x="0.0" y="568" width="320" height="356"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="ff2-Be-c89">
-                            <rect key="frame" x="19" y="60" width="282" height="149"/>
+                            <rect key="frame" x="19" y="60" width="282" height="104"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="vIW-AV-gtf">
@@ -71,6 +71,18 @@
                                         <outlet property="delegate" destination="-1" id="sAs-Nj-HEu"/>
                                     </connections>
                                 </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6Va-qh-Ezs">
+                                    <rect key="frame" x="76" y="60" width="131" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.94117647059999998" green="0.41176470590000003" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="SUBMIT">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="submitFilterAction:" destination="-1" eventType="touchUpInside" id="Bxv-l5-sBw"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>

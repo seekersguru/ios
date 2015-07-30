@@ -18,6 +18,8 @@
 @property (nonatomic, strong) NSArray *availabilityArray;
 @property (nonatomic, strong) NSString *selectedDatesString;
 @property (weak, nonatomic) IBOutlet UITextField *availabilityTextfield;
+@property (nonatomic, strong) NSString *time_slot;
+@property (nonatomic, strong) NSString *availability;
 
 @end
 
@@ -27,6 +29,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    _time_slot= @"";
+    _availability = @"";
     UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 164)];
     pickerView.delegate = self;
     pickerView.dataSource = self;
@@ -50,13 +54,13 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy"];
     NSString *year = [df stringFromDate:currentMonth];
-    [df setDateFormat:@"mm"];
+    [df setDateFormat:@"MM"];
     NSString *month = [NSString stringWithFormat:@"%20lld",[[df stringFromDate:currentMonth] longLongValue]];
     
-    [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:year month:month additionalFilter:@"" availityType:@"" timeSlot:@"" completionBlock:^(NSDictionary *response) {
+    [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:year month:month additionalFilter:@"" availityType:_availability timeSlot:_time_slot completionBlock:^(NSDictionary *response) {
         NSMutableDictionary *eventDict = [NSMutableDictionary new];
         for (NSDictionary *events in [response valueForKey:@"data"]) {
-            [eventDict setValue:[events valueForKey:@"color"] forKey:[events valueForKey:@"day"]];
+            [eventDict setValue:[events valueForKey:@"img"] forKey:[events valueForKey:@"day"]];
         }
         NSDictionary *finalEventDict = @{year:@{month:eventDict}};
         [self showAvailability:finalEventDict];
@@ -88,6 +92,33 @@
     else{
         //call api to add availability
         // then refresh the view
+        NSString *year;
+        NSString *month;
+        if (!dateConponent) {
+            NSDate *currentMonth = [[WWBasicDetails sharedInstance] currentDateInCalendar];
+            NSDateFormatter *df = [[NSDateFormatter alloc] init];
+            [df setDateFormat:@"yyyy"];
+            year = [df stringFromDate:currentMonth];
+            [df setDateFormat:@"MM"];
+            month = [NSString stringWithFormat:@"%20ld",[[df stringFromDate:currentMonth] integerValue]];
+        }
+        else{
+            year = [NSString stringWithFormat:@"%ld",(long)dateConponent.year];
+            month = [NSString stringWithFormat:@"%02ld",(long)dateConponent.month];
+        }
+        year = [year stringByReplacingOccurrencesOfString:@" " withString:@""];
+        month = [month stringByReplacingOccurrencesOfString:@" " withString:@""];
+        [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:year month:month additionalFilter:@"" availityType:_availability timeSlot:_time_slot completionBlock:^(NSDictionary *response) {
+            NSMutableDictionary *eventDict = [NSMutableDictionary new];
+            for (NSDictionary *events in [response valueForKey:@"data"]) {
+                [eventDict setValue:[events valueForKey:@"img"] forKey:[events valueForKey:@"day"]];
+            }
+            NSDictionary *finalEventDict = @{year:@{month:eventDict}};
+            [self showAvailability:finalEventDict];
+            
+        } errorBlock:^(NSError *error) {
+            
+        }];
     }
 }
 #pragma mark - textfield delegate methods
@@ -120,6 +151,37 @@
         _availabilityTextfield.text = _availabilityArray[row];
     }
     _timeSlotTextfield.text = _timeSlotArray[row];
+    
+    if ([_timeSlotTextfield isFirstResponder]) {
+        switch (row) {
+            case 0:
+                _time_slot = @"morning";
+                break;
+            case 1:
+                _time_slot = @"evening";
+                break;
+            case 2:
+                _time_slot = @"all_day";
+                break;
+            default:
+                break;
+        }
+    }
+    else{
+        switch (row) {
+            case 0:
+                _availability = @"availability";
+                break;
+            case 1:
+                _availability = @"ongoing_enquiry";
+                break;
+            case 2:
+                _availability = @"booking";
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 #pragma mark - calendar delegate
@@ -169,9 +231,9 @@
         _selectedDatesString = [_selectedDatesString stringByAppendingFormat:@"%@%@",(_selectedDatesString.length == 0)?@"":@",",dateString];
     }
 }
-
+NSDateComponents *dateConponent = nil;
 - (void)calendarView:(DSLCalendarView *)calendarView didChangeToVisibleMonth:(NSDateComponents *)month {
-
+    dateConponent = month;
     [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:[NSString stringWithFormat:@"%ld",(long)month.year] month:[NSString stringWithFormat:@"%02ld",(long)month.month] additionalFilter:_selectedDatesString availityType:[[_availabilityTextfield.text stringByReplacingOccurrencesOfString:@" " withString:@""] lowercaseString] timeSlot:[[_timeSlotTextfield.text stringByReplacingOccurrencesOfString:@" " withString:@""] lowercaseString] completionBlock:^(NSDictionary *response) {
         
                 NSMutableDictionary *eventDict = [NSMutableDictionary new];
