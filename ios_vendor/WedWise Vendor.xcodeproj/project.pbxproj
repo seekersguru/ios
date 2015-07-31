@@ -7,17 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		60C762EE1B53D01300387B54 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C762EA1B53D01300387B54 /* FBSDKCoreKit.framework */; };
-		60C762EF1B53D01300387B54 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C762EB1B53D01300387B54 /* FBSDKLoginKit.framework */; };
-		60C762F01B53D01300387B54 /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C762EC1B53D01300387B54 /* FBSDKMessengerShareKit.framework */; };
-		60C762F11B53D01300387B54 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C762ED1B53D01300387B54 /* FBSDKShareKit.framework */; };
-		60C762F41B53D06500387B54 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C762F21B53D06500387B54 /* GoogleOpenSource.framework */; };
-		60C762F51B53D06500387B54 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C762F31B53D06500387B54 /* GooglePlus.framework */; };
-		7315CFF1DDF95E3B98748ADA /* libPods-WeddingWise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0381FBBBEBC9947D010CFF78 /* libPods-WeddingWise.a */; };
 		C548449F1B68F631007882BF /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C548449C1B68F631007882BF /* GoogleOpenSource.framework */; };
 		C54844A01B68F631007882BF /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C548449D1B68F631007882BF /* GooglePlus.bundle */; };
 		C54844A11B68F631007882BF /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C548449E1B68F631007882BF /* GooglePlus.framework */; };
 		C55C6FEA1B616F5700732BE5 /* WWBasicDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = C55C6FE91B616F5700732BE5 /* WWBasicDetails.m */; };
+		C56E56891B6BBA25008145EC /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E56511B6BBA25008145EC /* AFHTTPRequestOperation.m */; };
+		C56E568A1B6BBA25008145EC /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E56531B6BBA25008145EC /* AFHTTPRequestOperationManager.m */; };
+		C56E568B1B6BBA25008145EC /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E56551B6BBA25008145EC /* AFHTTPSessionManager.m */; };
+		C56E568C1B6BBA25008145EC /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E56581B6BBA25008145EC /* AFNetworkReachabilityManager.m */; };
+		C56E568D1B6BBA25008145EC /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E565A1B6BBA25008145EC /* AFSecurityPolicy.m */; };
+		C56E568E1B6BBA25008145EC /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E565C1B6BBA25008145EC /* AFURLConnectionOperation.m */; };
+		C56E568F1B6BBA25008145EC /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E565E1B6BBA25008145EC /* AFURLRequestSerialization.m */; };
+		C56E56901B6BBA25008145EC /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E56601B6BBA25008145EC /* AFURLResponseSerialization.m */; };
+		C56E56911B6BBA25008145EC /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E56621B6BBA25008145EC /* AFURLSessionManager.m */; };
+		C56E56921B6BBA25008145EC /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E56651B6BBA25008145EC /* AFNetworkActivityIndicatorManager.m */; };
+		C56E56931B6BBA25008145EC /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E56671B6BBA25008145EC /* UIActivityIndicatorView+AFNetworking.m */; };
+		C56E56941B6BBA25008145EC /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E56691B6BBA25008145EC /* UIAlertView+AFNetworking.m */; };
+		C56E56951B6BBA25008145EC /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E566B1B6BBA25008145EC /* UIButton+AFNetworking.m */; };
+		C56E56961B6BBA25008145EC /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E566D1B6BBA25008145EC /* UIImageView+AFNetworking.m */; };
+		C56E56971B6BBA25008145EC /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E56701B6BBA25008145EC /* UIProgressView+AFNetworking.m */; };
+		C56E56981B6BBA25008145EC /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E56721B6BBA25008145EC /* UIRefreshControl+AFNetworking.m */; };
+		C56E56991B6BBA25008145EC /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E56741B6BBA25008145EC /* UIWebView+AFNetworking.m */; };
+		C56E569A1B6BBA25008145EC /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C56E56761B6BBA25008145EC /* LICENSE */; };
+		C56E569B1B6BBA25008145EC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = C56E56781B6BBA25008145EC /* README.md */; };
+		C56E569C1B6BBA25008145EC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E567B1B6BBA25008145EC /* MBProgressHUD.m */; };
+		C56E569D1B6BBA25008145EC /* SCReachabilityFlagsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E56801B6BBA25008145EC /* SCReachabilityFlagsParser.m */; };
+		C56E569E1B6BBA25008145EC /* SCReachabilityRefBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E56821B6BBA25008145EC /* SCReachabilityRefBuilder.m */; };
+		C56E569F1B6BBA25008145EC /* SCReachabilityScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E56841B6BBA25008145EC /* SCReachabilityScheduler.m */; };
+		C56E56A01B6BBA25008145EC /* SCNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E56871B6BBA25008145EC /* SCNetworkReachability.m */; };
 		C5998FC11B62FB3700A23482 /* JSQMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C5998F611B62FB3700A23482 /* JSQMessagesAssets.bundle */; };
 		C5998FC21B62FB3700A23482 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = C5998F641B62FB3700A23482 /* JSQSystemSoundPlayer+JSQMessages.m */; };
 		C5998FC31B62FB3700A23482 /* NSBundle+JSQMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = C5998F661B62FB3700A23482 /* NSBundle+JSQMessages.m */; };
@@ -79,7 +96,6 @@
 		F47047441B011AE700FEFEFF /* WeddingWise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F47047421B011AE700FEFEFF /* WeddingWise.xcdatamodeld */; };
 		F470474C1B011AE700FEFEFF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F470474B1B011AE700FEFEFF /* Images.xcassets */; };
 		F470474F1B011AE700FEFEFF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F470474D1B011AE700FEFEFF /* LaunchScreen.xib */; };
-		F470475B1B011AE700FEFEFF /* WeddingWiseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F470475A1B011AE700FEFEFF /* WeddingWiseTests.m */; };
 		F47047811B0123F600FEFEFF /* RDVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F470477C1B0123F600FEFEFF /* RDVTabBarController.m */; };
 		F47047821B0123F600FEFEFF /* RDVTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F470477E1B0123F600FEFEFF /* RDVTabBarItem.m */; };
 		F47047831B0123F600FEFEFF /* RDVTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F47047801B0123F600FEFEFF /* RDVTabBar.m */; };
@@ -160,30 +176,62 @@
 		F4D8A7701B69584000677F92 /* NIDropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8A76F1B69584000677F92 /* NIDropDown.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		F47047551B011AE700FEFEFF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F47047301B011AE700FEFEFF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F47047371B011AE700FEFEFF;
-			remoteInfo = WeddingWise;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		0381FBBBEBC9947D010CFF78 /* libPods-WeddingWise.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeddingWise.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		26AF5F1A291DFA0D35AB382C /* Pods-WeddingWise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingWise.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingWise/Pods-WeddingWise.release.xcconfig"; sourceTree = "<group>"; };
-		60C762EA1B53D01300387B54 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		60C762EB1B53D01300387B54 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		60C762EC1B53D01300387B54 /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKMessengerShareKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
-		60C762ED1B53D01300387B54 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
-		60C762F21B53D06500387B54 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = ../../../../../GoogleOpenSource.framework; sourceTree = "<group>"; };
-		60C762F31B53D06500387B54 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = ../../../../../GooglePlus.framework; sourceTree = "<group>"; };
 		C548449C1B68F631007882BF /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../../../../fb_gmail/google-plus-ios-sdk-1.5.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
 		C548449D1B68F631007882BF /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "../../../../../fb_gmail/google-plus-ios-sdk-1.5.1/GooglePlus.bundle"; sourceTree = "<group>"; };
 		C548449E1B68F631007882BF /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../../../../fb_gmail/google-plus-ios-sdk-1.5.1/GooglePlus.framework"; sourceTree = "<group>"; };
 		C55C6FE81B616F5700732BE5 /* WWBasicDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWBasicDetails.h; sourceTree = "<group>"; };
 		C55C6FE91B616F5700732BE5 /* WWBasicDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWBasicDetails.m; sourceTree = "<group>"; };
+		C56E56501B6BBA25008145EC /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		C56E56511B6BBA25008145EC /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		C56E56521B6BBA25008145EC /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		C56E56531B6BBA25008145EC /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		C56E56541B6BBA25008145EC /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		C56E56551B6BBA25008145EC /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		C56E56561B6BBA25008145EC /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		C56E56571B6BBA25008145EC /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		C56E56581B6BBA25008145EC /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		C56E56591B6BBA25008145EC /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		C56E565A1B6BBA25008145EC /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		C56E565B1B6BBA25008145EC /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		C56E565C1B6BBA25008145EC /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		C56E565D1B6BBA25008145EC /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		C56E565E1B6BBA25008145EC /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		C56E565F1B6BBA25008145EC /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		C56E56601B6BBA25008145EC /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		C56E56611B6BBA25008145EC /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		C56E56621B6BBA25008145EC /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		C56E56641B6BBA25008145EC /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		C56E56651B6BBA25008145EC /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		C56E56661B6BBA25008145EC /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
+		C56E56671B6BBA25008145EC /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
+		C56E56681B6BBA25008145EC /* UIAlertView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+AFNetworking.h"; sourceTree = "<group>"; };
+		C56E56691B6BBA25008145EC /* UIAlertView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+AFNetworking.m"; sourceTree = "<group>"; };
+		C56E566A1B6BBA25008145EC /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AFNetworking.h"; sourceTree = "<group>"; };
+		C56E566B1B6BBA25008145EC /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AFNetworking.m"; sourceTree = "<group>"; };
+		C56E566C1B6BBA25008145EC /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		C56E566D1B6BBA25008145EC /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		C56E566E1B6BBA25008145EC /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+AFNetworking.h"; sourceTree = "<group>"; };
+		C56E566F1B6BBA25008145EC /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
+		C56E56701B6BBA25008145EC /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
+		C56E56711B6BBA25008145EC /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
+		C56E56721B6BBA25008145EC /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
+		C56E56731B6BBA25008145EC /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
+		C56E56741B6BBA25008145EC /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		C56E56761B6BBA25008145EC /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		C56E56771B6BBA25008145EC /* macros_blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macros_blocks.h; sourceTree = "<group>"; };
+		C56E56781B6BBA25008145EC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C56E567A1B6BBA25008145EC /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		C56E567B1B6BBA25008145EC /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		C56E567F1B6BBA25008145EC /* SCReachabilityFlagsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCReachabilityFlagsParser.h; sourceTree = "<group>"; };
+		C56E56801B6BBA25008145EC /* SCReachabilityFlagsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCReachabilityFlagsParser.m; sourceTree = "<group>"; };
+		C56E56811B6BBA25008145EC /* SCReachabilityRefBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCReachabilityRefBuilder.h; sourceTree = "<group>"; };
+		C56E56821B6BBA25008145EC /* SCReachabilityRefBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCReachabilityRefBuilder.m; sourceTree = "<group>"; };
+		C56E56831B6BBA25008145EC /* SCReachabilityScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCReachabilityScheduler.h; sourceTree = "<group>"; };
+		C56E56841B6BBA25008145EC /* SCReachabilityScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCReachabilityScheduler.m; sourceTree = "<group>"; };
+		C56E56861B6BBA25008145EC /* SCNetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNetworkReachability.h; sourceTree = "<group>"; };
+		C56E56871B6BBA25008145EC /* SCNetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNetworkReachability.m; sourceTree = "<group>"; };
+		C56E56881B6BBA25008145EC /* SCNetworkStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNetworkStatus.h; sourceTree = "<group>"; };
 		C5998F611B62FB3700A23482 /* JSQMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JSQMessagesAssets.bundle; sourceTree = "<group>"; };
 		C5998F631B62FB3700A23482 /* JSQSystemSoundPlayer+JSQMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSQSystemSoundPlayer+JSQMessages.h"; sourceTree = "<group>"; };
 		C5998F641B62FB3700A23482 /* JSQSystemSoundPlayer+JSQMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSQSystemSoundPlayer+JSQMessages.m"; sourceTree = "<group>"; };
@@ -279,7 +327,6 @@
 		C5BCF93E1B69528400FD2F83 /* WWAvailabilityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWAvailabilityVC.h; sourceTree = "<group>"; };
 		C5BCF93F1B69528400FD2F83 /* WWAvailabilityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWAvailabilityVC.m; sourceTree = "<group>"; };
 		C5BCF9401B69528400FD2F83 /* WWAvailabilityVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWAvailabilityVC.xib; sourceTree = "<group>"; };
-		D2DCC82CCECF86CC682CBC0B /* Pods-WeddingWise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingWise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingWise/Pods-WeddingWise.debug.xcconfig"; sourceTree = "<group>"; };
 		F4609B621B0BBA8100BCCCB8 /* WWDashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDashboardVC.h; sourceTree = "<group>"; };
 		F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWDashboardVC.m; sourceTree = "<group>"; };
 		F4609B641B0BBA8100BCCCB8 /* WWDashboardVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWDashboardVC.xib; sourceTree = "<group>"; };
@@ -297,7 +344,6 @@
 		F47047431B011AE700FEFEFF /* WeddingWise.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeddingWise.xcdatamodel; sourceTree = "<group>"; };
 		F470474B1B011AE700FEFEFF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F470474E1B011AE700FEFEFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		F47047541B011AE700FEFEFF /* WedWise VendorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WedWise VendorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47047591B011AE700FEFEFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F470475A1B011AE700FEFEFF /* WeddingWiseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeddingWiseTests.m; sourceTree = "<group>"; };
 		F470477B1B0123F600FEFEFF /* RDVTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVTabBarController.h; sourceTree = "<group>"; };
@@ -424,18 +470,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60C762F41B53D06500387B54 /* GoogleOpenSource.framework in Frameworks */,
 				C54844A11B68F631007882BF /* GooglePlus.framework in Frameworks */,
-				60C762F51B53D06500387B54 /* GooglePlus.framework in Frameworks */,
-				60C762EE1B53D01300387B54 /* FBSDKCoreKit.framework in Frameworks */,
 				C59CF18C1B5AAC800018248E /* FBSDKCoreKit.framework in Frameworks */,
-				60C762EF1B53D01300387B54 /* FBSDKLoginKit.framework in Frameworks */,
 				C548449F1B68F631007882BF /* GoogleOpenSource.framework in Frameworks */,
 				C59CF18E1B5AAC800018248E /* FBSDKMessengerShareKit.framework in Frameworks */,
 				C59CF18F1B5AAC800018248E /* FBSDKShareKit.framework in Frameworks */,
-				60C762F01B53D01300387B54 /* FBSDKMessengerShareKit.framework in Frameworks */,
 				C59CF18D1B5AAC800018248E /* FBSDKLoginKit.framework in Frameworks */,
-				60C762F11B53D01300387B54 /* FBSDKShareKit.framework in Frameworks */,
 				F4BC31BE1B179BC400BF5BB2 /* UIKit.framework in Frameworks */,
 				F4BC31BC1B179BBC00BF5BB2 /* SystemConfiguration.framework in Frameworks */,
 				F4BC31BA1B179BA500BF5BB2 /* Security.framework in Frameworks */,
@@ -447,41 +487,135 @@
 				F4BC31AE1B179B6F00BF5BB2 /* Foundation.framework in Frameworks */,
 				F4BC31AC1B179B6600BF5BB2 /* AssetsLibrary.framework in Frameworks */,
 				F4BC31AA1B179B5C00BF5BB2 /* AddressBook.framework in Frameworks */,
-				7315CFF1DDF95E3B98748ADA /* libPods-WeddingWise.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F47047511B011AE700FEFEFF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3ACE5BEBD8B97A60546BB8DD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D2DCC82CCECF86CC682CBC0B /* Pods-WeddingWise.debug.xcconfig */,
-				26AF5F1A291DFA0D35AB382C /* Pods-WeddingWise.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		7CA3CE21B343152D616D8F80 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				60C762F21B53D06500387B54 /* GoogleOpenSource.framework */,
-				60C762F31B53D06500387B54 /* GooglePlus.framework */,
-				60C762EA1B53D01300387B54 /* FBSDKCoreKit.framework */,
-				60C762EB1B53D01300387B54 /* FBSDKLoginKit.framework */,
-				60C762EC1B53D01300387B54 /* FBSDKMessengerShareKit.framework */,
-				60C762ED1B53D01300387B54 /* FBSDKShareKit.framework */,
-				0381FBBBEBC9947D010CFF78 /* libPods-WeddingWise.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C56E564E1B6BBA25008145EC /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				C56E564F1B6BBA25008145EC /* AFNetworking */,
+				C56E56631B6BBA25008145EC /* UIKit+AFNetworking */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		C56E564F1B6BBA25008145EC /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				C56E56501B6BBA25008145EC /* AFHTTPRequestOperation.h */,
+				C56E56511B6BBA25008145EC /* AFHTTPRequestOperation.m */,
+				C56E56521B6BBA25008145EC /* AFHTTPRequestOperationManager.h */,
+				C56E56531B6BBA25008145EC /* AFHTTPRequestOperationManager.m */,
+				C56E56541B6BBA25008145EC /* AFHTTPSessionManager.h */,
+				C56E56551B6BBA25008145EC /* AFHTTPSessionManager.m */,
+				C56E56561B6BBA25008145EC /* AFNetworking.h */,
+				C56E56571B6BBA25008145EC /* AFNetworkReachabilityManager.h */,
+				C56E56581B6BBA25008145EC /* AFNetworkReachabilityManager.m */,
+				C56E56591B6BBA25008145EC /* AFSecurityPolicy.h */,
+				C56E565A1B6BBA25008145EC /* AFSecurityPolicy.m */,
+				C56E565B1B6BBA25008145EC /* AFURLConnectionOperation.h */,
+				C56E565C1B6BBA25008145EC /* AFURLConnectionOperation.m */,
+				C56E565D1B6BBA25008145EC /* AFURLRequestSerialization.h */,
+				C56E565E1B6BBA25008145EC /* AFURLRequestSerialization.m */,
+				C56E565F1B6BBA25008145EC /* AFURLResponseSerialization.h */,
+				C56E56601B6BBA25008145EC /* AFURLResponseSerialization.m */,
+				C56E56611B6BBA25008145EC /* AFURLSessionManager.h */,
+				C56E56621B6BBA25008145EC /* AFURLSessionManager.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		C56E56631B6BBA25008145EC /* UIKit+AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				C56E56641B6BBA25008145EC /* AFNetworkActivityIndicatorManager.h */,
+				C56E56651B6BBA25008145EC /* AFNetworkActivityIndicatorManager.m */,
+				C56E56661B6BBA25008145EC /* UIActivityIndicatorView+AFNetworking.h */,
+				C56E56671B6BBA25008145EC /* UIActivityIndicatorView+AFNetworking.m */,
+				C56E56681B6BBA25008145EC /* UIAlertView+AFNetworking.h */,
+				C56E56691B6BBA25008145EC /* UIAlertView+AFNetworking.m */,
+				C56E566A1B6BBA25008145EC /* UIButton+AFNetworking.h */,
+				C56E566B1B6BBA25008145EC /* UIButton+AFNetworking.m */,
+				C56E566C1B6BBA25008145EC /* UIImageView+AFNetworking.h */,
+				C56E566D1B6BBA25008145EC /* UIImageView+AFNetworking.m */,
+				C56E566E1B6BBA25008145EC /* UIKit+AFNetworking.h */,
+				C56E566F1B6BBA25008145EC /* UIProgressView+AFNetworking.h */,
+				C56E56701B6BBA25008145EC /* UIProgressView+AFNetworking.m */,
+				C56E56711B6BBA25008145EC /* UIRefreshControl+AFNetworking.h */,
+				C56E56721B6BBA25008145EC /* UIRefreshControl+AFNetworking.m */,
+				C56E56731B6BBA25008145EC /* UIWebView+AFNetworking.h */,
+				C56E56741B6BBA25008145EC /* UIWebView+AFNetworking.m */,
+			);
+			path = "UIKit+AFNetworking";
+			sourceTree = "<group>";
+		};
+		C56E56751B6BBA25008145EC /* macros_blocks */ = {
+			isa = PBXGroup;
+			children = (
+				C56E56761B6BBA25008145EC /* LICENSE */,
+				C56E56771B6BBA25008145EC /* macros_blocks.h */,
+				C56E56781B6BBA25008145EC /* README.md */,
+			);
+			path = macros_blocks;
+			sourceTree = "<group>";
+		};
+		C56E56791B6BBA25008145EC /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C56E567A1B6BBA25008145EC /* MBProgressHUD.h */,
+				C56E567B1B6BBA25008145EC /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		C56E567C1B6BBA25008145EC /* SCNetworkReachability */ = {
+			isa = PBXGroup;
+			children = (
+				C56E567D1B6BBA25008145EC /* Classes */,
+			);
+			path = SCNetworkReachability;
+			sourceTree = "<group>";
+		};
+		C56E567D1B6BBA25008145EC /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C56E567E1B6BBA25008145EC /* Private */,
+				C56E56851B6BBA25008145EC /* Public */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C56E567E1B6BBA25008145EC /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				C56E567F1B6BBA25008145EC /* SCReachabilityFlagsParser.h */,
+				C56E56801B6BBA25008145EC /* SCReachabilityFlagsParser.m */,
+				C56E56811B6BBA25008145EC /* SCReachabilityRefBuilder.h */,
+				C56E56821B6BBA25008145EC /* SCReachabilityRefBuilder.m */,
+				C56E56831B6BBA25008145EC /* SCReachabilityScheduler.h */,
+				C56E56841B6BBA25008145EC /* SCReachabilityScheduler.m */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		C56E56851B6BBA25008145EC /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				C56E56861B6BBA25008145EC /* SCNetworkReachability.h */,
+				C56E56871B6BBA25008145EC /* SCNetworkReachability.m */,
+				C56E56881B6BBA25008145EC /* SCNetworkStatus.h */,
+			);
+			path = Public;
 			sourceTree = "<group>";
 		};
 		C5998F5F1B62FB3600A23482 /* JSQMessagesViewController */ = {
@@ -687,7 +821,6 @@
 				F470473A1B011AE700FEFEFF /* WeddingWise */,
 				F47047571B011AE700FEFEFF /* WeddingWiseTests */,
 				F47047391B011AE700FEFEFF /* Products */,
-				3ACE5BEBD8B97A60546BB8DD /* Pods */,
 				7CA3CE21B343152D616D8F80 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -696,7 +829,6 @@
 			isa = PBXGroup;
 			children = (
 				F47047381B011AE700FEFEFF /* WedWise Vendor.app */,
-				F47047541B011AE700FEFEFF /* WedWise VendorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -810,6 +942,10 @@
 		F4BC31A41B1794CA00BF5BB2 /* FrameWorks */ = {
 			isa = PBXGroup;
 			children = (
+				C56E564E1B6BBA25008145EC /* AFNetworking */,
+				C56E56751B6BBA25008145EC /* macros_blocks */,
+				C56E56791B6BBA25008145EC /* MBProgressHUD */,
+				C56E567C1B6BBA25008145EC /* SCNetworkReachability */,
 				C548449C1B68F631007882BF /* GoogleOpenSource.framework */,
 				C548449D1B68F631007882BF /* GooglePlus.bundle */,
 				C548449E1B68F631007882BF /* GooglePlus.framework */,
@@ -1040,11 +1176,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F470475E1B011AE700FEFEFF /* Build configuration list for PBXNativeTarget "WedWise Vendor" */;
 			buildPhases = (
-				03D33161C4E30349A2897CE4 /* Check Pods Manifest.lock */,
 				F47047341B011AE700FEFEFF /* Sources */,
 				F47047351B011AE700FEFEFF /* Frameworks */,
 				F47047361B011AE700FEFEFF /* Resources */,
-				03CF545DFE776D89281F4DBF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1054,24 +1188,6 @@
 			productName = WeddingWise;
 			productReference = F47047381B011AE700FEFEFF /* WedWise Vendor.app */;
 			productType = "com.apple.product-type.application";
-		};
-		F47047531B011AE700FEFEFF /* WedWise VendorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F47047611B011AE700FEFEFF /* Build configuration list for PBXNativeTarget "WedWise VendorTests" */;
-			buildPhases = (
-				F47047501B011AE700FEFEFF /* Sources */,
-				F47047511B011AE700FEFEFF /* Frameworks */,
-				F47047521B011AE700FEFEFF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F47047561B011AE700FEFEFF /* PBXTargetDependency */,
-			);
-			name = "WedWise VendorTests";
-			productName = WeddingWiseTests;
-			productReference = F47047541B011AE700FEFEFF /* WedWise VendorTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -1085,11 +1201,6 @@
 					F47047371B011AE700FEFEFF = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = FN8MAGHD8X;
-					};
-					F47047531B011AE700FEFEFF = {
-						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = FN8MAGHD8X;
-						TestTargetID = F47047371B011AE700FEFEFF;
 					};
 				};
 			};
@@ -1107,7 +1218,6 @@
 			projectRoot = "";
 			targets = (
 				F47047371B011AE700FEFEFF /* WedWise Vendor */,
-				F47047531B011AE700FEFEFF /* WedWise VendorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1155,6 +1265,7 @@
 				F4D08A8D1B20D72800AF8E36 /* WWCalendarView.xib in Resources */,
 				F4CD0F501B64235E0006FAC4 /* WWInquiryDetailVC.xib in Resources */,
 				F4CBDB1F1B52F9D1000DB347 /* WWMessageList.xib in Resources */,
+				C56E569A1B6BBA25008145EC /* LICENSE in Resources */,
 				F4D8A76D1B6957DD00677F92 /* WWCreateBidVC.xib in Resources */,
 				F4CD0F551B6423A90006FAC4 /* WWInquiryCell.xib in Resources */,
 				F470474C1B011AE700FEFEFF /* Images.xcassets in Resources */,
@@ -1163,47 +1274,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F47047521B011AE700FEFEFF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		03CF545DFE776D89281F4DBF /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeddingWise/Pods-WeddingWise-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		03D33161C4E30349A2897CE4 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F47047341B011AE700FEFEFF /* Sources */ = {
@@ -1215,33 +1286,44 @@
 				F4C4EA801B2CD9A000D2CD7F /* WWBookingHeaderCell.m in Sources */,
 				F4D8A7701B69584000677F92 /* NIDropDown.m in Sources */,
 				C5998FDD1B62FB3700A23482 /* JSQMessagesCollectionViewCell.m in Sources */,
+				C56E56901B6BBA25008145EC /* AFURLResponseSerialization.m in Sources */,
 				C5998FDC1B62FB3700A23482 /* JSQMessagesCollectionView.m in Sources */,
+				C56E569C1B6BBA25008145EC /* MBProgressHUD.m in Sources */,
 				F47047441B011AE700FEFEFF /* WeddingWise.xcdatamodeld in Sources */,
 				F4D08A701B20CDB300AF8E36 /* NSDate+DSLCalendarView.m in Sources */,
 				C5998FCC1B62FB3700A23482 /* JSQMessagesAvatarImageFactory.m in Sources */,
 				C5998FDB1B62FB3700A23482 /* JSQMessagesCellTextView.m in Sources */,
+				C56E56921B6BBA25008145EC /* AFNetworkActivityIndicatorManager.m in Sources */,
 				F4C4EA7A1B2CD81E00D2CD7F /* WWBookingDetails.m in Sources */,
 				C5998FC41B62FB3700A23482 /* NSString+JSQMessages.m in Sources */,
 				C5BCF9411B69528400FD2F83 /* WWAvailabilityVC.m in Sources */,
 				F4CBDB201B52F9D1000DB347 /* WWPrivateMessage.m in Sources */,
+				C56E569F1B6BBA25008145EC /* SCReachabilityScheduler.m in Sources */,
+				C56E568E1B6BBA25008145EC /* AFURLConnectionOperation.m in Sources */,
 				C5998FE51B62FB3700A23482 /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
+				C56E569B1B6BBA25008145EC /* README.md in Sources */,
 				F47047B41B01273100FEFEFF /* myKnotCell.m in Sources */,
 				C5998FE21B62FB3700A23482 /* JSQMessagesComposerTextView.m in Sources */,
 				C5998FD11B62FB3700A23482 /* JSQMessagesCollectionViewFlowLayout.m in Sources */,
 				C5998FE81B62FB3700A23482 /* JSQMessagesToolbarContentView.m in Sources */,
 				C5998FE41B62FB3700A23482 /* JSQMessagesLabel.m in Sources */,
+				C56E568D1B6BBA25008145EC /* AFSecurityPolicy.m in Sources */,
 				C5998FD21B62FB3700A23482 /* JSQMessagesCollectionViewFlowLayoutInvalidationContext.m in Sources */,
 				F4CD0F541B6423A90006FAC4 /* WWInquiryCell.m in Sources */,
 				F4D8A7621B65119F00677F92 /* WWChangePasswordVC.m in Sources */,
 				F4C7D85E1B0D031500D69912 /* UITextField+ADTextField.m in Sources */,
 				F4D08A691B20CDB300AF8E36 /* DSLCalendarMonthSelectorView.m in Sources */,
+				C56E568F1B6BBA25008145EC /* AFURLRequestSerialization.m in Sources */,
 				F4CBDB2E1B53060A000DB347 /* WWLoginUserData.m in Sources */,
 				C5998FD61B62FB3700A23482 /* JSQMessage.m in Sources */,
+				C56E56931B6BBA25008145EC /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				C55C6FEA1B616F5700732BE5 /* WWBasicDetails.m in Sources */,
 				C5998FE71B62FB3700A23482 /* JSQMessagesMediaPlaceholderView.m in Sources */,
 				F47047411B011AE700FEFEFF /* AppDelegate.m in Sources */,
 				C5998FD71B62FB3700A23482 /* JSQMessagesAvatarImage.m in Sources */,
 				F4C4EA8A1B2CDB6200D2CD7F /* WWBookingFooterCell.m in Sources */,
+				C56E56951B6BBA25008145EC /* UIButton+AFNetworking.m in Sources */,
+				C56E568A1B6BBA25008145EC /* AFHTTPRequestOperationManager.m in Sources */,
 				C5998FD91B62FB3700A23482 /* JSQPhotoMediaItem.m in Sources */,
 				F4CBDB3E1B5307B6000DB347 /* WWLeadsListVC.m in Sources */,
 				F47047821B0123F600FEFEFF /* RDVTabBarItem.m in Sources */,
@@ -1250,6 +1332,7 @@
 				C5998FC71B62FB3700A23482 /* UIImage+JSQMessages.m in Sources */,
 				F47047811B0123F600FEFEFF /* RDVTabBarController.m in Sources */,
 				F4CBDB241B52F9D1000DB347 /* SenderMsgCell.m in Sources */,
+				C56E56911B6BBA25008145EC /* AFURLSessionManager.m in Sources */,
 				C5998FD51B62FB3700A23482 /* JSQMediaItem.m in Sources */,
 				F4CFD7EB1B1B6F8A00D53E56 /* FacebookManager.m in Sources */,
 				F4CBDB221B52F9D1000DB347 /* MessageListCell.m in Sources */,
@@ -1257,7 +1340,9 @@
 				C5998FE31B62FB3700A23482 /* JSQMessagesInputToolbar.m in Sources */,
 				F4D08A8C1B20D72800AF8E36 /* WWCalendarView.m in Sources */,
 				F4D08A6B1B20CDB300AF8E36 /* DSLCalendarMonthView.m in Sources */,
+				C56E56971B6BBA25008145EC /* UIProgressView+AFNetworking.m in Sources */,
 				F4609B651B0BBA8100BCCCB8 /* WWDashboardVC.m in Sources */,
+				C56E56891B6BBA25008145EC /* AFHTTPRequestOperation.m in Sources */,
 				F4CBDB4A1B530802000DB347 /* WWVendorDetailData.m in Sources */,
 				F4CBDB1E1B52F9D1000DB347 /* WWMessageList.m in Sources */,
 				C5998FC21B62FB3700A23482 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
@@ -1266,24 +1351,31 @@
 				C5998FCA1B62FB3700A23482 /* JSQMessagesViewController.m in Sources */,
 				F4C7D85B1B0CFED400D69912 /* WWCommon.m in Sources */,
 				C5998FE01B62FB3700A23482 /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
+				C56E569D1B6BBA25008145EC /* SCReachabilityFlagsParser.m in Sources */,
 				C5998FC51B62FB3700A23482 /* UIColor+JSQMessages.m in Sources */,
 				F4609B721B0BC4B800BCCCB8 /* WWRegistrationVC.m in Sources */,
 				C5998FDE1B62FB3700A23482 /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
 				C5998FD41B62FB3700A23482 /* JSQLocationMediaItem.m in Sources */,
 				F4609B771B0BC4D500BCCCB8 /* WWLoginVC.m in Sources */,
+				C56E56991B6BBA25008145EC /* UIWebView+AFNetworking.m in Sources */,
 				C5998FEA1B62FB3700A23482 /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
 				F4CD0F4F1B64235E0006FAC4 /* WWInquiryDetailVC.m in Sources */,
+				C56E56A01B6BBA25008145EC /* SCNetworkReachability.m in Sources */,
 				F4CCA54D1B47B0B500F33FDA /* WWWebService.m in Sources */,
 				F470473E1B011AE700FEFEFF /* main.m in Sources */,
+				C56E56961B6BBA25008145EC /* UIImageView+AFNetworking.m in Sources */,
 				C5998FD81B62FB3700A23482 /* JSQMessagesBubbleImage.m in Sources */,
 				F4CBDB261B52F9D1000DB347 /* ReceiverMsgCell.m in Sources */,
 				F4D08A681B20CDB300AF8E36 /* DSLCalendarView.m in Sources */,
 				C5998FDA1B62FB3700A23482 /* JSQVideoMediaItem.m in Sources */,
 				C5998FD01B62FB3700A23482 /* JSQMessagesToolbarButtonFactory.m in Sources */,
+				C56E56941B6BBA25008145EC /* UIAlertView+AFNetworking.m in Sources */,
 				C5998FC61B62FB3700A23482 /* UIDevice+JSQMessages.m in Sources */,
+				C56E569E1B6BBA25008145EC /* SCReachabilityRefBuilder.m in Sources */,
 				C5998FEC1B62FB3700A23482 /* JSQSystemSoundPlayer.m in Sources */,
 				F4C4EA851B2CDB2C00D2CD7F /* WWBookingMiddleCell.m in Sources */,
 				C5998FC81B62FB3700A23482 /* UIView+JSQMessages.m in Sources */,
+				C56E568C1B6BBA25008145EC /* AFNetworkReachabilityManager.m in Sources */,
 				F4CD0F5A1B64CE020006FAC4 /* WWSideMenuVC.m in Sources */,
 				F4D08A6E1B20CDB300AF8E36 /* DSLCalendarDayCalloutView.m in Sources */,
 				C5998FD31B62FB3700A23482 /* JSQMessagesCollectionViewLayoutAttributes.m in Sources */,
@@ -1291,28 +1383,14 @@
 				C5998FC91B62FB3700A23482 /* JSQMessagesKeyboardController.m in Sources */,
 				C5998FCD1B62FB3700A23482 /* JSQMessagesBubbleImageFactory.m in Sources */,
 				F4CBDB461B5307B6000DB347 /* WWBidListCell.m in Sources */,
+				C56E56981B6BBA25008145EC /* UIRefreshControl+AFNetworking.m in Sources */,
+				C56E568B1B6BBA25008145EC /* AFHTTPSessionManager.m in Sources */,
 				C5998FC31B62FB3700A23482 /* NSBundle+JSQMessages.m in Sources */,
 				F4D08A6D1B20CDB300AF8E36 /* DSLCalendarRange.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F47047501B011AE700FEFEFF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F470475B1B011AE700FEFEFF /* WeddingWiseTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		F47047561B011AE700FEFEFF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F47047371B011AE700FEFEFF /* WedWise Vendor */;
-			targetProxy = F47047551B011AE700FEFEFF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F470474D1B011AE700FEFEFF /* LaunchScreen.xib */ = {
@@ -1406,7 +1484,6 @@
 		};
 		F470475F1B011AE700FEFEFF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2DCC82CCECF86CC682CBC0B /* Pods-WeddingWise.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1426,12 +1503,7 @@
 				INFOPLIST_FILE = WeddingWise/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-l\"Pods-WeddingWise-AFNetworking\"",
-					"-l\"Pods-WeddingWise-MBProgressHUD\"",
-					"-l\"Pods-WeddingWise-SCNetworkReachability\"",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "WedWise Vendor";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1439,7 +1511,6 @@
 		};
 		F47047601B011AE700FEFEFF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 26AF5F1A291DFA0D35AB382C /* Pods-WeddingWise.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1459,54 +1530,9 @@
 				INFOPLIST_FILE = WeddingWise/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-l\"Pods-WeddingWise-AFNetworking\"",
-					"-l\"Pods-WeddingWise-MBProgressHUD\"",
-					"-l\"Pods-WeddingWise-SCNetworkReachability\"",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "WedWise Vendor";
 				PROVISIONING_PROFILE = "";
-			};
-			name = Release;
-		};
-		F47047621B011AE700FEFEFF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = WeddingWiseTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "WedWise VendorTests";
-				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeddingWise.app/WeddingWise";
-			};
-			name = Debug;
-		};
-		F47047631B011AE700FEFEFF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = WeddingWiseTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "WedWise VendorTests";
-				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeddingWise.app/WeddingWise";
 			};
 			name = Release;
 		};
@@ -1527,15 +1553,6 @@
 			buildConfigurations = (
 				F470475F1B011AE700FEFEFF /* Debug */,
 				F47047601B011AE700FEFEFF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F47047611B011AE700FEFEFF /* Build configuration list for PBXNativeTarget "WedWise VendorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F47047621B011AE700FEFEFF /* Debug */,
-				F47047631B011AE700FEFEFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
