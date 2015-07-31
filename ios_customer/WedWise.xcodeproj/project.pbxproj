@@ -18,9 +18,6 @@
 		60C763101B53D19900387B54 /* WWBidListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 60C763051B53D19900387B54 /* WWBidListCell.m */; };
 		60C763111B53D19900387B54 /* WWBidListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60C763061B53D19900387B54 /* WWBidListCell.xib */; };
 		60C763141B53D20900387B54 /* WWVendorDetailData.m in Sources */ = {isa = PBXBuildFile; fileRef = 60C763131B53D20900387B54 /* WWVendorDetailData.m */; };
-		C54844A51B69108D007882BF /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54844A21B69108D007882BF /* GoogleOpenSource.framework */; };
-		C54844A61B69108D007882BF /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C54844A31B69108D007882BF /* GooglePlus.bundle */; };
-		C54844A71B69108D007882BF /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54844A41B69108D007882BF /* GooglePlus.framework */; };
 		C56E56191B6BB785008145EC /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E55EE1B6BB784008145EC /* AFHTTPRequestOperation.m */; };
 		C56E561A1B6BB785008145EC /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E55F01B6BB784008145EC /* AFHTTPRequestOperationManager.m */; };
 		C56E561B1B6BB785008145EC /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E55F21B6BB785008145EC /* AFHTTPSessionManager.m */; };
@@ -45,6 +42,9 @@
 		C56E56451B6BB80A008145EC /* SCNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E563E1B6BB80A008145EC /* SCNetworkReachability.m */; };
 		C56E564C1B6BB84A008145EC /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C56E56491B6BB84A008145EC /* LICENSE */; };
 		C56E564D1B6BB84A008145EC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = C56E564B1B6BB84A008145EC /* README.md */; };
+		C58A1EE21B6BBDE5002065A4 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58A1EDF1B6BBDE5002065A4 /* GoogleOpenSource.framework */; };
+		C58A1EE31B6BBDE5002065A4 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C58A1EE01B6BBDE5002065A4 /* GooglePlus.bundle */; };
+		C58A1EE41B6BBDE5002065A4 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58A1EE11B6BBDE5002065A4 /* GooglePlus.framework */; };
 		C59CF1941B5AACDD0018248E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF1901B5AACDD0018248E /* FBSDKCoreKit.framework */; };
 		C59CF1951B5AACDE0018248E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF1911B5AACDD0018248E /* FBSDKLoginKit.framework */; };
 		C59CF1961B5AACDE0018248E /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF1921B5AACDD0018248E /* FBSDKMessengerShareKit.framework */; };
@@ -207,9 +207,6 @@
 		60C763061B53D19900387B54 /* WWBidListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWBidListCell.xib; sourceTree = "<group>"; };
 		60C763121B53D20900387B54 /* WWVendorDetailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWVendorDetailData.h; sourceTree = "<group>"; };
 		60C763131B53D20900387B54 /* WWVendorDetailData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWVendorDetailData.m; sourceTree = "<group>"; };
-		C54844A21B69108D007882BF /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../../../../fb_gmail/google-plus-ios-sdk-1.5.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
-		C54844A31B69108D007882BF /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "../../../../../fb_gmail/google-plus-ios-sdk-1.5.1/GooglePlus.bundle"; sourceTree = "<group>"; };
-		C54844A41B69108D007882BF /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../../../../fb_gmail/google-plus-ios-sdk-1.5.1/GooglePlus.framework"; sourceTree = "<group>"; };
 		C56E55ED1B6BB784008145EC /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		C56E55EE1B6BB784008145EC /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		C56E55EF1B6BB784008145EC /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -260,6 +257,9 @@
 		C56E56491B6BB84A008145EC /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C56E564A1B6BB84A008145EC /* macros_blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macros_blocks.h; sourceTree = "<group>"; };
 		C56E564B1B6BB84A008145EC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C58A1EDF1B6BBDE5002065A4 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../../../../../Downloads/fb_gmail/google-plus-ios-sdk-1.5.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
+		C58A1EE01B6BBDE5002065A4 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "../../../../../../Downloads/fb_gmail/google-plus-ios-sdk-1.5.1/GooglePlus.bundle"; sourceTree = "<group>"; };
+		C58A1EE11B6BBDE5002065A4 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../../../../../Downloads/fb_gmail/google-plus-ios-sdk-1.5.1/GooglePlus.framework"; sourceTree = "<group>"; };
 		C59CF1901B5AACDD0018248E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		C59CF1911B5AACDD0018248E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		C59CF1921B5AACDD0018248E /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKMessengerShareKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
@@ -504,10 +504,8 @@
 			files = (
 				F4CFFA261B45A9430065D5D6 /* CFNetwork.framework in Frameworks */,
 				C59CF1941B5AACDD0018248E /* FBSDKCoreKit.framework in Frameworks */,
-				C54844A51B69108D007882BF /* GoogleOpenSource.framework in Frameworks */,
 				C59CF1961B5AACDE0018248E /* FBSDKMessengerShareKit.framework in Frameworks */,
 				C59CF1951B5AACDE0018248E /* FBSDKLoginKit.framework in Frameworks */,
-				C54844A71B69108D007882BF /* GooglePlus.framework in Frameworks */,
 				F4CD4E511B308E150081FE0B /* MapKit.framework in Frameworks */,
 				C59CF1971B5AACDE0018248E /* FBSDKShareKit.framework in Frameworks */,
 				F4BC31BE1B179BC400BF5BB2 /* UIKit.framework in Frameworks */,
@@ -519,7 +517,9 @@
 				F4BC31B21B179B8000BF5BB2 /* CoreMotion.framework in Frameworks */,
 				F4BC31B01B179B7700BF5BB2 /* CoreLocation.framework in Frameworks */,
 				F4BC31AE1B179B6F00BF5BB2 /* Foundation.framework in Frameworks */,
+				C58A1EE41B6BBDE5002065A4 /* GooglePlus.framework in Frameworks */,
 				F4BC31AC1B179B6600BF5BB2 /* AssetsLibrary.framework in Frameworks */,
+				C58A1EE21B6BBDE5002065A4 /* GoogleOpenSource.framework in Frameworks */,
 				F4BC31AA1B179B5C00BF5BB2 /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1026,13 +1026,13 @@
 		F4BC31A41B1794CA00BF5BB2 /* FrameWorks */ = {
 			isa = PBXGroup;
 			children = (
+				C58A1EDF1B6BBDE5002065A4 /* GoogleOpenSource.framework */,
+				C58A1EE01B6BBDE5002065A4 /* GooglePlus.bundle */,
+				C58A1EE11B6BBDE5002065A4 /* GooglePlus.framework */,
 				C56E56481B6BB849008145EC /* macros_blocks */,
 				C56E56331B6BB80A008145EC /* SCNetworkReachability */,
 				C56E55EB1B6BB784008145EC /* AFNetworking */,
 				C56E56141B6BB785008145EC /* MBProgressHUD */,
-				C54844A21B69108D007882BF /* GoogleOpenSource.framework */,
-				C54844A31B69108D007882BF /* GooglePlus.bundle */,
-				C54844A41B69108D007882BF /* GooglePlus.framework */,
 				C5D2102A1B60394500DEEBEE /* JSQSystemSoundPlayer */,
 				C5D20FA11B60388200DEEBEE /* JSQMessagesViewController */,
 				C59CF1901B5AACDD0018248E /* FBSDKCoreKit.framework */,
@@ -1315,6 +1315,7 @@
 				C5D210271B60388200DEEBEE /* JSQMessagesToolbarContentView.xib in Resources */,
 				F4CD0F341B5EC13D0006FAC4 /* WWProfileVC.xib in Resources */,
 				F4CD4E301B3082F20081FE0B /* WWCategoryDetailVC.xib in Resources */,
+				C58A1EE31B6BBDE5002065A4 /* GooglePlus.bundle in Resources */,
 				60C763111B53D19900387B54 /* WWBidListCell.xib in Resources */,
 				F4CD4E481B30830F0081FE0B /* WWCategoryMapCell.xib in Resources */,
 				F45332CE1B4B03DE00C09482 /* GothamRoundedBook.ttf in Resources */,
@@ -1324,7 +1325,6 @@
 				F4CD4E591B309D020081FE0B /* WWMessageList.xib in Resources */,
 				F4CB16F81B3898CA0078419A /* YTPlayerView-iframe-player.html in Resources */,
 				60C763091B53D19900387B54 /* WWLeadsListVC.xib in Resources */,
-				C54844A61B69108D007882BF /* GooglePlus.bundle in Resources */,
 				C5D210291B60388200DEEBEE /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				F4CFFA311B45B1850065D5D6 /* WWForgotPassword~ipad.xib in Resources */,
 				F4CD4E5B1B309D020081FE0B /* WWPrivateMessage.xib in Resources */,
