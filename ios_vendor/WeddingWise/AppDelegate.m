@@ -119,7 +119,7 @@ static AppDelegate * _sharedInstance;
 
 - (void)customizeTabBarForController:(UITabBarController *)tabBarController {
     NSArray *tabBarItemImages = @[@"calend", @"message", @"led",@"menu"];
-    NSArray *tabBarSelectedItemImages = @[@"scal", @"message_icon", @"sbid",@"menu_icon"];
+    NSArray *tabBarSelectedItemImages = @[@"scal", @"message_icon", @"tab3_selected",@"menu_icon"];
     
     NSInteger index = 0;
     for (UITabBarItem *item in [[tabBarController tabBar] items]) {

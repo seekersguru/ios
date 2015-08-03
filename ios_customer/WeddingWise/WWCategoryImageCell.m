@@ -24,6 +24,7 @@
 }
 
 - (void)showImagesFromArray:(NSArray *)imageLinks{
+    _imageArray = imageLinks;
     for (int i = 0; i < imageLinks.count; i++) {
         NSURL *imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImagePrefixUrl,imageLinks[i]]];
         
@@ -42,9 +43,12 @@
 }
 
 - (void)imageTapped:(UITapGestureRecognizer *)gesture{
-    if ([self.delegate respondsToSelector:@selector(imageSelected:)]) {
-        UIImage *image = [(UIImageView *)gesture.view image];
-        [self.delegate imageSelected:image];
+//    if ([self.delegate respondsToSelector:@selector(imageSelected:)]) {
+//        UIImage *image = [(UIImageView *)gesture.view image];
+//        [self.delegate imageSelected:image];
+//    }
+    if ([self.delegate respondsToSelector:@selector(showImagesOnScroll:)]) {
+        [self.delegate showImagesOnScroll:_imageArray];
     }
 }
 @end

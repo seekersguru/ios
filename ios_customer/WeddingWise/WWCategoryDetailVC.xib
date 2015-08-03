@@ -374,6 +374,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="selected" image="Sbid"/>
+                            <state key="highlighted" image="Sbid"/>
                             <connections>
                                 <action selector="selectCustomBottonAction:" destination="-1" eventType="touchUpInside" id="qbd-uG-HXC"/>
                             </connections>
@@ -385,6 +386,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="selected" image="home_icon"/>
+                            <state key="highlighted" image="bookSelected"/>
                             <connections>
                                 <action selector="selectCustomBottonAction:" destination="-1" eventType="touchUpInside" id="ak9-lR-l4Y"/>
                             </connections>
@@ -394,6 +396,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="message"/>
                             <state key="selected" image="home_icon"/>
+                            <state key="highlighted" image="message_icon"/>
                             <connections>
                                 <action selector="selectCustomBottonAction:" destination="-1" eventType="touchUpInside" id="mEA-mi-WUO"/>
                             </connections>
@@ -405,6 +408,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="selected" image="home_icon"/>
+                            <state key="highlighted" image="menu_icon"/>
                             <connections>
                                 <action selector="selectCustomBottonAction:" destination="-1" eventType="touchUpInside" id="r8I-7Q-pyQ"/>
                             </connections>
@@ -423,11 +427,14 @@
         <image name="back@arrow" width="14" height="14"/>
         <image name="bid" width="36" height="36"/>
         <image name="book" width="36" height="36"/>
+        <image name="bookSelected" width="36" height="36"/>
         <image name="divider" width="274" height="2"/>
         <image name="header_divder" width="326" height="6"/>
         <image name="home_icon" width="21" height="20"/>
         <image name="menu" width="21" height="18"/>
+        <image name="menu_icon" width="22" height="20"/>
         <image name="message" width="23" height="20"/>
+        <image name="message_icon" width="23" height="20"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

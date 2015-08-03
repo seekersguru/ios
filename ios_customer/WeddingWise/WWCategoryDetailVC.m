@@ -292,9 +292,35 @@
 }
 
 //cell delegate will be called when user taps on image
-- (void)imageSelected:(UIImage *)image{
+
+- (void)showImagesOnScroll:(NSArray *)images{
     AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:appdelegate.window.bounds];
+    scrollView.backgroundColor = [UIColor blackColor];
+    for (int i = 0; i < images.count; i++) {
+        NSURL *imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImagePrefixUrl,images[i]]];
+        
+        CGRect frame = CGRectMake(i*scrollView.frame.size.width, 0, scrollView.frame.size.width, scrollView.frame.size.height);
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+        imageView.contentMode = UIViewContentModeCenter;
+        UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
+        [imageView setImageWithURL:imageUrl placeholderImage:placeholderImage];
+        [scrollView addSubview:imageView];
+    }
+    [scrollView setPagingEnabled:YES];
+    [scrollView setContentSize:CGSizeMake(images.count*scrollView.frame.size.width, 0)];
+    scrollView.tag = 1000;
+    [appdelegate.window addSubview:scrollView];
+    
+    UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(250, 10, 60, 30)];
+    [doneButton setTitle:@"Done" forState:UIControlStateNormal];
+    [doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [doneButton addTarget:self action:@selector(doneButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [appdelegate.window addSubview:doneButton];
+}
+- (void)imageSelected:(UIImage *)image{
+    AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UIView *zoomImageView = [[UIView alloc] initWithFrame:appdelegate.window.bounds];
     [zoomImageView setBackgroundColor:[UIColor blackColor]];
     
@@ -313,7 +339,8 @@
 }
 
 - (void)doneButtonClicked:(UIButton *)bt{
-    [bt.superview removeFromSuperview];
+    [[bt.superview viewWithTag:1000] removeFromSuperview];
+    [bt removeFromSuperview];
 }
 BOOL isRowClicked;
 NSInteger selectedRow = -1;

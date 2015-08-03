@@ -14,6 +14,7 @@
 
 @optional
 - (void)imageSelected:(UIImage *)image;
+- (void)showImagesOnScroll:(NSArray *)images;
 @end
 
 @interface WWCategoryImageCell : UITableViewCell
@@ -21,6 +22,7 @@
 {
     id <ImageCellDelegate> _delegate;
 }
+@property (nonatomic, strong) NSArray *imageArray;
 @property (weak, nonatomic) IBOutlet UIScrollView *categoryImageScrollView;
 @property(nonatomic, weak)IBOutlet UIButton *btnVideoLink;
 @property(nonatomic, weak)IBOutlet UIButton *btnImage;

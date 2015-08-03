@@ -216,6 +216,8 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
     [self jsq_configureMessagesViewController];
     [self jsq_registerForNotifications:YES];
+    
+    [_lblVendorName setFont:[UIFont fontWithName:AppFont size:17.0f]];
 }
 
 - (void)viewWillAppear:(BOOL)animated

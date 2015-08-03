@@ -47,7 +47,7 @@
     JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
     
     self.outgoingBubbleImageData = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
-    self.incomingBubbleImageData = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleBlueColor]];
+    self.incomingBubbleImageData = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleGreenColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -175,6 +175,7 @@
              NSArray *arrData=[responseDics valueForKey:@"json"];
              NSDateFormatter *df = [[NSDateFormatter alloc] init];
              [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//             df.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"IST"];
             
              __block NSString *strMessageID;
              [chatArray removeAllObjects];
