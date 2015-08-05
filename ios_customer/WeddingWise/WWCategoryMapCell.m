@@ -28,6 +28,11 @@
 }
 
 - (void)showCoordinatesOnMapWithLatitude:(NSString *)latitude longitude:(NSString *)longitude{
+    
+    self.mapView.zoomEnabled = NO;
+    self.mapView.scrollEnabled = NO;
+    self.mapView.userInteractionEnabled = NO;
+    
     CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([latitude floatValue], [longitude floatValue]);
     AnnotationPin *annotation = [[AnnotationPin alloc] initWithCoordinate:coordinates];
     [self.mapView addAnnotation:annotation];

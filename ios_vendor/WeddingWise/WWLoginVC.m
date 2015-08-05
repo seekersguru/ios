@@ -82,15 +82,21 @@
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
              //Login successfully
+             
+             [[NSUserDefaults standardUserDefaults] setObject:[responseDics valueForKey:@"json"][@"identifier"] forKey:@"identifier"];
+             [[NSUserDefaults standardUserDefaults] synchronize];
+             
              WWLoginUserData *userData=[[WWLoginUserData alloc]setUserData:[responseDics valueForKey:@"json"]];
              [AppDelegate sharedAppDelegate].userData= userData;
              [AppDelegate sharedAppDelegate].vendorEmailID= _txtEmailAddress.text;
              
-             [[AppDelegate sharedAppDelegate]setupViewControllers:self.navigationController];
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 UITabBarController *tabVC = [[AppDelegate sharedAppDelegate]setupViewControllers:nil];
+                 [self.navigationController pushViewController:tabVC animated:YES];
+             });
          }
-         
      }
-                                             failure:^(NSString *response)
+        failure:^(NSString *response)
      {
          DLog(@"%@",response);
      }];

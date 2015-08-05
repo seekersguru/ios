@@ -65,19 +65,23 @@ static AppDelegate * _sharedInstance;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 #endif
     
-    WWDashboardVC *dashboard=[[WWDashboardVC alloc]initWithNibName:@"WWDashboardVC" bundle:nil];
-    _navigation=[[UINavigationController alloc]initWithRootViewController:dashboard];
-    
+    NSString *savedIdentifier = [[NSUserDefaults standardUserDefaults]
+                                 stringForKey:@"identifier"];
+    if(savedIdentifier){
+        _navigation=[[UINavigationController alloc]init];
+        UITabBarController *tabVC = [self setupViewControllers:nil];
+        [_navigation pushViewController:tabVC animated:YES];
+    }
+    else{
+        WWDashboardVC *dashboard=[[WWDashboardVC alloc]initWithNibName:@"WWDashboardVC" bundle:nil];
+        _navigation=[[UINavigationController alloc]initWithRootViewController:dashboard];
+    }
     [self.window setRootViewController:_navigation];
     [self.window makeKeyAndVisible];
     
     [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
-    
-    
-    //[self setupViewControllers];
-    //self.window.rootViewController = self.viewController;
     
     return YES;
 }
@@ -92,7 +96,10 @@ static AppDelegate * _sharedInstance;
 //    }
     return [GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation];
 }
-- (void)setupViewControllers:(UINavigationController*)navigationView {
+- (UITabBarController *)setupViewControllers:(UITabBarController *)tabVC{
+    if (!tabVC) {
+        tabVC = [[UITabBarController alloc] init];
+    }
     UIViewController *firstViewController = [[WWCalendarView alloc] init];
     UINavigationController *firstNavigationController = [[UINavigationController alloc]
                                                          initWithRootViewController:firstViewController];
@@ -108,29 +115,72 @@ static AppDelegate * _sharedInstance;
     UIViewController *fourthViewController = [[WWSideMenuVC alloc] init];
     UINavigationController *fourthNavigationController = [[UINavigationController alloc]
                                                           initWithRootViewController:fourthViewController];
-    
-    _tabBarController = [[UITabBarController alloc] init];
-    [_tabBarController setViewControllers:@[firstNavigationController, secondNavigationController,
-                                            thirdNavigationController,fourthNavigationController]];
-    
-    [navigationView pushViewController:_tabBarController animated:YES];
-    [self customizeTabBarForController:_tabBarController];
-}
 
-- (void)customizeTabBarForController:(UITabBarController *)tabBarController {
+    [tabVC setViewControllers:@[firstNavigationController,
+                                secondNavigationController,
+                                thirdNavigationController,
+                                fourthNavigationController]];
+    
     NSArray *tabBarItemImages = @[@"calend", @"message", @"led",@"menu"];
-    NSArray *tabBarSelectedItemImages = @[@"scal", @"message_icon", @"tab3_selected",@"menu_icon"];
+    NSArray *tabBarSelectedItemImages = @[@"scal", @"message_icon", @"sbid",@"menu_icon"];
+    
+    //NSArray *tabBarItemImages = @[@"home", @"message", @"led",@"menu"];
+    //NSArray *tabBarSelectedItemImages = @[@"home_icon", @"message_icon", @"sbid",@"menu_icon"];
+    
+    [self customizeTabBarForController:tabVC images:tabBarItemImages selectedImages:tabBarSelectedItemImages];
+    return tabVC;
+}
+//- (void)setupViewControllers:(UINavigationController*)navigationView {
+//    UIViewController *firstViewController = [[WWCalendarView alloc] init];
+//    UINavigationController *firstNavigationController = [[UINavigationController alloc]
+//                                                         initWithRootViewController:firstViewController];
+//    
+//    UIViewController *secondViewController = [[WWMessageList alloc] init];
+//    UINavigationController *secondNavigationController = [[UINavigationController alloc]
+//                                                          initWithRootViewController:secondViewController];
+//    
+//    UIViewController *thirdViewController = [[WWLeadsListVC alloc] init];
+//    UINavigationController *thirdNavigationController = [[UINavigationController alloc]
+//                                                         initWithRootViewController:thirdViewController];
+//    
+//    UIViewController *fourthViewController = [[WWSideMenuVC alloc] init];
+//    UINavigationController *fourthNavigationController = [[UINavigationController alloc]
+//                                                          initWithRootViewController:fourthViewController];
+//
+//    _tabBarController = [[UITabBarController alloc] init];
+//    [_tabBarController setViewControllers:@[firstNavigationController, secondNavigationController,
+//                                            thirdNavigationController,fourthNavigationController]];
+//    
+//    [navigationView pushViewController:_tabBarController animated:YES];
+//    [self customizeTabBarForController:_tabBarController];
+//}
+
+- (void)customizeTabBarForController:(UITabBarController *)tabBarController images:(NSArray *)images selectedImages:(NSArray *)selectedImages{
     
     NSInteger index = 0;
     for (UITabBarItem *item in [[tabBarController tabBar] items]) {
         
-        [item setImage:[UIImage imageNamed:[tabBarItemImages objectAtIndex:index]]];
-        item.selectedImage= [[UIImage imageNamed:[tabBarSelectedItemImages objectAtIndex:index]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        
-        
+        [item setImage:[UIImage imageNamed:[images objectAtIndex:index]]];
+        item.selectedImage= [[UIImage imageNamed:[selectedImages objectAtIndex:index]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         index++;
+        
     }
 }
+
+//- (void)customizeTabBarForController:(UITabBarController *)tabBarController {
+//    NSArray *tabBarItemImages = @[@"calend", @"message", @"led",@"menu"];
+//    NSArray *tabBarSelectedItemImages = @[@"scal", @"message_icon", @"sbid",@"menu_icon"];
+//    
+//    NSInteger index = 0;
+//    for (UITabBarItem *item in [[tabBarController tabBar] items]) {
+//        
+//        [item setImage:[UIImage imageNamed:[tabBarItemImages objectAtIndex:index]]];
+//        item.selectedImage= [[UIImage imageNamed:[tabBarSelectedItemImages objectAtIndex:index]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//        
+//        
+//        index++;
+//    }
+//}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

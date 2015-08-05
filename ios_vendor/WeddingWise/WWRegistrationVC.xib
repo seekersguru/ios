@@ -175,7 +175,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-505" y="-77"/>
+            <point key="canvasLocation" x="-441" y="-72"/>
         </view>
     </objects>
     <resources>

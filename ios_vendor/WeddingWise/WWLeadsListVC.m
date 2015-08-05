@@ -27,6 +27,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[WWCommon getSharedObject]setCustomFont:13.0 withLabel:_lblSortBy withText:_lblSortBy.text];
+    [[WWCommon getSharedObject]setCustomFont:13.0 withLabel:_sortEventButton withText:_sortEventButton.titleLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:13.0 withLabel:_sortInquiryButton withText:_sortInquiryButton.titleLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:15.0 withLabel:bidBtn withText:bidBtn.titleLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:15.0 withLabel:bookBtn withText:bookBtn.titleLabel.text];
+    
     _tblBidView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
      [self.navigationController.navigationBar setHidden:YES];
     [_tblBidView registerNib:[UINib nibWithNibName:@"WWBidListCell" bundle:nil] forCellReuseIdentifier:@"WWBidListCell"];
@@ -142,7 +148,14 @@
     [UIView commitAnimations];
     
 }
-
+- (IBAction)eventDateSorting:(id)sender {
+    arrBidData = (NSMutableArray*)[[arrBidData reverseObjectEnumerator] allObjects];
+    [_tblBidView reloadData];
+}
+- (IBAction)inquiryDateSorting:(id)sender {
+    arrBidData = (NSMutableArray*)[[arrBidData reverseObjectEnumerator] allObjects];
+    [_tblBidView reloadData];
+}
 -(void)callCustomerMessageAPIWithType:(NSString *)type completionBlock:(void(^)(NSArray *))completion{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",

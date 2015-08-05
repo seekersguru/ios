@@ -14,5 +14,8 @@
     IBOutlet UIButton *bookBtn;
     IBOutlet UIImageView *selectorImage;
 }
+@property (weak, nonatomic) IBOutlet UILabel *lblSortBy;
+@property (weak, nonatomic) IBOutlet UIButton *sortInquiryButton;
+@property (weak, nonatomic) IBOutlet UIButton *sortEventButton;
 @property(nonatomic, weak)IBOutlet UITableView *tblBidView;
 @end

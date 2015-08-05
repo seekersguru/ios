@@ -126,14 +126,23 @@
     }
 }
 -(void)callRegistrationAPI{
+    NSString *password;
+    if(_fbResponse){
+        password= @"123456";
+    }
+    else{
+        password= _txtPassword.text;
+    }
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  _txtEmailAddress.text,@"email",
-                                 _txtPassword.text,@"password",
+                                 password,@"password",
                                  _txtName.text,@"name",
-                                 _txtAddress.text,@"bride_name",
+                                 _txtAddress.text,@"address",
                                  _btnVendorType.titleLabel.text,@"vendor_type",
                                  _txtContactNumber.text,@"contact_number",
-                                 @"customer_registration",@"action",
+                                 @"",@"fbid",
+                                 @"",@"gid",
+                                 @"vendor_registration",@"action",
                                  nil];
     
     [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
@@ -142,7 +151,15 @@
              [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
-             //Login successfully
+             //Registration successfully
+             
+             [[NSUserDefaults standardUserDefaults] setObject:[responseDics valueForKey:@"json"][@"identifier"] forKey:@"identifier"];
+             [[NSUserDefaults standardUserDefaults] synchronize];
+             
+             WWLoginUserData *userData=[[WWLoginUserData alloc]setUserData:[responseDics valueForKey:@"json"]];
+             [AppDelegate sharedAppDelegate].userData= userData;
+             [AppDelegate sharedAppDelegate].vendorEmailID= _txtEmailAddress.text;
+             
              [[AppDelegate sharedAppDelegate]setupViewControllers:self.navigationController];
          }
      }
