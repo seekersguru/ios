@@ -95,11 +95,11 @@
     UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
     
     
-    if([dicVendorData[@"isFavorite"] isEqualToString:@"1"]){
-        [cell.btnFavorite setImage:[UIImage imageNamed:@"fav_icon"] forState:UIControlStateNormal];
+    if([dicVendorData[@"favorite"] isEqualToString:@"1"]){
+        [cell.btnFavorite setImage:[UIImage imageNamed:@"RSelect"] forState:UIControlStateNormal];
     }
-    else if ([dicVendorData[@"isFavorite"] isEqualToString:@"-1"]){
-        [cell.btnFavorite setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
+    else if ([dicVendorData[@"favorite"] isEqualToString:@"-1"]){
+        [cell.btnFavorite setImage:[UIImage imageNamed:@"WSelect"] forState:UIControlStateNormal];
     }
     
     __weak WWCategoryCell *weakCell = cell;

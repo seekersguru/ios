@@ -229,11 +229,13 @@
                     [cell.lblPrice setText:basicInfo.startingPrice];
                     cell.lblPrice.font = [UIFont fontWithName:AppFont size:13.0];
                     
+                    
+                    
                     if([basicInfo.strFavorite isEqualToString:@"1"]){
-                        [cell.btnFavorite setImage:[UIImage imageNamed:@"Sheart"] forState:UIControlStateNormal];
+                        [cell.btnFavorite setImage:[UIImage imageNamed:@"RSelect"] forState:UIControlStateNormal];
                     }
                     else if ([basicInfo.strFavorite isEqualToString:@"-1"]){
-                        [cell.btnFavorite setImage:[UIImage imageNamed:@"Heart"] forState:UIControlStateNormal];
+                         [cell.btnFavorite setImage:[UIImage imageNamed:@"WSelect"] forState:UIControlStateNormal];
                     }
                     
                     //[cell.btnFavorite setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
