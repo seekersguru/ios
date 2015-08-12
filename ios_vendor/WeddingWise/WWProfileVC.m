@@ -68,7 +68,9 @@
                                  @"",@"fbid",
                                  @"",@"gid",
                                  @"get",@"operation",
-                                 [AppDelegate sharedAppDelegate].userData.identifier?[AppDelegate sharedAppDelegate].userData.identifier:@"",@"identifier",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"]?[[NSUserDefaults standardUserDefaults]
+                                                               stringForKey:@"identifier"]:@"",@"identifier",
                                  @"customer_registration",@"action",
                                  nil];
     

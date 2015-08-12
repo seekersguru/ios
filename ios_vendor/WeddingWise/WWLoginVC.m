@@ -35,6 +35,18 @@
     [self.view addGestureRecognizer:tap];
     
     [self.navigationController.navigationBar setHidden:YES];
+    
+    NSString *savedEmail = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:@"EmailID"];
+    NSString *savedPassword = [[NSUserDefaults standardUserDefaults]
+                               stringForKey:@"Password"];
+    
+    if(savedEmail.length>0){
+        _txtEmailAddress.text= savedEmail;
+        _txtPassword.text= savedPassword;
+        
+    }
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
@@ -89,6 +101,14 @@
              WWLoginUserData *userData=[[WWLoginUserData alloc]setUserData:[responseDics valueForKey:@"json"]];
              [AppDelegate sharedAppDelegate].userData= userData;
              [AppDelegate sharedAppDelegate].vendorEmailID= _txtEmailAddress.text;
+             
+             [[NSUserDefaults standardUserDefaults] setObject:[responseDics valueForKey:@"json"][@"identifier"] forKey:@"identifier"];
+             [[NSUserDefaults standardUserDefaults] synchronize];
+             
+             [[NSUserDefaults standardUserDefaults] setObject:_txtEmailAddress.text forKey:@"EmailID"];
+             [[NSUserDefaults standardUserDefaults] setObject:_txtPassword.text forKey:@"Password"];
+             [[NSUserDefaults standardUserDefaults] synchronize];
+             
              
              dispatch_async(dispatch_get_main_queue(), ^{
                  UITabBarController *tabVC = [[AppDelegate sharedAppDelegate]setupViewControllers:nil];

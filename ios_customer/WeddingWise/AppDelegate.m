@@ -20,6 +20,7 @@
 #import "WWLeadsListVC.h"
 #import "WWSideMenuVC.h"
 #import "WWProfileVC.h"
+#import "WWRegistrationVC.h"
 
 void uncaughtExceptionHandler(NSException*);
 
@@ -97,9 +98,9 @@ static AppDelegate * _sharedInstance;
     return YES;
 }
 
-- (BOOL)application: (UIApplication *)application openURL: (NSURL *)url sourceApplication: (NSString *)sourceApplication annotation: (id)annotation
+- (BOOL)application: (UIApplication *)application openURL: (NSURL *)url sourceApplication: (NSString *)sourceApplication annotation: (id)annotation 
 {
-    if([url.absoluteString rangeOfString:@"fb1069293003099190"].location != NSNotFound){
+    if([url.absoluteString rangeOfString:@"fb710911475711792"].location != NSNotFound){
         return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                               openURL:url
                                                     sourceApplication:sourceApplication
@@ -118,7 +119,7 @@ static AppDelegate * _sharedInstance;
                                                    initWithRootViewController:firstViewController];
     
     NSString *savedGroomName = [[NSUserDefaults standardUserDefaults]
-                                stringForKey:@"groom_name"];
+                                stringForKey:@"EmailID"];
     UINavigationController *secondNavigationController;
     if(savedGroomName.length>0){
         UIViewController *secondViewController = [[WWMessageList alloc] init];
@@ -126,7 +127,7 @@ static AppDelegate * _sharedInstance;
                                      initWithRootViewController:secondViewController];
     }
     else{
-        UIViewController *secondViewController = [[WWProfileVC alloc] init];
+        UIViewController *secondViewController = [[WWDashboardVC alloc] init];
         secondNavigationController = [[UINavigationController alloc]
                                       initWithRootViewController:secondViewController];
     }
@@ -138,7 +139,7 @@ static AppDelegate * _sharedInstance;
                                      initWithRootViewController:thirdViewController];
     }
     else{
-        UIViewController *thirdViewController = [[WWProfileVC alloc] init];
+        UIViewController *thirdViewController = [[WWDashboardVC alloc] init];
         thirdNavigationController = [[UINavigationController alloc]
                                      initWithRootViewController:thirdViewController];
     }

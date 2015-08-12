@@ -9,6 +9,9 @@
 #import "WWLeadsListVC.h"
 #import "WWBidListCell.h"
 #import "WWInquiryDetailVC.h"
+#import <math.h>
+
+#define DEGREES_IN_RADIANS(x) (M_PI * x / 180.0);
 
 @interface WWLeadsListVC ()
 
@@ -104,11 +107,34 @@
          DLog(@"%@",response);
      }];
 }
+#define DEGREES_RADIANS(angle) ((angle) / 180.0 * M_PI)
 - (IBAction)eventDateSorting:(id)sender {
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        if(_sortEventButton.selected){
+            _imgEvent.transform = CGAffineTransformMakeRotation(DEGREES_RADIANS(360));
+            _sortEventButton.selected= NO;
+        }
+        else{
+            _imgEvent.transform = CGAffineTransformMakeRotation(DEGREES_RADIANS(180));
+            _sortEventButton.selected= YES;
+        }
+    }];
     arrBidData = (NSMutableArray*)[[arrBidData reverseObjectEnumerator] allObjects];
     [_tblBidView reloadData];
 }
 - (IBAction)inquiryDateSorting:(id)sender {
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        if(_sortInquiryButton.selected){
+            _imgInquiry.transform = CGAffineTransformMakeRotation(DEGREES_RADIANS(360));
+            _sortInquiryButton.selected= NO;
+        }
+        else{
+            _imgInquiry.transform = CGAffineTransformMakeRotation(DEGREES_RADIANS(180));
+            _sortInquiryButton.selected= YES;
+        }
+    }];
     arrBidData = (NSMutableArray*)[[arrBidData reverseObjectEnumerator] allObjects];
     [_tblBidView reloadData];
 }

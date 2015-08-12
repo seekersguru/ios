@@ -9,7 +9,7 @@
 #import "WWCategoryListCell.h"
 #import "WWCategoryCommonCell.h"
 
-@implementation WWCategoryListCell
+@implementation WWCategoryListCell 
 {
     NSArray *_descData;
 }

@@ -52,6 +52,19 @@
 -(void)fillFaceBookData{
     [_txtEmailAddress setEnabled:NO];
     _txtEmailAddress.text= [_fbResponse valueForKey:@"email"];
+    
+    [_txtEmailAddress setTextColor:[UIColor lightGrayColor]];
+    
+    [_txtPassword setHidden:YES];
+    //[_btnSkip setHidden:NO];
+    
+    //Set buttons frame in case FB & G+ login:
+    [_btnVendorType setFrame:CGRectMake(_txtPassword.frame.origin.x, _txtPassword.frame.origin.y, _txtPassword.frame.size.width, _txtPassword.frame.size.height)];
+    [_txtName setFrame:CGRectMake(_btnVendorType.frame.origin.x, _btnVendorType.frame.origin.y+48, _btnVendorType.frame.size.width, _btnVendorType.frame.size.height)];
+    [_txtContactNumber setFrame:CGRectMake(_txtName.frame.origin.x, _txtName.frame.origin.y+48, _txtName.frame.size.width, _txtName.frame.size.height)];
+    [_txtAddress setFrame:CGRectMake(_txtContactNumber.frame.origin.x, _txtContactNumber.frame.origin.y+48, _txtContactNumber.frame.size.width, _txtContactNumber.frame.size.height)];
+    
+    [_imgTextBG setFrame:CGRectMake(_imgTextBG.frame.origin.x, _imgTextBG.frame.origin.y, _imgTextBG.frame.size.width, _imgTextBG.frame.size.height-48)];
 }
 
 #pragma mark: IBAction & utility methods:
@@ -79,7 +92,7 @@
                      }];
 }
 -(IBAction)btnDonePressed:(id)sender{
-    [_btnVendorType setTitle:[_pickerData[[_pickerView selectedRowInComponent:0]] uppercaseString] forState:UIControlStateNormal];
+    [_btnVendorType setTitle:[_pickerData[[_pickerView selectedRowInComponent:0]] capitalizedString] forState:UIControlStateNormal];
     //[_btnVendorType.titleLabel setTextColor:[UIColor blackColor]];
     [_btnVendorType setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
@@ -160,7 +173,18 @@
              [AppDelegate sharedAppDelegate].userData= userData;
              [AppDelegate sharedAppDelegate].vendorEmailID= _txtEmailAddress.text;
              
-             [[AppDelegate sharedAppDelegate]setupViewControllers:self.navigationController];
+             [[NSUserDefaults standardUserDefaults] setObject:[responseDics valueForKey:@"json"][@"identifier"] forKey:@"identifier"];
+             [[NSUserDefaults standardUserDefaults] synchronize];
+             
+             [[NSUserDefaults standardUserDefaults] setObject:_txtEmailAddress.text forKey:@"EmailID"];
+             [[NSUserDefaults standardUserDefaults] setObject:_txtPassword.text forKey:@"Password"];
+             [[NSUserDefaults standardUserDefaults] synchronize];
+             
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 UITabBarController *tabVC = [[AppDelegate sharedAppDelegate]setupViewControllers:nil];
+                 [self.navigationController pushViewController:tabVC animated:YES];
+             });
          }
      }
                                              failure:^(NSString *response)

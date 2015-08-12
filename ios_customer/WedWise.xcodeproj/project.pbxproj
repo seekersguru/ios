@@ -42,13 +42,6 @@
 		C56E56451B6BB80A008145EC /* SCNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C56E563E1B6BB80A008145EC /* SCNetworkReachability.m */; };
 		C56E564C1B6BB84A008145EC /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C56E56491B6BB84A008145EC /* LICENSE */; };
 		C56E564D1B6BB84A008145EC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = C56E564B1B6BB84A008145EC /* README.md */; };
-		C58A1EE21B6BBDE5002065A4 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58A1EDF1B6BBDE5002065A4 /* GoogleOpenSource.framework */; };
-		C58A1EE31B6BBDE5002065A4 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C58A1EE01B6BBDE5002065A4 /* GooglePlus.bundle */; };
-		C58A1EE41B6BBDE5002065A4 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58A1EE11B6BBDE5002065A4 /* GooglePlus.framework */; };
-		C59CF1941B5AACDD0018248E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF1901B5AACDD0018248E /* FBSDKCoreKit.framework */; };
-		C59CF1951B5AACDE0018248E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF1911B5AACDD0018248E /* FBSDKLoginKit.framework */; };
-		C59CF1961B5AACDE0018248E /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF1921B5AACDD0018248E /* FBSDKMessengerShareKit.framework */; };
-		C59CF1971B5AACDE0018248E /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CF1931B5AACDD0018248E /* FBSDKShareKit.framework */; };
 		C5D20FFF1B60388200DEEBEE /* JSQMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C5D20FA31B60388200DEEBEE /* JSQMessagesAssets.bundle */; };
 		C5D210001B60388200DEEBEE /* JSQSystemSoundPlayer+JSQMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D20FA61B60388200DEEBEE /* JSQSystemSoundPlayer+JSQMessages.m */; };
 		C5D210011B60388200DEEBEE /* NSBundle+JSQMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D20FA81B60388200DEEBEE /* NSBundle+JSQMessages.m */; };
@@ -93,6 +86,13 @@
 		C5D210281B60388200DEEBEE /* JSQMessagesTypingIndicatorFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D20FFD1B60388200DEEBEE /* JSQMessagesTypingIndicatorFooterView.m */; };
 		C5D210291B60388200DEEBEE /* JSQMessagesTypingIndicatorFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5D20FFE1B60388200DEEBEE /* JSQMessagesTypingIndicatorFooterView.xib */; };
 		C5D2102E1B60394500DEEBEE /* JSQSystemSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D2102D1B60394500DEEBEE /* JSQSystemSoundPlayer.m */; };
+		F41F96D81B76156C0096DCE0 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F41F96D11B76156C0096DCE0 /* FBSDKCoreKit.framework */; };
+		F41F96D91B76156D0096DCE0 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F41F96D21B76156C0096DCE0 /* FBSDKLoginKit.framework */; };
+		F41F96DA1B76156D0096DCE0 /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F41F96D31B76156C0096DCE0 /* FBSDKMessengerShareKit.framework */; };
+		F41F96DB1B76156D0096DCE0 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F41F96D41B76156C0096DCE0 /* FBSDKShareKit.framework */; };
+		F41F96DC1B76156D0096DCE0 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F41F96D51B76156C0096DCE0 /* GoogleOpenSource.framework */; };
+		F41F96DD1B76156D0096DCE0 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F41F96D61B76156C0096DCE0 /* GooglePlus.bundle */; };
+		F41F96DE1B76156D0096DCE0 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F41F96D71B76156C0096DCE0 /* GooglePlus.framework */; };
 		F45332CE1B4B03DE00C09482 /* GothamRoundedBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F45332CD1B4B03DE00C09482 /* GothamRoundedBook.ttf */; };
 		F4609B651B0BBA8100BCCCB8 /* WWDashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */; };
 		F4609B661B0BBA8100BCCCB8 /* WWDashboardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4609B641B0BBA8100BCCCB8 /* WWDashboardVC.xib */; };
@@ -187,6 +187,8 @@
 		F4D50E111B5B11F000491A93 /* AnnotationPin.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D50E101B5B11F000491A93 /* AnnotationPin.m */; };
 		F4D8A7671B69520B00677F92 /* WWChangePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8A7651B69520B00677F92 /* WWChangePasswordVC.m */; };
 		F4D8A7681B69520B00677F92 /* WWChangePasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D8A7661B69520B00677F92 /* WWChangePasswordVC.xib */; };
+		F4D8B3D31B7919EA009B4466 /* WWFavoriteVendorsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8B3D11B7919EA009B4466 /* WWFavoriteVendorsVC.m */; };
+		F4D8B3D41B7919EA009B4466 /* WWFavoriteVendorsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D8B3D21B7919EA009B4466 /* WWFavoriteVendorsVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -257,13 +259,6 @@
 		C56E56491B6BB84A008145EC /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C56E564A1B6BB84A008145EC /* macros_blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macros_blocks.h; sourceTree = "<group>"; };
 		C56E564B1B6BB84A008145EC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		C58A1EDF1B6BBDE5002065A4 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../../../../../Downloads/fb_gmail/google-plus-ios-sdk-1.5.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
-		C58A1EE01B6BBDE5002065A4 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "../../../../../../Downloads/fb_gmail/google-plus-ios-sdk-1.5.1/GooglePlus.bundle"; sourceTree = "<group>"; };
-		C58A1EE11B6BBDE5002065A4 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../../../../../Downloads/fb_gmail/google-plus-ios-sdk-1.5.1/GooglePlus.framework"; sourceTree = "<group>"; };
-		C59CF1901B5AACDD0018248E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		C59CF1911B5AACDD0018248E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		C59CF1921B5AACDD0018248E /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKMessengerShareKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
-		C59CF1931B5AACDD0018248E /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		C5D20FA31B60388200DEEBEE /* JSQMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JSQMessagesAssets.bundle; sourceTree = "<group>"; };
 		C5D20FA51B60388200DEEBEE /* JSQSystemSoundPlayer+JSQMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSQSystemSoundPlayer+JSQMessages.h"; sourceTree = "<group>"; };
 		C5D20FA61B60388200DEEBEE /* JSQSystemSoundPlayer+JSQMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSQSystemSoundPlayer+JSQMessages.m"; sourceTree = "<group>"; };
@@ -352,6 +347,13 @@
 		C5D20FFE1B60388200DEEBEE /* JSQMessagesTypingIndicatorFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSQMessagesTypingIndicatorFooterView.xib; sourceTree = "<group>"; };
 		C5D2102C1B60394500DEEBEE /* JSQSystemSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQSystemSoundPlayer.h; sourceTree = "<group>"; };
 		C5D2102D1B60394500DEEBEE /* JSQSystemSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQSystemSoundPlayer.m; sourceTree = "<group>"; };
+		F41F96D11B76156C0096DCE0 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		F41F96D21B76156C0096DCE0 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		F41F96D31B76156C0096DCE0 /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
+		F41F96D41B76156C0096DCE0 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		F41F96D51B76156C0096DCE0 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleOpenSource.framework; sourceTree = "<group>"; };
+		F41F96D61B76156C0096DCE0 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GooglePlus.bundle; sourceTree = "<group>"; };
+		F41F96D71B76156C0096DCE0 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlus.framework; sourceTree = "<group>"; };
 		F45332CD1B4B03DE00C09482 /* GothamRoundedBook.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamRoundedBook.ttf; sourceTree = "<group>"; };
 		F4609B621B0BBA8100BCCCB8 /* WWDashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDashboardVC.h; sourceTree = "<group>"; };
 		F4609B631B0BBA8100BCCCB8 /* WWDashboardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWDashboardVC.m; sourceTree = "<group>"; };
@@ -495,6 +497,9 @@
 		F4D8A7641B69520B00677F92 /* WWChangePasswordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWChangePasswordVC.h; sourceTree = "<group>"; };
 		F4D8A7651B69520B00677F92 /* WWChangePasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWChangePasswordVC.m; sourceTree = "<group>"; };
 		F4D8A7661B69520B00677F92 /* WWChangePasswordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWChangePasswordVC.xib; sourceTree = "<group>"; };
+		F4D8B3D01B7919EA009B4466 /* WWFavoriteVendorsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWFavoriteVendorsVC.h; sourceTree = "<group>"; };
+		F4D8B3D11B7919EA009B4466 /* WWFavoriteVendorsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWFavoriteVendorsVC.m; sourceTree = "<group>"; };
+		F4D8B3D21B7919EA009B4466 /* WWFavoriteVendorsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWFavoriteVendorsVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -503,12 +508,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4CFFA261B45A9430065D5D6 /* CFNetwork.framework in Frameworks */,
-				C59CF1941B5AACDD0018248E /* FBSDKCoreKit.framework in Frameworks */,
-				C59CF1961B5AACDE0018248E /* FBSDKMessengerShareKit.framework in Frameworks */,
-				C59CF1951B5AACDE0018248E /* FBSDKLoginKit.framework in Frameworks */,
 				F4CD4E511B308E150081FE0B /* MapKit.framework in Frameworks */,
-				C59CF1971B5AACDE0018248E /* FBSDKShareKit.framework in Frameworks */,
+				F41F96DB1B76156D0096DCE0 /* FBSDKShareKit.framework in Frameworks */,
+				F41F96D91B76156D0096DCE0 /* FBSDKLoginKit.framework in Frameworks */,
 				F4BC31BE1B179BC400BF5BB2 /* UIKit.framework in Frameworks */,
+				F41F96DA1B76156D0096DCE0 /* FBSDKMessengerShareKit.framework in Frameworks */,
 				F4BC31BC1B179BBC00BF5BB2 /* SystemConfiguration.framework in Frameworks */,
 				F4BC31BA1B179BA500BF5BB2 /* Security.framework in Frameworks */,
 				F4BC31B81B179B9E00BF5BB2 /* MediaPlayer.framework in Frameworks */,
@@ -517,9 +521,10 @@
 				F4BC31B21B179B8000BF5BB2 /* CoreMotion.framework in Frameworks */,
 				F4BC31B01B179B7700BF5BB2 /* CoreLocation.framework in Frameworks */,
 				F4BC31AE1B179B6F00BF5BB2 /* Foundation.framework in Frameworks */,
-				C58A1EE41B6BBDE5002065A4 /* GooglePlus.framework in Frameworks */,
+				F41F96D81B76156C0096DCE0 /* FBSDKCoreKit.framework in Frameworks */,
+				F41F96DE1B76156D0096DCE0 /* GooglePlus.framework in Frameworks */,
 				F4BC31AC1B179B6600BF5BB2 /* AssetsLibrary.framework in Frameworks */,
-				C58A1EE21B6BBDE5002065A4 /* GoogleOpenSource.framework in Frameworks */,
+				F41F96DC1B76156D0096DCE0 /* GoogleOpenSource.framework in Frameworks */,
 				F4BC31AA1B179B5C00BF5BB2 /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -892,10 +897,10 @@
 		F470473A1B011AE700FEFEFF /* WeddingWise */ = {
 			isa = PBXGroup;
 			children = (
+				F4BC31A41B1794CA00BF5BB2 /* FrameWorks */,
 				F4CBDB281B52FCE0000DB347 /* Model */,
 				F4CFFA321B45BAF20065D5D6 /* Facebook */,
 				F4CFFA211B4325900065D5D6 /* WebService */,
-				F4BC31A41B1794CA00BF5BB2 /* FrameWorks */,
 				F47047B81B027FAB00FEFEFF /* Controllers */,
 				F47047B61B01274000FEFEFF /* View */,
 				F470477A1B0123BC00FEFEFF /* TabBarController */,
@@ -1005,6 +1010,7 @@
 		F47047B81B027FAB00FEFEFF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F4D8B3CF1B7919C2009B4466 /* FavoriteList */,
 				F4CD0F351B615EEB0006FAC4 /* ChangePassword */,
 				F4CD0F2F1B5EC1180006FAC4 /* Profile */,
 				F4CD0F2E1B5EBEC90006FAC4 /* SideMenu */,
@@ -1026,19 +1032,19 @@
 		F4BC31A41B1794CA00BF5BB2 /* FrameWorks */ = {
 			isa = PBXGroup;
 			children = (
-				C58A1EDF1B6BBDE5002065A4 /* GoogleOpenSource.framework */,
-				C58A1EE01B6BBDE5002065A4 /* GooglePlus.bundle */,
-				C58A1EE11B6BBDE5002065A4 /* GooglePlus.framework */,
+				F41F96D11B76156C0096DCE0 /* FBSDKCoreKit.framework */,
+				F41F96D21B76156C0096DCE0 /* FBSDKLoginKit.framework */,
+				F41F96D31B76156C0096DCE0 /* FBSDKMessengerShareKit.framework */,
+				F41F96D41B76156C0096DCE0 /* FBSDKShareKit.framework */,
+				F41F96D51B76156C0096DCE0 /* GoogleOpenSource.framework */,
+				F41F96D61B76156C0096DCE0 /* GooglePlus.bundle */,
+				F41F96D71B76156C0096DCE0 /* GooglePlus.framework */,
 				C56E56481B6BB849008145EC /* macros_blocks */,
 				C56E56331B6BB80A008145EC /* SCNetworkReachability */,
 				C56E55EB1B6BB784008145EC /* AFNetworking */,
 				C56E56141B6BB785008145EC /* MBProgressHUD */,
 				C5D2102A1B60394500DEEBEE /* JSQSystemSoundPlayer */,
 				C5D20FA11B60388200DEEBEE /* JSQMessagesViewController */,
-				C59CF1901B5AACDD0018248E /* FBSDKCoreKit.framework */,
-				C59CF1911B5AACDD0018248E /* FBSDKLoginKit.framework */,
-				C59CF1921B5AACDD0018248E /* FBSDKMessengerShareKit.framework */,
-				C59CF1931B5AACDD0018248E /* FBSDKShareKit.framework */,
 				F4CD4E501B308E150081FE0B /* MapKit.framework */,
 				F4BC31BD1B179BC400BF5BB2 /* UIKit.framework */,
 				F4BC31BB1B179BBC00BF5BB2 /* SystemConfiguration.framework */,
@@ -1238,6 +1244,16 @@
 			name = Message;
 			sourceTree = "<group>";
 		};
+		F4D8B3CF1B7919C2009B4466 /* FavoriteList */ = {
+			isa = PBXGroup;
+			children = (
+				F4D8B3D01B7919EA009B4466 /* WWFavoriteVendorsVC.h */,
+				F4D8B3D11B7919EA009B4466 /* WWFavoriteVendorsVC.m */,
+				F4D8B3D21B7919EA009B4466 /* WWFavoriteVendorsVC.xib */,
+			);
+			name = FavoriteList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1315,7 +1331,7 @@
 				C5D210271B60388200DEEBEE /* JSQMessagesToolbarContentView.xib in Resources */,
 				F4CD0F341B5EC13D0006FAC4 /* WWProfileVC.xib in Resources */,
 				F4CD4E301B3082F20081FE0B /* WWCategoryDetailVC.xib in Resources */,
-				C58A1EE31B6BBDE5002065A4 /* GooglePlus.bundle in Resources */,
+				F41F96DD1B76156D0096DCE0 /* GooglePlus.bundle in Resources */,
 				60C763111B53D19900387B54 /* WWBidListCell.xib in Resources */,
 				F4CD4E481B30830F0081FE0B /* WWCategoryMapCell.xib in Resources */,
 				F45332CE1B4B03DE00C09482 /* GothamRoundedBook.ttf in Resources */,
@@ -1326,6 +1342,7 @@
 				F4CB16F81B3898CA0078419A /* YTPlayerView-iframe-player.html in Resources */,
 				60C763091B53D19900387B54 /* WWLeadsListVC.xib in Resources */,
 				C5D210291B60388200DEEBEE /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
+				F4D8B3D41B7919EA009B4466 /* WWFavoriteVendorsVC.xib in Resources */,
 				F4CFFA311B45B1850065D5D6 /* WWForgotPassword~ipad.xib in Resources */,
 				F4CD4E5B1B309D020081FE0B /* WWPrivateMessage.xib in Resources */,
 				F470474F1B011AE700FEFEFF /* LaunchScreen.xib in Resources */,
@@ -1422,6 +1439,7 @@
 				F4CD4E2A1B3082310081FE0B /* WWCategoryCell.m in Sources */,
 				C5D210121B60388200DEEBEE /* JSQLocationMediaItem.m in Sources */,
 				C56E56431B6BB80A008145EC /* SCReachabilityRefBuilder.m in Sources */,
+				F4D8B3D31B7919EA009B4466 /* WWFavoriteVendorsVC.m in Sources */,
 				C56E56261B6BB785008145EC /* UIAlertView+AFNetworking.m in Sources */,
 				C5D210211B60388200DEEBEE /* JSQMessagesInputToolbar.m in Sources */,
 				C5D210081B60388200DEEBEE /* JSQMessagesViewController.m in Sources */,
@@ -1569,8 +1587,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dharam Mehta (95NA7968E3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dharam Mehta (95NA7968E3)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeddingWise",
@@ -1588,7 +1606,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WedWise;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ae70ec02-65fe-41d4-90b6-862b26015dc7";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1598,8 +1616,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dharam Mehta (95NA7968E3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dharam Mehta (95NA7968E3)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeddingWise",
@@ -1617,7 +1635,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WedWise;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ae70ec02-65fe-41d4-90b6-862b26015dc7";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

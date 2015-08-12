@@ -18,6 +18,8 @@
 @property(nonatomic, strong)NSArray *heroImages;
 @property(nonatomic, strong)NSArray *videoLinks;
 @property(nonatomic, strong)NSArray *panormaImages;
+@property(nonatomic, strong)NSString *strFavorite;
+
 + (instancetype)sharedInstance;
 -(void)setVendorBasicInfo:(NSDictionary*)basicInfo;
 @end

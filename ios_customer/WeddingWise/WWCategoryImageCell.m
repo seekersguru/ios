@@ -22,7 +22,9 @@
 -(IBAction)showVideoPlayerView:(id)sender{
     [self.delegate showVideoPlayer];
 }
-
+-(IBAction)btnAddFavoritesPressed:(id)sender{
+    [_delegate addFavorites];
+}
 - (void)showImagesFromArray:(NSArray *)imageLinks{
     _imageArray = imageLinks;
     for (int i = 0; i < imageLinks.count; i++) {

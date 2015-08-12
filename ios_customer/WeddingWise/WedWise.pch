@@ -29,7 +29,8 @@
 
 #endif
 
-#define kWebServiceUrl                  @"http://52.11.207.26/api/"
+
+#define kWebServiceUrl                  @"http://wedwise.work/api/"
 #define kImagePrefixUrl                  @"http://52.11.207.26"
 
 #define kNoNetwork                      @"No network available"
@@ -37,7 +38,7 @@
 #define AppFont                         @"GothamRounded-Book"
 
 
-#define kAppName                        @"Wed Wise"
+#define kAppName                        @"WedWise"
 #define kEnterEmail                     @"Please enter email address."
 #define kEnterPassword                  @"Please enter password."
 #define kEnterBrideName                 @"Please enter bride name."
@@ -46,7 +47,7 @@
 #define kValidEmail                     @"Please enter valid email."
 #define kTentativeDate                     @"Please enter tentative wedding date."
 
-#define kGPClientID                     @"616308211638-9gl77th0hu2kjfp39h4tfhtq1lpnh20l.apps.googleusercontent.com"
+#define kGPClientID                     @"1089791830580-d6ot0lmcuqvdftcqqh97a73n8q22l95e.apps.googleusercontent.com"
 //341522735800-tkngmd3u56mq7shvea9pmibng12qdmhj.apps.googleusercontent.com
 
 

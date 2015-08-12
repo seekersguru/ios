@@ -33,5 +33,7 @@
 -(IBAction)backButtonPressed:(id)sender;
 -(IBAction)hideView:(id)sender;
 
+@property(nonatomic, weak)IBOutlet UIButton *inquireButton, *messageButton, *scheduleButton;
+
 
 @end

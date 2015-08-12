@@ -9,8 +9,9 @@
 #import "WWDetailScreen.h"
 #import "WWCategoryCell.h"
 #import "WWCategoryDetailVC.h"
+#import "WWDashboardVC.h"
 
-@interface WWDetailScreen ()<MBProgressHUDDelegate,UITextFieldDelegate>
+@interface WWDetailScreen ()<MBProgressHUDDelegate,UITextFieldDelegate,WWCategoryCellDelegate >
 {
     NSMutableArray *arrVendorData;
     NSString *filterType;
@@ -19,6 +20,8 @@
     BOOL isFilterViewPrepared;
     NSArray *filterArray;
     NSMutableArray *filterSelectedArray;
+    MBProgressHUD *HUD;
+    NSString *tempFavorite;
 }
 @property (weak, nonatomic) IBOutlet UIView *dynamicFilterView;
 
@@ -34,7 +37,7 @@
     
     arrVendorData=[[NSMutableArray alloc]init];
     
-    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     
     // Regiser for HUD callbacks so we can remove it from the window at the right time
@@ -120,12 +123,16 @@
     NSString *searchString = _filterTextfield.text;
     //call api here
     
+    //Kya hua..kr le ?
+    
+    
     [self callWebService:searchString];
     if ([[searchString stringByReplacingOccurrencesOfString:@" " withString:@""] length] > 0) {
-//        [_vendorNameLabel setTitle:[NSString stringWithFormat:@"%@..%@",[_vendorList[0] substringWithRange:NSMakeRange(0, 1)],searchString] forState:UIControlStateNormal];
-                [_vendorNameLabel setTitle:[NSString stringWithFormat:@"%@",searchString] forState:UIControlStateNormal];
+        [_vendorNameLabel setTitle:[NSString stringWithFormat:@"%@",[searchString capitalizedString]] forState:UIControlStateNormal];
     }
-    
+    else{
+        [_vendorNameLabel setTitle:[NSString stringWithFormat:@"Banquets"] forState:UIControlStateNormal];
+    }
     [_vendorNameLabel addTarget:self action:@selector(filterVendor:) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -137,33 +144,54 @@
     if (!searchString) {
         searchString = @"";
     }
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  @"ios",@"mode",
                                  @"2x",@"image_type",
                                  self.vendorList[0],@"vendor_type",
                                  @"1",@"page_no",
                                  searchString,@"search_string",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  @"customer_vendor_list_and_search",@"action",
                                  nil];
     
     [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
      {
-         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
-             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
-         }
-         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
-             if (!isFilterViewPrepared) {
-                 //prepare dynamic search view
-                 filterArray = [[responseDics valueForKey:@"json"] valueForKey:@"filters"];
-//                 [self prepareDynamicFilterView:[[responseDics valueForKey:@"json"] valueForKey:@"filters"]];
+         NSLog(@"%lu", responseDics.count);
+         [arrVendorData removeAllObjects];
+         if(responseDics.count>0){
+             if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+                 [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
              }
-             [arrVendorData removeAllObjects];
-             NSArray *arrData=[[responseDics valueForKey:@"json"] valueForKey:@"vendor_list"];
-             for (NSDictionary *dicVendor in arrData) {
-                 [arrVendorData addObject:dicVendor];
+             else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+                 if (!isFilterViewPrepared) {
+                     filterArray = [[responseDics valueForKey:@"json"] valueForKey:@"filters"];
+                 }
+                 NSArray *arrData=[[responseDics valueForKey:@"json"] valueForKey:@"vendor_list"];
+                 if(arrData.count>0){
+                     [_lblNoDataFound setHidden:YES];
+                     for (NSDictionary *dicVendor in arrData) {
+                         [arrVendorData addObject:dicVendor];
+                     }
+                 }
+                 else{
+                     
+                     [_lblNoDataFound setHidden:NO];
+                     [_lblNoDataFound setFont:[UIFont fontWithName:AppFont size:17.0]];
+                     
+//                     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:kAppName message:@"No result found." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+//                     [alert show];
+                 }
+                 
              }
-             [_tblCategory reloadData];
+             [HUD removeFromSuperview];
          }
+         else{
+             [[WWCommon getSharedObject]createAlertView:kAppName :@"No data found." :nil :000 ];
+         }
+         [_tblCategory reloadData];
      }
                                              failure:^(NSString *response)
      {
@@ -247,11 +275,21 @@
         cell = [topLevelObjects objectAtIndex:0];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    NSDictionary *dicVendorData=[arrVendorData objectAtIndex:indexPath.row];
+    NSDictionary *dicVendorData=[[arrVendorData objectAtIndex:indexPath.row] mutableCopy];
+    cell.favoriteDelegate= self;
+    cell.btnFavorite.tag= indexPath.row;
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImagePrefixUrl,[dicVendorData valueForKey:@"image"]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
+    
+    
+    if([dicVendorData[@"favorite"] isEqualToString:@"1"]){
+        [cell.btnFavorite setImage:[UIImage imageNamed:@"RSelect"] forState:UIControlStateNormal];
+    }
+    else if ([dicVendorData[@"favorite"] isEqualToString:@"-1"]){
+        [cell.btnFavorite setImage:[UIImage imageNamed:@"WSelect"] forState:UIControlStateNormal];
+    }
     
     __weak WWCategoryCell *weakCell = cell;
     
@@ -367,15 +405,6 @@
                 break;
         }
     }
-        
-    
-    
-        //_key.text=[NSString stringWithFormat:@"%@",[[line1 allKeys] objectAtIndex:0]];
-    
-//    cell.imgCategory.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://52.11.207.26%@",[dicVendorData valueForKey:@"image"]]]]];
-    
-    
-    
     self.tblCategory.separatorStyle = UITableViewCellSeparatorStyleNone;
     return cell;
 }
@@ -401,19 +430,69 @@
 -(IBAction)backButtonPressed:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark: favoriteDelegate methods
+
+
+-(void)addFavorites:(id)sender{
+    tempFavorite = @"";
+    NSString *savedGroomName = [[NSUserDefaults standardUserDefaults]
+                                stringForKey:@"EmailID"];
+    if(savedGroomName.length>0){
+        NSDictionary *dicVendorData=[arrVendorData objectAtIndex:[sender tag]];
+        if([dicVendorData[@"favorite"] isEqualToString:@"-1"]){
+            //[dicVendorData setValue:@"1" forKey:@"favorite"];
+            tempFavorite=@"1";
+        }
+        else if ([dicVendorData[@"favorite"] isEqualToString:@"1"]){
+            //[dicVendorData setValue:@"-1" forKey:@"favorite"];
+            tempFavorite=@"-1";
+        }
+        // [_tblCategory reloadData];
+        
+        
+        
+        [self callFavoriteApi:dicVendorData withFavorite:tempFavorite];
+    }
+    else{
+        [AppDelegate sharedAppDelegate].isLogOut= YES;
+        
+        
+        WWDashboardVC *dash=[[WWDashboardVC alloc]initWithNibName:@"WWDashboardVC" bundle:nil];
+        dash.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:dash animated:YES];
+    }
+}
+-(void)callFavoriteApi:(NSDictionary*)dicVendor withFavorite:(NSString*)isFavorite{
+    
+    NSDictionary *dicParameters= [[NSDictionary alloc]initWithObjectsAndKeys:
+                                  [[NSUserDefaults standardUserDefaults]
+                                   stringForKey:@"identifier"],@"identifier",
+                                  dicVendor[@"vendor_email"],@"vendor_email",
+                                  isFavorite,@"favorite",
+                                  @"add_favorite",@"action",nil];
+    
+    [[WWWebService sharedInstanceAPI] callWebService:dicParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         NSLog(@"responseDics :%@",responseDics);
+         HUD = [[MBProgressHUD alloc] initWithView:self.view];
+         [self.view addSubview:HUD];
+         
+         // Regiser for HUD callbacks so we can remove it from the window at the right time
+         HUD.delegate = self;
+         
+         // Show the HUD while the provided method executes in a new thread
+         [HUD showWhileExecuting:@selector(callWebService:) onTarget:self withObject:@"" animated:YES];
+         
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

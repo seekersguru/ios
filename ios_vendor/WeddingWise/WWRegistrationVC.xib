@@ -10,6 +10,7 @@
                 <outlet property="bgImage" destination="pUG-tm-8mR" id="DM5-1p-zio"/>
                 <outlet property="btnVendorType" destination="reB-bG-Xqu" id="BRj-jb-Bgn"/>
                 <outlet property="imgPickerBG" destination="VvO-DO-46Q" id="ehK-3d-LYa"/>
+                <outlet property="imgTextBG" destination="23L-Ca-RAz" id="nBK-ab-A2b"/>
                 <outlet property="pickerView" destination="94I-nf-Ill" id="1Zv-J5-TOb"/>
                 <outlet property="toolBar" destination="r5V-F3-jnY" id="uwQ-jM-hKq"/>
                 <outlet property="txtAddress" destination="po3-cv-QrE" id="Dc3-qN-9hi"/>
@@ -122,7 +123,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="a3x-Ni-RUX">
-                    <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
+                    <rect key="frame" x="0.0" y="15" width="70" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" image="header_arrow">

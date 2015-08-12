@@ -34,5 +34,8 @@
 
 - (UITabBarController *)setupViewControllers:(UITabBarController *)navigationView;
 -(void)resetViewControllerOnTabbar:(UITabBarController*)tabVC;
+
+@property(nonatomic, assign)BOOL isLogOut;
+
 @end
 

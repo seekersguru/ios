@@ -57,8 +57,6 @@
     max = @"";
     min = @"";
     calendarDate = [[WWBasicDetails sharedInstance] calendarDate];
-    
-    //    [self callBidDetailAPI:@"bid"];
     [self callCustomerMessageAPIWithType:bidBtn.selected?@"bid":@"book" completionBlock:^(NSArray *messageArray) {
         if (bidBtn.selected) {
             [arrBidData addObjectsFromArray:messageArray];
@@ -106,7 +104,37 @@
         }
     }];
 }
-
+#define DEGREES_RADIANS(angle) ((angle) / 180.0 * M_PI)
+- (IBAction)eventDateSorting:(id)sender {
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        if(_sortEventButton.selected){
+            _imgEvent.transform = CGAffineTransformMakeRotation(DEGREES_RADIANS(360));
+            _sortEventButton.selected= NO;
+        }
+        else{
+            _imgEvent.transform = CGAffineTransformMakeRotation(DEGREES_RADIANS(180));
+            _sortEventButton.selected= YES;
+        }
+    }];
+    arrBidData = (NSMutableArray*)[[arrBidData reverseObjectEnumerator] allObjects];
+    [_tblBidView reloadData];
+}
+- (IBAction)inquiryDateSorting:(id)sender {
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        if(_sortInquiryButton.selected){
+            _imgInquiry.transform = CGAffineTransformMakeRotation(DEGREES_RADIANS(360));
+            _sortInquiryButton.selected= NO;
+        }
+        else{
+            _imgInquiry.transform = CGAffineTransformMakeRotation(DEGREES_RADIANS(180));
+            _sortInquiryButton.selected= YES;
+        }
+    }];
+    arrBidData = (NSMutableArray*)[[arrBidData reverseObjectEnumerator] allObjects];
+    [_tblBidView reloadData];
+}
 -(IBAction)bidBtnClicked:(id)sender
 {
     bidBtn.selected = YES;
@@ -148,17 +176,10 @@
     [UIView commitAnimations];
     
 }
-- (IBAction)eventDateSorting:(id)sender {
-    arrBidData = (NSMutableArray*)[[arrBidData reverseObjectEnumerator] allObjects];
-    [_tblBidView reloadData];
-}
-- (IBAction)inquiryDateSorting:(id)sender {
-    arrBidData = (NSMutableArray*)[[arrBidData reverseObjectEnumerator] allObjects];
-    [_tblBidView reloadData];
-}
 -(void)callCustomerMessageAPIWithType:(NSString *)type completionBlock:(void(^)(NSArray *))completion{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  @"1",@"page_no",
                                  @"customer_vendor_message_list",@"action",
                                  @"v2c",@"from_to",
@@ -186,7 +207,8 @@
 
 -(void)callBidDetailAPI:(NSString*)type{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  @"1",@"page_no",
                                  @"v2c",@"from_to",
                                  type,@"msg_type",

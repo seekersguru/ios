@@ -10,10 +10,13 @@
 
 @interface WWDetailScreen : UIViewController
 @property(nonatomic, weak)IBOutlet UITableView *tblCategory;
+
 @property(nonatomic, strong) NSArray *vendorList;
 @property (weak, nonatomic) IBOutlet UIButton *vendorNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *filterTextfield;
 @property (weak, nonatomic) IBOutlet UIView *filterView;
+@property(weak, nonatomic) IBOutlet UILabel *lblNoDataFound;
+
 
 - (IBAction)filterTypeSelection:(id)sender;
 
