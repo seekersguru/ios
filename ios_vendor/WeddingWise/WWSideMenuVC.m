@@ -48,6 +48,9 @@
     [cell.textLabel setFont:[UIFont fontWithName:AppFont size:17.0]];
     return cell;
 }
+- (IBAction)backCliked:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.row) {
         case 0:{

@@ -11,8 +11,9 @@
 #import "AppDelegate.h"
 #import "WWFilterVC.h"     
 #import "WWBasicDetails.h"
+#import "WWSideMenuVC.h"
 
-@interface WWCalendarView ()<DSLCalendarViewDelegate,FilterProtocolDelegate>
+@interface WWCalendarView ()<DSLCalendarViewDelegate,FilterProtocolDelegate,UITabBarControllerDelegate,UITabBarDelegate>
 {
     NSArray *_pickerData;
     NSDate *lastSelectedDate;
@@ -28,8 +29,21 @@
 @end
 
 @implementation WWCalendarView
+NSUInteger lastSelectedIndex = 0;
 
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    if (tabBarController.selectedIndex == 3) {
+        self.tabBarController.selectedIndex = lastSelectedIndex;
+        UIViewController *fourthViewController = [[WWSideMenuVC alloc] init];
+        UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:fourthViewController];
+        [self presentViewController:navC animated:YES completion:nil];
+    }
+    else{
+        lastSelectedIndex = tabBarController.selectedIndex;
+    }
+}
 - (void)viewDidLoad {
+    self.tabBarController.delegate = self;
     [_calendarTitle setFont:[UIFont fontWithName:AppFont size:15.0]];
     
     _filterView.frame = CGRectMake(0, self.view.frame.size.height+60, self.view.frame.size.width, self.view.frame.size.height);
