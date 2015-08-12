@@ -142,7 +142,8 @@
 }
 -(void)callCustomerMessageAPI:(void(^)(NSArray *))completion{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  @"1",@"page_no",
                                  @"customer_vendor_message_list",@"action",
                                  @"v2c",@"from_to",

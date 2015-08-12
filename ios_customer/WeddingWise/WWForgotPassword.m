@@ -35,7 +35,7 @@
                  [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
              }
              else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
-                 [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+                 [[WWCommon getSharedObject]createAlertView:kAppName :responseDics[@"json"][@"message"] :nil :000 ];
              }
          }
                                                  failure:^(NSString *response)

@@ -25,7 +25,31 @@
     }
     return self;
 }
-
+-(void)callFaceBookLogin:(void(^)(NSDictionary * response))cmpl failure:(void(^)(NSString *failureResponse))failure{
+    
+    NSArray *readPermissions = @[@"public_profile",@"email"];
+    login = [[FBSDKLoginManager alloc] init];
+    [login logInWithReadPermissions:readPermissions handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+        if (!error) {
+            if ([FBSDKAccessToken currentAccessToken]) {
+                [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil]
+                 startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, NSMutableDictionary* user, NSError *error) {
+                     if (!error) {
+                         NSLog(@"fetched user:%@", user);
+                         FBSDKAccessToken *tokenStr=result.token;
+                         
+                         cmpl(user);
+                         
+                     }
+                     
+                 }];
+            }
+        }
+        else{
+            NSLog(@"Error :%@", error);
+        }
+    }];
+}
 #pragma mark - Facebook Login
 -(void)facebookLogin{
     

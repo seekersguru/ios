@@ -323,7 +323,8 @@
     NSData *data = [NSJSONSerialization dataWithJSONObject:[WWVendorBookingData sharedInstance].bookDictionary options:NSJSONWritingPrettyPrinted error:nil];
     NSString *json_string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     @try {
-        NSDictionary *requestDict = @{@"identifier" : [AppDelegate sharedAppDelegate].userData.identifier,
+        NSDictionary *requestDict = @{@"identifier" : [[NSUserDefaults standardUserDefaults]
+                                                       stringForKey:@"identifier"],
                                       @"receiver_email" : [AppDelegate sharedAppDelegate].vendorEmailID,
                                       @"message" : @"posting bid",
                                       @"from_to" : @"v2c",

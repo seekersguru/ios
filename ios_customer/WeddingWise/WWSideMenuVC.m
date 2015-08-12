@@ -10,6 +10,7 @@
 #import "WWProfileVC.h"
 #import "WWDashboardVC.h"
 #import "WWChangePasswordVC.h"
+#import "WWFavoriteVendorsVC.h"
 
 @interface WWSideMenuVC ()
 {
@@ -21,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    tblMenuList.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     menuData =[[NSArray alloc]initWithObjects:@"Favorite",@"Profile",@"Change Password",@"Logout", nil];
     // Do any additional setup after loading the view from its nib.
 }
@@ -48,6 +50,12 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.row) {
+        case 0:
+        {
+            WWFavoriteVendorsVC *profileVC=[[WWFavoriteVendorsVC alloc]initWithNibName:@"WWFavoriteVendorsVC" bundle:nil];
+            [self.navigationController pushViewController:profileVC animated:YES];
+        }
+            break;
         case 1:
         {
             WWProfileVC *profileVC=[[WWProfileVC alloc]initWithNibName:@"WWProfileVC" bundle:nil];
@@ -62,6 +70,9 @@
         case 3:{
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"identifier"];
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"groom_name"];
+            
+            [AppDelegate sharedAppDelegate].isLogOut= YES;
+            
             
             WWDashboardVC *dash=[[WWDashboardVC alloc]initWithNibName:@"WWDashboardVC" bundle:nil];
             dash.hidesBottomBarWhenPushed = YES;

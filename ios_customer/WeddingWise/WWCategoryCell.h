@@ -8,7 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol WWCategoryCellDelegate <NSObject>
+
+-(void)addFavorites:(id)sender;
+@required
+
+@end
+
+
 @interface WWCategoryCell : UITableViewCell
+{
+    id <WWCategoryCellDelegate> _favoriteDelegate;
+}
+@property (nonatomic,strong) id favoriteDelegate;
+@property (weak, nonatomic) IBOutlet UIButton *btnFavorite;
 
 @property(nonatomic, weak)IBOutlet UIImageView *imgCategory;
 @property(nonatomic, weak)IBOutlet UILabel *lblName;

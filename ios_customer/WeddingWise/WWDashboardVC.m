@@ -26,22 +26,29 @@
     [[WWCommon getSharedObject]setCustomFont:10.0 withLabel:lblPolicy withText:lblPolicy.text];
     [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_btnLogin withText:_btnLogin.titleLabel.text];
     [[WWCommon getSharedObject]setCustomFont:17.0 withLabel:_btnSignUp withText:_btnSignUp.titleLabel.text];
-    
     [self.navigationController.navigationBar setHidden:YES];
     
     
+    if(![AppDelegate sharedAppDelegate].isLogOut){
+        NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                                stringForKey:@"EmailID"];
+        
+        if(savedValue.length>0){
+            UIAlertView *alert= [[UIAlertView alloc]initWithTitle:kAppName message:@"Please log in to communicate vendor." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            [alert show];
+        }
+    }
     [super viewDidLoad];
-    
-    
     // Do any additional setup after loading the view from its nib.
 }
+-(BOOL)hidesBottomBarWhenPushed
+{
+    return YES;
+}
 -(void)viewWillAppear:(BOOL)animated{
-    [self performSelector:@selector(callBackGroundImageWebService) withObject:nil afterDelay:0.1];
-//    [self callBackGroundImageWebService];
+    self.hidesBottomBarWhenPushed = YES;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(getDataService:)
-                                                 name:@"getDataformFb" object:nil];
+    [self performSelector:@selector(callBackGroundImageWebService) withObject:nil afterDelay:0.1];
 }
 
 -(void)callBackGroundImageWebService{
@@ -75,19 +82,11 @@
          DLog(@"%@",response);
      }];
 }
-
--(void)getDataService:(NSNotification*) notification{
-    
-    NSLog(@"Notifications: %@", notification);
-    NSDictionary *dict = [[notification object] mutableCopy];
-    
-    [self FBAuthentication:dict];
-}
 -(void)FBAuthentication:(NSDictionary*)fbResponse{
     
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  [fbResponse valueForKey:@"email"],@"email",
-                                 @"vendor_registration_login_fb_gm",@"action",
+                                 @"customer_registration_login_fb_gm",@"action",
                                  nil];
     
     [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
@@ -95,11 +94,21 @@
          NSString *result=[responseDics valueForKey:@"result"];
          if([result isEqualToString:@"error"]){
              //Send to reegistration
+             
+             [[NSUserDefaults standardUserDefaults] setObject:[fbResponse valueForKey:@"email"] forKey:@"EmailID"];
+             [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"Password"];
+             [[NSUserDefaults standardUserDefaults] synchronize];
+             
+             
+             
              WWRegistrationVC *registrationVC=[[WWRegistrationVC alloc]initWithNibName:@"WWRegistrationVC" bundle:nil];
              registrationVC.fbResponse= fbResponse;
              //registrationVC.bgImage.image= _bgImage.image;
              registrationVC.image= _bgImage.image;
              [self.navigationController pushViewController:registrationVC animated:YES];
+             
+             
+             
         }
          else if ([result isEqualToString:@"success"]){
              //Login successfully
@@ -158,6 +167,12 @@
                         NSLog(@"GoogleID=%@", person.identifier);
                         NSLog(@"User Name=%@", [person.name.givenName stringByAppendingFormat:@" %@", person.name.familyName]);
                         NSLog(@"Gender=%@", person.gender);
+                        
+                        
+                        
+                        
+                        
+                        [self FBAuthentication:[[NSDictionary alloc] initWithObjectsAndKeys:[GPPSignIn sharedInstance].authentication.userEmail,@"email",person.identifier,@"id",@"google+",@"LoginType", nil]];
                     }
                 }];
         
@@ -198,6 +213,11 @@
     [self.navigationController pushViewController:loginVC animated:YES];
 }
 -(IBAction)btnRegistrationPressed:(id)sender{
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"EmailID"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"Password"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     WWRegistrationVC *registrationVC=[[WWRegistrationVC alloc]initWithNibName:@"WWRegistrationVC" bundle:nil];
     //registrationVC.image= _bgImage.image;
     [self.navigationController pushViewController:registrationVC animated:YES];
@@ -206,10 +226,28 @@
 
 }
 -(IBAction)btnFBLoginPressed:(id)sender{
-    [[FacebookManager sharedManager]facebookLogin];
+    //[[FacebookManager sharedManager]facebookLogin];
     
-    
-    
+    [[FacebookManager sharedManager]callFaceBookLogin:^(NSDictionary *loginResponse) {
+        NSLog(@"Responce: %@", loginResponse);
+        [self getFaceBookCoverPic:loginResponse loadThreadWithCompletion:^(NSDictionary *response) {
+            
+        } failure:^(NSString *failureResponse) {
+            
+        }];
+        
+    } failure:^(NSString *failureResponse) {
+        
+    }];
+}
+-(void)getFaceBookCoverPic:(NSDictionary*)loginResponse loadThreadWithCompletion:(void(^)(NSDictionary * response))cmpl failure:(void(^)(NSString *failureResponse))failure{
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me?fields=email" parameters:nil]
+     startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, NSMutableDictionary* user, NSError *error) {
+         if (!error) {
+             NSLog(@"getFaceBookCoverPic: %@",user);
+             [self FBAuthentication:user];
+         }
+     }];
 }
 -(IBAction)btnGooglePressed:(id)sender{
 

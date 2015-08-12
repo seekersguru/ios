@@ -17,7 +17,7 @@
 @property(nonatomic, weak)IBOutlet UITextField *txtContactNumber;
 @property(nonatomic, weak)IBOutlet UIButton *btnVendorType;
 
-@property (nonatomic, weak) IBOutlet UIImageView *imgPickerBG;
+@property (nonatomic, weak) IBOutlet UIImageView *imgPickerBG, *imgTextBG;
 @property(nonatomic, strong)IBOutlet UIToolbar *toolBar;
 @property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
 

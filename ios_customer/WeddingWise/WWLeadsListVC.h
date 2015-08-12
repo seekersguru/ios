@@ -18,4 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *sortInquiryButton;
 @property (weak, nonatomic) IBOutlet UIButton *sortEventButton;
 @property(nonatomic, weak)IBOutlet UITableView *tblBidView;
+
+@property(nonatomic, weak)IBOutlet UIImageView *imgInquiry, *imgEvent;
 @end

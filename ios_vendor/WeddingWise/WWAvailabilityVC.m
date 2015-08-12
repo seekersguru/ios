@@ -57,7 +57,8 @@
     [df setDateFormat:@"MM"];
     NSString *month = [NSString stringWithFormat:@"%20lld",[[df stringFromDate:currentMonth] longLongValue]];
     
-    [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:year month:month additionalFilter:@"" availityType:_availability timeSlot:_time_slot completionBlock:^(NSDictionary *response) {
+    [self updateCalendarHomeWithUserId:[[NSUserDefaults standardUserDefaults]
+                                        stringForKey:@"identifier"] year:year month:month additionalFilter:@"" availityType:_availability timeSlot:_time_slot completionBlock:^(NSDictionary *response) {
         NSMutableDictionary *eventDict = [NSMutableDictionary new];
         for (NSDictionary *events in [response valueForKey:@"data"]) {
             [eventDict setValue:[events valueForKey:@"img"] forKey:[events valueForKey:@"day"]];
@@ -108,7 +109,8 @@
         }
         year = [year stringByReplacingOccurrencesOfString:@" " withString:@""];
         month = [month stringByReplacingOccurrencesOfString:@" " withString:@""];
-        [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:year month:month additionalFilter:@"" availityType:_availability timeSlot:_time_slot completionBlock:^(NSDictionary *response) {
+        [self updateCalendarHomeWithUserId:[[NSUserDefaults standardUserDefaults]
+                                            stringForKey:@"identifier"] year:year month:month additionalFilter:@"" availityType:_availability timeSlot:_time_slot completionBlock:^(NSDictionary *response) {
             NSMutableDictionary *eventDict = [NSMutableDictionary new];
             for (NSDictionary *events in [response valueForKey:@"data"]) {
                 [eventDict setValue:[events valueForKey:@"img"] forKey:[events valueForKey:@"day"]];
@@ -234,7 +236,8 @@
 NSDateComponents *dateConponent = nil;
 - (void)calendarView:(DSLCalendarView *)calendarView didChangeToVisibleMonth:(NSDateComponents *)month {
     dateConponent = month;
-    [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:[NSString stringWithFormat:@"%ld",(long)month.year] month:[NSString stringWithFormat:@"%02ld",(long)month.month] additionalFilter:_selectedDatesString availityType:[[_availabilityTextfield.text stringByReplacingOccurrencesOfString:@" " withString:@""] lowercaseString] timeSlot:[[_timeSlotTextfield.text stringByReplacingOccurrencesOfString:@" " withString:@""] lowercaseString] completionBlock:^(NSDictionary *response) {
+    [self updateCalendarHomeWithUserId:[[NSUserDefaults standardUserDefaults]
+                                        stringForKey:@"identifier"] year:[NSString stringWithFormat:@"%ld",(long)month.year] month:[NSString stringWithFormat:@"%02ld",(long)month.month] additionalFilter:_selectedDatesString availityType:[[_availabilityTextfield.text stringByReplacingOccurrencesOfString:@" " withString:@""] lowercaseString] timeSlot:[[_timeSlotTextfield.text stringByReplacingOccurrencesOfString:@" " withString:@""] lowercaseString] completionBlock:^(NSDictionary *response) {
         
                 NSMutableDictionary *eventDict = [NSMutableDictionary new];
                 for (NSDictionary *events in [response valueForKey:@"data"]) {

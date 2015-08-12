@@ -17,6 +17,7 @@
 {
     FBSDKLoginManager *login;
 }
+-(void)callFaceBookLogin:(void(^)(NSDictionary * response))cmpl failure:(void(^)(NSString *failureResponse))failure;
 +(instancetype)sharedManager;
 -(void)postDetailToFacebook;
 -(void)facebookLogin;

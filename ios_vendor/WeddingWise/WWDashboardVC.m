@@ -35,6 +35,9 @@
     
     // Do any additional setup after loading the view from its nib.
 }
+
+
+
 -(void)viewWillAppear:(BOOL)animated{
     [self performSelector:@selector(callBackGroundImageWebService) withObject:nil afterDelay:0.1];
     //    [self callBackGroundImageWebService];
@@ -103,7 +106,10 @@
          }
          else if ([result isEqualToString:@"success"]){
              //Login successfully
-             [[AppDelegate sharedAppDelegate]setupViewControllers:self.navigationController];
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 UITabBarController *tabVC = [[AppDelegate sharedAppDelegate]setupViewControllers:nil];
+                 [self.navigationController pushViewController:tabVC animated:YES];
+             });
          }
      }
                                              failure:^(NSString *response)
@@ -202,10 +208,26 @@
     
 }
 -(IBAction)btnFBLoginPressed:(id)sender{
-    [[FacebookManager sharedManager]facebookLogin];
-    
-    
-    
+    [[FacebookManager sharedManager]callFaceBookLogin:^(NSDictionary *loginResponse) {
+        NSLog(@"Responce: %@", loginResponse);
+        [self getFaceBookEmailID:loginResponse loadThreadWithCompletion:^(NSDictionary *response) {
+            
+        } failure:^(NSString *failureResponse) {
+            
+        }];
+        
+    } failure:^(NSString *failureResponse) {
+        
+    }];
+}
+-(void)getFaceBookEmailID:(NSDictionary*)loginResponse loadThreadWithCompletion:(void(^)(NSDictionary * response))cmpl failure:(void(^)(NSString *failureResponse))failure{
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me?fields=email" parameters:nil]
+     startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, NSMutableDictionary* user, NSError *error) {
+         if (!error) {
+             NSLog(@"getFaceBookCoverPic: %@",user);
+             [self FBAuthentication:user];
+         }
+     }];
 }
 -(IBAction)btnGooglePressed:(id)sender{
     

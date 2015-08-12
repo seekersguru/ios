@@ -65,7 +65,7 @@
                                  @"",@"bride_name",
                                  @"",@"contact_number",
                                  @"",@"tentative_wedding_date",
-                                 @"",@"fbid",
+                                 @"",@"fbid", 
                                  @"",@"gid",
                                  @"get",@"operation",
                                  [[NSUserDefaults standardUserDefaults]

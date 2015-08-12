@@ -11,6 +11,8 @@
 
 @required
 - (void)showVideoPlayer;
+-(void)addFavorites;
+
 
 @optional
 - (void)imageSelected:(UIImage *)image;
@@ -18,10 +20,11 @@
 @end
 
 @interface WWCategoryImageCell : UITableViewCell
-
 {
     id <ImageCellDelegate> _delegate;
 }
+@property (weak, nonatomic) IBOutlet UIButton *btnFavorite;
+
 @property (nonatomic, strong) NSArray *imageArray;
 @property (weak, nonatomic) IBOutlet UIScrollView *categoryImageScrollView;
 @property(nonatomic, weak)IBOutlet UIButton *btnVideoLink;
@@ -31,5 +34,7 @@
 
 -(IBAction)showVideoPlayerView:(id)sender;
 - (void)showImagesFromArray:(NSArray *)imageLinks;
+
+-(IBAction)btnAddFavoritesPressed:(id)sender;
 
 @end

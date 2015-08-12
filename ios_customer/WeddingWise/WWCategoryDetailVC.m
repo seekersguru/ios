@@ -23,14 +23,16 @@
 #import "AnnotationPin.h"
 #import "WWProfileVC.h"
 #import "WWMessageList.h"
+#import "WWDashboardVC.h"
 
 #define DEGREES_IN_RADIANS(x) (M_PI * x / 180.0)
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
 
-@interface WWCategoryDetailVC ()<DescriptionDelegate, MapCellDelegate,ImageCellDelegate>
+@interface WWCategoryDetailVC ()<DescriptionDelegate, MapCellDelegate,ImageCellDelegate, MBProgressHUDDelegate>
 {
     NSMutableArray *arrVendorDetailData;
     NSArray *arrReadMoreData;
+    NSString *tempFavorite;
 }
 @end
 
@@ -46,11 +48,17 @@
     
     _lblTitle.text= _vendorName;
     
+    [[WWCommon getSharedObject]setCustomFont:13.0 withLabel:_inquireButton withText:_inquireButton.titleLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:13.0 withLabel:_messageButton withText:_messageButton.titleLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:13.0 withLabel:_scheduleButton withText:_scheduleButton.titleLabel.text];
+    
 }
 
 -(void)callWebService{
     
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  @"ios",@"mode",
                                  @"2x",@"image_type",
                                  _vendorEmail,@"vendor_email",
@@ -64,9 +72,9 @@
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
              //setting bid info for this vendor, to use on add bid page
+             
              WWVendorBidData *bidInfo = [WWVendorBidData sharedInstance];
              [bidInfo setVendorBidInfo:responseDics[@"json"][@"data"][@"bid"]];
-             //[arrVendorDetailData addObject:bidInfo];
              
              //setting booking info for this vendor, to use on add booking page
              WWVendorBookingData *bookingInfo = [WWVendorBookingData sharedInstance];
@@ -74,8 +82,14 @@
              
              WWVendorDetailData *basicInfo = [WWVendorDetailData sharedInstance];
              [basicInfo setVendorBasicInfo:[[[responseDics valueForKey:@"json"] valueForKey:@"data"] valueForKey:@"info"]];
+             
+             //Set favorite:
+             [basicInfo setStrFavorite:[[[responseDics valueForKey:@"json"] valueForKey:@"data"] valueForKey:@"favorite"]];
+             
              [basicInfo setVendorEmail:_vendorEmail];   //setting vendor email for post bid
              [arrVendorDetailData addObject:basicInfo];
+             
+             //NSString *strFavorite = [[[responseDics valueForKey:@"json"] valueForKey:@"data"] valueForKey:@"favorite"];
              
              NSArray *arrSections= [[[responseDics valueForKey:@"json"] valueForKey:@"data"] valueForKey:@"sections"];
              for (int i=0; i<arrSections.count; i++) {
@@ -155,15 +169,17 @@
             NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
             cell = [topLevelObjects objectAtIndex:0];
         }
-        
+        //243 150 141
         if (isPackage) {
             cell.key.text = @"";
             cell.value.text = @"";
-            cell.textLabel.text = [[rowsArray objectAtIndex:indexPath.row] valueForKey:@"label"];
-            cell.textLabel.textColor = [UIColor blackColor];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@",[[rowsArray objectAtIndex:indexPath.row] valueForKey:@"label"]];
+            //cell.textLabel.textColor = [UIColor blackColor];
             for (NSDictionary *dict in originalRowsArray) {
                 if ([[dict valueForKey:@"label"] isEqualToString:[[rowsArray objectAtIndex:indexPath.row] valueForKey:@"label"]]) {
-                    cell.textLabel.textColor = [UIColor redColor];
+                    cell.textLabel.textColor = [UIColor colorWithRed:243.0/255.0 green:150.0/255.0 blue:141.0/255.0 alpha:1.0];
+                    [cell.textLabel setFont:[UIFont fontWithName:AppFont size:13.0f]];
+                    
                     break;
                 }
             }
@@ -212,6 +228,16 @@
                     [cell showImagesFromArray:basicInfo.heroImages];
                     [cell.lblPrice setText:basicInfo.startingPrice];
                     cell.lblPrice.font = [UIFont fontWithName:AppFont size:13.0];
+                    
+                    if([basicInfo.strFavorite isEqualToString:@"1"]){
+                        [cell.btnFavorite setImage:[UIImage imageNamed:@"Sheart"] forState:UIControlStateNormal];
+                    }
+                    else if ([basicInfo.strFavorite isEqualToString:@"-1"]){
+                        [cell.btnFavorite setImage:[UIImage imageNamed:@"Heart"] forState:UIControlStateNormal];
+                    }
+                    
+                    //[cell.btnFavorite setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+                    
                 }
                 
                 return cell;
@@ -535,6 +561,60 @@ NSArray *originalRowsArray = nil;
 
 #pragma mark: Cell Delegate methods:
 BOOL isPackage;
+-(void)addFavorites{
+    NSLog(@"addFavorites");
+    tempFavorite = @"";
+    NSString *savedGroomName = [[NSUserDefaults standardUserDefaults]
+                                stringForKey:@"EmailID"];
+    if(savedGroomName.length>0){
+        WWVendorDetailData *basicInfo= [arrVendorDetailData objectAtIndex:0];
+        if([basicInfo.strFavorite isEqualToString:@"-1"]){
+            //[dicVendorData setValue:@"1" forKey:@"favorite"];
+            tempFavorite=@"1";
+        }
+        else if ([basicInfo.strFavorite isEqualToString:@"1"]){
+            //[dicVendorData setValue:@"-1" forKey:@"favorite"];
+            tempFavorite=@"-1";
+        }
+        // [_tblCategory reloadData];
+        [self callFavoriteApi:basicInfo withFavorite:tempFavorite];
+    }
+    else{
+        [AppDelegate sharedAppDelegate].isLogOut= YES;
+        
+        
+        WWDashboardVC *dash=[[WWDashboardVC alloc]initWithNibName:@"WWDashboardVC" bundle:nil];
+        dash.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:dash animated:YES];
+    }
+}
+-(void)callFavoriteApi:(WWVendorDetailData*)dicVendor withFavorite:(NSString*)isFavorite{
+    
+    NSDictionary *dicParameters= [[NSDictionary alloc]initWithObjectsAndKeys:
+                                  [[NSUserDefaults standardUserDefaults]
+                                   stringForKey:@"identifier"],@"identifier",
+                                  dicVendor.vendorEmail,@"vendor_email",
+                                  isFavorite,@"favorite",
+                                  @"add_favorite",@"action",nil];
+    
+    [[WWWebService sharedInstanceAPI] callWebService:dicParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         NSLog(@"responseDics :%@",responseDics);
+         MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+         [self.view addSubview:HUD];
+         
+         // Regiser for HUD callbacks so we can remove it from the window at the right time
+         HUD.delegate = self;
+         
+         // Show the HUD while the provided method executes in a new thread
+         [HUD showWhileExecuting:@selector(callWebService) onTarget:self withObject:nil animated:YES];
+         
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
+}
 -(void)showCategryReadMoreView:(id)sender{
     [UIView animateWithDuration:0.3
                           delay:0.0
@@ -662,7 +742,7 @@ BOOL isPackage;
     
     UIViewController *vc = nil;
     NSString *savedGroomName = [[NSUserDefaults standardUserDefaults]
-                                stringForKey:@"groom_name"];
+                                stringForKey:@"EmailID"];
     if(savedGroomName == nil){
         WWProfileVC *profileVC=[[WWProfileVC alloc]init];
         [self.navigationController pushViewController:profileVC animated:YES];

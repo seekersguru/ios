@@ -115,7 +115,8 @@
     
     [self finishSendingMessageAnimated:YES];
     
-    NSDictionary *requestDict = @{@"identifier" : [AppDelegate sharedAppDelegate].userData.identifier,
+    NSDictionary *requestDict = @{@"identifier" : [[NSUserDefaults standardUserDefaults]
+                                                   stringForKey:@"identifier"],
                                   @"receiver_email" : [_messageData valueForKey:@"receiver_email"],
                                   @"message" : text,
                                   @"from_to" : @"v2c",
@@ -146,7 +147,8 @@
 }
 -(void)callPrivateChatAPI:(NSString *)lastMessageId{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  [_messageData valueForKey:@"receiver_email"],@"receiver_email",
                                  @"1",@"page_no",
                                  @"v2c",@"from_to",

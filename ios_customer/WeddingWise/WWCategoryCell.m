@@ -13,6 +13,9 @@
 - (void)awakeFromNib {
     // Initialization code
 }
+- (IBAction)btnFavoriteClicked:(id)sender {
+    [_favoriteDelegate addFavorites:sender];
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

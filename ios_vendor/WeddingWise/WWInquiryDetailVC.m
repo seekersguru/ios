@@ -46,7 +46,8 @@
 -(IBAction)acceptButtonClicked:(id)sender{
     
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  _messageData[@"id"],@"msg_id",
                                  @"vendor_bid_book_response",@"action",
                                  @"1",@"status",
@@ -72,7 +73,8 @@
 }
 -(IBAction)declineButtonClicked:(id)sender{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  _messageData[@"id"],@"msg_id",
                                  @"vendor_bid_book_response",@"action",
                                  @"0",@"status",
@@ -110,7 +112,8 @@
 -(void)callBidDetailAPI{
 
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 [AppDelegate sharedAppDelegate].userData.identifier,@"identifier",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  _messageData[@"id"] ,@"msg_id",
                                  @"vendor_bid_book_detail",@"action",
                                  [_messageData valueForKey:@"msg_type"],@"msg_type",

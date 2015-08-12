@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.weddingwise.vendor</string>
+	<string>com.wedwise08aug.vendor</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -24,18 +24,18 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.wedwise.vendor</string>
+			<string>com.wedwise08aug.cusomer</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.wedwise.customer</string>
-				<string>fb1069293003099190</string>
+				<string>com.wedwise08aug.cusomer</string>
+				<string>fb710911475711792</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>1069293003099190</string>
+	<string>710911475711792</string>
 	<key>FacebookDisplayName</key>
 	<string>WedWise</string>
 	<key>LSRequiresIPhoneOS</key>

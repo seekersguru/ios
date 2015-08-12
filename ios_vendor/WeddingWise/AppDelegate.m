@@ -43,7 +43,6 @@ static AppDelegate * _sharedInstance;
     
     //Start network reachability monitoring:
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    
     for (NSString* family in [UIFont familyNames])
     {
        // NSLog(@"%@", family);
@@ -87,15 +86,17 @@ static AppDelegate * _sharedInstance;
 }
 - (BOOL)application: (UIApplication *)application openURL: (NSURL *)url sourceApplication: (NSString *)sourceApplication annotation: (id)annotation
 {
-    
-    //if(_isFaceBookLogin){
-//        return [[FBSDKApplicationDelegate sharedInstance] application:application
-//                                                              openURL:url
-//                                                    sourceApplication:sourceApplication
-//                                                           annotation:annotation];
-//    }
-    return [GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation];
+    if([url.absoluteString rangeOfString:@"fb710911475711792"].location != NSNotFound){
+        return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                              openURL:url
+                                                    sourceApplication:sourceApplication
+                                                           annotation:annotation];
+    }
+    else{
+        return [GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation];
+    }
 }
+
 - (UITabBarController *)setupViewControllers:(UITabBarController *)tabVC{
     if (!tabVC) {
         tabVC = [[UITabBarController alloc] init];

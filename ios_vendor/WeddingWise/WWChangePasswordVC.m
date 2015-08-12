@@ -39,14 +39,16 @@
     [_txtOldPassword resignFirstResponder];
 }
 - (IBAction)btnSavePassword:(id)sender{
-    NSLog(@"%@",[AppDelegate sharedAppDelegate].userData.identifier);
+    NSLog(@"%@",[[NSUserDefaults standardUserDefaults]
+                 stringForKey:@"identifier"]);
     if([self checkValidations]){
         
         
         NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                      _txtNewPassword.text,@"NewPassword",
                                      _txtOldPassword.text,@"CureentPassword",
-                                     [AppDelegate sharedAppDelegate].userData.identifier,@"identifier"
+                                     [[NSUserDefaults standardUserDefaults]
+                                      stringForKey:@"identifier"],@"identifier"
                                      @"ChangePassword",@"action",
                                      nil];
         [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)

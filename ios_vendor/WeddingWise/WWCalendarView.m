@@ -61,7 +61,8 @@
     [formatter setDateFormat:@"MM"];
     NSString *month = [formatter stringFromDate:[NSDate date]];
     [[WWBasicDetails sharedInstance] setCurrentDateInCalendar:[NSDate date]];
-    [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:year month:month additionalFilter:@"" completionBlock:^(NSDictionary *response) {
+    [self updateCalendarHomeWithUserId:[[NSUserDefaults standardUserDefaults]
+                                        stringForKey:@"identifier"] year:year month:month additionalFilter:@"" completionBlock:^(NSDictionary *response) {
         NSMutableDictionary *eventDict = [NSMutableDictionary new];
         for (NSDictionary *events in [response valueForKey:@"data"]) {
             [eventDict setValue:[NSString stringWithFormat:@"%ld",(long)[[events valueForKey:@"count"] integerValue]] forKey:[NSString stringWithFormat:@"%ld",(long)[[events valueForKey:@"day"] integerValue]]];
@@ -140,7 +141,8 @@
     if (filter3.length > 0) {
         filterString = [filterString stringByAppendingFormat:@"%@%@",filterString.length > 0 ? @"&":@"",filter3];
     }
-    [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:year month:month additionalFilter:filterString completionBlock:^(NSDictionary *response) {
+    [self updateCalendarHomeWithUserId:[[NSUserDefaults standardUserDefaults]
+                                        stringForKey:@"identifier"] year:year month:month additionalFilter:filterString completionBlock:^(NSDictionary *response) {
         NSMutableDictionary *eventDict = [NSMutableDictionary new];
         for (NSDictionary *events in [response valueForKey:@"data"]) {
             [eventDict setValue:[events valueForKey:@"count"] forKey:[events valueForKey:@"day"]];
@@ -343,7 +345,8 @@ NSString *selectedDatesString = @"";
     selectedMonthFromCalendar = [[NSCalendar currentCalendar] dateFromComponents:month];
     
     [[WWBasicDetails sharedInstance] setCurrentDateInCalendar:selectedMonthFromCalendar];
-    [self updateCalendarHomeWithUserId:[AppDelegate sharedAppDelegate].userData.identifier year:[NSString stringWithFormat:@"%ld",(long)month.year] month:[NSString stringWithFormat:@"%02ld",(long)month.month] additionalFilter:@"" completionBlock:^(NSDictionary *response) {
+    [self updateCalendarHomeWithUserId:[[NSUserDefaults standardUserDefaults]
+                                        stringForKey:@"identifier"] year:[NSString stringWithFormat:@"%ld",(long)month.year] month:[NSString stringWithFormat:@"%02ld",(long)month.month] additionalFilter:@"" completionBlock:^(NSDictionary *response) {
         NSMutableDictionary *eventDict = [NSMutableDictionary new];
         for (NSDictionary *events in [response valueForKey:@"data"]) {
             [eventDict setValue:[events valueForKey:@"count"] forKey:[events valueForKey:@"day"]];

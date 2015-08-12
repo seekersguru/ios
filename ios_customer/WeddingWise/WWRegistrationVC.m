@@ -43,6 +43,15 @@
     if(_fbResponse){
         [self fillFaceBookData];
     }
+    
+    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:@"EmailID"];
+    
+    if(savedValue.length>0){
+        _txtEmailAddress.text= savedValue;
+    }
+    
+    
     //[_btnSkip setHidden:YES];
     
     [super viewDidLoad];
@@ -98,6 +107,10 @@
     }
 }
 - (IBAction)skipButtonPressed:(id)sender {
+    
+    [[NSUserDefaults standardUserDefaults] setObject:_txtEmailAddress.text forKey:@"EmailID"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     UITabBarController *tabVC = [[AppDelegate sharedAppDelegate]setupViewControllers:nil];
     [self.navigationController pushViewController:tabVC animated:YES];
 }
@@ -138,6 +151,17 @@
     else{
         password= _txtPassword.text;
     }
+    /*
+     [self FBAuthentication:[[NSDictionary alloc] initWithObjectsAndKeys:[GPPSignIn sharedInstance].authentication.userEmail,@"email",person.identifier,@"id",@"google+",@"LoginType", nil]]
+     */
+    
+    NSString *userID =@"";
+    if([_fbResponse[@"LoginType"] isEqualToString:@"google+"]){
+        userID= _fbResponse[@"id"];
+    }
+    else{
+        userID= _fbResponse[@"id"];
+    }
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  _txtEmailAddress.text,@"email",
                                   password,@"password",
@@ -145,8 +169,8 @@
                                  _txtBrideName.text,@"bride_name",
                                  _txtContactNo.text,@"contact_number",
                                  _btnTentativeDate.titleLabel.text,@"tentative_wedding_date",
-                                 @"",@"fbid",
-                                 @"",@"gid",
+                                 userID,@"fbid",
+                                 userID,@"gid",
                                  @"",@"operation",
                                  @"",@"identifier",
                                  @"customer_registration",@"action",
