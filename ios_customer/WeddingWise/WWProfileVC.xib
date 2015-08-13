@@ -31,7 +31,7 @@
                     <rect key="frame" x="0.0" y="58" width="320" height="8"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbO-rl-3X0">
-                    <rect key="frame" x="0.0" y="10" width="60" height="40"/>
+                    <rect key="frame" x="2" y="10" width="60" height="40"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" image="back@arrow">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

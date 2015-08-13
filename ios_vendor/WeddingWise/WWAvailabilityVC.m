@@ -25,17 +25,22 @@
 
 @implementation WWAvailabilityVC
 
+- (UIPickerView *)pickerView{
+    UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 164)];
+    pickerView.delegate = self;
+    pickerView.dataSource = self;
+    return pickerView;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
     _time_slot= @"";
     _availability = @"";
-    UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 164)];
-    pickerView.delegate = self;
-    pickerView.dataSource = self;
-    [_timeSlotTextfield setInputView:pickerView];
-    [_availabilityTextfield setInputView:pickerView];
+    
+    [_timeSlotTextfield setInputView:[self pickerView]];
+    [_availabilityTextfield setInputView:[self pickerView]];
     
     UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     [toolbar setTintColor:[UIColor blackColor]];
@@ -50,12 +55,14 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    NSDate *currentMonth = [[WWBasicDetails sharedInstance] currentDateInCalendar];
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy"];
-    NSString *year = [df stringFromDate:currentMonth];
-    [df setDateFormat:@"MM"];
-    NSString *month = [NSString stringWithFormat:@"%20lld",[[df stringFromDate:currentMonth] longLongValue]];
+//    NSDate *currentMonth = [[WWBasicDetails sharedInstance] currentDateInCalendar];
+//    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+//    [df setDateFormat:@"yyyy"];
+//    NSString *year = [df stringFromDate:currentMonth];
+//    [df setDateFormat:@"MM"];
+    NSString *year = [NSString stringWithFormat:@"%ld",(long)_calendar.visibleMonth.year];
+    NSString *month = [NSString stringWithFormat:@"%02ld",(long)_calendar.visibleMonth.month];
+    
     
     [self updateCalendarHomeWithUserId:[[NSUserDefaults standardUserDefaults]
                                         stringForKey:@"identifier"] year:year month:month additionalFilter:@"" availityType:_availability timeSlot:_time_slot completionBlock:^(NSDictionary *response) {
@@ -63,7 +70,8 @@
         for (NSDictionary *events in [response valueForKey:@"data"]) {
             [eventDict setValue:[events valueForKey:@"img"] forKey:[events valueForKey:@"day"]];
         }
-        NSDictionary *finalEventDict = @{year:@{month:eventDict}};
+        NSDictionary *finalEventDict = @{[year stringByReplacingOccurrencesOfString:@" " withString:@""]:@{[month stringByReplacingOccurrencesOfString:@" " withString:@""]:eventDict}};
+//        NSDictionary *finalEventDict = @{year:@{month:eventDict}};
         [self showAvailability:finalEventDict];
 
     } errorBlock:^(NSError *error) {
@@ -96,12 +104,8 @@
         NSString *year;
         NSString *month;
         if (!dateConponent) {
-            NSDate *currentMonth = [[WWBasicDetails sharedInstance] currentDateInCalendar];
-            NSDateFormatter *df = [[NSDateFormatter alloc] init];
-            [df setDateFormat:@"yyyy"];
-            year = [df stringFromDate:currentMonth];
-            [df setDateFormat:@"MM"];
-            month = [NSString stringWithFormat:@"%20ld",[[df stringFromDate:currentMonth] integerValue]];
+            year = [NSString stringWithFormat:@"%ld",(long)_calendar.visibleMonth.year];
+            month = [NSString stringWithFormat:@"%02ld",(long)_calendar.visibleMonth.month];
         }
         else{
             year = [NSString stringWithFormat:@"%ld",(long)dateConponent.year];
@@ -110,7 +114,7 @@
         year = [year stringByReplacingOccurrencesOfString:@" " withString:@""];
         month = [month stringByReplacingOccurrencesOfString:@" " withString:@""];
         [self updateCalendarHomeWithUserId:[[NSUserDefaults standardUserDefaults]
-                                            stringForKey:@"identifier"] year:year month:month additionalFilter:@"" availityType:_availability timeSlot:_time_slot completionBlock:^(NSDictionary *response) {
+                                            stringForKey:@"identifier"] year:year month:month additionalFilter:_selectedDatesString availityType:_availability timeSlot:_time_slot completionBlock:^(NSDictionary *response) {
             NSMutableDictionary *eventDict = [NSMutableDictionary new];
             for (NSDictionary *events in [response valueForKey:@"data"]) {
                 [eventDict setValue:[events valueForKey:@"img"] forKey:[events valueForKey:@"day"]];
@@ -152,7 +156,9 @@
     if ([_availabilityTextfield isFirstResponder]) {
         _availabilityTextfield.text = _availabilityArray[row];
     }
-    _timeSlotTextfield.text = _timeSlotArray[row];
+    else{
+        _timeSlotTextfield.text = _timeSlotArray[row];
+    }
     
     if ([_timeSlotTextfield isFirstResponder]) {
         switch (row) {
@@ -218,7 +224,7 @@
                                                         fromDate:startDate
                                                           toDate:endDate
                                                          options:0];
-    
+    _selectedDatesString = [[NSString alloc] init];
     for (int i = 1; i < components.day; ++i) {
         NSDateComponents *newComponents = [NSDateComponents new];
         newComponents.day = i;
@@ -227,23 +233,23 @@
                                                           toDate:startDate
                                                          options:0];
         NSString *dateString = [f stringFromDate:date];
-        if (!_selectedDatesString) {
-            _selectedDatesString = [[NSString alloc] init];
-        }
         _selectedDatesString = [_selectedDatesString stringByAppendingFormat:@"%@%@",(_selectedDatesString.length == 0)?@"":@",",dateString];
     }
 }
 NSDateComponents *dateConponent = nil;
 - (void)calendarView:(DSLCalendarView *)calendarView didChangeToVisibleMonth:(NSDateComponents *)month {
     dateConponent = month;
+    _selectedDatesString = @"";
+    _availabilityTextfield.text = @"";
+    _timeSlotTextfield.text = @"";
     [self updateCalendarHomeWithUserId:[[NSUserDefaults standardUserDefaults]
-                                        stringForKey:@"identifier"] year:[NSString stringWithFormat:@"%ld",(long)month.year] month:[NSString stringWithFormat:@"%02ld",(long)month.month] additionalFilter:_selectedDatesString availityType:[[_availabilityTextfield.text stringByReplacingOccurrencesOfString:@" " withString:@""] lowercaseString] timeSlot:[[_timeSlotTextfield.text stringByReplacingOccurrencesOfString:@" " withString:@""] lowercaseString] completionBlock:^(NSDictionary *response) {
+                                        stringForKey:@"identifier"] year:[NSString stringWithFormat:@"%ld",(long)month.year] month:[NSString stringWithFormat:@"%02ld",(long)month.month] additionalFilter:@"" availityType:@"" timeSlot:@"" completionBlock:^(NSDictionary *response) {
         
                 NSMutableDictionary *eventDict = [NSMutableDictionary new];
                 for (NSDictionary *events in [response valueForKey:@"data"]) {
                     [eventDict setValue:[events valueForKey:@"img"] forKey:[events valueForKey:@"day"]];
                 }
-                NSDictionary *finalEventDict = @{[NSString stringWithFormat:@"%ld",(long)month.year]:@{[NSString stringWithFormat:@"%ld",(long)month.month]:eventDict}};
+                NSDictionary *finalEventDict = @{[[NSString stringWithFormat:@"%ld",(long)month.year] stringByReplacingOccurrencesOfString:@" " withString:@""]:@{[[NSString stringWithFormat:@"%ld",(long)month.month] stringByReplacingOccurrencesOfString:@" " withString:@""]:eventDict}};
                 [self showAvailability:finalEventDict];
 
         
@@ -271,6 +277,8 @@ NSDateComponents *dateConponent = nil;
                                  filter?filter:@"",@"dates",
                                  timeSlot?timeSlot:@"",@"time_slot",
                                  availityType?availityType:@"",@"avail_type",
+                                 @"ios",@"mode",
+                                 @"2x",@"image_type",
                                  @"vendor_calendar_availability",@"action",
                                  nil];
     
