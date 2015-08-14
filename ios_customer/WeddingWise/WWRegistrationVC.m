@@ -156,10 +156,10 @@
      */
     
     NSString *userID =@"";
-    if([_fbResponse[@"LoginType"] isEqualToString:@"google+"]){
+    if([_userType isEqualToString:@"google+"]){
         userID= _fbResponse[@"id"];
     }
-    else{
+    else if([_userType isEqualToString:@"fbUser"]){
         userID= _fbResponse[@"id"];
     }
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
@@ -186,6 +186,11 @@
                  
                  NSMutableDictionary *requestData = [responseDics[@"request_data"] mutableCopy];
                  [requestData setValue:responseDics[@"json"][@"identifier"] forKey:@"identifier"];
+                 
+                 [[NSUserDefaults standardUserDefaults] setObject:[responseDics valueForKey:@"json"][@"identifier"] forKey:@"identifier"];
+                 [[NSUserDefaults standardUserDefaults] setObject:_txtEmailAddress.text forKey:@"EmailID"];
+                 [[NSUserDefaults standardUserDefaults] setObject:_txtPassword.text forKey:@"Password"];
+                 [[NSUserDefaults standardUserDefaults] synchronize];
                  
                  WWLoginUserData *userData=[[WWLoginUserData alloc]setUserData:requestData];
                  [AppDelegate sharedAppDelegate].userData= userData;

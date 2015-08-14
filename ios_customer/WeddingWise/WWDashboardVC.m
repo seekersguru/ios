@@ -99,11 +99,15 @@
              [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"Password"];
              [[NSUserDefaults standardUserDefaults] synchronize];
              
-             
-             
              WWRegistrationVC *registrationVC=[[WWRegistrationVC alloc]initWithNibName:@"WWRegistrationVC" bundle:nil];
              registrationVC.fbResponse= fbResponse;
-             //registrationVC.bgImage.image= _bgImage.image;
+             
+             if([fbResponse[@"LoginType"] isEqualToString:@"google+"]){
+                 registrationVC.userType= @"google+";
+             }
+             else
+                 registrationVC.userType= @"fbUser";
+             \
              registrationVC.image= _bgImage.image;
              [self.navigationController pushViewController:registrationVC animated:YES];
              
@@ -167,10 +171,6 @@
                         NSLog(@"GoogleID=%@", person.identifier);
                         NSLog(@"User Name=%@", [person.name.givenName stringByAppendingFormat:@" %@", person.name.familyName]);
                         NSLog(@"Gender=%@", person.gender);
-                        
-                        
-                        
-                        
                         
                         [self FBAuthentication:[[NSDictionary alloc] initWithObjectsAndKeys:[GPPSignIn sharedInstance].authentication.userEmail,@"email",person.identifier,@"id",@"google+",@"LoginType", nil]];
                     }

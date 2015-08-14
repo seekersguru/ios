@@ -27,6 +27,8 @@
 @property(nonatomic, weak)IBOutlet UIButton *btnSignIn;
 @property(nonatomic, weak)IBOutlet UIButton *btnBack;
 
+@property(nonatomic, weak)IBOutlet NSString *userType;
+
 @property(nonatomic, weak)IBOutlet UIImageView *bgImage;
 @property(nonatomic, strong)UIImage *image;
 
