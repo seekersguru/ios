@@ -295,6 +295,7 @@ NSString *selectedDatesString = @"";
 #pragma mark - DSLCalendarViewDelegate methods
 - (void)calendarView:(DSLCalendarView *)calendarView didSelectRange:(DSLCalendarRange *)range {
     if (range != nil) {
+        
         NSLog( @"Selected %ld/%ld - %ld/%ld", (long)range.startDay.day, (long)range.startDay.month, (long)range.endDay.day, (long)range.endDay.month);
         //store this date to session/singleton instance
         

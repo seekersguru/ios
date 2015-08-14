@@ -24,7 +24,9 @@
 @end
 
 @implementation WWAvailabilityVC
-
+{
+    NSString *strAvailability;
+}
 - (UIPickerView *)pickerView{
     UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 164)];
     pickerView.delegate = self;
@@ -48,6 +50,8 @@
     [toolbar setItems:@[doneButton]];
     [_timeSlotTextfield setInputAccessoryView:toolbar];
     [_availabilityTextfield setInputAccessoryView:toolbar];
+    
+    strAvailability=@"";
     
     _timeSlotArray = @[@"Morning",@"Evening",@"All Day"];
     _availabilityArray = @[@"Availability",@"Ongoing Enquiry", @"Booking"];
@@ -111,6 +115,18 @@
             year = [NSString stringWithFormat:@"%ld",(long)dateConponent.year];
             month = [NSString stringWithFormat:@"%02ld",(long)dateConponent.month];
         }
+        
+    
+//        if([_availability isEqualToString:@"availability"]){
+//            strAvailability= @"available";
+//        }
+//        else if([_availability isEqualToString:@"booking"]){
+//            strAvailability =@"booked";
+//        }
+//        else{
+//            strAvailability= _availability;
+//        }
+        
         year = [year stringByReplacingOccurrencesOfString:@" " withString:@""];
         month = [month stringByReplacingOccurrencesOfString:@" " withString:@""];
         [self updateCalendarHomeWithUserId:[[NSUserDefaults standardUserDefaults]
@@ -129,10 +145,25 @@
 }
 #pragma mark - textfield delegate methods
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if(textField.text.length==0)
+        [(UIPickerView *)[textField inputView] selectRow:0 inComponent:0 animated:YES];
+    
+    
     if (textField == _timeSlotTextfield || textField == _availabilityTextfield) {
         [(UIPickerView *)[textField inputView] reloadAllComponents];
     }
     return YES;
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    if(textField.text.length==0){
+        if(textField==_availabilityTextfield){
+            _availabilityTextfield.text = _availabilityArray[0];
+        }
+        else if(textField==_timeSlotTextfield){
+            _timeSlotTextfield.text = _timeSlotArray[0];
+        }
+    }
+    
 }
 #pragma mark - pickerview delegate and datasource
 
@@ -178,13 +209,13 @@
     else{
         switch (row) {
             case 0:
-                _availability = @"availability";
+                _availability = @"available";
                 break;
             case 1:
                 _availability = @"ongoing_enquiry";
                 break;
             case 2:
-                _availability = @"booking";
+                _availability = @"booked";
                 break;
             default:
                 break;
@@ -201,11 +232,11 @@
         NSString *startDate= [NSString stringWithFormat:@"%ld-%02ld-%02ld",(long)range.startDay.year,(long)range.startDay.month,(long)range.startDay.day];
         NSString *endDate= [NSString stringWithFormat:@"%ld-%02ld-%02ld",(long)range.endDay.year,(long)range.endDay.month,(long)range.endDay.day];
         
-        if([startDate isEqualToString:endDate]){
-            
-        }else{
+       // if([startDate isEqualToString:endDate]){
+            //[self getAllDatesFromRange:startDate withLastDate:endDate];
+        //}else{
             [self getAllDatesFromRange:startDate withLastDate:endDate];
-        }
+        //}
         
         
     }
@@ -225,7 +256,8 @@
                                                           toDate:endDate
                                                          options:0];
     _selectedDatesString = [[NSString alloc] init];
-    for (int i = 1; i < components.day; ++i) {
+    
+    for (int i = 0; i < components.day+1; ++i) {
         NSDateComponents *newComponents = [NSDateComponents new];
         newComponents.day = i;
         
