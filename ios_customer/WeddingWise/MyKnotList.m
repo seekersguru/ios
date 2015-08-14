@@ -13,9 +13,9 @@
 #import "WWDetailScreen.h"
 #import "AppDelegate.h"
 #import "WWDashboardVC.h"
+#import "WWSideMenuVC.h"
 
-
-@interface MyKnotList ()<MBProgressHUDDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate>
+@interface MyKnotList ()<MBProgressHUDDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate,UITabBarControllerDelegate>
 {
     NSMutableArray *arrCategoryImages;
 }
@@ -23,9 +23,24 @@
 
 @implementation MyKnotList
 
+NSUInteger lastSelectedIndex = 0;
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    if (tabBarController.selectedIndex == 3) {
+        self.tabBarController.selectedIndex = lastSelectedIndex;
+        UIViewController *fourthViewController = [[WWSideMenuVC alloc] init];
+        UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:fourthViewController];
+        [self presentViewController:navC animated:YES completion:nil];
+    }
+    else{
+        lastSelectedIndex = tabBarController.selectedIndex;
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tabBarController.delegate = self;
 //    [self.tabBarController.navigationController.navigationBar setHidden:YES];
 //    [[AppDelegate sharedAppDelegate].navigation.navigationBar setHidden:YES];
 //    [self.navigationController.navigationBar setHidden:YES];

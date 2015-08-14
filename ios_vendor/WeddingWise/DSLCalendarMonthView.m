@@ -124,13 +124,27 @@
                             }
                         }
                     }
+                NSString *currentMonthCopy = [NSString stringWithFormat:@"%02ld",(long)day.month];
+                
                 if ([[_availabilityDict allKeys] containsObject:currentYear]) {
                     //this is current year
-                    if ( [[[_availabilityDict valueForKey:currentYear] allKeys] containsObject:currentMonth] ) {
+                    if ([[[_availabilityDict valueForKey:currentYear] allKeys] containsObject:currentMonth] || [[[_availabilityDict valueForKey:currentYear] allKeys] containsObject:currentMonthCopy]) {
                         //event count exist for current month
-                        if ([[[_availabilityDict valueForKey:currentYear] valueForKey:currentMonth] objectForKey:[NSNumber numberWithLong:day.day]] != nil) {
+                        NSString *todayy = [NSString stringWithFormat:@"%02ld", (long)day.day];
+                        NSString *todayyCopy = [NSString stringWithFormat:@"%ld", (long)day.day];
+
+                        if ([[[_availabilityDict valueForKey:currentYear] valueForKey:currentMonth] objectForKey:todayy] != nil || [[[_availabilityDict valueForKey:currentYear] valueForKey:currentMonth] objectForKey:todayyCopy] != nil || [[[_availabilityDict valueForKey:currentYear] valueForKey:currentMonthCopy] objectForKey:todayy] != nil || [[[_availabilityDict valueForKey:currentYear] valueForKey:currentMonthCopy] objectForKey:todayyCopy] != nil) {
                             //event exist on this day
-                            NSString *url = [[[_availabilityDict valueForKey:currentYear] valueForKey:currentMonth] objectForKey:[NSNumber numberWithLong:day.day]];
+                            NSString *url = [[[_availabilityDict valueForKey:currentYear] valueForKey:currentMonth] objectForKey:todayy];
+                            if (!url) {
+                                url = [[[_availabilityDict valueForKey:currentYear] valueForKey:currentMonth] objectForKey:todayyCopy];
+                                if (!url) {
+                                    url = [[[_availabilityDict valueForKey:currentYear] valueForKey:currentMonthCopy] objectForKey:todayy];
+                                    if (!url) {
+                                        url = [[[_availabilityDict valueForKey:currentYear] valueForKey:currentMonthCopy] objectForKey:todayyCopy];
+                                    }
+                                }
+                            }
                             [dayView showImageWithURL:url];
                         }
                     }

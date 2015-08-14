@@ -30,6 +30,9 @@
     [self.tabBarController.navigationController.navigationBar setHidden:YES];
     [self.navigationController.navigationBar setHidden:YES];
 }
+- (IBAction)backButtonAction:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
