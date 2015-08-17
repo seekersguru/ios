@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WWCreateBidVC">
             <connections>
-                <outlet property="bidPriceStaticLabel" destination="vWh-nB-JL0" id="tNW-5j-YJc"/>
-                <outlet property="bidPriceTextField" destination="0a5-Lk-yPD" id="kCI-Yr-rJW"/>
-                <outlet property="btnFlexible" destination="JiY-jg-77t" id="fsm-iY-I5C"/>
                 <outlet property="btnPackage" destination="qhV-Qu-g84" id="x05-Wp-mIr"/>
                 <outlet property="btnSelect" destination="Gxk-LT-6OO" id="cpf-f1-7M7"/>
                 <outlet property="calendarView" destination="fWW-Zx-B41" id="4bT-PP-aaX"/>
+                <outlet property="checkAvailbility" destination="zIu-Wc-MdP" id="muf-Zg-3h1"/>
                 <outlet property="eventDateButton" destination="anj-Wi-Xil" id="RCo-DU-SSi"/>
                 <outlet property="eventDateLabel" destination="FUB-ri-5ng" id="nts-cm-MIm"/>
                 <outlet property="eventStaticLabel" destination="gVQ-e8-Kg7" id="DES-FI-1Ox"/>
-                <outlet property="flexibleStaticLabel" destination="chD-W0-hsc" id="dtq-bq-44r"/>
+                <outlet property="guestTextField" destination="IUE-1c-0CU" id="DI8-tu-EDa"/>
                 <outlet property="headerTitleLabel" destination="no6-nQ-6yb" id="VnW-ea-ots"/>
-                <outlet property="minPersonStaticLabel" destination="HKr-XO-VSO" id="Alh-9F-0Eo"/>
-                <outlet property="minPersonTextField" destination="UMs-S6-c4B" id="qaH-Y7-I6q"/>
-                <outlet property="packageLabel" destination="MPf-wa-07h" id="mb9-NM-oRJ"/>
+                <outlet property="packageDescriptionLabel" destination="MPf-wa-07h" id="K70-3S-FAr"/>
                 <outlet property="packageStaticLabel" destination="h0D-Rs-jgz" id="DNV-Y9-523"/>
-                <outlet property="packageTextField" destination="jXi-Vm-J2r" id="e2b-lT-jXN"/>
-                <outlet property="perPlateStaticLabel" destination="vr5-1e-Urr" id="hPI-e1-C4F"/>
+                <outlet property="pricing1" destination="8pi-Td-ukI" id="kd9-TJ-0pY"/>
+                <outlet property="pricing2" destination="53k-ji-96H" id="21B-r1-Hk1"/>
                 <outlet property="submitButton" destination="iqw-zR-N9O" id="95g-Xx-Qdt"/>
+                <outlet property="textComment" destination="xUk-eW-cGb" id="FVE-LD-G50"/>
                 <outlet property="timeSlotStaticLabel" destination="dkJ-pM-Oaf" id="gMi-Em-pWL"/>
-                <outlet property="timeSlotTextField" destination="u4O-SG-Hbo" id="se4-uh-QO4"/>
                 <outlet property="titleView" destination="DIU-Z8-0ay" id="rkY-ag-Rbz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="vwCalander" destination="8iX-ii-kxY" id="2Hy-LN-5Rh"/>
@@ -74,32 +70,15 @@
                         <action selector="datePickerBtnAction:" destination="-1" eventType="touchUpInside" id="5SS-cR-S9Y"/>
                     </connections>
                 </button>
-                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Morning" borderStyle="bezel" textAlignment="center" minimumFontSize="17" background="dropdown" id="u4O-SG-Hbo">
-                    <rect key="frame" x="144" y="159" width="145" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="4h9-p9-uLh"/>
-                    </connections>
-                </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MPf-wa-07h">
-                    <rect key="frame" x="144" y="253" width="157" height="35"/>
+                    <rect key="frame" x="144" y="232" width="157" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bid price :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vWh-nB-JL0">
-                    <rect key="frame" x="12" y="307" width="105" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iqw-zR-N9O">
-                    <rect key="frame" x="77" y="464" width="167" height="28"/>
+                    <rect key="frame" x="77" y="489" width="167" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <state key="normal" title="BID NOW" backgroundImage="BT">
@@ -120,83 +99,22 @@
                         <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="6C0-3e-w3M"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Per Plat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vr5-1e-Urr">
-                    <rect key="frame" x="151" y="337" width="61" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min. Person" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HKr-XO-VSO">
-                    <rect key="frame" x="225" y="337" width="76" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" id="0a5-Lk-yPD">
-                    <rect key="frame" x="144" y="306" width="75" height="23"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="DL7-1h-etE"/>
-                    </connections>
-                </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" id="UMs-S6-c4B">
-                    <rect key="frame" x="226" y="306" width="75" height="23"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="Hiv-Tf-cKE"/>
-                    </connections>
-                </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flexible Date :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="chD-W0-hsc">
-                    <rect key="frame" x="12" y="133" width="89" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JiY-jg-77t">
-                    <rect key="frame" x="134" y="132" width="30" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" backgroundImage="Unchecked">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="btnFlexiblePressed:" destination="-1" eventType="touchUpInside" id="reh-DQ-YYp"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Package :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h0D-Rs-jgz">
-                    <rect key="frame" x="12" y="223" width="67" height="21"/>
+                    <rect key="frame" x="12" y="199" width="67" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="17" background="dropdown" id="jXi-Vm-J2r">
-                    <rect key="frame" x="144" y="205" width="145" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="VPn-SU-XFo"/>
-                    </connections>
-                </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time slot :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dkJ-pM-Oaf">
-                    <rect key="frame" x="12" y="174" width="89" height="21"/>
+                    <rect key="frame" x="12" y="135" width="89" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Gxk-LT-6OO">
-                    <rect key="frame" x="144" y="170" width="157" height="29"/>
+                    <rect key="frame" x="144" y="131" width="157" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" backgroundImage="dropdown">
@@ -208,7 +126,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qhV-Qu-g84">
-                    <rect key="frame" x="144" y="219" width="157" height="29"/>
+                    <rect key="frame" x="144" y="195" width="157" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" backgroundImage="dropdown">
@@ -219,6 +137,66 @@
                         <action selector="selectClicked:" destination="-1" eventType="touchUpInside" id="1OW-rs-i1p"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zIu-Wc-MdP">
+                    <rect key="frame" x="144" y="166" width="157" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pricing:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="J5I-qh-Lr2">
+                    <rect key="frame" x="12" y="300" width="89" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8pi-Td-ukI">
+                    <rect key="frame" x="140" y="300" width="161" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="53k-ji-96H">
+                    <rect key="frame" x="140" y="330" width="161" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Guests:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r0H-Cu-18I">
+                    <rect key="frame" x="8" y="373" width="115" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="IUE-1c-0CU">
+                    <rect key="frame" x="140" y="366" width="161" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="EV6-Re-hH2"/>
+                    </connections>
+                </textField>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="431-c8-qW6">
+                    <rect key="frame" x="6" y="403" width="297" height="66"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </imageView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Comments" id="xUk-eW-cGb">
+                    <rect key="frame" x="7" y="404" width="295" height="64"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="boW-XG-ZaW"/>
+                    </connections>
+                </textView>
                 <view contentMode="scaleToFill" id="8iX-ii-kxY">
                     <rect key="frame" x="0.0" y="700" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -256,12 +234,11 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-2644" y="-97"/>
+            <point key="canvasLocation" x="-3863" y="-167"/>
         </view>
     </objects>
     <resources>
         <image name="BT" width="141" height="23"/>
-        <image name="Unchecked" width="48" height="48"/>
         <image name="back@arrow" width="14" height="14"/>
         <image name="dropdown" width="107" height="15"/>
         <image name="header_divder" width="326" height="6"/>

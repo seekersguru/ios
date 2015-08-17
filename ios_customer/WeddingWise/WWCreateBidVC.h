@@ -9,19 +9,25 @@
 #import <UIKit/UIKit.h>
 #import "DSLCalendarView.h"
 
-@interface WWCreateBidVC : UIViewController
+@interface WWCreateBidVC : UIViewController<UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *headerTitleLabel;
 @property (nonatomic, strong) NSString *requestType;    //it will be bid/booking
 
-@property (weak, nonatomic) IBOutlet UITextField *timeSlotTextField;
-@property (weak, nonatomic) IBOutlet UITextField *bidPriceTextField;
-@property (weak, nonatomic) IBOutlet UITextField *minPersonTextField;
 @property (weak, nonatomic) IBOutlet UITextField *packageTextField;
+@property (weak, nonatomic) IBOutlet UITextField *guestTextField;
+@property (weak, nonatomic) IBOutlet UITextView *textComment;
+
 @property (weak, nonatomic) IBOutlet UILabel *eventDateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *eventDateButton;
-@property (weak, nonatomic) IBOutlet UILabel *packageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *packageDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleView;
+
+@property (weak, nonatomic) IBOutlet UILabel *pricingStatic;
+@property (weak, nonatomic) IBOutlet UILabel *pricing1;
+@property (weak, nonatomic) IBOutlet UILabel *pricing2;
+
+@property (weak, nonatomic) IBOutlet UILabel *checkAvailbility;
 
 
 @property(nonatomic, weak)IBOutlet UIView *vwCalander;
@@ -29,26 +35,19 @@
 
 //Static Label
 @property (weak, nonatomic) IBOutlet UILabel *eventStaticLabel;
-@property (weak, nonatomic) IBOutlet UILabel *flexibleStaticLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *timeSlotStaticLabel;
 @property (weak, nonatomic) IBOutlet UILabel *packageStaticLabel;
-@property (weak, nonatomic) IBOutlet UILabel *bidPriceStaticLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *perPlateStaticLabel;
-@property (weak, nonatomic) IBOutlet UILabel *minPersonStaticLabel;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property(weak, nonatomic) IBOutlet UIButton *btnFlexible;
 
 
 
 - (IBAction)bidItAction:(id)sender;
 -(IBAction)backButtonPressed:(id)sender;
--(IBAction)btnFlexiblePressed:(id)sender;
-
 -(IBAction)calendarBackButtonPressed:(id)sender;
-
 - (IBAction)selectClicked:(id)sender;
 -(void)rel;
 

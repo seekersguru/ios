@@ -18,12 +18,12 @@
     
     [self.navigationController.navigationBar setHidden:YES];
     
+    [self callWebService:@""];
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    _scheduleTimeLabel.hidden = YES;
+   // _scheduleTimeLabel.hidden = YES;
 }
 - (IBAction)backButtonPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -35,17 +35,38 @@
 
 - (IBAction)scheduleVisitAction:(id)sender {
     _scheduleTimeLabel.hidden = NO;
-    //call api here
-    
+   
     NSDate *selectedDate = [_datePicker date];
     NSDate *selectedTime = [_timePicker date];
 
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *date = [dateFormatter stringFromDate:selectedDate];
-    [dateFormatter setDateFormat:@"hh:mm a"];
+    [dateFormatter setDateFormat:@"hh:mm"];
     NSString *time = [dateFormatter stringFromDate:selectedTime];
     
-    [_scheduleTimeLabel setText:[NSString stringWithFormat:@"Visit scheduled at %@ %@",date,time]];
+    [self callWebService:[NSString stringWithFormat:@"%@ %@",date,time]];
+   
 }
+-(void)callWebService:(NSString*)time{
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 [AppDelegate sharedAppDelegate].vendorEmail,@"vendor_email",
+                                 time,@"time",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
+                                 @"schedule_visit",@"action",
+                                 nil];
+    
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         NSLog(@"responseDics :%@", responseDics);
+         [_scheduleTimeLabel setText:[NSString stringWithFormat:@"Visit scheduled at %@",responseDics[@"json"][@"id"]]];
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
+}
+
 @end

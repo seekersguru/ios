@@ -41,12 +41,6 @@ NSUInteger lastSelectedIndex = 0;
     [super viewDidLoad];
     
     self.tabBarController.delegate = self;
-//    [self.tabBarController.navigationController.navigationBar setHidden:YES];
-//    [[AppDelegate sharedAppDelegate].navigation.navigationBar setHidden:YES];
-//    [self.navigationController.navigationBar setHidden:YES];
-    
-    
-    
     arrCategoryImages=[[NSMutableArray alloc]init];
     
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];

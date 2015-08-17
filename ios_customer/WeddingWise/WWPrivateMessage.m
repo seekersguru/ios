@@ -56,7 +56,7 @@
     [chatArray removeAllObjects];
     [self callPrivateChatAPI:@""];
     
-    myTimer =[NSTimer scheduledTimerWithTimeInterval: 10.0 target: self
+    myTimer =[NSTimer scheduledTimerWithTimeInterval: 10000.0 target: self
                                    selector: @selector(callPrivateChatAPI:) userInfo: @"" repeats: YES];
 }
 - (void)viewWillDisappear:(BOOL)animated{
@@ -161,7 +161,7 @@
                                  @"c2v",@"from_to",
                                  @"customer_vendor_message_detail",@"action",
                                  @"message",@"msg_type",
-                                 lastMessageId,@"last_message_id",
+                                 lastMessageId,@"min",
                                  nil];
     
     
@@ -175,10 +175,9 @@
              NSArray *arrData=[responseDics valueForKey:@"json"];
              NSDateFormatter *df = [[NSDateFormatter alloc] init];
              [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-//             df.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"IST"];
             
              __block NSString *strMessageID;
-             [chatArray removeAllObjects];
+            
              
              for (int i = arrData.count-1; i >= 0; i--) {
                  NSDictionary *arrMessages = [arrData objectAtIndex:i];

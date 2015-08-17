@@ -20,11 +20,13 @@
 @implementation WWLeadsListVC
 {
     NSMutableArray *arrBidData;
+    __block NSString *sortType;
 }
 
 #pragma mark Viewlife cycle methods:
 - (void)viewDidLoad {
     [super viewDidLoad];
+    sortType= @"";
     
     [[WWCommon getSharedObject]setCustomFont:13.0 withLabel:_lblSortBy withText:_lblSortBy.text];
     [[WWCommon getSharedObject]setCustomFont:13.0 withLabel:_sortEventButton withText:_sortEventButton.titleLabel.text];
@@ -114,29 +116,71 @@
         if(_sortEventButton.selected){
             _imgEvent.transform = CGAffineTransformMakeRotation(DEGREES_RADIANS(360));
             _sortEventButton.selected= NO;
+            sortType = @"-event_date";
         }
         else{
             _imgEvent.transform = CGAffineTransformMakeRotation(DEGREES_RADIANS(180));
             _sortEventButton.selected= YES;
+            sortType= @"event_date";
         }
     }];
-    arrBidData = (NSMutableArray*)[[arrBidData reverseObjectEnumerator] allObjects];
-    [_tblBidView reloadData];
-}
-- (IBAction)inquiryDateSorting:(id)sender {
+   
     
+    [self callEventSortingAPI:sortType withMax:@""];
+   
+}
+-(IBAction)loadMoreButtonPressed:(id)sender{
+    NSDictionary *dicBidData = [arrBidData firstObject];
+    [self callEventSortingAPI:@"" withMax:dicBidData[@"id"]];
+}
+-(void)callEventSortingAPI:(NSString*)sort withMax:(NSString*)max{
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
+                                 @"1",@"page_no",
+                                 @"c2v",@"from_to",
+                                 @"bid",@"msg_type",
+                                 max,@"max",
+                                 @"",@"min",
+                                 sortType,@"sort",
+                                 @"customer_vendor_message_list",@"action",
+                                 nil];
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             //[arrBidData removeAllObjects];
+             NSArray *arrJson=[responseDics valueForKey:@"json"];
+             for (NSDictionary *bidData in arrJson) {
+                 [arrBidData addObject:bidData];
+             }
+             [_tblBidView reloadData];
+         }
+         
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
+}
+
+- (IBAction)inquiryDateSorting:(id)sender {
+
     [UIView animateWithDuration:0.5 animations:^{
         if(_sortInquiryButton.selected){
             _imgInquiry.transform = CGAffineTransformMakeRotation(DEGREES_RADIANS(360));
             _sortInquiryButton.selected= NO;
+            sortType = @"-msg_time";
         }
         else{
             _imgInquiry.transform = CGAffineTransformMakeRotation(DEGREES_RADIANS(180));
             _sortInquiryButton.selected= YES;
+             sortType= @"msg_time";
         }
     }];
-    arrBidData = (NSMutableArray*)[[arrBidData reverseObjectEnumerator] allObjects];
-    [_tblBidView reloadData];
+    [self callEventSortingAPI:sortType withMax:@""];
 }
 
 

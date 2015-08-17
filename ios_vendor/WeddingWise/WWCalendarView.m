@@ -45,9 +45,12 @@ NSUInteger lastSelectedIndex = 0;
 - (void)viewDidLoad {
     self.tabBarController.delegate = self;
     [_calendarTitle setFont:[UIFont fontWithName:AppFont size:15.0]];
-    
     _filterView.frame = CGRectMake(0, self.view.frame.size.height+60, self.view.frame.size.width, self.view.frame.size.height);
-    [self.navigationController.navigationBar setHidden:YES];
+    
+    [[AppDelegate sharedAppDelegate].navigation.navigationBar setHidden:YES];
+    [self.tabBarController.navigationController.navigationBar setHidden:YES];
+    
+    
     _pickerData=[[NSArray alloc]initWithObjects:@"January",
                                                 @"February",
                                                 @"March",
@@ -93,6 +96,10 @@ NSUInteger lastSelectedIndex = 0;
 
 - (void)viewWillAppear:(BOOL)animated{
    
+    [self.tabBarController.navigationController.navigationBar setHidden:YES];
+    [self.navigationController.navigationBar setHidden:YES];
+    
+    
     lastSelectedDate = nil;
     [self hideView];
     filter1 = @"";
@@ -438,7 +445,7 @@ NSString *selectedDatesString = @"";
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  userId,@"identifier",
                                  year,@"year",
-                                 month,@"month",
+                                  month,@"month",
                                  filter,@"filter_string",
                                  @"vendor_calendar_home",@"action",
                                  nil];

@@ -302,6 +302,9 @@ NSDateComponents *dateConponent = nil;
 }
 
 -(void)updateCalendarHomeWithUserId:(NSString *)userId year:(NSString *)year month:(NSString *)month additionalFilter:(NSString *)filter availityType:(NSString *)availityType timeSlot:(NSString *)timeSlot completionBlock:(void(^)(NSDictionary *))completion errorBlock:(void(^)(NSError *))error{
+    
+    [[MBProgressHUD showHUDAddedTo:self.view animated:YES]setLabelText:@"processing"];
+    
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  userId,@"identifier",
                                  year?year:@"",@"year",
@@ -323,6 +326,7 @@ NSDateComponents *dateConponent = nil;
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
              completion([responseDics valueForKey:@"json"]);
          }
+         [MBProgressHUD hideHUDForView:self.view animated:YES];
      }failure:^(NSString *response)
      {
          DLog(@"%@",response);

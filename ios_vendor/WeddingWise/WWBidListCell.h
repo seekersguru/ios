@@ -13,6 +13,7 @@
 @property(nonatomic, strong)IBOutlet UILabel *inquiryDate;
 @property(nonatomic, strong)IBOutlet UILabel *eventDate;
 @property(nonatomic, strong)IBOutlet UILabel *details;
+@property(nonatomic, strong)IBOutlet UILabel *status;
 
 -(void)setData:(NSDictionary*)data;
 

@@ -11,6 +11,9 @@
 @class NIDropDown;
 @protocol NIDropDownDelegate
 - (void) niDropDownDelegateMethod: (NIDropDown *) sender withRow:(NSInteger)row withButtonTag:(NSInteger)buttonTag;
+-(void)niSelectValue:(id)sender;
+
+
 @end
 
 @interface NIDropDown : UIView <UITableViewDelegate, UITableViewDataSource>

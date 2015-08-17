@@ -270,5 +270,7 @@
 - (void)scrollToBottomAnimated:(BOOL)animated;
 - (IBAction)refreshMessageAction:(id)sender;
 - (IBAction)backButtonAction:(id)sender;
-
+- (IBAction)nextButtonAction:(id)sender;
+- (IBAction)previousButtonAction:(id)sender;
+@property(nonatomic, weak)IBOutlet UILabel *lblLoading;
 @end

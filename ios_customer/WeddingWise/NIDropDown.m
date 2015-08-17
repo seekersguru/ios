@@ -107,13 +107,12 @@
         cell.textLabel.font = [UIFont systemFontOfSize:15];
         cell.textLabel.textAlignment = UITextAlignmentCenter;
     }
-    cell.textLabel.text =[[list objectAtIndex:indexPath.row] capitalizedString];
+    NSLog(@"%@", [self.list objectAtIndex:indexPath.row]);
+    
+    //cell.textLabel.text =[NSString stringWithFormat:@"%@",[[self.list objectAtIndex:indexPath.row] capitalizedString]];
+    cell.textLabel.text =[NSString stringWithFormat:@"%@",[[[self.list objectAtIndex:indexPath.row] objectAtIndex:1] capitalizedString]];
+    
     cell.textLabel.textColor = [UIColor blackColor];
-    
-//    UIView * v = [[UIView alloc] init];
-//    v.backgroundColor = [UIColor grayColor];
-//    cell.selectedBackgroundView = v;
-    
     return cell;
 }
 
@@ -123,6 +122,7 @@
     UITableViewCell *c = [tableView cellForRowAtIndexPath:indexPath];
     [btnSender setTitle:c.textLabel.text forState:UIControlStateNormal];
     [self myDelegate: indexPath.row withButtonTag:btnSender.tag];
+    [delegate niSelectValue:btnSender];
 }
 
 - (void) myDelegate: (NSInteger)index withButtonTag:(NSInteger)tag {

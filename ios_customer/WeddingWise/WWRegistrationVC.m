@@ -168,11 +168,14 @@
                                  _txtGroomName.text,@"groom_name",
                                  _txtBrideName.text,@"bride_name",
                                  _txtContactNo.text,@"contact_number",
+                                 _txtContactName.text,@"contact_name",
                                  _btnTentativeDate.titleLabel.text,@"tentative_wedding_date",
                                  userID,@"fbid",
                                  userID,@"gid",
+                                 @"",@"contact_name",
                                  @"",@"operation",
                                  @"",@"identifier",
+                                 
                                  @"customer_registration",@"action",
                                  nil];
     
@@ -242,6 +245,12 @@
         [[WWCommon getSharedObject]createAlertView:kAppName :kEnterPassword :nil :000 ];
         return NO;
     }
+    if (_txtContactName.text && _txtContactName.text.length == 0)
+    {
+        [[WWCommon getSharedObject]createAlertView:kAppName :kValidContactName :nil :000 ];
+        return NO;
+    }
+    
     if (_btnTentativeDate.titleLabel.text && _btnTentativeDate.titleLabel.text.length == 0)
     {
         [[WWCommon getSharedObject]createAlertView:kAppName :kTentativeDate :nil :000 ];
@@ -276,6 +285,9 @@
         else if(textField== _txtContactNo){
             targetYPosition = _txtGroomName.frame.origin.y;
         }
+        else if(textField== _txtContactName){
+            targetYPosition = _txtContactNo.frame.origin.y;
+        }
         int diffY = textField.frame.origin.y - targetYPosition;
         [UIView animateWithDuration:0.2 animations:^{
             CGRect frame = self.view.frame;
@@ -307,7 +319,10 @@
         [_txtContactNo becomeFirstResponder];
     }
     else if(textField==_txtContactNo){
-        [_txtContactNo resignFirstResponder];
+        [_txtContactName becomeFirstResponder];
+    }
+    else if(textField==_txtContactName){
+        [_txtContactName resignFirstResponder];
     }
     return YES;
 }

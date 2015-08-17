@@ -25,6 +25,9 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
+@property (nonatomic, strong)NSMutableArray *arrCountryList;
+@property(nonatomic, strong)NSString *vendorEmail;
+
 
 @property(nonatomic, strong)WWLoginUserData *userData;
 - (void)saveContext;

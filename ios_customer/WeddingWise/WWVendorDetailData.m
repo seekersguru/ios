@@ -49,9 +49,17 @@
 - (void)setVendorBidInfo:(NSDictionary *)bidInfo{
     NSMutableArray *timeSlotArray = [NSMutableArray new];
     for (NSArray *obj in bidInfo[@"time_slot"][@"value"]) {
-        [timeSlotArray addObject:[obj firstObject]];
+       // [timeSlotArray addObject:[obj firstObject]];
+        [timeSlotArray addObject:obj];
+    }
+    NSMutableArray *packageArray = [NSMutableArray new];
+    for (NSArray *obj in bidInfo[@"package_ios"][@"value"]) {
+        // [timeSlotArray addObject:[obj firstObject]];
+        [packageArray addObject:obj];
     }
     [self setTime_slot:timeSlotArray];
+    [self setPackageIOS:packageArray];
+    
     [self setPackage:bidInfo[@"package"]];
     [self setQuoted:bidInfo[@"quoted"]];
     [self setMaxItemPerPlate:[NSNumber numberWithInteger:[bidInfo[@"bid_options"][@"item"][@"max"] integerValue]]];
@@ -59,7 +67,6 @@
     [self setMaxPerson:[NSNumber numberWithInteger:[bidInfo[@"bid_options"][@"quantity"][@"max"] integerValue]]];
     [self setMinPerson:[NSNumber numberWithInteger:[bidInfo[@"bid_options"][@"quantity"][@"min"][@"value"] integerValue]]];
     [self setBidDictionary:bidInfo];
-    
 }
 @end
 

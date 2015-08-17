@@ -10,8 +10,9 @@
 #import "WWCategoryCell.h"
 #import "WWCategoryDetailVC.h"
 #import "WWDashboardVC.h"
+#import "NIDropDown.h"
 
-@interface WWDetailScreen ()<MBProgressHUDDelegate,UITextFieldDelegate,WWCategoryCellDelegate >
+@interface WWDetailScreen ()<MBProgressHUDDelegate,UITextFieldDelegate,WWCategoryCellDelegate,NIDropDownDelegate>
 {
     NSMutableArray *arrVendorData;
     NSString *filterType;
@@ -22,7 +23,18 @@
     NSMutableArray *filterSelectedArray;
     MBProgressHUD *HUD;
     NSString *tempFavorite;
+    //NSMutableArray *arrCountryList;
+    NSMutableArray *searchArray;
+    BOOL searchingResult;
+    NSString *locationVersion;
+    NIDropDown *dropDown;
+    NSString *venueID;
+    NSString *priceID;
 }
+
+@property (nonatomic, strong) NSMutableArray *venueArray;
+@property (nonatomic, strong) NSMutableArray *priceArray;
+
 @property (weak, nonatomic) IBOutlet UIView *dynamicFilterView;
 
 @end
@@ -36,7 +48,8 @@
     [self.navigationController.navigationBar setHidden:YES];
     
     arrVendorData=[[NSMutableArray alloc]init];
-    
+    _priceArray= [[NSMutableArray alloc]init];
+
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     
@@ -50,6 +63,14 @@
     
     [self.vendorNameLabel setTitle:self.vendorList[0] forState:UIControlStateNormal];
     // Do any additional setup after loading the view from its nib.
+    
+    [_priceRangeButton.titleLabel setFont:[UIFont fontWithName:AppFont size:15.0f]];
+    [_venueTypeButton.titleLabel setFont:[UIFont fontWithName:AppFont size:15.0f]];
+    
+    [_searchButton.titleLabel setFont:[UIFont fontWithName:AppFont size:15.0f]];
+    [_searchTextfield setFont:[UIFont fontWithName:AppFont size:15.0f]];
+    [_filterTextfield setFont:[UIFont fontWithName:AppFont size:15.0f]];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -87,13 +108,11 @@
     [filterSelectedArray addObject:@{key1:value1}];
     sender.selected = YES;
 }
-
-- (IBAction)checkTypeSelection:(UIButton *)sender{
-    
-}
-
 - (void)filterVendor:(id)sender{
     [_filterTextfield resignFirstResponder];
+    [_tblContryName reloadData];
+    [_tblContryName setHidden:YES];
+    
     BOOL isHidden = _filterView.hidden;
     if (_filterView.hidden) {
         [_filterView setHidden:NO];
@@ -121,11 +140,7 @@
     [self filterVendor:sender];
     [_filterTextfield resignFirstResponder];
     NSString *searchString = _filterTextfield.text;
-    //call api here
-    
-    //Kya hua..kr le ?
-    
-    
+
     [self callWebService:searchString];
     if ([[searchString stringByReplacingOccurrencesOfString:@" " withString:@""] length] > 0) {
         [_vendorNameLabel setTitle:[NSString stringWithFormat:@"%@",[searchString capitalizedString]] forState:UIControlStateNormal];
@@ -146,12 +161,28 @@
     }
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
+    
+    NSString *price= @"";
+    NSString *venue= @"";
+    
+    if([_priceRangeButton.titleLabel.text isEqualToString:@""]){
+         price= _priceRangeButton.titleLabel.text;
+    }
+    
+    if([_priceRangeButton.titleLabel.text isEqualToString:@""]){
+        venue= _priceRangeButton.titleLabel.text;
+    }
+    
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  @"ios",@"mode",
                                  @"2x",@"image_type",
                                  self.vendorList[0],@"vendor_type",
                                  @"1",@"page_no",
                                  searchString,@"search_string",
+                                 
+                                 price, @"pricing",
+                                 venue,@"venue_type",
+                                 
                                  [[NSUserDefaults standardUserDefaults]
                                   stringForKey:@"identifier"],@"identifier",
                                  @"customer_vendor_list_and_search",@"action",
@@ -180,10 +211,14 @@
                      
                      [_lblNoDataFound setHidden:NO];
                      [_lblNoDataFound setFont:[UIFont fontWithName:AppFont size:17.0]];
-                     
-//                     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:kAppName message:@"No result found." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-//                     [alert show];
                  }
+                 
+                 _priceArray= responseDics[@"json"][@"pricing"][@"value"];
+                 _venueArray= responseDics[@"json"][@"venue_type"][@"value"];
+                 
+                 [_priceRangeButton setTitle:responseDics[@"json"][@"pricing"][@"name"] forState:UIControlStateNormal];
+                 [_venueTypeButton setTitle:responseDics[@"json"][@"venue_type"][@"name"] forState:UIControlStateNormal];
+                 
                  
              }
              [HUD removeFromSuperview];
@@ -231,8 +266,6 @@
                 [checkBox setImage:[UIImage imageNamed:@"checkbtMark"] forState:UIControlStateSelected];
                 [checkBox addTarget:self action:@selector(checkTypeSelection:) forControlEvents:UIControlEventTouchUpInside];
             }
-            
-            
             buttonFrame.origin.x += 25;
             buttonFrame.origin.y += 6;
             buttonFrame.size.width = 76;
@@ -265,166 +298,250 @@
     frame.size.height = submitButton.frame.origin.y + 35;
     [_dynamicFilterView setFrame:frame];
 }
+-(IBAction)venueTypeClicked:(id)sender{
+    NSArray * arr = [[NSArray alloc] init];
+    arr = _venueArray;
+    
+    if(dropDown == nil) {
+        CGFloat f = 100;
+        dropDown = [[NIDropDown alloc]showDropDown:sender :&f :arr :nil :@"down"];
+        dropDown.delegate = self;
+    }
+    else {
+        [dropDown hideDropDown:sender];
+        [self rel];
+    }
+}
+-(IBAction)pricechangedClicked:(id)sender{
+    NSArray * arr = [[NSArray alloc] init];
+    arr = _priceArray;
+    
+    if(dropDown == nil) {
+        CGFloat f = 100;
+        dropDown = [[NIDropDown alloc]showDropDown:sender :&f :arr :nil :@"down"];
+        dropDown.delegate = self;
+    }
+    else {
+        [dropDown hideDropDown:sender];
+        [self rel];
+    }
+}
 
+
+- (void) niDropDownDelegateMethod: (NIDropDown *) sender withRow:(NSInteger)row withButtonTag:(NSInteger)buttonTag{
+    [self rel];
+}
+-(void)niSelectValue:(id)sender{
+    if([sender tag]==1){
+        venueID = [[_venueArray objectAtIndex:[sender tag]] objectAtIndex:0];
+    }
+    else if ([sender tag] == 2){
+        priceID = [[_priceArray objectAtIndex:[sender tag]] objectAtIndex:0];
+    }
+}
+-(void)rel{
+    dropDown = nil;
+}
 #pragma mark - Table view
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"WWCategoryCell";
-    WWCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
-        cell = [topLevelObjects objectAtIndex:0];
-    }
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    NSDictionary *dicVendorData=[[arrVendorData objectAtIndex:indexPath.row] mutableCopy];
-    cell.favoriteDelegate= self;
-    cell.btnFavorite.tag= indexPath.row;
-    
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImagePrefixUrl,[dicVendorData valueForKey:@"image"]]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
-    
-    
-    if([dicVendorData[@"favorite"] isEqualToString:@"1"]){
-        [cell.btnFavorite setImage:[UIImage imageNamed:@"RSelect"] forState:UIControlStateNormal];
-    }
-    else if ([dicVendorData[@"favorite"] isEqualToString:@"-1"]){
-        [cell.btnFavorite setImage:[UIImage imageNamed:@"WSelect"] forState:UIControlStateNormal];
-    }
-    
-    __weak WWCategoryCell *weakCell = cell;
-    
-    [cell.imgCategory setImageWithURLRequest:request
-                          placeholderImage:placeholderImage
-                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                       weakCell.imgCategory.image = image;
-                                       [weakCell setNeedsLayout];
-                                       
-                                   } failure:nil];
-    
-    cell.lblName.text=[dicVendorData valueForKey:@"name"];
-    cell.lblStartingPrice.text=[NSString stringWithFormat:@"%@/-",[dicVendorData valueForKey:@"starting_price"]];
-    
-    cell.lblName.font = [UIFont fontWithName:AppFont size:12.0];
-    cell.lblStartingPrice.font = [UIFont fontWithName:AppFont size:14.0];
-    cell.lblCapacity.font = [UIFont fontWithName:AppFont size:10.0];
-    cell.lblVeg.font = [UIFont fontWithName:AppFont size:10.0];
-    cell.lbl3.font = [UIFont fontWithName:AppFont size:10.0];
-    cell.lbl4.font = [UIFont fontWithName:AppFont size:10.0];
-    
-    NSArray *arrLine1=[dicVendorData valueForKey:@"icons_line1"];
-    for (int i=0; i<arrLine1.count; i++) {
-        NSDictionary *line1= arrLine1[i];
-        switch (i) {
-            case 0:{
-                cell.lblVeg.text=[NSString stringWithFormat:@"%@",[line1 valueForKey:[[line1 allKeys] objectAtIndex:0]]];
-                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImagePrefixUrl,[NSString stringWithFormat:@"%@",[[line1 allKeys] objectAtIndex:0]]]];
-                NSURLRequest *request = [NSURLRequest requestWithURL:url];
-                UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
-                
-                __weak WWCategoryCell *weakCell = cell;
-                
-                [cell.img1 setImageWithURLRequest:request
-                                        placeholderImage:placeholderImage
-                                                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                                     weakCell.img1.image = image;
-                                                     [weakCell setNeedsLayout];
-                                                     
-                                                 } failure:nil];
-            }
-                
-                
-                
-                break;
-            case 1:
-            {
-                cell.lblCapacity.text=[NSString stringWithFormat:@"%@",[line1 valueForKey:[[line1 allKeys] objectAtIndex:0]]];
-                //cell.lblVeg.text=[NSString stringWithFormat:@"%@",[line1 valueForKey:[[line1 allKeys] objectAtIndex:0]]];
-                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImagePrefixUrl,[NSString stringWithFormat:@"%@",[[line1 allKeys] objectAtIndex:0]]]];
-                NSURLRequest *request = [NSURLRequest requestWithURL:url];
-                UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
-                
-                __weak WWCategoryCell *weakCell = cell;
-                
-                [cell.img2 setImageWithURLRequest:request
-                                 placeholderImage:placeholderImage
-                                          success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                              weakCell.img2.image = image;
-                                              [weakCell setNeedsLayout];
-                                              
-                                          } failure:nil];
-            }
-                
-                break;
-            default:
-                break;
+    if(tableView==_tblCategory){
+        static NSString *CellIdentifier = @"WWCategoryCell";
+        WWCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+            cell = [topLevelObjects objectAtIndex:0];
         }
-    }
-    NSArray *arrLine2=[dicVendorData valueForKey:@"icons_line2"];
-    for (int i=0; i<arrLine2.count; i++) {
-        NSDictionary *line1= arrLine2[i];
-        switch (i) {
-            case 0:
-            {
-                cell.lbl3.text=[NSString stringWithFormat:@"%@",[line1 valueForKey:[[line1 allKeys] objectAtIndex:0]]];
-                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImagePrefixUrl,[NSString stringWithFormat:@"%@",[[line1 allKeys] objectAtIndex:0]]]];
-                NSURLRequest *request = [NSURLRequest requestWithURL:url];
-                UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
-                
-                __weak WWCategoryCell *weakCell = cell;
-                
-                [cell.img3 setImageWithURLRequest:request
-                                 placeholderImage:placeholderImage
-                                          success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                              weakCell.img3.image = image;
-                                              [weakCell setNeedsLayout];
-                                              
-                                          } failure:nil];
-            }
-                
-                break;
-            case 1:
-            {
-                cell.lbl4.text=[NSString stringWithFormat:@"%@",[line1 valueForKey:[[line1 allKeys] objectAtIndex:0]]];
-                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImagePrefixUrl,[NSString stringWithFormat:@"%@",[[line1 allKeys] objectAtIndex:0]]]];
-                NSURLRequest *request = [NSURLRequest requestWithURL:url];
-                UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
-                
-                __weak WWCategoryCell *weakCell = cell;
-                
-                [cell.img4 setImageWithURLRequest:request
-                                 placeholderImage:placeholderImage
-                                          success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                              weakCell.img4.image = image;
-                                              [weakCell setNeedsLayout];
-                                              
-                                          } failure:nil];
-            }
-                
-                break;
-            default:
-                break;
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        NSDictionary *dicVendorData=[[arrVendorData objectAtIndex:indexPath.row] mutableCopy];
+        cell.favoriteDelegate= self;
+        cell.btnFavorite.tag= indexPath.row;
+        
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImagePrefixUrl,[dicVendorData valueForKey:@"image"]]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
+        
+        
+        if([dicVendorData[@"favorite"] isEqualToString:@"1"]){
+            [cell.btnFavorite setImage:[UIImage imageNamed:@"RSelect"] forState:UIControlStateNormal];
         }
+        else if ([dicVendorData[@"favorite"] isEqualToString:@"-1"]){
+            [cell.btnFavorite setImage:[UIImage imageNamed:@"WSelect"] forState:UIControlStateNormal];
+        }
+        
+        __weak WWCategoryCell *weakCell = cell;
+        
+        [cell.imgCategory setImageWithURLRequest:request
+                                placeholderImage:placeholderImage
+                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                             weakCell.imgCategory.image = image;
+                                             [weakCell setNeedsLayout];
+                                             
+                                         } failure:nil];
+        
+        cell.lblName.text=[dicVendorData valueForKey:@"name"];
+        cell.lblStartingPrice.text=[NSString stringWithFormat:@"%@/-",[dicVendorData valueForKey:@"starting_price"]];
+        
+        cell.lblName.font = [UIFont fontWithName:AppFont size:12.0];
+        cell.lblStartingPrice.font = [UIFont fontWithName:AppFont size:14.0];
+        cell.lblCapacity.font = [UIFont fontWithName:AppFont size:10.0];
+        cell.lblVeg.font = [UIFont fontWithName:AppFont size:10.0];
+        cell.lbl3.font = [UIFont fontWithName:AppFont size:10.0];
+        cell.lbl4.font = [UIFont fontWithName:AppFont size:10.0];
+        
+        NSArray *arrLine1=[dicVendorData valueForKey:@"icons_line1"];
+        for (int i=0; i<arrLine1.count; i++) {
+            NSDictionary *line1= arrLine1[i];
+            switch (i) {
+                case 0:{
+                    cell.lblVeg.text=[NSString stringWithFormat:@"%@",[line1 valueForKey:[[line1 allKeys] objectAtIndex:0]]];
+                    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImagePrefixUrl,[NSString stringWithFormat:@"%@",[[line1 allKeys] objectAtIndex:0]]]];
+                    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+                    UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
+                    
+                    __weak WWCategoryCell *weakCell = cell;
+                    
+                    [cell.img1 setImageWithURLRequest:request
+                                     placeholderImage:placeholderImage
+                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                  weakCell.img1.image = image;
+                                                  [weakCell setNeedsLayout];
+                                                  
+                                              } failure:nil];
+                }
+                    
+                    
+                    
+                    break;
+                case 1:
+                {
+                    cell.lblCapacity.text=[NSString stringWithFormat:@"%@",[line1 valueForKey:[[line1 allKeys] objectAtIndex:0]]];
+                    //cell.lblVeg.text=[NSString stringWithFormat:@"%@",[line1 valueForKey:[[line1 allKeys] objectAtIndex:0]]];
+                    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImagePrefixUrl,[NSString stringWithFormat:@"%@",[[line1 allKeys] objectAtIndex:0]]]];
+                    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+                    UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
+                    
+                    __weak WWCategoryCell *weakCell = cell;
+                    
+                    [cell.img2 setImageWithURLRequest:request
+                                     placeholderImage:placeholderImage
+                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                  weakCell.img2.image = image;
+                                                  [weakCell setNeedsLayout];
+                                                  
+                                              } failure:nil];
+                }
+                    
+                    break;
+                default:
+                    break;
+            }
+        }
+        NSArray *arrLine2=[dicVendorData valueForKey:@"icons_line2"];
+        for (int i=0; i<arrLine2.count; i++) {
+            NSDictionary *line1= arrLine2[i];
+            switch (i) {
+                case 0:
+                {
+                    cell.lbl3.text=[NSString stringWithFormat:@"%@",[line1 valueForKey:[[line1 allKeys] objectAtIndex:0]]];
+                    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImagePrefixUrl,[NSString stringWithFormat:@"%@",[[line1 allKeys] objectAtIndex:0]]]];
+                    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+                    UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
+                    
+                    __weak WWCategoryCell *weakCell = cell;
+                    
+                    [cell.img3 setImageWithURLRequest:request
+                                     placeholderImage:placeholderImage
+                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                  weakCell.img3.image = image;
+                                                  [weakCell setNeedsLayout];
+                                                  
+                                              } failure:nil];
+                }
+                    
+                    break;
+                case 1:
+                {
+                    cell.lbl4.text=[NSString stringWithFormat:@"%@",[line1 valueForKey:[[line1 allKeys] objectAtIndex:0]]];
+                    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImagePrefixUrl,[NSString stringWithFormat:@"%@",[[line1 allKeys] objectAtIndex:0]]]];
+                    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+                    UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
+                    
+                    __weak WWCategoryCell *weakCell = cell;
+                    
+                    [cell.img4 setImageWithURLRequest:request
+                                     placeholderImage:placeholderImage
+                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                  weakCell.img4.image = image;
+                                                  [weakCell setNeedsLayout];
+                                                  
+                                              } failure:nil];
+                }
+                    
+                    break;
+                default:
+                    break;
+            }
+        }
+        self.tblCategory.separatorStyle = UITableViewCellSeparatorStyleNone;
+        return cell;
     }
-    self.tblCategory.separatorStyle = UITableViewCellSeparatorStyleNone;
-    return cell;
+    else if (tableView == _tblContryName){
+        static NSString *simpleTableIdentifier = @"SimpleTableItem";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+        
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        }
+        if(searchingResult){
+            cell.textLabel.text = [searchArray objectAtIndex:indexPath.row];
+        }
+        else{
+            cell.textLabel.text = [[AppDelegate sharedAppDelegate].arrCountryList objectAtIndex:indexPath.row];
+        }
+        [cell.textLabel setFont:[UIFont fontWithName:AppFont size:17.0]];
+        [cell setBackgroundColor:[UIColor darkGrayColor]];
+        [cell.textLabel setTextColor:[UIColor whiteColor]];
+        return cell;
+    }
+    return nil;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 185.0f;
+    if(tableView== _tblContryName){
+        return 35.0;
+    }
+    else{
+        return 185.0f;
+    }
+    return 0.0;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return arrVendorData.count;
+    if(tableView== _tblContryName){
+        if(searchingResult)
+            return searchArray.count;
+        else
+            return [AppDelegate sharedAppDelegate].arrCountryList.count;
+        
+    }
+    else
+        return arrVendorData.count;
+    return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(tableView == _tblCategory){
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        WWCategoryDetailVC *detailScreen=[[WWCategoryDetailVC alloc]initWithNibName:@"WWCategoryDetailVC" bundle:nil];
+        detailScreen.hidesBottomBarWhenPushed = YES;
+        detailScreen.vendorEmail=[[arrVendorData objectAtIndex:indexPath.row] valueForKey:@"vendor_email"];
+        detailScreen.vendorName=[[arrVendorData objectAtIndex:indexPath.row] valueForKey:@"name"];
+        [self.navigationController pushViewController:detailScreen animated:YES];
+        detailScreen.hidesBottomBarWhenPushed = NO;
+    }
+    else{
+        _filterTextfield.text= [[AppDelegate sharedAppDelegate].arrCountryList objectAtIndex:indexPath.row];
+        [_tblContryName setHidden:YES];
+    }
     
-//    [self setHidesBottomBarWhenPushed:YES];
-    WWCategoryDetailVC *detailScreen=[[WWCategoryDetailVC alloc]initWithNibName:@"WWCategoryDetailVC" bundle:nil];
-    detailScreen.hidesBottomBarWhenPushed = YES;
-    detailScreen.vendorEmail=[[arrVendorData objectAtIndex:indexPath.row] valueForKey:@"vendor_email"];
-    detailScreen.vendorName=[[arrVendorData objectAtIndex:indexPath.row] valueForKey:@"name"];
-    [self.navigationController pushViewController:detailScreen animated:YES];
-    detailScreen.hidesBottomBarWhenPushed = NO;
 }
 
 -(IBAction)backButtonPressed:(id)sender{
@@ -486,6 +603,101 @@
          
      }
                                              failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
+}
+#pragma mark UITextfield delegate methods:
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+
+    if (string.length>0) {
+        [_tblContryName setHidden:NO];
+    }
+    
+    NSString *searchTerm = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    [self updateAsPerSearchTerm: searchTerm];
+    
+    return YES;
+
+}
+-(void)updateAsPerSearchTerm:(NSString *)searchTerm
+{
+    if(searchTerm.length==0){
+        [_tblContryName setHidden:YES];
+    }
+    else{
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[cd] %@",searchTerm];
+        searchArray = (NSMutableArray*)[[AppDelegate sharedAppDelegate].arrCountryList filteredArrayUsingPredicate:predicate];
+        searchingResult= YES;
+        [_tblContryName reloadData];
+    }
+}
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    [self getLocationVersion];
+    return YES;
+}
+-(void)callLocationListAPI{
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"",@"match_string",
+                                 @"locations",@"action",
+                                 nil];
+    
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             [AppDelegate sharedAppDelegate].arrCountryList = [[NSMutableArray alloc] init];
+             
+             for (NSString *countryName in responseDics[@"json" ][@"locations"]) {
+                 [[AppDelegate sharedAppDelegate].arrCountryList addObject:countryName];
+             }
+             
+             [[NSUserDefaults standardUserDefaults]setObject:responseDics[@"json"][@"version"] forKey:@"version"];
+             [[NSUserDefaults standardUserDefaults] synchronize];
+             [_tblContryName reloadData];
+         }
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
+    
+}
+-(void)getLocationVersion{
+    
+    NSString *version = nil;
+    NSString *vearsionValue= [[NSUserDefaults standardUserDefaults]
+                              stringForKey:@"version"];
+    if(vearsionValue.length>0){
+       version=[[NSUserDefaults standardUserDefaults]
+                           stringForKey:@"version"];
+    }
+    else
+        version=@"1";
+    
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"1", @"current_version",
+                                 @"get_locations_version",@"action",
+                                 nil];
+    
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             locationVersion = [NSString stringWithFormat:@"%@",responseDics[@"json"][@"version"]];
+             NSString *versionValue= [[NSUserDefaults standardUserDefaults]
+                                      stringForKey:@"version"];
+             
+             //if(![versionValue isEqualToString:locationVersion]){
+                 [self callLocationListAPI];
+             //}
+         }
+     }
+        failure:^(NSString *response)
      {
          DLog(@"%@",response);
      }];

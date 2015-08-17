@@ -19,26 +19,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self callBidDetailAPI];
     arrBidData= [NSMutableArray new];
     
-    [[btnAccept layer] setBorderWidth:1.0f];
-    [[btnAccept layer] setBorderColor:[UIColor redColor].CGColor];
+    [lblStatus setHidden:NO];
+    lblStatus.text= _messageData[@"status"];
+    [lblStatus setFont:[UIFont fontWithName:AppFont size:17.0]];
     
-    [[btnDecline layer] setBorderWidth:1.0f];
-    [[btnDecline layer] setBorderColor:[UIColor redColor].CGColor];
-    
-    
-//    if([_messageData[@"status"] isEqualToString:@"Rejected"] || [_messageData[@"status"] isEqualToString:@"Accepted"]){
-        [lblStatus setHidden:NO];
-        lblStatus.text= _messageData[@"status"];
-        [lblStatus setFont:[UIFont fontWithName:AppFont size:17.0]];
-        
-//    }else if ([_messageData[@"status"] isEqualToString:@"Pending"]){
-//        [btnAccept setHidden:NO];
-//        [btnDecline setHidden:NO];
-//    }
-   
 }
 -(IBAction)backButtonPressed:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
@@ -48,6 +36,7 @@
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  @"banquet_homotel@wedwise.in:ni-ZYm7L8xzNoyhafIJkKE3GIs0",@"identifier",
                                  _messageData[@"id"],@"msg_id",
+                                 @"c2v",@"from_to",
                                  @"vendor_bid_book_response",@"action",
                                  @"1",@"status",
                                  nil];
@@ -110,8 +99,10 @@
 -(void)callBidDetailAPI{
 
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                                 @"banquet_homotel@wedwise.in:ni-ZYm7L8xzNoyhafIJkKE3GIs0",@"identifier",
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
                                  _messageData[@"id"] ,@"msg_id",
+                                 @"c2v",@"from_to",
                                  @"vendor_bid_book_detail",@"action",
                                  [_messageData valueForKey:@"msg_type"],@"msg_type",
                                  nil];

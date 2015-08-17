@@ -45,7 +45,8 @@
 #define kGroomName                      @"Please enter groom name."
 #define kContactNumber                  @"Please enter contact number."
 #define kValidEmail                     @"Please enter valid email."
-#define kTentativeDate                     @"Please enter tentative wedding date."
+#define kValidContactName                     @"Please enter contact name."
+#define kTentativeDate                  @"Please enter tentative wedding date."
 
 #define kGPClientID                     @"1089791830580-d6ot0lmcuqvdftcqqh97a73n8q22l95e.apps.googleusercontent.com"
 //341522735800-tkngmd3u56mq7shvea9pmibng12qdmhj.apps.googleusercontent.com

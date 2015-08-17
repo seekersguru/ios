@@ -9,6 +9,8 @@
 #import "JSQMessages.h"
 
 @interface WWPrivateMessage : JSQMessagesViewController
+
 @property(weak, nonatomic)IBOutlet UILabel *lblVendorName;
 @property(nonatomic, strong)NSDictionary *messageData;
+
 @end

@@ -337,7 +337,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     [self.collectionView reloadData];
 
     if (self.automaticallyScrollsToMostRecentMessage) {
-        [self scrollToBottomAnimated:animated];
+       // [self scrollToBottomAnimated:animated];
     }
 }
 
@@ -354,7 +354,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     [self.collectionView reloadData];
 
     if (self.automaticallyScrollsToMostRecentMessage && ![self jsq_isMenuVisible]) {
-        [self scrollToBottomAnimated:animated];
+        //[self scrollToBottomAnimated:animated];
     }
 }
 
@@ -404,6 +404,15 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
 - (IBAction)backButtonAction:(id)sender {
     //overriding in sub class
+}
+-(IBAction)nextButtonAction:(id)sender{
+    //overriding in sub class
+    NSLog(@"nextButtonAction");
+}
+-(IBAction)previousButtonAction:(id)sender{
+    //overriding in sub class
+    NSLog(@"previousButtonAction");
+    
 }
 
 #pragma mark - JSQMessages collection view data source

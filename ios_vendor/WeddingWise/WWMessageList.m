@@ -51,6 +51,9 @@
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setHidden:YES];
     
+    [self.tabBarController.navigationController.navigationBar setHidden:YES];
+    [self.navigationController.navigationBar setHidden:YES];
+    
     [arrMessageData removeAllObjects];
     [messageTable reloadData];
     max = @"";

@@ -33,6 +33,8 @@
 @property(nonatomic, strong) NSNumber *maxPerson;
 @property(nonatomic, strong) NSNumber *minPerson;
 @property(nonatomic, strong) NSDictionary *bidDictionary;
+@property(nonatomic, strong) NSMutableArray *packageIOS;
+
 
 + (instancetype)sharedInstance;
 -(void)setVendorBidInfo:(NSDictionary*)bidInfo;

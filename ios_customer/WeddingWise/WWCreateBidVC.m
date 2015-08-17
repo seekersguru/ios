@@ -20,13 +20,17 @@
     NSMutableArray *currentArray;
     NSMutableArray *packageFinal;
     UIToolbar *doneEventToolbar;
-    BOOL isFlexible;
     BOOL isTimeSlotTextField;
     NIDropDown *dropDown;
     IBOutlet UIButton *btnSelect;
      IBOutlet UIButton *btnPackage;
     UITapGestureRecognizer *tap;
+    
+    NSString *timeSlotID;
+    NSString *packegeID;
+    
 }
+@property(nonatomic, assign)BOOL isViewPositionOffset;
 @property (retain, nonatomic) IBOutlet UIButton *btnSelect;
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, strong) NSMutableArray *pickerArray;
@@ -39,6 +43,9 @@
     [super viewDidLoad];
     currentArray =[NSMutableArray new];
     packageFinal =[NSMutableArray new];
+    
+    packegeID = @"";
+    timeSlotID = @"";
     
     btnSelect.layer.borderWidth = 1;
     btnSelect.layer.borderColor = [[UIColor blackColor] CGColor];
@@ -71,75 +78,39 @@
     }
     BOOL hideFields = NO;
     if ([_requestType isEqualToString:@"book"]) {
-        //set title
-        //[_headerTitleLabel setTitle:@"Create Booking" forState:UIControlStateNormal];
-        [_submitButton setTitle:@"Book IT" forState:UIControlStateNormal];
-        hideFields = YES;
         
-        [_titleView setText:@"Create Book"];
         
-        //set data
-        [_packageLabel setText:[WWVendorBookingData sharedInstance].package[@"value"]];
-        [_timeSlotTextField setText:[WWVendorBookingData sharedInstance].time_slot[0]];
-        
-        _pickerArray = [[WWVendorBookingData sharedInstance] time_slot];
-        
-        [_eventStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"event_date"]]];
-        [_flexibleStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"flexible_date"]]];
-        [_timeSlotStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"time_slot"][@"name"]]];
-        [_packageStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"package"][@"name"]]];
-        [_packageTextField setText:@"Select Package"];
-        packageOrder= [[NSMutableArray alloc]initWithArray:[WWVendorBidData sharedInstance].bidDictionary[@"package"][@"package_order"] ];
-        
-        NSDictionary *dicPackecList=[WWVendorBidData sharedInstance].bidDictionary[@"package"][@"package_list"];
-        for (NSString *strKey in packageOrder) {
-            [packageFinal addObject:[dicPackecList valueForKey:strKey]];
-        }
-        [_submitButton setTitle:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"button"]] forState:UIControlStateNormal];
-        _pickerArray = [[WWVendorBidData sharedInstance] time_slot];
     }
     else{
-        //set title
-        //[_headerTitleLabel setTitle:@"Create Bid" forState:UIControlStateNormal];
         
-        //set data
-        [_packageLabel setText:[WWVendorBidData sharedInstance].package[@"value"]];
-        [_timeSlotTextField setText:[WWVendorBidData sharedInstance].time_slot[0]];
+        [_packageDescriptionLabel setText:[WWVendorBidData sharedInstance].package[@"value"]];
+        
     
-        [_eventStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"event_date"]]];
-        [_flexibleStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"flexible_date"]]];
+        if([[WWVendorBidData sharedInstance].bidDictionary[@"event_date"] isEqualToString:@"1"]){
+            [_eventStaticLabel setText:@"Event Date"];
+        }
+        else
+            [_eventStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"event_date"]]];
+        
         [_timeSlotStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"time_slot"][@"name"]]];
         [_packageStaticLabel setText:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"package"][@"name"]]];
         [_packageTextField setText:@"Select Package"];
          packageOrder= [[NSMutableArray alloc]initWithArray:[WWVendorBidData sharedInstance].bidDictionary[@"package"][@"package_order"] ];
-    
-        NSDictionary *dicPackecList=[WWVendorBidData sharedInstance].bidDictionary[@"package"][@"package_list"];
-        for (NSString *strKey in packageOrder) {
-            [packageFinal addObject:[dicPackecList valueForKey:strKey]];
-        }
+
         [_submitButton setTitle:[NSString stringWithFormat:@"%@",[WWVendorBidData sharedInstance].bidDictionary[@"button"]] forState:UIControlStateNormal];
-        _pickerArray = [[WWVendorBidData sharedInstance] time_slot];
         
+        packageFinal= [[NSMutableArray alloc]init];
+        _pickerArray = [[WWVendorBidData sharedInstance] time_slot];
+        packageFinal=[WWVendorBidData sharedInstance].packageIOS;
     }
-    
-    [_bidPriceStaticLabel setHidden:hideFields];
-    [_perPlateStaticLabel setHidden:hideFields];
-    [_minPersonStaticLabel setHidden:hideFields];
-    [_minPersonTextField setHidden:hideFields];
-    [_bidPriceTextField setHidden:hideFields];
-    
     _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-216, self.view.frame.size.width, 150)];
     _pickerView.delegate = self;
     [_pickerView setBackgroundColor:[UIColor whiteColor]];
     [_datePicker setBackgroundColor:[UIColor whiteColor]];
-    [_timeSlotTextField setInputView:_pickerView];
+    
     [_packageTextField setInputView:_pickerView];
     
-    UIToolbar *doneToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissKeyboard:)];
-    [doneToolbar setItems:@[item]];
-    [_timeSlotTextField setInputAccessoryView:doneToolbar];
-    [_packageTextField setInputAccessoryView:doneToolbar];
+    [self setLabelFonts];
 }
 - (void)viewDidUnload {
     //    [btnSelect release];
@@ -149,60 +120,29 @@
 }
 -(void)setLabelFonts{
     [[WWCommon getSharedObject]setCustomFont:13.0 withLabel:_headerTitleLabel withText:_headerTitleLabel.titleLabel.text];
-    [[WWCommon getSharedObject]setCustomFont:12.0 withLabel:_packageLabel withText:_packageLabel.text];
-    [[WWCommon getSharedObject]setCustomFont:13.0 withLabel:_timeSlotTextField withText:_timeSlotTextField.text];
+    [[WWCommon getSharedObject]setCustomFont:12.0 withLabel:_packageDescriptionLabel withText:_packageDescriptionLabel.text];
     [[WWCommon getSharedObject]setCustomFont:13.0 withLabel:_packageTextField withText:_packageTextField.text];
-    
-    
     [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:_eventStaticLabel withText:_eventStaticLabel.text];
-    [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:_flexibleStaticLabel withText:_flexibleStaticLabel.text];
     [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:_timeSlotStaticLabel withText:_timeSlotStaticLabel.text];
     [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:_packageStaticLabel withText:_packageStaticLabel.text];
-    [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:_bidPriceStaticLabel withText:_bidPriceStaticLabel.text];
-    [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:_minPersonStaticLabel withText:_minPersonStaticLabel.text];
-    [[WWCommon getSharedObject]setCustomFont:11.0 withLabel:_perPlateStaticLabel withText:_perPlateStaticLabel.text];
-    [[WWCommon getSharedObject]setCustomFont:10.0 withLabel:_bidPriceStaticLabel withText:_bidPriceStaticLabel.text];
+    [[WWCommon getSharedObject]setCustomFont:15.0 withLabel:_titleView withText:_titleView.text];
+    
+    [[WWCommon getSharedObject]setCustomFont:15.0 withLabel:_pricing1 withText:_pricing1.text];
+    [[WWCommon getSharedObject]setCustomFont:15.0 withLabel:_pricing2 withText:_pricing2.text];
     [[WWCommon getSharedObject]setCustomFont:15.0 withLabel:_titleView withText:_titleView.text];
 }
 - (void)dismissKeyboard:(id)sender{
-    [_timeSlotTextField resignFirstResponder];
-    [_packageTextField resignFirstResponder];
+    
 }
--(IBAction)btnFlexiblePressed:(id)sender{
-    if(isFlexible){
-        isFlexible = NO;
-        //Selec
-        [_btnFlexible setBackgroundImage:[UIImage imageNamed:@"Unchecked"] forState:UIControlStateNormal];
-    }
-    else
-    {
-        isFlexible= YES;
-        [_btnFlexible setBackgroundImage:[UIImage imageNamed:@"Checked"] forState:UIControlStateNormal];
-        //
-    }
-}
+
 -(IBAction)datePickerBtnAction:(id)sender
 {
-//    _datePicker =[[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-216, self.view.frame.size.width, 100)];
-//    _datePicker.datePickerMode=UIDatePickerModeDate;
-//    _datePicker.hidden=NO;
-//    _datePicker.date=[NSDate date];
-//    [_datePicker addTarget:self action:@selector(LabelTitle:) forControlEvents:UIControlEventValueChanged];
-//    [self.view addSubview:_datePicker];
-//    
-//    doneEventToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-240, 320, 44)];
-//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissDatePicker:)];
-//    [doneEventToolbar setItems:@[item]];
-//    [self.view addSubview:doneEventToolbar];
     [tap setCancelsTouchesInView:NO];
     [self showCustomCalendarView];
 }
 - (void)dismissDatePicker:(id)sender{
-    [_datePicker setFrame:CGRectMake(0, 568, self.view.frame.size.width, 150)];
-    [doneEventToolbar setFrame:CGRectMake(0, 568, self.view.frame.size.width, 150)];
-    [_bidPriceTextField resignFirstResponder];
-    [_minPersonTextField resignFirstResponder];
-    
+    [_guestTextField resignFirstResponder];
+    [_textComment resignFirstResponder];
 }
 -(void)LabelTitle:(id)sender
 {
@@ -210,7 +150,6 @@
     dateFormat.dateStyle=NSDateFormatterMediumStyle;
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     NSString *str=[NSString stringWithFormat:@"%@",[dateFormat  stringFromDate:_datePicker.date]];
-    //_eventDateLabel.text=str;
     [_eventDateButton setTitle:str forState:UIControlStateNormal];
 }
 
@@ -224,10 +163,7 @@
         arr = _pickerArray;
     }
     else if (btn.tag==2){
-        for (NSDictionary *dicValue in packageFinal) {
-            [currentArray addObject:[dicValue valueForKey:@"select_val"]];
-        }
-        arr = currentArray;
+        arr = packageFinal;
     }    
     if(dropDown == nil) {
         CGFloat f = 100;
@@ -242,12 +178,23 @@
 - (void) niDropDownDelegateMethod: (NIDropDown *) sender withRow:(NSInteger)row withButtonTag:(NSInteger)buttonTag{
     [self rel];
     if(buttonTag==2){
-        [_packageLabel setText:[packageFinal objectAtIndex:row][@"description"]];
+        [_packageDescriptionLabel setText:[[WWVendorBidData sharedInstance] package][@"package_list"][[[packageFinal objectAtIndex:row] objectAtIndex:0]][@"description"]];
+        [_pricing1 setText:[[WWVendorBidData sharedInstance] package][@"package_list"][[[packageFinal objectAtIndex:row] objectAtIndex:0]][@"pricing"][@"line1"]];
+        [_pricing2 setText:[[WWVendorBidData sharedInstance] package][@"package_list"][[[packageFinal objectAtIndex:row] objectAtIndex:0]][@"pricing"][@"line2"]];
+        
+        packegeID= [[_pickerArray objectAtIndex:row] objectAtIndex:0];
     }
-    
-    
+    if(buttonTag==1){
+        
+        timeSlotID=[[_pickerArray objectAtIndex:row] objectAtIndex:0];
+        if(![_eventDateButton.titleLabel.text isEqualToString:@"Select Date"]){
+            [self callAvailabilityAPI:row];
+        }
+    }
 }
+-(void)niSelectValue:(id)sender{
 
+}
 -(void)rel{
     dropDown = nil;
     [tap setCancelsTouchesInView:YES];
@@ -264,59 +211,100 @@
                      completion:^(BOOL finished){
                      }];
 }
-
-#pragma mark - pickerview delegates/datasource
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return currentArray.count;
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    return currentArray[row];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    if(isTimeSlotTextField)
-        [_timeSlotTextField setText:currentArray[row]];
-    else{
-        [_packageTextField setText:currentArray[row]];
-        [_packageLabel setText:[packageFinal objectAtIndex:row][@"description"]];
-        
-    }
+-(void)callAvailabilityAPI:(NSInteger)row{
     
+    if(_eventDateButton.titleLabel.text && btnSelect.titleLabel.text){
+        NSDictionary *reqParameters= [[NSDictionary alloc]initWithObjectsAndKeys:
+                                      @"check_availability",@"action",
+                                      [[NSUserDefaults standardUserDefaults]
+                                       stringForKey:@"identifier"],@"identifier",
+                                      [AppDelegate sharedAppDelegate].vendorEmail, @"vendor_email",
+                                      [[_pickerArray objectAtIndex:row] objectAtIndex:0],@"time_slot",
+                                      _eventDateButton.titleLabel.text,@"event_date",
+                                      nil];
+        
+        [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+         {
+             if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+                 [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+             }
+             else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+                 if([[NSString stringWithFormat:@"%@",responseDics[@"json"][@"available"]] isEqualToString:@"1"]){
+                     [_checkAvailbility setText:@"Available"];
+                     [_checkAvailbility setTextColor:[UIColor greenColor]];
+                 }
+                 else{
+                     [_checkAvailbility setText:@"Unavailable"];
+                     [_checkAvailbility setTextColor:[UIColor redColor]];
+                 }
+                 [_checkAvailbility setFont:[UIFont fontWithName:AppFont size:15.0f]];
+             }
+             
+         }
+                                                 failure:^(NSString *response)
+         {
+             DLog(@"%@",response);
+         }];
+    }
 }
+
 
 #pragma mark - textfield delegate methods
-
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+    if ([textView.text isEqualToString:@"Comments"]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor]; //optional
+    }
+    [self toggleAnimation:nil withTextView:textView];
+    return YES;
+}
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = @"Comments";
+        textView.textColor = [UIColor lightGrayColor];
+    }
+    [self toggleAnimation:nil withTextView:textView];
+}
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    [currentArray removeAllObjects];
-    
-    if (textField == _timeSlotTextField){
-        [currentArray addObjectsFromArray:_pickerArray];
-        isTimeSlotTextField= YES;
-    }
-    else if(textField == _packageTextField){
-        for (NSDictionary *dicValue in packageFinal) {
-            [currentArray addObject:[dicValue valueForKey:@"select_val"]];
-        }
-        isTimeSlotTextField= NO;
-    }
-    [_pickerView reloadAllComponents];
+    [self toggleAnimation:textField withTextView:nil];
     return YES;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    if (textField == _timeSlotTextField){
-        isTimeSlotTextField= YES;
-    }
-    else if(textField == _packageTextField) {
-        isTimeSlotTextField= NO;
-    }
-    
-    [textField resignFirstResponder];
+    [_guestTextField resignFirstResponder];
     return YES;
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    [self toggleAnimation:textField withTextView:nil];
+}
+- (void)toggleAnimation:(UITextField*)textField withTextView:(UITextView*)textView {
+    int keyboardSize = 216;
+    int viewHeight = self.view.frame.size.height;
+   
+    if(textField.frame.origin.y > (viewHeight - keyboardSize-50) || textView.frame.origin.y > (viewHeight - keyboardSize-50)) {
+        int targetYPosition=0;
+        if (textField == self.guestTextField || textView == self.textComment){
+            targetYPosition = _packageDescriptionLabel.frame.origin.y;
+        }
+        
+        int diffY;
+        if(textView){
+            diffY = textView.frame.origin.y - targetYPosition;
+        }
+        else{
+            diffY = textField.frame.origin.y - targetYPosition;
+        }
+        [UIView animateWithDuration:0.2 animations:^{
+            CGRect frame = self.view.frame;
+            if(self.isViewPositionOffset) {
+                self.isViewPositionOffset = NO;
+                frame.origin.y += diffY;
+            } else {
+                self.isViewPositionOffset = YES;
+                frame.origin.y -= diffY;
+            }
+            [self.view setFrame:frame];
+        }];
+    }
 }
 - (void)bidItAction:(id)sender{
     NSString *json_string = nil;
@@ -327,12 +315,6 @@
     if ([_requestType isEqualToString:@"bid"]) {
         //check validations for bid price
         NSString *errorMessage = nil;
-        if ([_bidPriceTextField.text  floatValue] > [WWVendorBidData sharedInstance].maxItemPerPlate.floatValue || [_bidPriceTextField.text floatValue] < [WWVendorBidData sharedInstance].minItemPerPlate.floatValue) {
-            errorMessage = [NSString stringWithFormat:@"Bid Price should be in range of %@-%@",[WWVendorBidData sharedInstance].minItemPerPlate,[WWVendorBidData sharedInstance].maxItemPerPlate];
-        }
-        else if ([_minPersonTextField.text integerValue] > [WWVendorBidData sharedInstance].maxPerson.integerValue || [_minPersonTextField.text integerValue] < [WWVendorBidData sharedInstance].minPerson.integerValue){
-            errorMessage = [NSString stringWithFormat:@"Persons should be in range of %@-%@",[WWVendorBidData sharedInstance].minPerson,[WWVendorBidData sharedInstance].maxPerson];
-        }
         if (errorMessage) {
             [[[UIAlertView alloc] initWithTitle:@"Error" message:errorMessage delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
             return;
@@ -354,18 +336,22 @@
     NSDictionary *requestDict = @{@"identifier" : [[NSUserDefaults standardUserDefaults]
                                                    stringForKey:@"identifier"],
                                   @"receiver_email" : [WWVendorDetailData sharedInstance].vendorEmail,
-                                  @"message" : @"posting bid",
+                                  @"message" : @"IOS creating bid",
                                   @"from_to" : @"c2v",
                                   @"action" : @"customer_vendor_message_create",
-                                  @"mode" : @"mode",
+                                  @"mode" : @"ios",
                                   @"device_id" : @"123123",
                                   @"push_data" : @"posting bid",
                                   @"msg_type" : messageType,
                                   @"event_date" : _eventDateButton.titleLabel.text,    //TODO:date should be dynamic, Will do later
                                   jsonType : json_string,
-                                  @"time_slot" : _timeSlotTextField.text,
-                                  @"bid_price" : _bidPriceTextField.text,
-                                  @"bid_quantity" : _minPersonTextField.text};
+                                  @"time_slot" :timeSlotID,
+                                  @"package":packegeID, //TODO:make dynamic
+                                  @"num_guests":_guestTextField.text,
+                                  @"notes":_textComment.text,
+                                  };
+    //[[_pickerArray objectAtIndex:1] objectAtIndex:0]
+    //[[packageFinal objectAtIndex:1] objectAtIndex:0]
     
     [[WWWebService sharedInstanceAPI] callWebService:requestDict imgData:nil loadThreadWithCompletion:^(NSDictionary *response) {
         if([[response valueForKey:@"result"] isEqualToString:@"error"]){

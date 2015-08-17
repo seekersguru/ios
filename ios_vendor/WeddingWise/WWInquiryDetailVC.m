@@ -22,23 +22,15 @@
     [self callBidDetailAPI];
     arrBidData= [NSMutableArray new];
     
-    [[btnAccept layer] setBorderWidth:1.0f];
-    [[btnAccept layer] setBorderColor:[UIColor redColor].CGColor];
+
+    [btnAccept setHidden:NO];
+    [lblStatus setFont:[UIFont fontWithName:AppFont size:15.0]];
+    [btnAccept.titleLabel setFont:[UIFont fontWithName:AppFont size:15.0f]];
+    [btnDecline.titleLabel setFont:[UIFont fontWithName:AppFont size:15.0f]];
+    [btnAccept.titleLabel setFont:[UIFont fontWithName:AppFont size:15.0f]];
+    [btnOnHold.titleLabel setFont:[UIFont fontWithName:AppFont size:15.0f]];
     
-    [[btnDecline layer] setBorderWidth:1.0f];
-    [[btnDecline layer] setBorderColor:[UIColor redColor].CGColor];
-    
-    
-    if([_messageData[@"status"] isEqualToString:@"Rejected"] || [_messageData[@"status"] isEqualToString:@"Accepted"]){
-        [lblStatus setHidden:NO];
-        lblStatus.text= _messageData[@"status"];
-        [lblStatus setFont:[UIFont fontWithName:AppFont size:17.0]];
-        
-    }else if ([_messageData[@"status"] isEqualToString:@"Pending"]){
-        [btnAccept setHidden:NO];
-        [btnDecline setHidden:NO];
-    }
-   
+    [lblStatus setText:_messageData[@"status"]];
 }
 -(IBAction)backButtonPressed:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
@@ -49,6 +41,7 @@
                                  [[NSUserDefaults standardUserDefaults]
                                   stringForKey:@"identifier"],@"identifier",
                                  _messageData[@"id"],@"msg_id",
+                                 @"v2c",@"from_to",
                                  @"vendor_bid_book_response",@"action",
                                  @"1",@"status",
                                  nil];
@@ -76,8 +69,35 @@
                                  [[NSUserDefaults standardUserDefaults]
                                   stringForKey:@"identifier"],@"identifier",
                                  _messageData[@"id"],@"msg_id",
+                                 @"v2c",@"from_to",
                                  @"vendor_bid_book_response",@"action",
                                  @"0",@"status",
+                                 nil];
+    
+    
+    [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
+     {
+         if([[responseDics valueForKey:@"result"] isEqualToString:@"error"]){
+             [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
+         }
+         else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             [self.navigationController popViewControllerAnimated:YES];
+         }
+         
+     }
+                                             failure:^(NSString *response)
+     {
+         DLog(@"%@",response);
+     }];
+}
+-(IBAction)onHoldButtonClicked:(id)sender{
+    NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                                 [[NSUserDefaults standardUserDefaults]
+                                  stringForKey:@"identifier"],@"identifier",
+                                 _messageData[@"id"],@"msg_id",
+                                 @"v2c",@"from_to",
+                                 @"vendor_bid_book_response",@"action",
+                                 @"2",@"status",
                                  nil];
     
     
@@ -115,6 +135,7 @@
                                  [[NSUserDefaults standardUserDefaults]
                                   stringForKey:@"identifier"],@"identifier",
                                  _messageData[@"id"] ,@"msg_id",
+                                 @"v2c",@"from_to",
                                  @"vendor_bid_book_detail",@"action",
                                  [_messageData valueForKey:@"msg_type"],@"msg_type",
                                  nil];

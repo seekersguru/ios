@@ -44,7 +44,7 @@
     HUD.delegate = self;
     
     // Show the HUD while the provided method executes in a new thread
-    [HUD showWhileExecuting:@selector(callCustomerMessageAPI) onTarget:self withObject:nil animated:YES];
+    [HUD showWhileExecuting:@selector(callCustomerMessageAPI:) onTarget:self withObject:@"" animated:YES];
     
     
     [bidBtn.titleLabel setFont:[UIFont fontWithName:AppFont size:17.0f]];
@@ -70,6 +70,12 @@
     if (_refreshControl) {
         [_refreshControl endRefreshing];
     }
+}
+
+-(IBAction)loadMoreButtonPressed:(id)sender{
+    NSDictionary *messageData=[arrMessageData lastObject];
+    
+    [self callCustomerMessageAPI:[NSString stringWithFormat:@"%@",messageData[@"id"]]];
 }
 
 - (void)moveImage:(UIImageView *)image duration:(NSTimeInterval)duration
@@ -103,15 +109,21 @@
     }
     
 }
--(void)callCustomerMessageAPI{
+-(void)callCustomerMessageAPI:(NSString*)minValue{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  [[NSUserDefaults standardUserDefaults]
                                   stringForKey:@"identifier"],@"identifier",
                                  @"1",@"page_no",
                                  @"customer_vendor_message_list",@"action",
                                  @"c2v",@"from_to",
+                                 @"",@"max",
+                                 minValue,@"min",
+                                 @"",@"sort",
                                  @"message",@"msg_type",
                                  nil];
+    
+    
+    
     
     [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
      {

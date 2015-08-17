@@ -73,6 +73,9 @@
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
              //setting bid info for this vendor, to use on add bid page
              
+             [[AppDelegate sharedAppDelegate]setVendorEmail:_vendorEmail];
+             
+             
              WWVendorBidData *bidInfo = [WWVendorBidData sharedInstance];
              [bidInfo setVendorBidInfo:responseDics[@"json"][@"data"][@"bid"]];
              

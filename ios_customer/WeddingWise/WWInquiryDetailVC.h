@@ -14,6 +14,7 @@
     IBOutlet UIButton *btnAccept;
     IBOutlet UIButton *btnDecline;
     __weak IBOutlet UILabel *lblStatus;
+    
 }
 @property(nonatomic, strong)NSDictionary *messageData;
 

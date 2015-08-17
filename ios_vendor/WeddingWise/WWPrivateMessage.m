@@ -15,9 +15,17 @@
     NSMutableArray *chatArray;
     __block NSString *globalLastMessageID;
     NSTimer *myTimer;
+    NSString *minID;
+    NSString *maxID;
+    NSString *assignValue;
+    
 }
+
+
+
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImageData;
 @property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImageData;
+@property (nonatomic, assign) CGFloat lastContentOffset;
 @end
 
 @implementation WWPrivateMessage
@@ -29,7 +37,12 @@
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationController.navigationBar setHidden:YES];
     
-    [self.lblVendorName setFont:[UIFont fontWithName:AppFont size:13.0f]];
+    maxID= @"";
+    minID= @"";
+    
+    assignValue= @"3";
+    
+    [self.lblVendorName setFont:[UIFont fontWithName:AppFont size:15.0f]];
     self.lblVendorName.text = [_messageData valueForKey:@"receiver_name"];
     
     self.senderId = @"1";
@@ -39,7 +52,7 @@
     self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
     
     self.showLoadEarlierMessagesHeader = YES;
-    
+    [self.lblLoading setHidden:YES];
     
     chatArray = [[NSMutableArray alloc] init];
     
@@ -53,15 +66,28 @@
     [super viewWillAppear:animated];
     
     [chatArray removeAllObjects];
-    [self callPrivateChatAPI:@""];
+    [self callPrivateChatAPI:@"" withMinID:@"" withMaxID:@""];
     
-    myTimer =[NSTimer scheduledTimerWithTimeInterval: 10.0 target: self
+    myTimer =[NSTimer scheduledTimerWithTimeInterval: 1220.0 target: self
                                             selector: @selector(callPrivateChatAPI:) userInfo: @"" repeats: YES];
 }
 - (void)backButtonAction:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(IBAction)nextButtonAction:(id)sender{
+    JSQMessage *previousMessage = [chatArray lastObject];
+    maxID= [NSString stringWithFormat:@"%@",previousMessage.messageId];
+    minID=@"";
+    [self callPrivateChatAPI:@"" withMinID:minID withMaxID:maxID];
+}
+-(IBAction)previousButtonAction:(id)sender{
+    JSQMessage *previousMessage = [chatArray firstObject];
+    minID= [NSString stringWithFormat:@"%@",previousMessage.messageId];
+    maxID=@"";
+    [self callPrivateChatAPI:@"" withMinID:minID withMaxID:maxID];
+    
+}
 - (void)refreshMessageAction:(id)sender{
     
 }
@@ -145,7 +171,7 @@
     }];
     
 }
--(void)callPrivateChatAPI:(NSString *)lastMessageId{
+-(void)callPrivateChatAPI:(NSString *)lastMessageId withMinID:(NSString*)minIDs withMaxID:(NSString*)maxIDs{
     NSDictionary *reqParameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                  [[NSUserDefaults standardUserDefaults]
                                   stringForKey:@"identifier"],@"identifier",
@@ -154,7 +180,9 @@
                                  @"v2c",@"from_to",
                                  @"customer_vendor_message_detail",@"action",
                                  @"message",@"msg_type",
-                                 lastMessageId,@"last_message_id",
+                                 lastMessageId,@"min",
+                                 @"",@"max",
+                                 @"",@"last_message_id",
                                  nil];
     
     [[WWWebService sharedInstanceAPI] callWebService:reqParameters imgData:nil loadThreadWithCompletion:^(NSDictionary *responseDics)
@@ -163,45 +191,69 @@
              [[WWCommon getSharedObject]createAlertView:kAppName :[responseDics valueForKey:@"message"] :nil :000 ];
          }
          else if ([[responseDics valueForKey:@"result"] isEqualToString:@"success"]){
+             
              NSArray *arrData=[responseDics valueForKey:@"json"];
              NSDateFormatter *df = [[NSDateFormatter alloc] init];
              [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
              
              __block NSString *strMessageID;
-             [chatArray removeAllObjects];
+            // [chatArray removeAllObjects];
              
-             for (int i = arrData.count-1; i >= 0; i--) {
-                 NSDictionary *arrMessages = [arrData objectAtIndex:i];
-                 NSString *senderId = @"1";
-                 if ([[arrMessages valueForKey:@"from_to"] isEqualToString:@"c2v"]) {
-                     senderId = @"2";
-                 }
-                 NSString *vendorName = [arrMessages valueForKey:@"vendor_name"];
-                 NSString *text = [arrMessages valueForKey:@"message"];
-                 NSString *messageId = [NSString stringWithFormat:@"%ld",[[arrMessages valueForKey:@"id"] longValue]];
-                 NSDate *date = [df dateFromString:[arrMessages valueForKey:@"msg_time"]];
-                 JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
-                                                          senderDisplayName:vendorName
-                                                                       date:date
-                                                                       text:text
-                                                                  messageId:messageId];
+             if(arrData.count>0){
+                 [self.lblLoading setHidden:NO];
                  
-                 if(strMessageID.length==0){
-                     strMessageID = messageId;
+                 
+                 if(minID.length>0)
+                     self.lblLoading.text=@"Previeous record loaded.";
+                 
+                 else if (maxID.length>0)
+                     self.lblLoading.text=@"Next record loaded.";
+                 
+                 
+                 for (int i = arrData.count-1; i >= 0; i--) {
+                     NSDictionary *arrMessages = [arrData objectAtIndex:i];
+                     NSString *senderId = @"1";
+                     if ([[arrMessages valueForKey:@"from_to"] isEqualToString:@"c2v"]) {
+                         senderId = @"2";
+                     }
+                     NSString *vendorName = [arrMessages valueForKey:@"vendor_name"];
+                     NSString *text = [arrMessages valueForKey:@"message"];
+                     NSString *messageId = [NSString stringWithFormat:@"%ld",[[arrMessages valueForKey:@"id"] longValue]];
+                     NSDate *date = [df dateFromString:[arrMessages valueForKey:@"msg_time"]];
+                     JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
+                                                              senderDisplayName:vendorName
+                                                                           date:date
+                                                                           text:text
+                                                                      messageId:messageId];
                      
+                     if(strMessageID.length==0){
+                         strMessageID = messageId;
+                     }
+                     
+                     
+                     if(minID.length>0)
+                         [chatArray insertObject:message atIndex:0];
+                     
+                     else if (maxID.length>0)
+                         [chatArray insertObject:message atIndex:chatArray.count];
+                     else
+                         [chatArray insertObject:message atIndex:0];
                  }
-                 
-                 [chatArray insertObject:message atIndex:0];
-             }
-             if([globalLastMessageID isEqualToString:strMessageID]){
-                 //No need to refresh table
+                 if([globalLastMessageID isEqualToString:strMessageID]){
+                     //No need to refresh table
+                 }
+                 else{
+                     //Refresh table
+                     globalLastMessageID = strMessageID;
+                     strMessageID=@"";
+                     [self finishReceivingMessage];
+                     [self.lblLoading setHidden:YES];
+                 }
              }
              else{
-                 //Refresh table
-                 globalLastMessageID = strMessageID;
-                 strMessageID=@"";
-                 [self finishReceivingMessage];
+                 self.lblLoading.text=@"No record found";
              }
+             
          }
      }
                                              failure:^(NSString *response)
@@ -209,6 +261,7 @@
          DLog(@"%@",response);
      }];
 }
+
 #pragma mark - JSQMessages CollectionView DataSource
 
 - (id<JSQMessageData>)collectionView:(JSQMessagesCollectionView *)collectionView messageDataForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -306,6 +359,11 @@
 
 #pragma mark - UICollectionView DataSource
 
+//
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+
+}
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [chatArray count];
@@ -449,9 +507,10 @@
     NSString *lastMessageId = @"";
     if (chatArray.count > 0) {
         JSQMessage *firstMessage = [chatArray firstObject];
-        lastMessageId = firstMessage.messageId;
+        lastMessageId = [NSString stringWithFormat:@"%@",firstMessage.messageId];
+    
     }
-    [self callPrivateChatAPI:lastMessageId];
+    [self callPrivateChatAPI:lastMessageId withMinID:minID withMaxID:maxID];
 }
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapAvatarImageView:(UIImageView *)avatarImageView atIndexPath:(NSIndexPath *)indexPath
